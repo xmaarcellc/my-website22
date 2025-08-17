@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sojo Spa Trip - August 28th Registration</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .form-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+        
+        .form-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #333;
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        
+        .highlight {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95em;
+        }
+        
+        select, textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        
+        select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            touch-action: manipulation;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .success-message, .error-message {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-weight: 500;
+            text-align: center;
+        }
+        
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        @media (max-width: 600px) {
+            .form-container {
+                margin: 10px;
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="header">
+            <h1>🌊 Sojo Spa Trip</h1>
+            <p><strong>August 28th, 2025</strong><br>
+            Join us for a relaxing day at Sojo Spa!<br>
+            <span class="highlight">All trip expenses covered</span> ✨</p>
+        </div>
+        
+        <form id="spa-trip-form">
+            <div class="form-group">
+                <label for="attendance">Will you be joining me? *</label>
+                <select id="attendance" name="attendance" required>
+                    <option value="">-- Please select --</option>
+                    <option value="Yes">YES - Count me in! 🎉</option>
+                    <option value="No">NO - Can't make it 😔</option>
+                </select>
+            </div>
+            
+            <div class="form-group" id="time-group" style="display: none;">
+                <label for="time">Preferred Departure Time *</label>
+                <select id="time" name="time">
+                    <option value="">-- Select a time --</option>
+                    <option value="1:00 PM">1:00 PM - Afternoon Departure</option>
+                    <option value="6:00 PM">6:00 PM - Evening Departure</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="comments">Additional Comments/Questions</label>
+                <textarea id="comments" name="comments" placeholder="Any special requests or questions about the trip..."></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn" id="submit-btn">
+                Register for Spa Trip
+            </button>
+            
+            <div id="message-container"></div>
+        </form>
+    </div>
+    
+    <script>
+        // Initialize EmailJS
+        (function(){
+            emailjs.init("JZyxBW7fgfjXdzc8a");
+        })();
+        
+        const form = document.getElementById('spa-trip-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const messageContainer = document.getElementById('message-container');
+        const attendanceSelect = document.getElementById('attendance');
+        const timeGroup = document.getElementById('time-group');
+        const timeSelect = document.getElementById('time');
+        
+        // Show/hide time selection based on attendance
+        attendanceSelect.addEventListener('change', function() {
+            if (this.value === 'Yes') {
+                timeGroup.style.display = 'block';
+                timeSelect.required = true;
+            } else {
+                timeGroup.style.display = 'none';
+                timeSelect.required = false;
+                timeSelect.value = '';
+            }
+        });
+        
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const attendance = attendanceSelect.value;
+            const time = timeSelect.value;
+            const comments = document.getElementById('comments').value;
+            
+            // Validation
+            if (!attendance) {
+                messageContainer.innerHTML = `
+                    <div class="error-message">
+                        ⚠️ Please select whether you'll be joining us!
+                    </div>
+                `;
+                return;
+            }
+            
+            if (attendance === 'Yes' && !time) {
+                messageContainer.innerHTML = `
+                    <div class="error-message">
+                        ⚠️ Please select a preferred departure time!
+                    </div>
+                `;
+                return;
+            }
+            
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            messageContainer.innerHTML = '';
+            
+            // Prepare email parameters
+            const emailParams = {
+                to_email: 'xmarcellr@gmail.com',
+                attendance: attendance,
+                preferred_time: time || 'Not specified',
+                comments: comments || 'None',
+                trip_date: 'August 28th, 2025',
+                subject: 'Sojo Spa Trip Response - ' + attendance
+            };
+            
+            try {
+                // Send email using EmailJS
+                const response = await emailjs.send(
+                    'service_hn9dr1x',
+                    'template_3yjnl3k',
+                    emailParams
+                );
+                
+                // Show success message
+                messageContainer.innerHTML = `
+                    <div class="success-message">
+                        🎉 Registration successful! Thank you for your response.
+                    </div>
+                `;
+                
+                // Reset form
+                form.reset();
+                timeGroup.style.display = 'none';
+                timeSelect.required = false;
+                
+            } catch (error) {
+                console.error('EmailJS Error:', error);
+                
+                // Show error message
+                messageContainer.innerHTML = `
+                    <div class="error-message">
+                        ❌ Registration failed. Please try again.
+                    </div>
+                `;
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Register for Spa Trip';
+            }
+        });
+    </script>
+</body>
+</html>
+
+
