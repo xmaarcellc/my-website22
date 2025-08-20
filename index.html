@@ -3,317 +3,1403 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sojo Spa Trip - August 28th Registration</title>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <title>Elite Cuts Barbershop - Premium Grooming Experience</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        :root {
+            --primary-gold: #d4af37;
+            --dark-bg: #1a1a1a;
+            --light-text: #f5f5f5;
+            --accent-red: #c41e3a;
+            --soft-gray: #333;
+            --card-bg: rgba(255, 255, 255, 0.05);
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+            background: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Lava Lamp Background Effect */
+        .lava-lamp {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .lava-bubble {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: float 20s infinite ease-in-out;
+            opacity: 0.1;
+        }
+
+        .lava-bubble:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--primary-gold), transparent);
+            top: 10%;
+            left: 10%;
+            animation-duration: 25s;
+            animation-delay: 0s;
+        }
+
+        .lava-bubble:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--accent-red), transparent);
+            top: 60%;
+            left: 80%;
+            animation-duration: 30s;
+            animation-delay: -5s;
+        }
+
+        .lava-bubble:nth-child(3) {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--primary-gold), transparent);
+            top: 30%;
+            left: 60%;
+            animation-duration: 35s;
+            animation-delay: -10s;
+        }
+
+        .lava-bubble:nth-child(4) {
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, var(--accent-red), transparent);
+            top: 80%;
+            left: 20%;
+            animation-duration: 22s;
+            animation-delay: -15s;
+        }
+
+        .lava-bubble:nth-child(5) {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, var(--primary-gold), transparent);
+            top: 50%;
+            left: 30%;
+            animation-duration: 28s;
+            animation-delay: -8s;
+        }
+
+        .lava-bubble:nth-child(6) {
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, var(--accent-red), transparent);
+            top: 20%;
+            left: 50%;
+            animation-duration: 32s;
+            animation-delay: -12s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) translateX(0px) scale(1);
+                opacity: 0.1;
+            }
+            25% {
+                transform: translateY(-100px) translateX(50px) scale(1.1);
+                opacity: 0.15;
+            }
+            50% {
+                transform: translateY(-50px) translateX(-30px) scale(0.9);
+                opacity: 0.12;
+            }
+            75% {
+                transform: translateY(-150px) translateX(80px) scale(1.05);
+                opacity: 0.18;
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(26, 26, 26, 0.98);
+            box-shadow: 0 2px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-gold);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-gold);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect width="1920" height="1080" fill="%23222"/><circle cx="400" cy="300" r="50" fill="%23d4af37" opacity="0.1"/><circle cx="1200" cy="600" r="80" fill="%23c41e3a" opacity="0.1"/><circle cx="800" cy="200" r="30" fill="%23d4af37" opacity="0.15"/></svg>');
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-        }
-        
-        .form-container {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-            width: 100%;
-            max-width: 500px;
-            transform: translateY(0);
-            transition: all 0.3s ease;
-        }
-        
-        .form-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-        }
-        
-        .header {
             text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .header h1 {
-            color: #333;
-            font-size: 2.2em;
-            font-weight: 700;
-            margin-bottom: 10px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .header p {
-            color: #666;
-            font-size: 1.1em;
-            line-height: 1.6;
-        }
-        
-        .highlight {
-            background: linear-gradient(45deg, #4CAF50, #45a049);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 600;
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #333;
-            font-size: 0.95em;
-        }
-        
-        select, textarea {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #e1e5e9;
-            border-radius: 12px;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            background: white;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-        }
-        
-        select:focus, textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-        
-        textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-        
-        .submit-btn {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
             position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary-gold), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary-gold), #b8941f);
+            color: var(--dark-bg);
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-gold);
+            position: relative;
+            width: 100%;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent-red);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-gold);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-gold);
+        }
+
+        .service-price {
+            font-size: 1.5rem;
+            color: var(--accent-red);
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        /* Service Photo Gallery */
+        .service-photos {
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .photo-carousel {
+            position: relative;
+            width: 200px;
+            height: 150px;
+            margin: 0 auto;
+            border-radius: 10px;
             overflow: hidden;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            touch-action: manipulation;
+            background: linear-gradient(45deg, var(--soft-gray), #444);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            cursor: pointer;
         }
-        
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+
+        .photo-carousel:hover {
+            border-color: var(--primary-gold);
         }
-        
-        .submit-btn:active {
-            transform: translateY(0);
+
+        .carousel-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
         }
-        
-        .submit-btn:disabled {
-            opacity: 0.7;
+
+        .carousel-image.active {
+            display: block;
+        }
+
+        .carousel-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-gold);
+            font-size: 2rem;
+            background: linear-gradient(45deg, var(--soft-gray), #444);
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .carousel-btn {
+            background: var(--primary-gold);
+            color: var(--dark-bg);
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background: #b8941f;
+            transform: scale(1.1);
+        }
+
+        .carousel-btn:disabled {
+            background: var(--soft-gray);
+            color: #666;
             cursor: not-allowed;
             transform: none;
         }
-        
-        .success-message, .error-message {
+
+        .photo-counter {
+            color: var(--primary-gold);
+            font-size: 12px;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .add-photo-carousel {
+            background: var(--primary-gold);
+            color: var(--dark-bg);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 12px;
+            margin-top: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .add-photo-carousel:hover {
+            background: #b8941f;
+            transform: translateY(-1px);
+        }
+
+        /* Portfolio Section - Single Scrollable Box */
+        .portfolio-container {
+            max-width: 800px;
+            width: 100%;
+            height: 400px;
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            margin-top: 2rem;
+        }
+
+        .portfolio-container:hover {
+            border-color: var(--primary-gold);
+        }
+
+        .portfolio-scroll {
+            display: flex;
+            gap: 20px;
+            height: 100%;
+            min-width: max-content;
+        }
+
+        .portfolio-item {
+            flex: 0 0 250px;
+            height: 300px;
+            background: var(--soft-gray);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Custom scrollbar for portfolio */
+        .portfolio-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .portfolio-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .portfolio-container::-webkit-scrollbar-thumb {
+            background: var(--primary-gold);
+            border-radius: 4px;
+        }
+
+        .portfolio-container::-webkit-scrollbar-thumb:hover {
+            background: #b8941f;
+        }
+
+        .portfolio-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--soft-gray), #444);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--primary-gold);
+            font-size: 1.2rem;
+        }
+
+        .add-photo-btn {
+            background: var(--primary-gold);
+            color: var(--dark-bg);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .add-photo-btn:hover {
+            background: #b8941f;
+            transform: translateY(-2px);
+        }
+
+        /* Merchandise Section */
+        .merch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .merch-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .merch-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-gold);
+        }
+
+        .merch-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, var(--soft-gray), #444);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-gold);
+            font-size: 1.1rem;
+        }
+
+        .merch-info {
+            padding: 1.5rem;
+        }
+
+        .merch-price {
+            color: var(--primary-gold);
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        /* Booking Section */
+        .booking-form {
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--primary-gold);
+            font-weight: 600;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            color: var(--light-text);
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="date"] {
+            color-scheme: dark;
+        }
+
+        select {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light-text);
+        }
+
+        select option {
+            background: var(--dark-bg);
+            color: var(--light-text);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        }
+
+        select:focus {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, var(--primary-gold), #b8941f);
+            color: var(--dark-bg);
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--soft-gray);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .social-links {
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-red);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease;
+        }
+
+        /* Messages */
+        .message {
             padding: 15px;
             border-radius: 8px;
             margin: 20px 0;
             font-weight: 500;
             text-align: center;
         }
-        
+
         .success-message {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+            background: rgba(76, 175, 80, 0.1);
+            color: #4caf50;
+            border: 1px solid rgba(76, 175, 80, 0.3);
         }
-        
+
         .error-message {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+            background: rgba(244, 67, 54, 0.1);
+            color: #f44336;
+            border: 1px solid rgba(244, 67, 54, 0.3);
         }
-        
-        @media (max-width: 600px) {
-            .form-container {
-                margin: 10px;
-                padding: 30px 20px;
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding-left: 1rem;
+                padding-right: 1rem;
             }
             
-            .header h1 {
-                font-size: 1.8em;
+            /* Mobile-first grid layouts */
+            .services-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(6, 1fr);
+                max-width: 350px;
+                gap: 1.5rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(6, 1fr);
+                max-width: 350px;
+                gap: 1rem;
+            }
+            
+            .merch-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(6, 1fr);
+                max-width: 350px;
+                gap: 1.5rem;
+            }
+            
+            /* Adjust service cards for mobile */
+            .service-card {
+                padding: 1.5rem;
+            }
+            
+            .service-icon {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+            
+            /* Optimize photo carousel for mobile */
+            .photo-carousel {
+                width: 250px;
+                height: 180px;
+            }
+            
+            .carousel-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+            
+            /* Social media section mobile optimization */
+            .section[style*="padding: 40px 0"] div[style*="gap: 3rem"] {
+                gap: 2rem !important;
+            }
+            
+            /* Hero section mobile optimization */
+            .hero-content {
+                padding: 0 1rem;
+            }
+            
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <div class="header">
-            <h1>🌊 Sojo Spa Trip</h1>
-            <p><strong>August 28th, 2025</strong><br>
-            Join us for a relaxing day at Sojo Spa!<br>
-            <span class="highlight">All trip expenses covered</span> ✨</p>
-        </div>
-        
-        <form id="spa-trip-form">
-            <div class="form-group">
-                <label for="attendance">Will you be joining me? *</label>
-                <select id="attendance" name="attendance" required>
-                    <option value="">-- Please select --</option>
-                    <option value="Yes">YES - Count me in! 🎉</option>
-                    <option value="No">NO - Can't make it 😔</option>
-                </select>
-            </div>
-            
-            <div class="form-group" id="time-group" style="display: none;">
-                <label for="time">Preferred Departure Time *</label>
-                <select id="time" name="time">
-                    <option value="">-- Select a time --</option>
-                    <option value="1:00 PM">1:00 PM - Afternoon Departure</option>
-                    <option value="6:00 PM">6:00 PM - Evening Departure</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="comments">Additional Comments/Questions</label>
-                <textarea id="comments" name="comments" placeholder="Any special requests or questions about the trip..."></textarea>
-            </div>
-            
-            <button type="submit" class="submit-btn" id="submit-btn">
-                Register for Spa Trip
-            </button>
-            
-            <div id="message-container"></div>
-        </form>
+    <!-- Lava Lamp Background -->
+    <div class="lava-lamp">
+        <div class="lava-bubble"></div>
+        <div class="lava-bubble"></div>
+        <div class="lava-bubble"></div>
+        <div class="lava-bubble"></div>
+        <div class="lava-bubble"></div>
+        <div class="lava-bubble"></div>
     </div>
-    
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">✂️ Elite Cuts</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#merchandise">Shop</a></li>
+                <li><a href="#booking">Book Now</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Elite Cuts Barbershop</h1>
+            <p>Experience the finest in men's grooming with our premium services, expert barbers, and luxurious atmosphere.</p>
+            <a href="https://getsquire.com/booking/book/bvrberiv-fair-lawn/barber/alex-elicona-1/services" class="cta-button" target="_blank">Book Appointment</a>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="section" style="padding: 40px 0;">
+        <div style="text-align: center;">
+            <h3 style="color: var(--primary-gold); margin-bottom: 2rem; font-size: 2rem;">Follow Us</h3>
+            <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                    <a href="https://www.tiktok.com/@eliconavisuals?_t=ZT-8yzMFxVPlW9&_r=1" target="_blank" style="display: inline-block; color: var(--primary-gold); transition: all 0.3s ease; text-decoration: none;">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                        </svg>
+                        <p style="margin-top: 0.5rem; font-weight: bold;">TikTok</p>
+                    </a>
+                </div>
+                <div style="text-align: center;">
+                    <a href="https://youtube.com/@alexelicona?si=rEA2AcJo6GYVw7X5" target="_blank" style="display: inline-block; color: var(--primary-gold); transition: all 0.3s ease; text-decoration: none;">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                        <p style="margin-top: 0.5rem; font-weight: bold;">YouTube</p>
+                    </a>
+                </div>
+            </div>
+            <p style="margin-top: 2rem; color: var(--light-text); opacity: 0.8; font-style: italic;">Stay updated with our latest cuts and styles!</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">🪒</div>
+                <h3>Sides w/ Beard</h3>
+                <p>Side cleanup with professional beard trimming and shaping service.</p>
+                <div class="service-photos">
+                    <div class="photo-carousel" data-service="sides-beard">
+                        <div class="carousel-placeholder" onclick="addServicePhoto('sides-beard')">
+                            + Add Photos
+                        </div>
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn" onclick="prevPhoto('sides-beard')" disabled>‹</button>
+                        <span class="photo-counter">0/0</span>
+                        <button class="carousel-btn" onclick="nextPhoto('sides-beard')" disabled>›</button>
+                    </div>
+                    <button class="add-photo-carousel" onclick="addServicePhoto('sides-beard')">+ Add Photo</button>
+                </div>
+                <div class="service-price">$55</div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">✂️</div>
+                <h3>Haircut w/ Scissors (No Beard)</h3>
+                <p>Professional scissor cut with precision styling and finishing touches.</p>
+                <div class="service-photos">
+                    <div class="photo-carousel" data-service="scissors-cut">
+                        <div class="carousel-placeholder" onclick="addServicePhoto('scissors-cut')">
+                            + Add Photos
+                        </div>
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn" onclick="prevPhoto('scissors-cut')" disabled>‹</button>
+                        <span class="photo-counter">0/0</span>
+                        <button class="carousel-btn" onclick="nextPhoto('scissors-cut')" disabled>›</button>
+                    </div>
+                    <button class="add-photo-carousel" onclick="addServicePhoto('scissors-cut')">+ Add Photo</button>
+                </div>
+                <div class="service-price">$55</div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">⚡</div>
+                <h3>Haircut Just The Sides</h3>
+                <p>Quick clean-up of the sides and back, perfect for maintenance cuts.</p>
+                <div class="service-photos">
+                    <div class="photo-carousel" data-service="sides-only">
+                        <div class="carousel-placeholder" onclick="addServicePhoto('sides-only')">
+                            + Add Photos
+                        </div>
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn" onclick="prevPhoto('sides-only')" disabled>‹</button>
+                        <span class="photo-counter">0/0</span>
+                        <button class="carousel-btn" onclick="nextPhoto('sides-only')" disabled>›</button>
+                    </div>
+                    <button class="add-photo-carousel" onclick="addServicePhoto('sides-only')">+ Add Photo</button>
+                </div>
+                <div class="service-price">$45</div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">💼</div>
+                <h3>Wash, Haircut, Beard & Style</h3>
+                <p>Complete grooming experience with wash, cut, beard trim, and styling.</p>
+                <div class="service-photos">
+                    <div class="photo-carousel" data-service="full-service">
+                        <div class="carousel-placeholder" onclick="addServicePhoto('full-service')">
+                            + Add Photos
+                        </div>
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn" onclick="prevPhoto('full-service')" disabled>‹</button>
+                        <span class="photo-counter">0/0</span>
+                        <button class="carousel-btn" onclick="nextPhoto('full-service')" disabled>›</button>
+                    </div>
+                    <button class="add-photo-carousel" onclick="addServicePhoto('full-service')">+ Add Photo</button>
+                </div>
+                <div class="service-price">$65</div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">🎨</div>
+                <h3>Hair Coloring & Alterations</h3>
+                <p>Professional hair coloring, alterations, and freestyle creative cuts.</p>
+                <div class="service-photos">
+                    <div class="photo-carousel" data-service="coloring">
+                        <div class="carousel-placeholder" onclick="addServicePhoto('coloring')">
+                            + Add Photos
+                        </div>
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn" onclick="prevPhoto('coloring')" disabled>‹</button>
+                        <span class="photo-counter">0/0</span>
+                        <button class="carousel-btn" onclick="nextPhoto('coloring')" disabled>›</button>
+                    </div>
+                    <button class="add-photo-carousel" onclick="addServicePhoto('coloring')">+ Add Photo</button>
+                </div>
+                <div class="service-price">$100</div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">💳</div>
+                <h3>Gift Card</h3>
+                <p>Perfect for any occasion. Give the gift of premium grooming experience.</p>
+                <div class="service-price">From $50</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section">
+        <h2 class="section-title">Our Work</h2>
+        <div class="portfolio-container" id="portfolio-container">
+            <div class="portfolio-scroll" id="portfolio-scroll">
+                <!-- Portfolio items will be dynamically added -->
+                <div class="portfolio-item">
+                    <div class="portfolio-placeholder">
+                        <div>📷</div>
+                        <button class="add-photo-btn" onclick="addPhoto()">Add Photo</button>
+                        <small>Click to upload</small>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-placeholder">
+                        <div>📷</div>
+                        <button class="add-photo-btn" onclick="addPhoto()">Add Photo</button>
+                        <small>Click to upload</small>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-placeholder">
+                        <div>📷</div>
+                        <button class="add-photo-btn" onclick="addPhoto()">Add Photo</button>
+                        <small>Click to upload</small>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-placeholder">
+                        <div>📷</div>
+                        <button class="add-photo-btn" onclick="addPhoto()">Add Photo</button>
+                        <small>Click to upload</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Merchandise Section -->
+    <section id="merchandise" class="section">
+        <h2 class="section-title">Shop Our Products</h2>
+        <div class="merch-grid" id="merch-grid">
+            <!-- Sample merchandise items -->
+            <div class="merch-item">
+                <div class="merch-image">
+                    <div>🧴 Premium Pomade</div>
+                </div>
+                <div class="merch-info">
+                    <h3>Elite Cuts Pomade</h3>
+                    <p>Professional-grade styling pomade with strong hold and natural shine.</p>
+                    <div class="merch-price">$24.99</div>
+                    <button class="add-photo-btn" onclick="buyProduct('pomade')">Add to Cart</button>
+                </div>
+            </div>
+            <div class="merch-item">
+                <div class="merch-image">
+                    <div>👕 Branded T-Shirt</div>
+                </div>
+                <div class="merch-info">
+                    <h3>Elite Cuts Tee</h3>
+                    <p>Premium cotton t-shirt with our signature logo. Available in multiple colors.</p>
+                    <div class="merch-price">$29.99</div>
+                    <button class="add-photo-btn" onclick="buyProduct('tshirt')">Add to Cart</button>
+                </div>
+            </div>
+            <div class="merch-item">
+                <div class="merch-image">
+                    <button class="add-photo-btn" onclick="addMerchandise()">+ Add Product</button>
+                </div>
+                <div class="merch-info">
+                    <h3>Add New Item</h3>
+                    <p>Click above to add a new merchandise item to your store.</p>
+                    <div class="merch-price">--</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section" style="padding-top: 40px;">
+        <h2 class="section-title">Visit Us</h2>
+        <div style="text-align: center; font-size: 1.2rem;">
+            <p><strong>📍 Address:</strong> 123 Main Street, Downtown, NY 10001</p>
+            <p><strong>📞 Phone:</strong> (555) 123-4567</p>
+            <p><strong>⏰ Hours:</strong> Mon-Sat 9AM-7PM, Sun 10AM-5PM</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#">📘</a>
+                <a href="#">📷</a>
+                <a href="#">🐦</a>
+                <a href="#">💼</a>
+            </div>
+            <p>&copy; 2025 Elite Cuts Barbershop. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script>
-        // Initialize EmailJS
-        (function(){
-            emailjs.init("JZyxBW7fgfjXdzc8a");
-        })();
-        
-        const form = document.getElementById('spa-trip-form');
-        const submitBtn = document.getElementById('submit-btn');
-        const messageContainer = document.getElementById('message-container');
-        const attendanceSelect = document.getElementById('attendance');
-        const timeGroup = document.getElementById('time-group');
-        const timeSelect = document.getElementById('time');
-        
-        // Show/hide time selection based on attendance
-        attendanceSelect.addEventListener('change', function() {
-            if (this.value === 'Yes') {
-                timeGroup.style.display = 'block';
-                timeSelect.required = true;
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
             } else {
-                timeGroup.style.display = 'none';
-                timeSelect.required = false;
-                timeSelect.value = '';
+                navbar.classList.remove('scrolled');
             }
         });
-        
-        form.addEventListener('submit', async function(e) {
+
+        // Set minimum date to today
+        document.getElementById('date').min = new Date().toISOString().split('T')[0];
+
+        // Initialize EmailJS
+        emailjs.init('JZyxBW7fgfjXdzc8a');
+
+        // Contact form submission
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const statusDiv = document.getElementById('contact-message-status');
+                statusDiv.innerHTML = '<div style="text-align: center; color: var(--primary-gold);">Sending message...</div>';
+                
+                // Get form values
+                const fromName = document.getElementById('contact-name').value;
+                const fromEmail = document.getElementById('contact-email').value;
+                const subject = document.getElementById('contact-subject').value;
+                const message = document.getElementById('contact-message').value;
+                
+                console.log('Form data:', { fromName, fromEmail, subject, message }); // Debug log
+                
+                // Send email using EmailJS with parameters matching the contact template
+                const templateParams = {
+                    from_name: fromName,
+                    from_email: fromEmail,
+                    subject: subject,
+                    message: message
+                };
+                
+                emailjs.send('service_hn9dr1x', 'template_vpnl9wa', templateParams)
+                    .then(function(response) {
+                        console.log('SUCCESS!', response.status, response.text);
+                        statusDiv.innerHTML = `
+                            <div class="success-message">
+                                <h3>✅ Message Sent Successfully!</h3>
+                                <p>Thank you for contacting us. We'll get back to you as soon as possible!</p>
+                            </div>
+                        `;
+                        contactForm.reset();
+                    }, function(error) {
+                        console.error('FAILED...', error);
+                        statusDiv.innerHTML = `
+                            <div class="error-message">
+                                <h3>❌ Failed to Send Message</h3>
+                                <p>Please try again or contact us directly at xmarcellr@gmail.com</p>
+                                <p>Error: ${error.text || error.message || 'Unknown error'}</p>
+                            </div>
+                        `;
+                    });
+            });
+        }
+
+        // Appointment booking form - removed since we deleted the booking section
+        document.getElementById('appointment-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form values
-            const attendance = attendanceSelect.value;
-            const time = timeSelect.value;
-            const comments = document.getElementById('comments').value;
+            const formData = new FormData(this);
+            const bookingData = Object.fromEntries(formData);
             
-            // Validation
-            if (!attendance) {
-                messageContainer.innerHTML = `
-                    <div class="error-message">
-                        ⚠️ Please select whether you'll be joining us!
-                    </div>
-                `;
-                return;
-            }
+            // Show booking confirmation
+            document.getElementById('booking-message').innerHTML = `
+                <div class="success-message">
+                    <h3>🎉 Appointment Booked Successfully!</h3>
+                    <p><strong>Name:</strong> ${bookingData.name}</p>
+                    <p><strong>Service:</strong> ${bookingData.service}</p>
+                    <p><strong>Date & Time:</strong> ${bookingData.date} at ${bookingData.time}</p>
+                    <p>We'll contact you at ${bookingData.phone} to confirm your appointment.</p>
+                </div>
+            `;
             
-            if (attendance === 'Yes' && !time) {
-                messageContainer.innerHTML = `
-                    <div class="error-message">
-                        ⚠️ Please select a preferred departure time!
-                    </div>
-                `;
-                return;
-            }
+            // Reset form
+            this.reset();
             
-            // Disable submit button
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Submitting...';
-            messageContainer.innerHTML = '';
-            
-            // Prepare email parameters
-            const emailParams = {
-                to_email: 'xmarcellr@gmail.com',
-                attendance: attendance,
-                preferred_time: time || 'Not specified',
-                comments: comments || 'None',
-                trip_date: 'August 28th, 2025',
-                subject: 'Sojo Spa Trip Response - ' + attendance
-            };
-            
-            try {
-                // Send email using EmailJS
-                const response = await emailjs.send(
-                    'service_hn9dr1x',
-                    'template_3yjnl3k',
-                    emailParams
-                );
-                
-                // Show success message
-                messageContainer.innerHTML = `
-                    <div class="success-message">
-                        🎉 Registration successful! Thank you for your response.
-                    </div>
-                `;
-                
-                // Reset form
-                form.reset();
-                timeGroup.style.display = 'none';
-                timeSelect.required = false;
-                
-            } catch (error) {
-                console.error('EmailJS Error:', error);
-                
-                // Show error message
-                messageContainer.innerHTML = `
-                    <div class="error-message">
-                        ❌ Registration failed. Please try again.
-                    </div>
-                `;
-            } finally {
-                // Re-enable submit button
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Register for Spa Trip';
-            }
+            // In a real application, you would send this data to your backend
+            console.log('Booking Data:', bookingData);
         });
-    </script>
-</body>
-</html>
 
+        // Service photo carousel system
+        const servicePhotos = {};
 
+        // Add service photo function
+        function addServicePhoto(serviceId) {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        // Initialize service photos array if it doesn't exist
+                        if (!servicePhotos[serviceId]) {
+                            servicePhotos[serviceId] = [];
+                        }
+                        
+                        // Add new photo to the service
+                        servicePhotos[serviceId].push(e.target.result);
+                        
+                        // Update the carousel
+                        updateCarousel(serviceId);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            input.click();
+        }
+
+        // Update carousel display
+        function updateCarousel(serviceId) {
+            const carousel = document.querySelector(`[data-service="${serviceId}"]`);
+            const photos = servicePhotos[serviceId] || [];
+            
+            if (photos.length === 0) {
+                carousel.innerHTML = `<div class="carousel-placeholder" onclick="addServicePhoto('${serviceId}')">+ Add Photos</div>`;
+                updateCarouselControls(serviceId, 0, 0);
+                return;
+            }
+            
+            // Clear existing content
+            carousel.innerHTML = '';
+            
+            // Add all images (hidden by default)
+            photos.forEach((photo, index) => {
+                const img = document.createElement('img');
+                img.src = photo;
+                img.className = `carousel-image ${index === 0 ? 'active' : ''}`;
+                img.onclick = () => showFullImage(photo);
+                carousel.appendChild(img);
+            });
+            
+            // Update controls
+            updateCarouselControls(serviceId, 1, photos.length);
+        }
+
+        // Update carousel controls
+        function updateCarouselControls(serviceId, current, total) {
+            const controls = document.querySelector(`[data-service="${serviceId}"]`).parentElement.querySelector('.carousel-controls');
+            const prevBtn = controls.querySelector('.carousel-btn:first-child');
+            const nextBtn = controls.querySelector('.carousel-btn:last-child');
+            const counter = controls.querySelector('.photo-counter');
+            
+            counter.textContent = `${current}/${total}`;
+            
+            prevBtn.disabled = current <= 1;
+            nextBtn.disabled = current >= total;
+            
+            // Store current index
+            if (!window.carouselIndex) window.carouselIndex = {};
+            window.carouselIndex[serviceId] = current - 1;
+        }
+
+        // Navigate photos
+        function prevPhoto(serviceId) {
+            const photos = servicePhotos[serviceId] || [];
+            if (photos.length === 0) return;
+            
+            const currentIndex = window.carouselIndex[serviceId] || 0;
+            const newIndex = Math.max(0, currentIndex - 1);
+            
+            showPhoto(serviceId, newIndex);
+        }
+
+        function nextPhoto(serviceId) {
+            const photos = servicePhotos[serviceId] || [];
+            if (photos.length === 0) return;
+            
+            const currentIndex = window.carouselIndex[serviceId] || 0;
+            const newIndex = Math.min(photos.length - 1, currentIndex + 1);
+            
+            showPhoto(serviceId, newIndex);
+        }
+
+        function showPhoto(serviceId, index) {
+            const carousel = document.querySelector(`[data-service="${serviceId}"]`);
+            const images = carousel.querySelectorAll('.carousel-image');
+            
+            images.forEach((img, i) => {
+                img.classList.toggle('active', i === index);
+            });
+            
+            window.carouselIndex[serviceId] = index;
+            updateCarouselControls(serviceId, index + 1, images.length);
+        }
+
+        // Show full image in modal
+        function showFullImage(imageSrc) {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.9); display: flex; align-items: center;
+                justify-content: center; z-index: 10000; cursor: pointer;
+            `;
+            modal.innerHTML = `<img src="${imageSrc}" style="max-width: 90%; max-height: 90%; border-radius: 10px;">`;
+            modal.onclick = () => modal.remove();
+            document.body.appendChild(modal);
+        }
+
+        // Portfolio photo upload simulation
+        function addPhoto() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        // Find the clicked portfolio item
+                        const portfolioItems = document.querySelectorAll('.portfolio-item');
+                        const emptyItem = Array.from(portfolioItems).find(item => 
+                            item.querySelector('.portfolio-placeholder')
+                        );
+                        
+                        if (emptyItem) {
+                            emptyItem.innerHTML = `
+                                <img src="${e.target.result}" alt="Portfolio work" 
+                                     style="width: 100%; height: 100%; object-fit: cover;">
+                            `;
+                            
+                            // Add a new empty slot to the scroll container
+                            const newItem = document.createElement('div');
+                            newItem.className = 'portfolio-item';
+                            newItem.innerHTML = `
+                                <div class="portfolio-placeholder">
+                                    <div>📷</div>
+                                    <button class="add-photo-btn" onclick="addPhoto()">Add Photo</button>
+                                    <small>Click to upload</small>
+                                </div>
+                            `;
+                            document.getElementById('portfolio-scroll').appendChild(newItem);
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            input.click();
+        }="width: 100%; height: 100%; object-fit: cover;">
+                            `;
+                            
+                            // Add a new empty slot
+                            const newItem = document.createElement('div');
+                            newItem.className = 'portfolio-item';
+                            newItem.innerHTML = `
+                                <div class="portfolio-placeholder">
+                                    <div>📷</div>
+                                    <button class="add-photo-btn" onclick="addPhoto()">Add Photo</button>
+                                    <small>Click to upload</small>
+                                </div>
+                            `;
+                            document.getElementById('portfolio-grid').appendChild(newItem);
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            input.click();
+        }
+
+        // Add merchandise simulation
+        function addMerchandise() {
+            const name = prompt('Product name:');
+            const price = prompt('Product price (e.g., $29.99):');
+            const description = prompt('Product description:');
+            
+            if (name && price && description) {
+                const newItem = document.createElement('div');
+                newItem.className = 'merch-item';
+                newItem.innerHTML = `
+                    <div class="merch-image">
+                        <button class="add-photo-btn" onclick="addProductPhoto(this)">Add Photo</button>
+                    </div>
+                    <div class="merch-info">
+                        <h3>${name}</h3>
+                        <p>${description}</p>
+                        <div class="merch-price">${price}</div>
+                        <button class="add-photo-btn" onclick="buyProduct('${name.toLowerCase()}')">Add to Cart</button>
+                    </div>
+                `;
+                
+                // Replace the "Add Product" item
+                const addProductItem = document.querySelector('.merch-item:last-child');
+                addProductItem.parentNode.insertBefore(newItem, addProductItem);
+            }
+        }
+
+        // Add product photo
+        function addProductPhoto(button) {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        button.parentElement.innerHTML = `
+                            <img src="${e.target.result}" alt="Product" 
+                                 style="width: 100%; height: 100%; object-fit: cover;">
+                        `;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            input.click();
+        }
+
+        // Buy product simulation
+        function buyProduct(product) {
+            alert(`${product} added to cart! (This would integrate with your e-commerce system
