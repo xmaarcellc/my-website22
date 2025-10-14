@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marcell Software Services LLC - Portfolio</title>
+    <link rel="icon" type="image/png" href="JustLogo.png">
     <style>
         * {
             margin: 0;
@@ -854,14 +855,17 @@
         
         section p {
             color: #ffffff;
+            font-size: 0.95rem;
         }
         
         section ul {
             color: #ffffff;
+            font-size: 0.95rem;
         }
         
         section li {
             color: #ffffff;
+            font-size: 0.95rem;
         }
         
         section a {
@@ -950,8 +954,12 @@
                     <p class="about-text-fade" style="font-weight: bold; font-style: italic;">Recent graduate with a foundation in economics and computer science. Through Marcell Software Services LLC, I provide professional development services that combine analytical thinking with technical expertise.</p>
                     <p class="about-text-fade" style="font-weight: bold; font-style: italic;">I'm passionate about creating efficient, scalable solutions that drive real business value.</p>
                 </div>
-                <div style="flex: 0 0 auto;">
-                    <img src="Rob_1.jpg" alt="Rob Marcellin" style="width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #000000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+                <div style="flex: 0 0 auto; position: relative; width: 300px; height: 300px;">
+                    <img id="aboutImg1" src="Rob_1.jpg" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #000000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); opacity: 1; transition: opacity 2s ease-in-out;">
+                    <img id="aboutImg2" src="IMG_9222.jpg" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #000000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); opacity: 0; transition: opacity 2s ease-in-out;">
+                    <img id="aboutImg3" src="Rob_4.jpg" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #000000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); opacity: 0; transition: opacity 2s ease-in-out;">
+                    <img id="aboutImg4" src="Header.Jpg.JPG" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #000000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); opacity: 0; transition: opacity 2s ease-in-out;">
+                    <img id="aboutImg5" src="IMG_2362.PNG" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #000000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); opacity: 0; transition: opacity 2s ease-in-out;">
                 </div>
             </div>
             
@@ -1038,7 +1046,7 @@
                 <div class="main-experience-header">
                     <div class="services-header" style="width: 100%; margin-bottom: 0;">
                         <h2 style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">Services</h2>
-                        <img src="LLC_LOGOO.png" alt="LLC Logo" class="services-logo">
+                        <img src="JustWhite.png" alt="LLC Logo" class="services-logo">
                     </div>
                     <span class="dropdown-arrow" style="color: #ffffff;">▼</span>
                 </div>
@@ -1585,6 +1593,70 @@
                 });
             });
         }
+        
+        // About image crossfade functionality
+        const aboutImages = [
+            document.getElementById('aboutImg1'),
+            document.getElementById('aboutImg2'),
+            document.getElementById('aboutImg3'),
+            document.getElementById('aboutImg4'),
+            document.getElementById('aboutImg5')
+        ];
+        
+        if (aboutImages.every(img => img)) {
+            let currentAboutImg = 0;
+            
+            setInterval(() => {
+                aboutImages[currentAboutImg].style.opacity = '0';
+                currentAboutImg = (currentAboutImg + 1) % aboutImages.length;
+                aboutImages[currentAboutImg].style.opacity = '1';
+            }, 4000);
+        }
+        
+        // Services logo crossfade functionality
+        const servicesLogos = document.querySelectorAll('.services-logo');
+        
+        servicesLogos.forEach(logo => {
+            const logoContainer = document.createElement('div');
+            logoContainer.style.position = 'relative';
+            logoContainer.style.width = '100px';
+            logoContainer.style.height = logo.offsetHeight + 'px';
+            
+            logo.parentNode.insertBefore(logoContainer, logo);
+            
+            const logo1 = logo.cloneNode(true);
+            logo1.style.position = 'absolute';
+            logo1.style.top = '0';
+            logo1.style.left = '0';
+            logo1.style.opacity = '1';
+            logo1.style.transition = 'opacity 2s ease-in-out';
+            
+            const logo2 = document.createElement('img');
+            logo2.src = 'JustWhite.png';
+            logo2.alt = 'Marcell Logo';
+            logo2.className = 'services-logo';
+            logo2.style.position = 'absolute';
+            logo2.style.top = '0';
+            logo2.style.left = '0';
+            logo2.style.opacity = '0';
+            logo2.style.transition = 'opacity 2s ease-in-out';
+            logo2.style.width = '100px';
+            logo2.style.height = 'auto';
+            
+            logoContainer.appendChild(logo1);
+            logoContainer.appendChild(logo2);
+            logo.remove();
+            
+            setInterval(() => {
+                if (logo1.style.opacity === '1') {
+                    logo1.style.opacity = '0';
+                    logo2.style.opacity = '1';
+                } else {
+                    logo1.style.opacity = '1';
+                    logo2.style.opacity = '0';
+                }
+            }, 4000);
+        });
     </script>
 </body>
 </html>
