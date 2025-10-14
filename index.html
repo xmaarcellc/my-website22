@@ -292,7 +292,7 @@
                                 <p style="text-align: center; margin-top: 0.5rem; font-style: italic; color: #ffffff; font-size: 0.85rem;">Recognizing our amazing team members</p>
                             </div>
                             <p class="date">April 2024 - July 2025</p>
-                            <p style="margin-top: 1rem; color: #ffffff;" Developed strong leadership, customer service, and operational management skills while maintaining high standards of quality and efficiency.</p>
+                            <p style="margin-top: 1rem; color: #ffffff;">Led daily operations and managed a team in a fast-paced retail environment. Developed strong leadership, customer service, and operational management skills while maintaining high standards of quality and efficiency.</p>
                             <ul style="margin-top: 0.5rem; margin-left: 1.5rem; color: #ffffff;">
                                 <li>Managed staff scheduling, training, and performance development</li>
                                 <li>Oversaw inventory management and cost control</li>
@@ -844,7 +844,7 @@
             width: 60px;
             height: 60px;
             opacity: 0;
-            animation: bounceLogo 2s ease-out forwards;
+            animation: fadeInLogo 2s ease-in forwards;
             animation-delay: 0.3s;
             margin-top: 10px;
         }
@@ -860,32 +860,14 @@
             }
         }
         
-        @keyframes bounceLogo {
-            0% {
+        @keyframes fadeInLogo {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
                 opacity: 1;
-                transform: translateX(300px) scale(0.8);
-            }
-            15% {
-                transform: translateX(-30px) scale(1.1);
-            }
-            30% {
-                transform: translateX(20px) scale(0.95);
-            }
-            45% {
-                transform: translateX(-10px) scale(1.05);
-            }
-            60% {
-                transform: translateX(5px) scale(0.98);
-            }
-            75% {
-                transform: translateX(-2px) scale(1.02);
-            }
-            90% {
-                transform: translateX(0) scale(1);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0) scale(1);
+                transform: translateY(0);
             }
         }
         
@@ -1783,8 +1765,8 @@
             
             /* Education logos mobile */
             #edu1 img, #edu2 img {
-                width: 10px !important;
-                height: 10px !important;
+                width: 15px !important;
+                height: 15px !important;
             }
             
             #edu1 > div:first-child, #edu2 > div:first-child {
@@ -1878,5 +1860,3 @@
             
             #contact .service-description p {
                 font-size: 0.85rem;
-
-
