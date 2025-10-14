@@ -159,7 +159,7 @@
                 </div>
                 
                 <div class="main-experience-content">
-                    <div style="position: relative; width: 100%; height: 400px; margin-top: 1rem; border-radius: 8px; overflow: hidden; border: 2px solid #ffffff;">
+                    <div style="position: relative; width: 100%; height: 400px; margin-top: 1rem; border-radius: 8px; overflow: hidden; border: 2px solid #ffffff; cursor: pointer;" onclick="openVideoModal()">
                         <video id="hobbyVideo1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity 1.75s ease-in-out;" muted playsinline autoplay disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback">
                             <source src="vid.1.MOV" type="video/mp4">
                         </video>
@@ -173,6 +173,9 @@
                             <source src="vid.2.MP4" type="video/mp4">
                         </video>
                         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.3); z-index: 1; pointer-events: none;"></div>
+                        <div style="position: absolute; top: 10px; right: 10px; background: rgba(0, 0, 0, 0.6); color: #ffffff; padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.9rem; z-index: 2; pointer-events: none;">
+                            Click to Expand
+                        </div>
                     </div>
                     <div style="margin-top: 1rem; border-top: 2px solid #ffffff; border-bottom: 2px solid #ffffff; padding: 0.75rem 2rem; background: rgba(0, 0, 0, 0.8);">
                         <p style="color: #ffffff; font-size: 0.75rem; font-weight: 600; text-align: center; margin: 0;">
@@ -380,6 +383,29 @@
                 <div class="modal-caption" id="modalCaption"></div>
                 <div class="modal-instructions">
                     Use arrow keys or swipe to navigate • Press ESC to close
+                </div>
+            </div>
+        </div>
+        
+        <div id="videoModal" class="modal">
+            <span class="close-modal" onclick="closeVideoModal()">&times;</span>
+            <div class="modal-content" style="max-width: 95%; max-height: 95%;">
+                <div style="position: relative; width: 100%; height: 90vh;">
+                    <video id="modalHobbyVideo1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 1; transition: opacity 1.75s ease-in-out;" muted playsinline autoplay loop disablepictureinpicture controlslist="nodownload">
+                        <source src="vid.1.MOV" type="video/mp4">
+                    </video>
+                    <video id="modalHobbyVideo2" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 1.75s ease-in-out;" muted playsinline autoplay loop disablepictureinpicture controlslist="nodownload">
+                        <source src="lunr5.MP4" type="video/mp4">
+                    </video>
+                    <video id="modalHobbyVideo3" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 1.75s ease-in-out;" muted playsinline autoplay loop disablepictureinpicture controlslist="nodownload">
+                        <source src="lunr3.mov" type="video/mp4">
+                    </video>
+                    <video id="modalHobbyVideo4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 1.75s ease-in-out;" muted playsinline autoplay loop disablepictureinpicture controlslist="nodownload">
+                        <source src="vid.2.MP4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="modal-instructions">
+                    Press ESC to close
                 </div>
             </div>
         </div>
@@ -610,6 +636,7 @@
         
         document.addEventListener('keydown', function(e) {
             const modal = document.getElementById('imageModal');
+            const videoModal = document.getElementById('videoModal');
             
             if (modal && modal.classList.contains('active')) {
                 if (e.key === 'Escape') {
@@ -620,7 +647,110 @@
                     changeModalImage(1);
                 }
             }
+            
+            if (videoModal && videoModal.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeVideoModal();
+                }
+            }
         });
+        
+        function openVideoModal() {
+            const videoModal = document.getElementById('videoModal');
+            videoModal.style.display = 'flex';
+            setTimeout(() => {
+                videoModal.classList.add('active');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+            
+            // Start playing modal videos
+            const modalVideo1 = document.getElementById('modalHobbyVideo1');
+            if (modalVideo1) {
+                modalVideo1.play();
+                setupModalVideoTransitions();
+            }
+        }
+        
+        function closeVideoModal() {
+            const videoModal = document.getElementById('videoModal');
+            videoModal.classList.remove('active');
+            setTimeout(() => {
+                videoModal.style.display = 'none';
+                // Pause all modal videos
+                document.getElementById('modalHobbyVideo1').pause();
+                document.getElementById('modalHobbyVideo2').pause();
+                document.getElementById('modalHobbyVideo3').pause();
+                document.getElementById('modalHobbyVideo4').pause();
+            }, 400);
+            document.body.style.overflow = 'auto';
+        }
+        
+        function setupModalVideoTransitions() {
+            const modalVideo1 = document.getElementById('modalHobbyVideo1');
+            const modalVideo2 = document.getElementById('modalHobbyVideo2');
+            const modalVideo3 = document.getElementById('modalHobbyVideo3');
+            const modalVideo4 = document.getElementById('modalHobbyVideo4');
+            
+            if (modalVideo1 && modalVideo2 && modalVideo3 && modalVideo4) {
+                let currentModalVideo = 1;
+                
+                modalVideo1.addEventListener('loadedmetadata', function() {
+                    const duration1 = modalVideo1.duration;
+                    
+                    modalVideo1.addEventListener('timeupdate', function() {
+                        if (currentModalVideo === 1 && modalVideo1.currentTime >= duration1 - 1.75) {
+                            modalVideo2.currentTime = 0;
+                            modalVideo2.play();
+                            modalVideo2.style.opacity = '1';
+                            modalVideo1.style.opacity = '0';
+                            currentModalVideo = 2;
+                        }
+                    });
+                });
+                
+                modalVideo2.addEventListener('loadedmetadata', function() {
+                    const duration2 = modalVideo2.duration;
+                    
+                    modalVideo2.addEventListener('timeupdate', function() {
+                        if (currentModalVideo === 2 && modalVideo2.currentTime >= duration2 - 1.75) {
+                            modalVideo3.currentTime = 0;
+                            modalVideo3.play();
+                            modalVideo3.style.opacity = '1';
+                            modalVideo2.style.opacity = '0';
+                            currentModalVideo = 3;
+                        }
+                    });
+                });
+                
+                modalVideo3.addEventListener('loadedmetadata', function() {
+                    const duration3 = modalVideo3.duration;
+                    
+                    modalVideo3.addEventListener('timeupdate', function() {
+                        if (currentModalVideo === 3 && modalVideo3.currentTime >= duration3 - 1.5) {
+                            modalVideo4.currentTime = 0;
+                            modalVideo4.play();
+                            modalVideo4.style.opacity = '1';
+                            modalVideo3.style.opacity = '0';
+                            currentModalVideo = 4;
+                        }
+                    });
+                });
+                
+                modalVideo4.addEventListener('loadedmetadata', function() {
+                    const duration4 = modalVideo4.duration;
+                    
+                    modalVideo4.addEventListener('timeupdate', function() {
+                        if (currentModalVideo === 4 && modalVideo4.currentTime >= duration4 - 1.75) {
+                            modalVideo1.currentTime = 0;
+                            modalVideo1.play();
+                            modalVideo1.style.opacity = '1';
+                            modalVideo4.style.opacity = '0';
+                            currentModalVideo = 1;
+                        }
+                    });
+                });
+            }
+        }
         
         function toggleExperience(header) {
             const content = header.nextElementSibling;
@@ -1769,12 +1899,12 @@
             
             /* Education logos mobile */
             #edu1 img, #edu2 img {
-                width: 18px !important;
-                height: 18px !important;
-                min-width: 18px !important;
-                min-height: 18px !important;
-                max-width: 18px !important;
-                max-height: 18px !important;
+                width: 21px !important;
+                height: 21px !important;
+                min-width: 21px !important;
+                min-height: 21px !important;
+                max-width: 21px !important;
+                max-height: 21px !important;
             }
             
             #edu1 > div:first-child, #edu2 > div:first-child {
