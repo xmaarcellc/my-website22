@@ -186,56 +186,9 @@
             overflow: hidden;
         }
         
-        #about::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('WhoAmI.jpg') center/cover no-repeat;
-            opacity: 0.3;
-            z-index: 0;
-            border-radius: 8px;
-            animation: fadeBackground1 12s infinite;
-        }
-        
-        #about::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('Volley.jpg') center/cover no-repeat;
-            opacity: 0;
-            z-index: 0;
-            border-radius: 8px;
-            animation: fadeBackground2 12s infinite;
-        }
-        
-        @keyframes fadeBackground1 {
-            0%, 47% {
-                opacity: 0.3;
-            }
-            50%, 97% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 0.3;
-            }
-        }
-        
-        @keyframes fadeBackground2 {
-            0%, 47% {
-                opacity: 0;
-            }
-            50%, 97% {
-                opacity: 0.3;
-            }
-            100% {
-                opacity: 0;
-            }
+        #about > * {
+            position: relative;
+            z-index: 1;
         }
         
         .about-text-fade {
@@ -253,11 +206,6 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-        }
-        
-        #about > * {
-            position: relative;
-            z-index: 1;
         }
         
         #hobbies {
