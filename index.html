@@ -165,7 +165,7 @@
             border-radius: 16px;
             background: 
                 linear-gradient(#000000, #000000) padding-box,
-                linear-gradient(var(--angle), #3b82f6, #000000, #000000, #000000, #3b82f6, #000000, #000000, #000000) border-box;
+                linear-gradient(var(--angle), #2563eb, #000000, #000000, #000000, #2563eb, #000000, #000000, #000000) border-box;
             animation: rotateGradient 25s linear infinite;
         }
         
@@ -944,7 +944,7 @@
             <h2>Who Am I</h2>
             <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
                 <div style="flex: 1; min-width: 300px;">
-                    <p class="about-text-fade" style="font-weight: bold; font-style: italic;">I'm a creative problem-solver who loves turning ideas into reality through code and visual storytelling. Whether I'm crafting elegant web solutions or capturing moments through my lens, I'm driven by the process of building something meaningful.</p>
+                    <p class="about-text-fade" style="font-weight: bold; font-style: italic;">I'm a creative problem-solver who loves turning ideas into reality through code and visual storytelling. Whether I'm crafting elegant web solutions or capturing moments through my lens, I'm driven by the process of helping people by creating something meaningful.</p>
                 </div>
                 <div style="flex: 0 0 auto; position: relative; width: 300px; height: 300px;">
                     <img id="aboutImg1" src="Rob_1.jpg" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #000000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); opacity: 1; transition: opacity 2s ease-in-out;">
@@ -1309,17 +1309,12 @@
                 <p style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">Ready to get started?</p>
                 <a href="mailto:xmarcellr@gmail.com" class="cta-button" style="font-size: 1.1rem; padding: 1.2rem 2.5rem;">Contact Me</a>
                 <p style="margin-top: 1rem; font-size: 0.95rem; opacity: 0.9;">Response time: Within 24 hours</p>
+                <a href="https://buy.stripe.com/cNibJ1c5u1Tg6wE0N4eZ207" target="_blank" class="cta-button" style="font-size: 1rem; padding: 1rem 2rem; margin-top: 1rem; background: #000000; color: #ffffff; border: 2px solid #ffffff;">Donate</a>
             </div>
         </section>
     </div>
     
     <footer>
-        <div class="footer-links">
-            <a href="#contact">Contact</a>
-            <a href="#" onclick="alert('Terms of Service page coming soon!'); return false;">Terms</a>
-            <a href="#" onclick="alert('Privacy Policy page coming soon!'); return false;">Privacy</a>
-            <a href="#" class="donate-link" id="footerDonateBtn">Donate</a>
-        </div>
         <p>&copy; 2025 Marcell Software Services LLC. All rights reserved.</p>
     </footer>
     
@@ -1489,14 +1484,6 @@
                 }
             }
         });
-        
-        const footerDonateBtn = document.getElementById('footerDonateBtn');
-        if (footerDonateBtn) {
-            footerDonateBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.open('https://buy.stripe.com/cNibJ1c5u1Tg6wE0N4eZ207', '_blank');
-            });
-        }
         
         function toggleExperience(header) {
             const content = header.nextElementSibling;
