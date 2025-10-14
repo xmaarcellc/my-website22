@@ -3,1403 +3,1774 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Cuts Barbershop - Premium Grooming Experience</title>
+    <title>Marcell Software Services LLC - Portfolio</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        :root {
-            --primary-gold: #d4af37;
-            --dark-bg: #1a1a1a;
-            --light-text: #f5f5f5;
-            --accent-red: #c41e3a;
-            --soft-gray: #333;
-            --card-bg: rgba(255, 255, 255, 0.05);
-        }
-
+        
         body {
-            font-family: 'Arial', sans-serif;
-            background: var(--dark-bg);
-            color: var(--light-text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            overflow-x: hidden;
-            position: relative;
+            color: #000000;
+            background: #0a0a0a;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(59, 130, 246, 0.03) 2px, rgba(59, 130, 246, 0.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(59, 130, 246, 0.03) 2px, rgba(59, 130, 246, 0.03) 4px),
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+                linear-gradient(180deg, #0a0a0a 0%, #0a1628 100%);
         }
-
-        /* Lava Lamp Background Effect */
-        .lava-lamp {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
+        
+        header {
+            position: relative;
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
             overflow: hidden;
+            background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
         }
-
-        .lava-bubble {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(40px);
-            animation: float 20s infinite ease-in-out;
-            opacity: 0.1;
-        }
-
-        .lava-bubble:nth-child(1) {
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, var(--primary-gold), transparent);
-            top: 10%;
-            left: 10%;
-            animation-duration: 25s;
-            animation-delay: 0s;
-        }
-
-        .lava-bubble:nth-child(2) {
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle, var(--accent-red), transparent);
-            top: 60%;
-            left: 80%;
-            animation-duration: 30s;
-            animation-delay: -5s;
-        }
-
-        .lava-bubble:nth-child(3) {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, var(--primary-gold), transparent);
-            top: 30%;
-            left: 60%;
-            animation-duration: 35s;
-            animation-delay: -10s;
-        }
-
-        .lava-bubble:nth-child(4) {
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle, var(--accent-red), transparent);
-            top: 80%;
-            left: 20%;
-            animation-duration: 22s;
-            animation-delay: -15s;
-        }
-
-        .lava-bubble:nth-child(5) {
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, var(--primary-gold), transparent);
-            top: 50%;
-            left: 30%;
-            animation-duration: 28s;
-            animation-delay: -8s;
-        }
-
-        .lava-bubble:nth-child(6) {
-            width: 180px;
-            height: 180px;
-            background: radial-gradient(circle, var(--accent-red), transparent);
-            top: 20%;
-            left: 50%;
-            animation-duration: 32s;
-            animation-delay: -12s;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px) translateX(0px) scale(1);
-                opacity: 0.1;
-            }
-            25% {
-                transform: translateY(-100px) translateX(50px) scale(1.1);
-                opacity: 0.15;
-            }
-            50% {
-                transform: translateY(-50px) translateX(-30px) scale(0.9);
-                opacity: 0.12;
-            }
-            75% {
-                transform: translateY(-150px) translateX(80px) scale(1.05);
-                opacity: 0.18;
-            }
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            background: rgba(26, 26, 26, 0.98);
-            box-shadow: 0 2px 20px rgba(212, 175, 55, 0.2);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--primary-gold);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--light-text);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-gold);
-        }
-
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .mobile-menu span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary-gold);
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect width="1920" height="1080" fill="%23222"/><circle cx="400" cy="300" r="50" fill="%23d4af37" opacity="0.1"/><circle cx="1200" cy="600" r="80" fill="%23c41e3a" opacity="0.1"/><circle cx="800" cy="200" r="30" fill="%23d4af37" opacity="0.15"/></svg>');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            padding: 0 2rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--primary-gold), #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, var(--primary-gold), #b8941f);
-            color: var(--dark-bg);
-            padding: 15px 40px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 80px 0;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--primary-gold);
-            position: relative;
-            width: 100%;
-        }
-
-        .section-title:after {
+        
+        header::before {
             content: '';
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--accent-red);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('C:/Users/rprma/OneDrive/Desktop/Thisme.jpg.jpg') center 35%/cover no-repeat;
+            opacity: 0.3;
+            z-index: 0;
         }
-
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
+        
+        header h1,
+        header p {
+            position: relative;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
-
-        .service-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary-gold);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
-        }
-
-        .service-icon {
-            font-size: 3rem;
+        
+        header h1 {
+            font-size: 3.5rem;
             margin-bottom: 1rem;
-            color: var(--primary-gold);
-        }
-
-        .service-price {
-            font-size: 1.5rem;
-            color: var(--accent-red);
-            font-weight: bold;
-            margin-top: 1rem;
-        }
-
-        /* Service Photo Gallery */
-        .service-photos {
-            margin: 1rem 0;
-            position: relative;
-        }
-
-        .photo-carousel {
-            position: relative;
-            width: 200px;
-            height: 150px;
-            margin: 0 auto;
-            border-radius: 10px;
-            overflow: hidden;
-            background: linear-gradient(45deg, var(--soft-gray), #444);
-            border: 2px solid rgba(212, 175, 55, 0.3);
-            cursor: pointer;
-        }
-
-        .photo-carousel:hover {
-            border-color: var(--primary-gold);
-        }
-
-        .carousel-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: none;
-        }
-
-        .carousel-image.active {
-            display: block;
-        }
-
-        .carousel-placeholder {
-            width: 100%;
-            height: 100%;
+            font-weight: 700;
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: fadeInName 2s ease-in forwards;
+            animation-delay: 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary-gold);
-            font-size: 2rem;
-            background: linear-gradient(45deg, var(--soft-gray), #444);
+            gap: 1rem;
+            flex-wrap: wrap;
         }
-
-        .carousel-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            opacity: 0;
+            animation: fadeInLogo 3s ease-in forwards;
+            animation-delay: 1.5s;
             margin-top: 10px;
         }
-
-        .carousel-btn {
-            background: var(--primary-gold);
-            color: var(--dark-bg);
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .carousel-btn:hover {
-            background: #b8941f;
-            transform: scale(1.1);
-        }
-
-        .carousel-btn:disabled {
-            background: var(--soft-gray);
-            color: #666;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .photo-counter {
-            color: var(--primary-gold);
-            font-size: 12px;
-            min-width: 40px;
-            text-align: center;
-        }
-
-        .add-photo-carousel {
-            background: var(--primary-gold);
-            color: var(--dark-bg);
-            border: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 12px;
-            margin-top: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .add-photo-carousel:hover {
-            background: #b8941f;
-            transform: translateY(-1px);
-        }
-
-        /* Portfolio Section - Single Scrollable Box */
-        .portfolio-container {
-            max-width: 800px;
-            width: 100%;
-            height: 400px;
-            background: var(--card-bg);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 15px;
-            overflow-x: auto;
-            overflow-y: hidden;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-            margin-top: 2rem;
-        }
-
-        .portfolio-container:hover {
-            border-color: var(--primary-gold);
-        }
-
-        .portfolio-scroll {
-            display: flex;
-            gap: 20px;
-            height: 100%;
-            min-width: max-content;
-        }
-
-        .portfolio-item {
-            flex: 0 0 250px;
-            height: 300px;
-            background: var(--soft-gray);
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .portfolio-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
-        }
-
-        /* Custom scrollbar for portfolio */
-        .portfolio-container::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .portfolio-container::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-        }
-
-        .portfolio-container::-webkit-scrollbar-thumb {
-            background: var(--primary-gold);
-            border-radius: 4px;
-        }
-
-        .portfolio-container::-webkit-scrollbar-thumb:hover {
-            background: #b8941f;
-        }
-
-        .portfolio-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--soft-gray), #444);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            color: var(--primary-gold);
-            font-size: 1.2rem;
-        }
-
-        .add-photo-btn {
-            background: var(--primary-gold);
-            color: var(--dark-bg);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            margin: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .add-photo-btn:hover {
-            background: #b8941f;
-            transform: translateY(-2px);
-        }
-
-        /* Merchandise Section */
-        .merch-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .merch-item {
-            background: var(--card-bg);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .merch-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-gold);
-        }
-
-        .merch-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(45deg, var(--soft-gray), #444);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-gold);
-            font-size: 1.1rem;
-        }
-
-        .merch-info {
-            padding: 1.5rem;
-        }
-
-        .merch-price {
-            color: var(--primary-gold);
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-
-        /* Booking Section */
-        .booking-form {
-            background: var(--card-bg);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 20px;
-            padding: 3rem;
-            margin-top: 2rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--primary-gold);
-            font-weight: 600;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 8px;
-            color: var(--light-text);
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        input[type="date"] {
-            color-scheme: dark;
-        }
-
-        select {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--light-text);
-        }
-
-        select option {
-            background: var(--dark-bg);
-            color: var(--light-text);
-        }
-
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary-gold);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
-        }
-
-        select:focus {
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .submit-btn {
-            background: linear-gradient(45deg, var(--primary-gold), #b8941f);
-            color: var(--dark-bg);
-            padding: 15px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            width: 100%;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--soft-gray);
-            padding: 3rem 0;
-            text-align: center;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .social-links {
-            margin: 2rem 0;
-        }
-
-        .social-links a {
-            color: var(--primary-gold);
-            font-size: 1.5rem;
-            margin: 0 1rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--accent-red);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
+        
+        @keyframes fadeInName {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(-20px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
-        .fade-in {
-            animation: fadeInUp 0.8s ease;
+        
+        @keyframes fadeInLogo {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
-
-        /* Messages */
-        .message {
-            padding: 15px;
+        
+        header p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        nav {
+            background: #1a1a1a;
+            padding: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            animation: fadeInNav 1s ease-in forwards;
+            animation-delay: 2.2s;
+        }
+        
+        @keyframes fadeInNav {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+        
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+        
+        nav a:hover {
+            color: #cccccc;
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        section {
+            background: #000000;
+            margin-bottom: 2rem;
+            padding: 3rem;
             border-radius: 8px;
-            margin: 20px 0;
-            font-weight: 500;
+            box-shadow: 0 2px 10px rgba(255,255,255,0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            position: relative;
+            border: 5px solid transparent;
+            border-radius: 16px;
+            background: 
+                linear-gradient(#000000, #000000) padding-box,
+                linear-gradient(var(--angle), #3b82f6, #000000, #3b82f6, #000000) border-box;
+            animation: rotateGradient 15s linear infinite;
+        }
+        
+        section h2 {
+            color: #ffffff;
+        }
+        
+        #services {
+            border: 5px solid transparent;
+            border-radius: 16px;
+            background: 
+                linear-gradient(#000000, #000000) padding-box,
+                linear-gradient(var(--angle), #3b82f6, #000000, #3b82f6, #000000) border-box;
+            animation: rotateGradient 15s linear infinite;
+        }
+        
+        #support {
+            background: 
+                linear-gradient(#ffffff, #ffffff) padding-box,
+                linear-gradient(var(--angle), #3b82f6, #000000, #3b82f6, #000000) border-box;
+            border: 5px solid transparent;
+            animation: rotateGradient 15s linear infinite;
+        }
+        
+        @property --angle {
+            syntax: '<angle>';
+            initial-value: 0deg;
+            inherits: false;
+        }
+        
+        @keyframes rotateGradient {
+            0% {
+                --angle: 0deg;
+            }
+            100% {
+                --angle: 360deg;
+            }
+        }
+        
+        section.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        #about {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('C:/Users/rprma/OneDrive/Desktop/WhoAmI.jpg') center/cover no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+            border-radius: 8px;
+            animation: fadeBackground1 12s infinite;
+        }
+        
+        #about::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('C:/Users/rprma/OneDrive/Desktop/Volley.jpg.jpg') center/cover no-repeat;
+            opacity: 0;
+            z-index: 0;
+            border-radius: 8px;
+            animation: fadeBackground2 12s infinite;
+        }
+        
+        @keyframes fadeBackground1 {
+            0%, 47% {
+                opacity: 0.3;
+            }
+            50%, 97% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0.3;
+            }
+        }
+        
+        @keyframes fadeBackground2 {
+            0%, 47% {
+                opacity: 0;
+            }
+            50%, 97% {
+                opacity: 0.3;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        
+        .about-text-fade {
+            opacity: 0;
+            animation: fadeInText 2s ease-in forwards;
+            animation-delay: 0.5s;
+        }
+        
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        #about > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        #hobbies {
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: 2rem;
+            margin-top: -5rem;
+            padding: 2rem;
+            transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #hobbies::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 0;
+            border-radius: 8px;
+        }
+        
+        .hobbies-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            z-index: -1;
+            opacity: 0.6;
+        }
+        
+        #hobbies > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tentacle-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .tentacle-box {
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            background: #000000;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid #ffffff;
+            box-shadow: 0 3px 15px rgba(255, 255, 255, 0.2);
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+        }
+        
+        .tentacle-box.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .tentacle-box:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+        
+        .tentacle-box:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+        
+        .tentacle-box::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            width: 2px;
+            height: 30px;
+            background: linear-gradient(to top, #ffffff, transparent);
+            transform: translateX(-50%);
+        }
+        
+        .tentacle-box h3 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            color: #ffffff;
+            border-bottom: 2px solid #ffffff;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tentacle-box .skills-list {
+            gap: 0.5rem;
+        }
+        
+        .tentacle-box .skill-tag {
+            font-size: 0.8rem;
+            padding: 0.4rem 0.8rem;
+            background: #000000;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+        }
+        
+        .tentacle-box p {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+        
+        .tentacle-box a {
+            color: #ffffff;
+        }
+        
+        .services-header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .services-header h2 {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .services-logo {
+            width: 100px;
+            height: auto;
+            opacity: 0;
+            transition: opacity 1.2s ease-in, transform 1.2s ease-in;
+            transition-delay: 0.5s;
+            transform: translateX(-20px);
+        }
+        
+        .services-logo.fade-in-logo {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            overflow: auto;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            margin: auto;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+        }
+        
+        .modal.active .modal-content {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        .modal-caption {
             text-align: center;
+            color: #ffffff;
+            padding: 1.5rem;
+            font-size: 1.1rem;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            margin-top: 1rem;
         }
-
-        .success-message {
-            background: rgba(76, 175, 80, 0.1);
-            color: #4caf50;
-            border: 1px solid rgba(76, 175, 80, 0.3);
+        
+        .modal-instructions {
+            text-align: center;
+            color: #ffffff;
+            padding: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 0.5rem;
         }
-
-        .error-message {
-            background: rgba(244, 67, 54, 0.1);
-            color: #f44336;
-            border: 1px solid rgba(244, 67, 54, 0.3);
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #ffffff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            transition: color 0.3s;
         }
-
-        /* Responsive Design */
+        
+        .close-modal:hover {
+            color: #999999;
+        }
+        
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-size: 2rem;
+            transition: background 0.3s;
+            z-index: 1001;
+            border-radius: 4px;
+        }
+        
+        .modal-nav:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+        
+        .modal-nav.prev {
+            left: 20px;
+        }
+        
+        .modal-nav.next {
+            right: 20px;
+        }
+        
+        .image-counter {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ffffff;
+            font-size: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            z-index: 1001;
+        }
+        
+        h2 {
+            color: #ffffff;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #ffffff;
+        }
+        
+        h3 {
+            color: #ffffff;
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .service-card {
+            background: #000000;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid #ffffff;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 3px 15px rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+        }
+        
+        .service-card-header {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #ffffff;
+        }
+        
+        .service-card-header:hover {
+            opacity: 0.8;
+        }
+        
+        .service-card-header h3 {
+            margin: 0;
+            color: #ffffff;
+        }
+        
+        .service-dropdown-arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            margin-left: 1rem;
+            color: #ffffff;
+        }
+        
+        .service-dropdown-arrow.open {
+            transform: rotate(180deg);
+        }
+        
+        .service-description {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, margin-top 0.3s ease;
+            opacity: 0;
+            margin-top: 0;
+        }
+        
+        .service-description.open {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 1rem;
+        }
+        
+        .service-description p {
+            color: #ffffff;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .service-card h3 {
+            margin-top: 0;
+            color: #000000;
+        }
+        
+        .service-card p {
+            color: #333333;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .skill-tag {
+            background: #000000;
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .education-item {
+            background: #d3d3d3;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 2px solid #000000;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+        
+        .education-item:hover {
+            opacity: 0.9;
+        }
+        
+        .experience-header {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #ffffff;
+        }
+        
+        .experience-header:hover {
+            opacity: 0.8;
+        }
+        
+        .dropdown-arrow {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            color: #ffffff;
+        }
+        
+        .dropdown-arrow.open {
+            transform: rotate(180deg);
+        }
+        
+        .experience-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+            opacity: 0;
+        }
+        
+        .experience-content.open {
+            max-height: 1000px;
+            opacity: 1;
+        }
+        
+        .main-experience-section {
+            background: #000000;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 2px solid #ffffff;
+            box-shadow: 0 3px 15px rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+        }
+        
+        .main-experience-section:hover {
+            opacity: 0.9;
+        }
+        
+        .main-experience-header {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+        
+        .main-experience-header:hover {
+            opacity: 0.8;
+        }
+        
+        .main-experience-header h3 {
+            color: #ffffff;
+        }
+        
+        .main-experience-header .dropdown-arrow {
+            color: #ffffff;
+        }
+        
+        .main-experience-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+            opacity: 0;
+        }
+        
+        .main-experience-content.open {
+            max-height: 2500px;
+            opacity: 1;
+        }
+        
+        .nested-experience-item {
+            margin-top: 1rem;
+            background: #000000;
+            border: 2px solid #ffffff;
+        }
+        
+        .nested-experience-item h3 {
+            color: #ffffff !important;
+        }
+        
+        .nested-experience-item p {
+            color: #ffffff !important;
+        }
+        
+        .latte-preview {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out 0.3s, transform 0.8s ease-out 0.3s;
+        }
+        
+        .experience-content.open .latte-preview {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .latte-image-float {
+            float: right;
+            width: 250px;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out 0.3s, transform 0.8s ease-out 0.3s;
+        }
+        
+        .experience-content.open .latte-image-float {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .team-image-float {
+            float: right;
+            width: 250px;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out 0.3s, transform 0.8s ease-out 0.3s;
+        }
+        
+        .experience-content.open .team-image-float {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .education-item h3 {
+            margin-top: 0;
+            color: #000000;
+        }
+        
+        .education-item p {
+            color: #333333;
+        }
+        
+        .education-item ul {
+            color: #333333;
+        }
+        
+        .degree {
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .date {
+            color: #cccccc;
+            font-style: italic;
+        }
+        
+        footer {
+            background: #000000;
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #cccccc;
+        }
+        
+        .donate-link {
+            cursor: pointer;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #000000;
+            color: #ffffff;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+            transition: background 0.3s;
+            font-weight: 600;
+            border: 2px solid #000000;
+        }
+        
+        .cta-button:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+        
+        section p {
+            color: #ffffff;
+        }
+        
+        section ul {
+            color: #ffffff;
+        }
+        
+        section li {
+            color: #ffffff;
+        }
+        
+        section a {
+            color: #3b82f6;
+            text-decoration: underline;
+        }
+        
+        section a:hover {
+            color: #60a5fa;
+        }
+        
+        #services p,
+        #experience p,
+        #projects p {
+            color: #ffffff;
+        }
+        
+        #services a,
+        #experience a,
+        #projects a {
+            color: #3b82f6;
+        }
+        
+        #services a:hover,
+        #experience a:hover,
+        #projects a:hover {
+            color: #60a5fa;
+        }
+        
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .section {
-                padding-left: 1rem;
-                padding-right: 1rem;
+            header h1 {
+                font-size: 2rem;
             }
             
-            /* Mobile-first grid layouts */
-            .services-grid {
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(6, 1fr);
-                max-width: 350px;
-                gap: 1.5rem;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(6, 1fr);
-                max-width: 350px;
+            nav ul {
                 gap: 1rem;
             }
             
-            .merch-grid {
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(6, 1fr);
-                max-width: 350px;
-                gap: 1.5rem;
+            section {
+                padding: 2rem 1.5rem;
             }
             
-            /* Adjust service cards for mobile */
-            .service-card {
-                padding: 1.5rem;
+            #hobbies {
+                margin-top: 2rem;
+                margin-left: 0;
+                margin-right: 0;
+                max-width: 100%;
             }
             
-            .service-icon {
-                font-size: 2.5rem;
+            .modal-nav {
+                padding: 0.5rem 1rem;
+                font-size: 1.5rem;
             }
             
-            .section-title {
-                font-size: 2rem;
-                margin-bottom: 2rem;
-            }
-            
-            /* Optimize photo carousel for mobile */
-            .photo-carousel {
-                width: 250px;
-                height: 180px;
-            }
-            
-            .carousel-btn {
-                width: 35px;
-                height: 35px;
-                font-size: 16px;
-            }
-            
-            /* Social media section mobile optimization */
-            .section[style*="padding: 40px 0"] div[style*="gap: 3rem"] {
-                gap: 2rem !important;
-            }
-            
-            /* Hero section mobile optimization */
-            .hero-content {
-                padding: 0 1rem;
-            }
-            
-            .cta-button {
-                padding: 12px 30px;
-                font-size: 1rem;
+            .close-modal {
+                top: 10px;
+                right: 20px;
+                font-size: 30px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Lava Lamp Background -->
-    <div class="lava-lamp">
-        <div class="lava-bubble"></div>
-        <div class="lava-bubble"></div>
-        <div class="lava-bubble"></div>
-        <div class="lava-bubble"></div>
-        <div class="lava-bubble"></div>
-        <div class="lava-bubble"></div>
-    </div>
-
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">✂️ Elite Cuts</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#merchandise">Shop</a></li>
-                <li><a href="#booking">Book Now</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
+    <header>
+        <h1>
+            Rob Marcellin
+            <img src="C:/Users/rprma/OneDrive/Desktop/JustWhite.png" alt="Marcell Software Services Logo" class="logo">
+        </h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Elite Cuts Barbershop</h1>
-            <p>Experience the finest in men's grooming with our premium services, expert barbers, and luxurious atmosphere.</p>
-            <a href="https://getsquire.com/booking/book/bvrberiv-fair-lawn/barber/alex-elicona-1/services" class="cta-button" target="_blank">Book Appointment</a>
-        </div>
-    </section>
-
-    <!-- Social Media Section -->
-    <section class="section" style="padding: 40px 0;">
-        <div style="text-align: center;">
-            <h3 style="color: var(--primary-gold); margin-bottom: 2rem; font-size: 2rem;">Follow Us</h3>
-            <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;">
-                <div style="text-align: center;">
-                    <a href="https://www.tiktok.com/@eliconavisuals?_t=ZT-8yzMFxVPlW9&_r=1" target="_blank" style="display: inline-block; color: var(--primary-gold); transition: all 0.3s ease; text-decoration: none;">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                        </svg>
-                        <p style="margin-top: 0.5rem; font-weight: bold;">TikTok</p>
-                    </a>
+    
+    <div class="container">
+        <section id="about">
+            <h2>Who Am I</h2>
+            <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;">
+                    <p class="about-text-fade" style="font-weight: bold; font-style: italic;">Recent graduate with a foundation in economics and computer science. Through Marcell Software Services LLC, I provide professional development services that combine analytical thinking with technical expertise.</p>
+                    <p class="about-text-fade" style="font-weight: bold; font-style: italic;">I'm passionate about creating efficient, scalable solutions that drive real business value.</p>
                 </div>
-                <div style="text-align: center;">
-                    <a href="https://youtube.com/@alexelicona?si=rEA2AcJo6GYVw7X5" target="_blank" style="display: inline-block; color: var(--primary-gold); transition: all 0.3s ease; text-decoration: none;">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                        </svg>
-                        <p style="margin-top: 0.5rem; font-weight: bold;">YouTube</p>
-                    </a>
+                <div style="flex: 0 0 auto;">
+                    <img src="C:/Users/rprma/OneDrive/Desktop/Rob_1.jpg" alt="Rob Marcellin" style="width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #000000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
                 </div>
             </div>
-            <p style="margin-top: 2rem; color: var(--light-text); opacity: 0.8; font-style: italic;">Stay updated with our latest cuts and styles!</p>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="section">
-        <h2 class="section-title">Our Services</h2>
-        <div class="services-grid">
-            <div class="service-card fade-in">
-                <div class="service-icon">🪒</div>
-                <h3>Sides w/ Beard</h3>
-                <p>Side cleanup with professional beard trimming and shaping service.</p>
-                <div class="service-photos">
-                    <div class="photo-carousel" data-service="sides-beard">
-                        <div class="carousel-placeholder" onclick="addServicePhoto('sides-beard')">
-                            + Add Photos
+            
+            <div class="tentacle-container">
+                <div class="tentacle-box">
+                    <h3>Technical Skills</h3>
+                    <p style="font-weight: 600; margin-bottom: 0.5rem;">Languages & Frameworks</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                    </div>
+                    <p style="font-weight: 600; margin-top: 1rem; margin-bottom: 0.5rem;">Photography & Videography</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">Adobe Premiere</span>
+                        <span class="skill-tag">Adobe Photoshop</span>
+                        <span class="skill-tag">Video Editing</span>
+                        <span class="skill-tag">Color Grading</span>
+                        <span class="skill-tag">Composition</span>
+                        <span class="skill-tag">Lighting</span>
+                    </div>
+                    <p style="font-weight: 600; margin-top: 1rem; margin-bottom: 0.5rem;">Professional Skills</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">Full-Stack</span>
+                        <span class="skill-tag">Data Analysis</span>
+                        <span class="skill-tag">Leadership</span>
+                    </div>
+                </div>
+                
+                <div class="tentacle-box">
+                    <h3>Education</h3>
+                    <p style="font-weight: 600; margin-bottom: 0.3rem;">Montclair State University</p>
+                    <p style="margin-bottom: 0.3rem;">Bachelor of Arts in Economics</p>
+                    <p style="margin-bottom: 0.3rem;">Minor in Computer Science</p>
+                    <p style="font-style: italic; color: #666666;">Graduated: May 2025</p>
+                    
+                    <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 2px solid #ffffff;">
+                        <a href="https://www.linkedin.com/in/rob-marcellin-0a8b75256/" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #ffffff; font-weight: 600; transition: opacity 0.3s;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#ffffff">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                            <span>View LinkedIn Profile</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="hobbies">
+            <div class="main-experience-section" onclick="toggleMainExperience(this.querySelector('.main-experience-header'))" style="background: transparent; border: 2px solid #ffffff; position: relative; z-index: 1;">
+                <div class="main-experience-header">
+                    <h2 style="margin: 0; color: #ffffff; border-bottom: none; padding-bottom: 0;">Hobbies & Interests</h2>
+                    <span class="dropdown-arrow" style="color: #ffffff;">▼</span>
+                </div>
+                
+                <div class="main-experience-content">
+                    <div style="position: relative; width: 100%; height: 400px; margin-top: 1rem; border-radius: 8px; overflow: hidden; border: 2px solid #ffffff;">
+                        <video id="hobbyVideo1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity 1.75s ease-in-out;" muted playsinline>
+                            <source src="C:/Users/rprma/OneDrive/Desktop/vid.1.MOV" type="video/mp4">
+                        </video>
+                        <video id="hobbyVideo2" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.75s ease-in-out;" muted playsinline>
+                            <source src="C:/Users/rprma/OneDrive/Desktop/lunr5.MP4" type="video/mp4">
+                        </video>
+                        <video id="hobbyVideo3" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.75s ease-in-out;" muted playsinline>
+                            <source src="C:/Users/rprma/OneDrive/Desktop/lunr3.mov" type="video/mp4">
+                        </video>
+                        <video id="hobbyVideo4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.75s ease-in-out;" muted playsinline>
+                            <source src="C:/Users/rprma/OneDrive/Desktop/vid.2.MP4" type="video/mp4">
+                        </video>
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.3); z-index: 1; pointer-events: none;"></div>
+                    </div>
+                    <div style="margin-top: 1rem; border-top: 2px solid #ffffff; border-bottom: 2px solid #ffffff; padding: 0.75rem 2rem; background: rgba(0, 0, 0, 0.8);">
+                        <p style="color: #ffffff; font-size: 1.2rem; font-weight: 600; text-align: center; margin: 0;">
+                            Exploring creativity through photography, videography, and automotive passion
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="services">
+            <div class="main-experience-section" onclick="toggleMainExperience(this.querySelector('.main-experience-header'))">
+                <div class="main-experience-header">
+                    <div class="services-header" style="width: 100%; margin-bottom: 0;">
+                        <h2 style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">Services</h2>
+                        <img src="C:/Users/rprma/OneDrive/Desktop/LLC LOGOO.png" alt="LLC Logo" class="services-logo">
+                    </div>
+                    <span class="dropdown-arrow" style="color: #ffffff;">▼</span>
+                </div>
+                
+                <div class="main-experience-content">
+                    <p style="margin-bottom: 1rem; color: #ffffff;">Marcell Software Services LLC offers comprehensive software development and consulting services tailored to your business needs:</p>
+                    
+                    <div class="service-grid">
+                        <div class="service-card" onclick="event.stopPropagation(); toggleService(this.querySelector('.service-card-header'))">
+                            <h3 style="color: #ffffff; margin-bottom: 1rem;">Web Development</h3>
+                            <div class="service-card-header">
+                                <span style="color: #ffffff; font-weight: 600;">View Details</span>
+                                <span class="service-dropdown-arrow">▼</span>
+                            </div>
+                            <div class="service-description">
+                                <p style="color: #ffffff;">Custom websites and web applications built with modern technologies. Responsive, fast, and user-friendly solutions.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card" onclick="event.stopPropagation(); toggleService(this.querySelector('.service-card-header'))">
+                            <h3 style="color: #ffffff; margin-bottom: 1rem;">Business Analysis</h3>
+                            <div class="service-card-header">
+                                <span style="color: #ffffff; font-weight: 600;">View Details</span>
+                                <span class="service-dropdown-arrow">▼</span>
+                            </div>
+                            <div class="service-description">
+                                <p style="color: #ffffff;">Leverage data-driven insights to optimize business processes and drive strategic decision-making.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card" onclick="event.stopPropagation(); toggleService(this.querySelector('.service-card-header'))">
+                            <h3 style="color: #ffffff; margin-bottom: 1rem;">Software Consulting</h3>
+                            <div class="service-card-header">
+                                <span style="color: #ffffff; font-weight: 600;">View Details</span>
+                                <span class="service-dropdown-arrow">▼</span>
+                            </div>
+                            <div class="service-description">
+                                <p style="color: #ffffff;">Expert guidance on technology stack selection, architecture design, and project planning.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card" onclick="event.stopPropagation(); toggleService(this.querySelector('.service-card-header'))">
+                            <h3 style="color: #ffffff; margin-bottom: 1rem;">Custom Solutions</h3>
+                            <div class="service-card-header">
+                                <span style="color: #ffffff; font-weight: 600;">View Details</span>
+                                <span class="service-dropdown-arrow">▼</span>
+                            </div>
+                            <div class="service-description">
+                                <p style="color: #ffffff;">Tailored software applications designed to solve your specific business challenges.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card" onclick="event.stopPropagation(); toggleService(this.querySelector('.service-card-header'))">
+                            <h3 style="color: #ffffff; margin-bottom: 1rem;">Photography & Videography</h3>
+                            <div class="service-card-header">
+                                <span style="color: #ffffff; font-weight: 600;">View Details</span>
+                                <span class="service-dropdown-arrow">▼</span>
+                            </div>
+                            <div class="service-description">
+                                <p style="color: #ffffff; margin-bottom: 0.8rem;">Professional visual content creation for your brand and events:</p>
+                                <ul style="margin-left: 1.5rem; color: #ffffff;">
+                                    <li>Event photography and videography</li>
+                                    <li>Product photography for e-commerce</li>
+                                    <li>Video editing and post-production</li>
+                                    <li>Color grading and composition</li>
+                                    <li>Brand promotional content</li>
+                                    <li>Social media content creation</li>
+                                </ul>
+                                <p style="color: #ffffff; margin-top: 1rem; font-style: italic;">Bring your vision to life with compelling visual storytelling.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="carousel-controls">
-                        <button class="carousel-btn" onclick="prevPhoto('sides-beard')" disabled>‹</button>
-                        <span class="photo-counter">0/0</span>
-                        <button class="carousel-btn" onclick="nextPhoto('sides-beard')" disabled>›</button>
+                    
+                    <div style="margin-top: 2rem; padding: 1rem; background: rgba(0,0,0,0.3); border-radius: 8px; text-align: center; border: 2px solid #ffffff;">
+                        <a href="mailto:xmarcellr@gmail.com?subject=Service Consultation Request" style="font-size: 1rem; color: #ffffff; text-decoration: none; font-weight: 600;">Request Consultation →</a>
                     </div>
-                    <button class="add-photo-carousel" onclick="addServicePhoto('sides-beard')">+ Add Photo</button>
                 </div>
-                <div class="service-price">$55</div>
             </div>
-            <div class="service-card fade-in">
-                <div class="service-icon">✂️</div>
-                <h3>Haircut w/ Scissors (No Beard)</h3>
-                <p>Professional scissor cut with precision styling and finishing touches.</p>
-                <div class="service-photos">
-                    <div class="photo-carousel" data-service="scissors-cut">
-                        <div class="carousel-placeholder" onclick="addServicePhoto('scissors-cut')">
-                            + Add Photos
+        </section>
+        
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            
+            <div class="main-experience-section" onclick="toggleMainExperience(this.querySelector('.main-experience-header'))">
+                <div class="main-experience-header">
+                    <h3 style="margin: 0; color: #ffffff;">Professional Experience</h3>
+                    <span class="dropdown-arrow" style="color: #ffffff;">▼</span>
+                </div>
+                
+                <div class="main-experience-content">
+                    <div class="education-item nested-experience-item" onclick="event.stopPropagation(); toggleExperience(this.querySelector('.experience-header'))">
+                        <h3 style="color: #ffffff; margin-bottom: 1rem;">Store Manager</h3>
+                        <p style="margin: 0 0 1rem 0; color: #ffffff; font-weight: 600;">Starbucks</p>
+                        <div class="experience-header">
+                            <span style="color: #ffffff; font-weight: 600;">View Details</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </div>
+                        <div class="experience-content">
+                            <div class="team-image-float">
+                                <img src="C:/Users/rprma/OneDrive/Desktop/support.jpg" alt="Team Recognition" style="width: 100%; height: auto; border-radius: 8px; border: 2px solid #000000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+                                <p style="text-align: center; margin-top: 0.5rem; font-style: italic; color: #ffffff; font-size: 0.85rem;">Recognizing our amazing team members</p>
+                            </div>
+                            <p class="date">April 2024 - July 2025</p>
+                            <p style="margin-top: 1rem; color: #ffffff;">Led daily operations and managed a team in a fast-paced retail environment. Developed strong leadership, customer service, and operational management skills while maintaining high standards of quality and efficiency.</p>
+                            <ul style="margin-top: 0.5rem; margin-left: 1.5rem; color: #ffffff;">
+                                <li>Managed staff scheduling, training, and performance development</li>
+                                <li>Oversaw inventory management and cost control</li>
+                                <li>Ensured exceptional customer experience and satisfaction</li>
+                                <li>Implemented process improvements to increase efficiency</li>
+                            </ul>
+                            <div style="clear: both;"></div>
                         </div>
                     </div>
-                    <div class="carousel-controls">
-                        <button class="carousel-btn" onclick="prevPhoto('scissors-cut')" disabled>‹</button>
-                        <span class="photo-counter">0/0</span>
-                        <button class="carousel-btn" onclick="nextPhoto('scissors-cut')" disabled>›</button>
-                    </div>
-                    <button class="add-photo-carousel" onclick="addServicePhoto('scissors-cut')">+ Add Photo</button>
-                </div>
-                <div class="service-price">$55</div>
-            </div>
-            <div class="service-card fade-in">
-                <div class="service-icon">⚡</div>
-                <h3>Haircut Just The Sides</h3>
-                <p>Quick clean-up of the sides and back, perfect for maintenance cuts.</p>
-                <div class="service-photos">
-                    <div class="photo-carousel" data-service="sides-only">
-                        <div class="carousel-placeholder" onclick="addServicePhoto('sides-only')">
-                            + Add Photos
+                    
+                    <div class="education-item nested-experience-item" onclick="event.stopPropagation(); toggleExperience(this.querySelector('.experience-header'))">
+                        <h3 style="color: #ffffff; margin-bottom: 1rem;">Shift Supervisor</h3>
+                        <p style="margin: 0 0 1rem 0; color: #ffffff; font-weight: 600;">Starbucks</p>
+                        <div class="experience-header">
+                            <span style="color: #ffffff; font-weight: 600;">View Details</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </div>
+                        <div class="experience-content">
+                            <p class="date">2019 - 2024</p>
+                            <p style="margin-top: 1rem; color: #ffffff;">Supervised daily shift operations and team members, ensuring smooth service delivery and maintaining store standards. Progressed from frontline service to leadership role over five years.</p>
+                            <ul style="margin-top: 0.5rem; margin-left: 1.5rem; color: #ffffff;">
+                                <li>Coordinated team activities and delegated tasks effectively</li>
+                                <li>Trained new baristas and team members</li>
+                                <li>Handled customer concerns and conflict resolution</li>
+                                <li>Managed cash handling and closing procedures</li>
+                            </ul>
+                            <div style="clear: both;"></div>
                         </div>
                     </div>
-                    <div class="carousel-controls">
-                        <button class="carousel-btn" onclick="prevPhoto('sides-only')" disabled>‹</button>
-                        <span class="photo-counter">0/0</span>
-                        <button class="carousel-btn" onclick="nextPhoto('sides-only')" disabled>›</button>
-                    </div>
-                    <button class="add-photo-carousel" onclick="addServicePhoto('sides-only')">+ Add Photo</button>
-                </div>
-                <div class="service-price">$45</div>
-            </div>
-            <div class="service-card fade-in">
-                <div class="service-icon">💼</div>
-                <h3>Wash, Haircut, Beard & Style</h3>
-                <p>Complete grooming experience with wash, cut, beard trim, and styling.</p>
-                <div class="service-photos">
-                    <div class="photo-carousel" data-service="full-service">
-                        <div class="carousel-placeholder" onclick="addServicePhoto('full-service')">
-                            + Add Photos
+                    
+                    <div class="education-item nested-experience-item" onclick="event.stopPropagation(); toggleExperience(this.querySelector('.experience-header'))">
+                        <h3 style="color: #ffffff; margin-bottom: 1rem;">Barista</h3>
+                        <p style="margin: 0 0 1rem 0; color: #ffffff; font-weight: 600;">Starbucks</p>
+                        <div class="experience-header">
+                            <span style="color: #ffffff; font-weight: 600;">View Details</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </div>
+                        <div class="experience-content">
+                            <div class="latte-image-float" onclick="event.stopPropagation();">
+                                <div onclick="openModal(0)" style="cursor: pointer; background: #ffffff; border-radius: 8px; overflow: hidden; border: 2px solid #000000; box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2); transition: transform 0.3s, box-shadow 0.3s;">
+                                    <img src="C:/Users/rprma/OneDrive/Desktop/Heart.jpg.jpg" alt="Latte Art Portfolio Preview" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+                                    <div style="background: #000000; color: #ffffff; padding: 0.75rem; font-size: 0.85rem; text-align: center;">
+                                        <strong>Click to View Gallery</strong><br>
+                                        <span style="font-size: 0.8rem; opacity: 0.9;">5 Latte Art Creations</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="date">November 2017 - April 2019</p>
+                            <p style="margin-top: 1rem; color: #ffffff;">Crafted high-quality beverages and provided exceptional customer service. Developed expertise in coffee preparation and latte art.</p>
+                            <ul style="margin-top: 0.5rem; margin-left: 1.5rem; color: #ffffff;">
+                                <li>Mastered espresso extraction and milk steaming techniques</li>
+                                <li>Created intricate latte art designs for customer satisfaction</li>
+                                <li>Maintained product quality and store cleanliness standards</li>
+                                <li>Provided friendly and efficient customer service</li>
+                            </ul>
+                            <div style="clear: both;"></div>
                         </div>
                     </div>
-                    <div class="carousel-controls">
-                        <button class="carousel-btn" onclick="prevPhoto('full-service')" disabled>‹</button>
-                        <span class="photo-counter">0/0</span>
-                        <button class="carousel-btn" onclick="nextPhoto('full-service')" disabled>›</button>
-                    </div>
-                    <button class="add-photo-carousel" onclick="addServicePhoto('full-service')">+ Add Photo</button>
-                </div>
-                <div class="service-price">$65</div>
-            </div>
-            <div class="service-card fade-in">
-                <div class="service-icon">🎨</div>
-                <h3>Hair Coloring & Alterations</h3>
-                <p>Professional hair coloring, alterations, and freestyle creative cuts.</p>
-                <div class="service-photos">
-                    <div class="photo-carousel" data-service="coloring">
-                        <div class="carousel-placeholder" onclick="addServicePhoto('coloring')">
-                            + Add Photos
+                    
+                    <div class="education-item nested-experience-item" onclick="event.stopPropagation(); toggleExperience(this.querySelector('.experience-header'))">
+                        <h3 style="color: #ffffff; margin-bottom: 1rem;">Side Projects</h3>
+                        <p style="margin: 0 0 1rem 0; color: #ffffff; font-weight: 600;">Personal Development</p>
+                        <div class="experience-header">
+                            <span style="color: #ffffff; font-weight: 600;">View Details</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </div>
+                        <div class="experience-content">
+                            <p class="date">Ongoing</p>
+                            <p style="margin-top: 1rem; color: #ffffff;">Continuously expanding technical skills through open-source contributions and personal coding projects. Actively engaged in the developer community and building innovative solutions.</p>
+                            <ul style="margin-top: 0.5rem; margin-left: 1.5rem; color: #ffffff;">
+                                <li>Contributing to open-source projects, demonstrating collaboration and coding skills</li>
+                                <li>Developing personal coding projects that showcase initiative and passion for technology</li>
+                                <li>Building full-stack applications with modern frameworks and best practices</li>
+                                <li>Continuously learning new technologies and implementing them in real-world projects</li>
+                            </ul>
+                            <div style="clear: both;"></div>
                         </div>
                     </div>
-                    <div class="carousel-controls">
-                        <button class="carousel-btn" onclick="prevPhoto('coloring')" disabled>‹</button>
-                        <span class="photo-counter">0/0</span>
-                        <button class="carousel-btn" onclick="nextPhoto('coloring')" disabled>›</button>
-                    </div>
-                    <button class="add-photo-carousel" onclick="addServicePhoto('coloring')">+ Add Photo</button>
                 </div>
-                <div class="service-price">$100</div>
             </div>
-            <div class="service-card fade-in">
-                <div class="service-icon">💳</div>
-                <h3>Gift Card</h3>
-                <p>Perfect for any occasion. Give the gift of premium grooming experience.</p>
-                <div class="service-price">From $50</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="section">
-        <h2 class="section-title">Our Work</h2>
-        <div class="portfolio-container" id="portfolio-container">
-            <div class="portfolio-scroll" id="portfolio-scroll">
-                <!-- Portfolio items will be dynamically added -->
-                <div class="portfolio-item">
-                    <div class="portfolio-placeholder">
-                        <div>📷</div>
-                        <button class="add-photo-btn" onclick="addPhoto()">Add Photo</button>
-                        <small>Click to upload</small>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-placeholder">
-                        <div>📷</div>
-                        <button class="add-photo-btn" onclick="addPhoto()">Add Photo</button>
-                        <small>Click to upload</small>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-placeholder">
-                        <div>📷</div>
-                        <button class="add-photo-btn" onclick="addPhoto()">Add Photo</button>
-                        <small>Click to upload</small>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-placeholder">
-                        <div>📷</div>
-                        <button class="add-photo-btn" onclick="addPhoto()">Add Photo</button>
-                        <small>Click to upload</small>
-                    </div>
+        </section>
+        
+        <div id="imageModal" class="modal">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="image-counter" id="imageCounter"></div>
+            <button class="modal-nav prev" onclick="changeModalImage(-1)">❮</button>
+            <button class="modal-nav next" onclick="changeModalImage(1)">❯</button>
+            <div class="modal-content">
+                <img id="modalImage" src="" alt="Latte Art">
+                <div class="modal-caption" id="modalCaption"></div>
+                <div class="modal-instructions">
+                    Use arrow keys or swipe to navigate • Press ESC to close
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Merchandise Section -->
-    <section id="merchandise" class="section">
-        <h2 class="section-title">Shop Our Products</h2>
-        <div class="merch-grid" id="merch-grid">
-            <!-- Sample merchandise items -->
-            <div class="merch-item">
-                <div class="merch-image">
-                    <div>🧴 Premium Pomade</div>
-                </div>
-                <div class="merch-info">
-                    <h3>Elite Cuts Pomade</h3>
-                    <p>Professional-grade styling pomade with strong hold and natural shine.</p>
-                    <div class="merch-price">$24.99</div>
-                    <button class="add-photo-btn" onclick="buyProduct('pomade')">Add to Cart</button>
-                </div>
-            </div>
-            <div class="merch-item">
-                <div class="merch-image">
-                    <div>👕 Branded T-Shirt</div>
-                </div>
-                <div class="merch-info">
-                    <h3>Elite Cuts Tee</h3>
-                    <p>Premium cotton t-shirt with our signature logo. Available in multiple colors.</p>
-                    <div class="merch-price">$29.99</div>
-                    <button class="add-photo-btn" onclick="buyProduct('tshirt')">Add to Cart</button>
-                </div>
-            </div>
-            <div class="merch-item">
-                <div class="merch-image">
-                    <button class="add-photo-btn" onclick="addMerchandise()">+ Add Product</button>
-                </div>
-                <div class="merch-info">
-                    <h3>Add New Item</h3>
-                    <p>Click above to add a new merchandise item to your store.</p>
-                    <div class="merch-price">--</div>
+        
+        <div id="hobbyModal" class="modal">
+            <span class="close-modal" onclick="closeHobbyModal()">&times;</span>
+            <div class="image-counter" id="hobbyImageCounter"></div>
+            <button class="modal-nav prev" onclick="changeHobbyImage(-1)">❮</button>
+            <button class="modal-nav next" onclick="changeHobbyImage(1)">❯</button>
+            <div class="modal-content">
+                <img id="hobbyModalImage" src="" alt="Hobby Image">
+                <div class="modal-caption" id="hobbyModalCaption"></div>
+                <div class="modal-instructions">
+                    Use arrow keys or swipe to navigate • Press ESC to close
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section" style="padding-top: 40px;">
-        <h2 class="section-title">Visit Us</h2>
-        <div style="text-align: center; font-size: 1.2rem;">
-            <p><strong>📍 Address:</strong> 123 Main Street, Downtown, NY 10001</p>
-            <p><strong>📞 Phone:</strong> (555) 123-4567</p>
-            <p><strong>⏰ Hours:</strong> Mon-Sat 9AM-7PM, Sun 10AM-5PM</p>
-        </div>
-    </section>
-
-    <!-- Footer -->
+        
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            
+            <div class="service-card" style="margin-bottom: 2rem;">
+                <h3 style="color: #ffffff;">Elicona Visuals</h3>
+                <p style="color: #ffffff;"><strong>Website:</strong> <a href="https://eliconavisuals.com" target="_blank" style="color: #3b82f6;">eliconavisuals.com</a></p>
+                <p style="color: #ffffff;">A modern, professional portfolio website for a barber business. Features a sleek design with smooth animations, responsive layouts, and an intuitive user interface that showcases services and booking capabilities.</p>
+                <p style="color: #ffffff;"><strong>Technologies Used:</strong> HTML, CSS, JavaScript, React, PHP</p>
+                <p style="margin-top: 1rem; color: #ffffff;"><em>This project demonstrates full-stack web development capabilities, from front-end design to back-end functionality.</em></p>
+            </div>
+        </section>
+        
+        <section id="contact">
+            <h2>Let's Work Together</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Whether you're looking to build a custom solution, need technical consulting, or want to discuss a project opportunity, I'm here to help turn your vision into reality.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 2rem 0;">
+                <div class="service-card" onclick="toggleService(this.querySelector('.service-card-header'))">
+                    <h3 style="color: #ffffff; margin-bottom: 1rem;">For Businesses</h3>
+                    <div class="service-card-header">
+                        <span style="color: #ffffff; font-weight: 600;">View Details</span>
+                        <span class="service-dropdown-arrow">▼</span>
+                    </div>
+                    <div class="service-description">
+                        <p style="color: #ffffff; margin-bottom: 0.8rem;">I provide comprehensive solutions tailored to your business needs:</p>
+                        <ul style="margin-left: 1.5rem; color: #ffffff;">
+                            <li>Custom web applications and software development</li>
+                            <li>Business process analysis and optimization</li>
+                            <li>Strategic technology consulting</li>
+                            <li>Full-stack development with modern frameworks</li>
+                            <li>Scalable solutions that grow with your business</li>
+                        </ul>
+                        <p style="color: #ffffff; margin-top: 1rem; font-style: italic;">Let's discuss how I can help drive your business forward.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card" onclick="toggleService(this.querySelector('.service-card-header'))">
+                    <h3 style="color: #ffffff; margin-bottom: 1rem;">For Collaborators</h3>
+                    <div class="service-card-header">
+                        <span style="color: #ffffff; font-weight: 600;">View Details</span>
+                        <span class="service-dropdown-arrow">▼</span>
+                    </div>
+                    <div class="service-description">
+                        <p style="color: #ffffff; margin-bottom: 0.8rem;">Open to exciting opportunities and partnerships:</p>
+                        <ul style="margin-left: 1.5rem; color: #ffffff;">
+                            <li>Freelance web development projects</li>
+                            <li>Open-source contributions and collaborations</li>
+                            <li>Innovative tech startup partnerships</li>
+                            <li>Creative photography and videography projects</li>
+                            <li>Joint ventures in software development</li>
+                            <li>Networking and knowledge sharing</li>
+                        </ul>
+                        <p style="color: #ffffff; margin-top: 1rem; font-style: italic;">Let's build something amazing together.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <p style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">Ready to get started?</p>
+                <a href="mailto:xmarcellr@gmail.com" class="cta-button" style="font-size: 1.1rem; padding: 1.2rem 2.5rem;">Contact Me</a>
+                <p style="margin-top: 1rem; font-size: 0.95rem; opacity: 0.9;">Response time: Within 24 hours</p>
+            </div>
+        </section>
+    </div>
+    
     <footer>
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="#">📘</a>
-                <a href="#">📷</a>
-                <a href="#">🐦</a>
-                <a href="#">💼</a>
-            </div>
-            <p>&copy; 2025 Elite Cuts Barbershop. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#contact">Contact</a>
+            <a href="#" onclick="alert('Terms of Service page coming soon!'); return false;">Terms</a>
+            <a href="#" onclick="alert('Privacy Policy page coming soon!'); return false;">Privacy</a>
+            <a href="#" class="donate-link" id="footerDonateBtn">Donate</a>
         </div>
+        <p>&copy; 2025 Marcell Software Services LLC. All rights reserved.</p>
     </footer>
-
+    
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        const sections = document.querySelectorAll('section');
+        
+        const observerOptions = {
+            threshold: 0.05,
+            rootMargin: '0px 0px -20px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    
+                    if (entry.target.id === 'services') {
+                        const logo = entry.target.querySelector('.services-logo');
+                        if (logo) {
+                            logo.classList.add('fade-in-logo');
+                        }
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        const tentacleObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, {
+            threshold: 0.05,
+            rootMargin: '0px 0px -20px 0px'
+        });
+        
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        
+        const tentacleBoxes = document.querySelectorAll('.tentacle-box');
+        tentacleBoxes.forEach(box => {
+            tentacleObserver.observe(box);
+        });
+        
+        const images = [
+            {
+                src: 'C:/Users/rprma/OneDrive/Desktop/Heart.jpg.jpg',
+                caption: 'Simple yet elegant heart design—proof that sometimes less is more when executed with precision.'
+            },
+            {
+                src: 'C:/Users/rprma/OneDrive/Desktop/Swan.jpg.jpg',
+                caption: 'Graceful swan pour demonstrating advanced technique and steady hand control—a true test of skill.'
+            },
+            {
+                src: 'C:/Users/rprma/OneDrive/Desktop/Tulip2.jpg.jpg',
+                caption: 'Multi-layered tulip showcasing rhythm and consistency—each petal perfectly stacked.'
+            },
+            {
+                src: 'C:/Users/rprma/OneDrive/Desktop/Tulip3.jpg.JPG',
+                caption: 'Another beautiful tulip pattern with excellent symmetry and flow.'
+            },
+            {
+                src: 'C:/Users/rprma/OneDrive/Desktop/Tulip1.jpg.jpg',
+                caption: 'Classic tulip design demonstrating perfect microfoam texture—the foundation of great latte art.'
+            }
+        ];
+        
+        let currentModalIndex = 0;
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        function openModal(index) {
+            currentModalIndex = index;
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalCaption = document.getElementById('modalCaption');
+            const imageCounter = document.getElementById('imageCounter');
+            
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.classList.add('active');
+            }, 10);
+            
+            modalImage.src = images[index].src;
+            modalCaption.textContent = images[index].caption;
+            imageCounter.textContent = `${index + 1} / ${images.length}`;
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 400);
+            document.body.style.overflow = 'auto';
+        }
+        
+        function changeModalImage(direction) {
+            currentModalIndex += direction;
+            
+            if (currentModalIndex >= images.length) {
+                currentModalIndex = 0;
+            } else if (currentModalIndex < 0) {
+                currentModalIndex = images.length - 1;
+            }
+            
+            const modalImage = document.getElementById('modalImage');
+            const modalCaption = document.getElementById('modalCaption');
+            const imageCounter = document.getElementById('imageCounter');
+            
+            const modalContent = document.querySelector('.modal-content');
+            modalContent.style.opacity = '0';
+            modalContent.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                modalImage.src = images[currentModalIndex].src;
+                modalCaption.textContent = images[currentModalIndex].caption;
+                imageCounter.textContent = `${currentModalIndex + 1} / ${images.length}`;
+                
+                modalContent.style.opacity = '1';
+                modalContent.style.transform = 'scale(1)';
+            }, 200);
+        }
+        
+        function handleTouchStart(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }
+        
+        function handleTouchEnd(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            if (touchEndX < touchStartX - swipeThreshold) {
+                changeModalImage(1);
+            }
+            if (touchEndX > touchStartX + swipeThreshold) {
+                changeModalImage(-1);
+            }
+        }
+        
+        const modal = document.getElementById('imageModal');
+        modal.addEventListener('touchstart', handleTouchStart, false);
+        modal.addEventListener('touchend', handleTouchEnd, false);
+        
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('imageModal');
+            const hobbyModal = document.getElementById('hobbyModal');
+            
+            if (modal.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                } else if (e.key === 'ArrowLeft') {
+                    changeModalImage(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeModalImage(1);
+                }
+            }
+            
+            if (hobbyModal.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeHobbyModal();
+                } else if (e.key === 'ArrowLeft') {
+                    changeHobbyImage(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeHobbyImage(1);
+                }
+            }
+        });
+        
+        const hobbyGalleries = {
+            photography: [
+                {
+                    src: 'C:/Users/rprma/OneDrive/Desktop/photo1.jpg',
+                    caption: 'Photography Image 1 - Add your caption here'
+                },
+                {
+                    src: 'C:/Users/rprma/OneDrive/Desktop/photo2.jpg',
+                    caption: 'Photography Image 2 - Add your caption here'
+                }
+            ]
+        };
+        
+        let currentHobbyGallery = [];
+        let currentHobbyIndex = 0;
+        let hobbyTouchStartX = 0;
+        let hobbyTouchEndX = 0;
+        
+        function openHobbyModal(hobbyType) {
+            currentHobbyGallery = hobbyGalleries[hobbyType];
+            currentHobbyIndex = 0;
+            
+            const modal = document.getElementById('hobbyModal');
+            const modalImage = document.getElementById('hobbyModalImage');
+            const modalCaption = document.getElementById('hobbyModalCaption');
+            const imageCounter = document.getElementById('hobbyImageCounter');
+            
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.classList.add('active');
+            }, 10);
+            
+            modalImage.src = currentHobbyGallery[0].src;
+            modalCaption.textContent = currentHobbyGallery[0].caption;
+            imageCounter.textContent = `1 / ${currentHobbyGallery.length}`;
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeHobbyModal() {
+            const modal = document.getElementById('hobbyModal');
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 400);
+            document.body.style.overflow = 'auto';
+        }
+        
+        function changeHobbyImage(direction) {
+            currentHobbyIndex += direction;
+            
+            if (currentHobbyIndex >= currentHobbyGallery.length) {
+                currentHobbyIndex = 0;
+            } else if (currentHobbyIndex < 0) {
+                currentHobbyIndex = currentHobbyGallery.length - 1;
+            }
+            
+            const modalImage = document.getElementById('hobbyModalImage');
+            const modalCaption = document.getElementById('hobbyModalCaption');
+            const imageCounter = document.getElementById('hobbyImageCounter');
+            
+            const modalContent = document.querySelector('#hobbyModal .modal-content');
+            modalContent.style.opacity = '0';
+            modalContent.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                modalImage.src = currentHobbyGallery[currentHobbyIndex].src;
+                modalCaption.textContent = currentHobbyGallery[currentHobbyIndex].caption;
+                imageCounter.textContent = `${currentHobbyIndex + 1} / ${currentHobbyGallery.length}`;
+                
+                modalContent.style.opacity = '1';
+                modalContent.style.transform = 'scale(1)';
+            }, 200);
+        }
+        
+        function handleHobbyTouchStart(e) {
+            hobbyTouchStartX = e.changedTouches[0].screenX;
+        }
+        
+        function handleHobbyTouchEnd(e) {
+            hobbyTouchEndX = e.changedTouches[0].screenX;
+            handleHobbySwipe();
+        }
+        
+        function handleHobbySwipe() {
+            const swipeThreshold = 50;
+            if (hobbyTouchEndX < hobbyTouchStartX - swipeThreshold) {
+                changeHobbyImage(1);
+            }
+            if (hobbyTouchEndX > hobbyTouchStartX + swipeThreshold) {
+                changeHobbyImage(-1);
+            }
+        }
+        
+        const hobbyModal = document.getElementById('hobbyModal');
+        hobbyModal.addEventListener('touchstart', handleHobbyTouchStart, false);
+        hobbyModal.addEventListener('touchend', handleHobbyTouchEnd, false);
+        
+        hobbyModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeHobbyModal();
+            }
+        });
+        
+        const hobbyBoxes = document.querySelectorAll('#hobbies > div > div');
+        hobbyBoxes.forEach(box => {
+            box.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 5px 25px rgba(0, 0, 0, 0.3)';
+            });
+            box.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 3px 15px rgba(0, 0, 0, 0.2)';
+            });
+        });
+        
+        const footerDonateBtn = document.getElementById('footerDonateBtn');
+        if (footerDonateBtn) {
+            footerDonateBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Set minimum date to today
-        document.getElementById('date').min = new Date().toISOString().split('T')[0];
-
-        // Initialize EmailJS
-        emailjs.init('JZyxBW7fgfjXdzc8a');
-
-        // Contact form submission
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const statusDiv = document.getElementById('contact-message-status');
-                statusDiv.innerHTML = '<div style="text-align: center; color: var(--primary-gold);">Sending message...</div>';
-                
-                // Get form values
-                const fromName = document.getElementById('contact-name').value;
-                const fromEmail = document.getElementById('contact-email').value;
-                const subject = document.getElementById('contact-subject').value;
-                const message = document.getElementById('contact-message').value;
-                
-                console.log('Form data:', { fromName, fromEmail, subject, message }); // Debug log
-                
-                // Send email using EmailJS with parameters matching the contact template
-                const templateParams = {
-                    from_name: fromName,
-                    from_email: fromEmail,
-                    subject: subject,
-                    message: message
-                };
-                
-                emailjs.send('service_hn9dr1x', 'template_vpnl9wa', templateParams)
-                    .then(function(response) {
-                        console.log('SUCCESS!', response.status, response.text);
-                        statusDiv.innerHTML = `
-                            <div class="success-message">
-                                <h3>✅ Message Sent Successfully!</h3>
-                                <p>Thank you for contacting us. We'll get back to you as soon as possible!</p>
-                            </div>
-                        `;
-                        contactForm.reset();
-                    }, function(error) {
-                        console.error('FAILED...', error);
-                        statusDiv.innerHTML = `
-                            <div class="error-message">
-                                <h3>❌ Failed to Send Message</h3>
-                                <p>Please try again or contact us directly at xmarcellr@gmail.com</p>
-                                <p>Error: ${error.text || error.message || 'Unknown error'}</p>
-                            </div>
-                        `;
-                    });
+                window.open('https://buy.stripe.com/cNibJ1c5u1Tg6wE0N4eZ207', '_blank');
             });
         }
-
-        // Appointment booking form - removed since we deleted the booking section
-        document.getElementById('appointment-form').addEventListener('submit', function(e) {
-            e.preventDefault();
+        
+        function toggleExperience(header) {
+            const content = header.nextElementSibling;
+            const arrow = header.querySelector('.dropdown-arrow');
             
-            const formData = new FormData(this);
-            const bookingData = Object.fromEntries(formData);
-            
-            // Show booking confirmation
-            document.getElementById('booking-message').innerHTML = `
-                <div class="success-message">
-                    <h3>🎉 Appointment Booked Successfully!</h3>
-                    <p><strong>Name:</strong> ${bookingData.name}</p>
-                    <p><strong>Service:</strong> ${bookingData.service}</p>
-                    <p><strong>Date & Time:</strong> ${bookingData.date} at ${bookingData.time}</p>
-                    <p>We'll contact you at ${bookingData.phone} to confirm your appointment.</p>
-                </div>
-            `;
-            
-            // Reset form
-            this.reset();
-            
-            // In a real application, you would send this data to your backend
-            console.log('Booking Data:', bookingData);
-        });
-
-        // Service photo carousel system
-        const servicePhotos = {};
-
-        // Add service photo function
-        function addServicePhoto(serviceId) {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/*';
-            input.onchange = function(e) {
-                const file = e.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        // Initialize service photos array if it doesn't exist
-                        if (!servicePhotos[serviceId]) {
-                            servicePhotos[serviceId] = [];
-                        }
-                        
-                        // Add new photo to the service
-                        servicePhotos[serviceId].push(e.target.result);
-                        
-                        // Update the carousel
-                        updateCarousel(serviceId);
-                    };
-                    reader.readAsDataURL(file);
-                }
-            };
-            input.click();
+            content.classList.toggle('open');
+            arrow.classList.toggle('open');
         }
-
-        // Update carousel display
-        function updateCarousel(serviceId) {
-            const carousel = document.querySelector(`[data-service="${serviceId}"]`);
-            const photos = servicePhotos[serviceId] || [];
+        
+        function toggleMainExperience(header) {
+            const content = header.nextElementSibling;
+            const arrow = header.querySelector('.dropdown-arrow');
             
-            if (photos.length === 0) {
-                carousel.innerHTML = `<div class="carousel-placeholder" onclick="addServicePhoto('${serviceId}')">+ Add Photos</div>`;
-                updateCarouselControls(serviceId, 0, 0);
-                return;
-            }
-            
-            // Clear existing content
-            carousel.innerHTML = '';
-            
-            // Add all images (hidden by default)
-            photos.forEach((photo, index) => {
-                const img = document.createElement('img');
-                img.src = photo;
-                img.className = `carousel-image ${index === 0 ? 'active' : ''}`;
-                img.onclick = () => showFullImage(photo);
-                carousel.appendChild(img);
-            });
-            
-            // Update controls
-            updateCarouselControls(serviceId, 1, photos.length);
+            content.classList.toggle('open');
+            arrow.classList.toggle('open');
         }
-
-        // Update carousel controls
-        function updateCarouselControls(serviceId, current, total) {
-            const controls = document.querySelector(`[data-service="${serviceId}"]`).parentElement.querySelector('.carousel-controls');
-            const prevBtn = controls.querySelector('.carousel-btn:first-child');
-            const nextBtn = controls.querySelector('.carousel-btn:last-child');
-            const counter = controls.querySelector('.photo-counter');
+        
+        function toggleService(header) {
+            const description = header.nextElementSibling;
+            const arrow = header.querySelector('.service-dropdown-arrow');
             
-            counter.textContent = `${current}/${total}`;
-            
-            prevBtn.disabled = current <= 1;
-            nextBtn.disabled = current >= total;
-            
-            // Store current index
-            if (!window.carouselIndex) window.carouselIndex = {};
-            window.carouselIndex[serviceId] = current - 1;
+            description.classList.toggle('open');
+            arrow.classList.toggle('open');
         }
-
-        // Navigate photos
-        function prevPhoto(serviceId) {
-            const photos = servicePhotos[serviceId] || [];
-            if (photos.length === 0) return;
+        
+        // Hobby video crossfade functionality
+        const hobbyVideo1 = document.getElementById('hobbyVideo1');
+        const hobbyVideo2 = document.getElementById('hobbyVideo2');
+        const hobbyVideo3 = document.getElementById('hobbyVideo3');
+        const hobbyVideo4 = document.getElementById('hobbyVideo4');
+        
+        if (hobbyVideo1 && hobbyVideo2 && hobbyVideo3 && hobbyVideo4) {
+            let currentVideo = 1;
             
-            const currentIndex = window.carouselIndex[serviceId] || 0;
-            const newIndex = Math.max(0, currentIndex - 1);
+            // Start first video
+            hobbyVideo1.play();
             
-            showPhoto(serviceId, newIndex);
-        }
-
-        function nextPhoto(serviceId) {
-            const photos = servicePhotos[serviceId] || [];
-            if (photos.length === 0) return;
-            
-            const currentIndex = window.carouselIndex[serviceId] || 0;
-            const newIndex = Math.min(photos.length - 1, currentIndex + 1);
-            
-            showPhoto(serviceId, newIndex);
-        }
-
-        function showPhoto(serviceId, index) {
-            const carousel = document.querySelector(`[data-service="${serviceId}"]`);
-            const images = carousel.querySelectorAll('.carousel-image');
-            
-            images.forEach((img, i) => {
-                img.classList.toggle('active', i === index);
-            });
-            
-            window.carouselIndex[serviceId] = index;
-            updateCarouselControls(serviceId, index + 1, images.length);
-        }
-
-        // Show full image in modal
-        function showFullImage(imageSrc) {
-            const modal = document.createElement('div');
-            modal.style.cssText = `
-                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-                background: rgba(0,0,0,0.9); display: flex; align-items: center;
-                justify-content: center; z-index: 10000; cursor: pointer;
-            `;
-            modal.innerHTML = `<img src="${imageSrc}" style="max-width: 90%; max-height: 90%; border-radius: 10px;">`;
-            modal.onclick = () => modal.remove();
-            document.body.appendChild(modal);
-        }
-
-        // Portfolio photo upload simulation
-        function addPhoto() {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/*';
-            input.onchange = function(e) {
-                const file = e.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        // Find the clicked portfolio item
-                        const portfolioItems = document.querySelectorAll('.portfolio-item');
-                        const emptyItem = Array.from(portfolioItems).find(item => 
-                            item.querySelector('.portfolio-placeholder')
-                        );
-                        
-                        if (emptyItem) {
-                            emptyItem.innerHTML = `
-                                <img src="${e.target.result}" alt="Portfolio work" 
-                                     style="width: 100%; height: 100%; object-fit: cover;">
-                            `;
-                            
-                            // Add a new empty slot to the scroll container
-                            const newItem = document.createElement('div');
-                            newItem.className = 'portfolio-item';
-                            newItem.innerHTML = `
-                                <div class="portfolio-placeholder">
-                                    <div>📷</div>
-                                    <button class="add-photo-btn" onclick="addPhoto()">Add Photo</button>
-                                    <small>Click to upload</small>
-                                </div>
-                            `;
-                            document.getElementById('portfolio-scroll').appendChild(newItem);
-                        }
-                    };
-                    reader.readAsDataURL(file);
-                }
-            };
-            input.click();
-        }="width: 100%; height: 100%; object-fit: cover;">
-                            `;
-                            
-                            // Add a new empty slot
-                            const newItem = document.createElement('div');
-                            newItem.className = 'portfolio-item';
-                            newItem.innerHTML = `
-                                <div class="portfolio-placeholder">
-                                    <div>📷</div>
-                                    <button class="add-photo-btn" onclick="addPhoto()">Add Photo</button>
-                                    <small>Click to upload</small>
-                                </div>
-                            `;
-                            document.getElementById('portfolio-grid').appendChild(newItem);
-                        }
-                    };
-                    reader.readAsDataURL(file);
-                }
-            };
-            input.click();
-        }
-
-        // Add merchandise simulation
-        function addMerchandise() {
-            const name = prompt('Product name:');
-            const price = prompt('Product price (e.g., $29.99):');
-            const description = prompt('Product description:');
-            
-            if (name && price && description) {
-                const newItem = document.createElement('div');
-                newItem.className = 'merch-item';
-                newItem.innerHTML = `
-                    <div class="merch-image">
-                        <button class="add-photo-btn" onclick="addProductPhoto(this)">Add Photo</button>
-                    </div>
-                    <div class="merch-info">
-                        <h3>${name}</h3>
-                        <p>${description}</p>
-                        <div class="merch-price">${price}</div>
-                        <button class="add-photo-btn" onclick="buyProduct('${name.toLowerCase()}')">Add to Cart</button>
-                    </div>
-                `;
+            hobbyVideo1.addEventListener('loadedmetadata', function() {
+                const duration1 = hobbyVideo1.duration;
                 
-                // Replace the "Add Product" item
-                const addProductItem = document.querySelector('.merch-item:last-child');
-                addProductItem.parentNode.insertBefore(newItem, addProductItem);
-            }
+                hobbyVideo1.addEventListener('timeupdate', function() {
+                    if (currentVideo === 1 && hobbyVideo1.currentTime >= duration1 - 1.75) {
+                        // Start crossfade to video 2
+                        hobbyVideo2.currentTime = 0;
+                        hobbyVideo2.play();
+                        hobbyVideo2.style.opacity = '1';
+                        hobbyVideo1.style.opacity = '0';
+                        currentVideo = 2;
+                    }
+                });
+            });
+            
+            hobbyVideo2.addEventListener('loadedmetadata', function() {
+                const duration2 = hobbyVideo2.duration;
+                
+                hobbyVideo2.addEventListener('timeupdate', function() {
+                    if (currentVideo === 2 && hobbyVideo2.currentTime >= duration2 - 1.75) {
+                        // Start crossfade to video 3
+                        hobbyVideo3.currentTime = 0;
+                        hobbyVideo3.play();
+                        hobbyVideo3.style.opacity = '1';
+                        hobbyVideo2.style.opacity = '0';
+                        currentVideo = 3;
+                    }
+                });
+            });
+            
+            hobbyVideo3.addEventListener('loadedmetadata', function() {
+                const duration3 = hobbyVideo3.duration;
+                
+                hobbyVideo3.addEventListener('timeupdate', function() {
+                    if (currentVideo === 3 && hobbyVideo3.currentTime >= duration3 - 1.5) {
+                        // Start crossfade to video 4
+                        hobbyVideo4.currentTime = 0;
+                        hobbyVideo4.play();
+                        hobbyVideo4.style.opacity = '1';
+                        hobbyVideo3.style.opacity = '0';
+                        currentVideo = 4;
+                    }
+                });
+            });
+            
+            hobbyVideo4.addEventListener('loadedmetadata', function() {
+                const duration4 = hobbyVideo4.duration;
+                
+                hobbyVideo4.addEventListener('timeupdate', function() {
+                    if (currentVideo === 4 && hobbyVideo4.currentTime >= duration4 - 1.75) {
+                        // Start crossfade back to video 1
+                        hobbyVideo1.currentTime = 0;
+                        hobbyVideo1.play();
+                        hobbyVideo1.style.opacity = '1';
+                        hobbyVideo4.style.opacity = '0';
+                        currentVideo = 1;
+                    }
+                });
+            });
         }
-
-        // Add product photo
-        function addProductPhoto(button) {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/*';
-            input.onchange = function(e) {
-                const file = e.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        button.parentElement.innerHTML = `
-                            <img src="${e.target.result}" alt="Product" 
-                                 style="width: 100%; height: 100%; object-fit: cover;">
-                        `;
-                    };
-                    reader.readAsDataURL(file);
-                }
-            };
-            input.click();
-        }
-
-        // Buy product simulation
-        function buyProduct(product) {
-            alert(`${product} added to cart! (This would integrate with your e-commerce system
+    </script>
+</body>
+</html>
