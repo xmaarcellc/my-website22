@@ -53,8 +53,8 @@
         .logo {
             width: 60px;
             height: 60px;
-            opacity: 0;
-            animation: bounceLogo 2s ease-out forwards;
+            opacity: 1;
+            animation: bounceLogo 3.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
             animation-delay: 0.3s;
             margin-top: 10px;
         }
@@ -72,30 +72,56 @@
         
         @keyframes bounceLogo {
             0% {
+                transform: translate(calc(50vw), -300px);
                 opacity: 1;
-                transform: translateX(300px) scale(0.8);
             }
-            15% {
-                transform: translateX(-30px) scale(1.1);
+            10% {
+                transform: translate(250px, -150px);
+                opacity: 1;
+            }
+            20% {
+                transform: translate(250px, 0px);
+                opacity: 1;
             }
             30% {
-                transform: translateX(20px) scale(0.95);
+                transform: translate(150px, -100px);
+                opacity: 1;
             }
-            45% {
-                transform: translateX(-10px) scale(1.05);
+            40% {
+                transform: translate(150px, 0px);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(75px, -50px);
+                opacity: 1;
             }
             60% {
-                transform: translateX(5px) scale(0.98);
+                transform: translate(75px, 0px);
+                opacity: 1;
             }
-            75% {
-                transform: translateX(-2px) scale(1.02);
+            70% {
+                transform: translate(20px, -20px);
+                opacity: 1;
             }
-            90% {
-                transform: translateX(0) scale(1);
+            80% {
+                transform: translate(20px, 0px);
+                opacity: 0.9;
+            }
+            87% {
+                transform: translate(5px, -5px);
+                opacity: 0.7;
+            }
+            93% {
+                transform: translate(5px, 0px);
+                opacity: 0.5;
+            }
+            97% {
+                transform: translate(0px, -2px);
+                opacity: 0.3;
             }
             100% {
+                transform: translate(0px, 0px);
                 opacity: 1;
-                transform: translateX(0) scale(1);
             }
         }
         
