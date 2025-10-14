@@ -71,8 +71,9 @@
         <section id="about">
             <h2>Who Am I</h2>
             <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
-                <div style="flex: 1; min-width: 300px;">
-                    <p class="about-text-fade" style="font-weight: bold; font-style: italic;">I'm a creative problem-solver who loves turning ideas into reality through code and visual storytelling. Whether I'm crafting elegant web solutions or capturing moments through my lens, I'm driven by the process of helping people by creating something meaningful.</p>
+                <div style="flex: 1; min-width: 300px; position: relative; min-height: 120px;">
+                    <p id="aboutText1" style="position: absolute; top: 0; left: 0; width: 100%; font-weight: bold; font-style: italic; color: #ffffff; font-size: 0.85rem; opacity: 1; transition: opacity 2s ease-in-out; margin: 0;">I'm a creative problem-solver who loves turning ideas into reality through code and visual storytelling. Whether I'm crafting elegant web solutions or capturing moments through my lens, I'm driven by the process of helping people by creating something meaningful.</p>
+                    <p id="aboutText2" style="position: absolute; top: 0; left: 0; width: 100%; font-weight: bold; font-style: italic; color: #ffffff; font-size: 0.85rem; opacity: 0; transition: opacity 2s ease-in-out; margin: 0;">I grew up in St. Lucia and came to start a new life in 2012 in the USA. This journey has shaped who I am today, fueling my passion for creating meaningful connections through technology and visual storytelling.</p>
                 </div>
                 <div style="flex: 0 0 auto; position: relative; width: 300px; height: 300px;">
                     <img id="aboutImg1" src="Rob_1.jpg" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #000000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); opacity: 1; transition: opacity 2s ease-in-out;">
@@ -450,6 +451,10 @@
         </section>
     </div>
     
+    <div style="text-align: center; padding: 3rem 2rem; background: #000000; border-top: 2px solid #ffffff;">
+        <p style="font-family: 'Allura', 'Dancing Script', 'Great Vibes', 'Brush Script MT', cursive; font-size: 5rem; color: #ffffff; margin: 0; font-weight: 400;">Rob Marcellin</p>
+    </div>
+    
     <footer>
         <p>&copy; 2025 Marcell Software Services LLC. All rights reserved.</p>
         <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #9ca3af;">
@@ -741,6 +746,22 @@
             }, 4000);
         }
         
+        // About text crossfade functionality
+        const aboutText1 = document.getElementById('aboutText1');
+        const aboutText2 = document.getElementById('aboutText2');
+        
+        if (aboutText1 && aboutText2) {
+            setInterval(() => {
+                if (aboutText1.style.opacity === '1') {
+                    aboutText1.style.opacity = '0';
+                    aboutText2.style.opacity = '1';
+                } else {
+                    aboutText1.style.opacity = '1';
+                    aboutText2.style.opacity = '0';
+                }
+            }, 6000);
+        }
+        
         // Education crossfade functionality
         const edu1 = document.getElementById('edu1');
         const edu2 = document.getElementById('edu2');
@@ -793,6 +814,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rob Marcellin</title>
     <link rel="icon" type="image/png" href="JustLogo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Dancing+Script&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -817,6 +839,17 @@
         }
         
         header h1,
+        @keyframes fadeInSignature {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         header p {
             position: relative;
             z-index: 2;
