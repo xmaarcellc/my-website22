@@ -1022,7 +1022,7 @@
             </div>
             <div class="cart-total-row">
                 <span>Shipping:</span>
-                <span>$5.00</span>
+                <span>FREE</span>
             </div>
             <div class="cart-total-row total">
                 <span>Total:</span>
@@ -1309,7 +1309,7 @@
                 </div>
                 <div class="order-summary-row">
                     <span>Shipping:</span>
-                    <span>$5.00</span>
+                    <span>FREE</span>
                 </div>
             `;
             
@@ -1355,7 +1355,7 @@
                 orderDetails += `${item.name} x${item.quantity} - ${itemTotal.toFixed(2)}\n`;
             });
             
-            const shipping = 5.00;
+            const shipping = 0.00;
             const total = subtotal + shipping;
             
             orderDetails += `\nSubtotal: ${subtotal.toFixed(2)}\n`;
@@ -1508,7 +1508,7 @@
                 
                 cartItems.innerHTML = cartHTML;
                 
-                const shippingCost = 5.00;
+                const shippingCost = 0.00;
                 const totalAmount = subtotalAmount + shippingCost;
                 
                 subtotal.textContent = `${subtotalAmount.toFixed(2)}`;
@@ -1570,4 +1570,5 @@
     </script>
 </body>
 </html>
+
 
