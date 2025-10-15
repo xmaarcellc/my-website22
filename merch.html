@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Allura&family=Dancing+Script&family=Great+Vibes&display=swap" rel="stylesheet">
     <!-- EmailJS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- Stripe SDK -->
+    <script src="https://js.stripe.com/v3/"></script>
     <style>
         * {
             margin: 0;
@@ -1090,33 +1092,15 @@
                 
                 <div class="form-section">
                     <h3>Payment Information</h3>
-                    <div style="background: #8B0000; color: #ffffff; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; text-align: center; font-weight: 600;">
-                        🧪 TEST MODE - No payment will be processed
+                    <div style="background: #1e40af; color: #ffffff; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; text-align: center; font-weight: 600;">
+                        💳 Secure Payment Processing by Stripe
                     </div>
-                    <div class="form-group">
-                        <label for="cardName">Name on Card *</label>
-                        <input type="text" id="cardName" name="cardName" value="Test User" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="cardNumber">Card Number *</label>
-                        <input type="text" id="cardNumber" name="cardNumber" placeholder="4242 4242 4242 4242" value="4242 4242 4242 4242" maxlength="19" required>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="expiry">Expiry Date *</label>
-                            <input type="text" id="expiry" name="expiry" placeholder="12/25" value="12/25" maxlength="5" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="cvv">CVV *</label>
-                            <input type="text" id="cvv" name="cvv" placeholder="123" value="123" maxlength="4" required>
-                        </div>
-                    </div>
-                    <p style="color: #cccccc; font-size: 0.85rem; font-style: italic; margin-top: 0.5rem;">
-                        * Payment processing is currently disabled. This is for testing purposes only.
+                    <p style="color: #cccccc; font-size: 0.9rem; margin-bottom: 1rem; text-align: center;">
+                        You will be redirected to Stripe's secure checkout page
                     </p>
                 </div>
                 
-                <button type="submit" class="submit-order-button">Place Test Order (No Charge)</button>
+                <button type="submit" class="submit-order-button">Proceed to Payment</button>
             </form>
         </div>
     </div>
@@ -1200,6 +1184,9 @@
     </footer>
     
     <script>
+        // Initialize Stripe
+        const stripe = Stripe('pk_live_51SGPAOEYipKZSkJb3qw82kiWd89UPhDkKmQK93Xx4fqoauC0NdTfXGfZAVQr7zUON3lFab50SF08CYAKHOIw6ii6002wqqrONG');
+        
         // Initialize EmailJS with your public key
         emailjs.init({
             publicKey: "JZyxBW7fgfjXdzc8a",
