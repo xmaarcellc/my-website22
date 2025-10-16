@@ -783,6 +783,125 @@
         section a:hover {
             color: #60a5fa;
         }
+
+        .highlight-box {
+            background: rgba(30, 64, 175, 0.1);
+            border-left: 4px solid #1e40af;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border: 2px solid #ffffff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #cccccc;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .value-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(5px);
+        }
+
+        .value-card h4 {
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .mentorship-package {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid #1e40af;
+            margin-top: 2rem;
+        }
+
+        .package-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .package-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .package-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .package-features li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .package-features li:last-child {
+            border-bottom: none;
+        }
+
+        .package-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #1e40af;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
         
         @media (max-width: 768px) {
             header h1 {
@@ -866,6 +985,19 @@
                 right: 20px;
                 font-size: 30px;
             }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .package-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
@@ -894,7 +1026,7 @@
     </nav>
     
     <div class="container">
-        <section id="about">
+<section id="about">
             <h2>Who Am I</h2>
             <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
                 <div style="flex: 1; min-width: 300px; position: relative; min-height: 120px;">
@@ -1009,6 +1141,106 @@
                 </div>
             </div>
         </section>
+
+        <section id="why-choose-me">
+            <h2>Why Work With Me</h2>
+            
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">I bring a unique blend of technical expertise, creative vision, and real-world leadership experience. My journey from barista to store manager taught me invaluable lessons about people, processes, and problem-solving that set me apart in the tech industry.</p>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Client Satisfaction</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24hr</span>
+                    <span class="stat-label">Response Time</span>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="margin-top: 0; font-size: 1.3rem;">What Makes Me Different</h3>
+                <p style="margin-bottom: 0;">While many developers focus solely on code, I understand the full picture. Managing teams, optimizing operations, and delivering exceptional customer experiences has taught me to build solutions that aren't just technically sound—they're user-focused, scalable, and aligned with business goals.</p>
+            </div>
+
+            <div class="value-points">
+                <div class="value-card">
+                    <h4>Results-Driven Approach</h4>
+                    <p style="margin-bottom: 0;">I deliver solutions that drive measurable results. Clear objectives and strategic planning guide every project.</p>
+                </div>
+
+                <div class="value-card">
+                    <h4>Communication Excellence</h4>
+                    <p style="margin-bottom: 0;">I translate complex technical concepts into clear insights. You'll always know what's happening with your project.</p>
+                </div>
+
+                <div class="value-card">
+                    <h4>Efficient Problem Solving</h4>
+                    <p style="margin-bottom: 0;">I identify issues and implement effective solutions quickly. Experience from high-pressure situations to complex code debugging.</p>
+                </div>
+
+                <div class="value-card">
+                    <h4>Creative & Technical Balance</h4>
+                    <p style="margin-bottom: 0;">Photography and videography background brings aesthetic sensibility to web design. I create functional and visually compelling applications.</p>
+                </div>
+
+                <div class="value-card">
+                    <h4>Growth Mindset</h4>
+                    <p style="margin-bottom: 0;">Constantly learning and adapting. From immigrant to business owner, I turn challenges into opportunities.</p>
+                </div>
+
+                <div class="value-card">
+                    <h4>Business Acumen</h4>
+                    <p style="margin-bottom: 0;">Economics degree and management experience inform my approach. I build solutions that generate ROI.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="background: rgba(30, 64, 175, 0.15); border-left-color: #60a5fa;">
+                <p style="font-size: 1.1rem; font-style: italic; margin-bottom: 0; text-align: center;">
+                    "The combination of leadership experience, technical skills, and creative vision means you get a developer who understands not just <em>how</em> to build something, but <em>why</em> it matters and <em>who</em> it serves."
+                </p>
+            </div>
+        </section>
+
+        <section id="mentorship">
+            <h2>Developer Mentorship Program</h2>
+            
+            <p style="font-size: 1.05rem; margin-bottom: 1.5rem;">Are you a new developer looking to level up your skills? I offer collaborative learning packages designed to help you build real-world web development expertise while working on actual projects.</p>
+
+            <div class="mentorship-package">
+                <div class="package-header">
+                    <div>
+                        <h3 style="margin: 0; font-size: 1.6rem;">Web Development Collaboration Package</h3>
+                        <p style="margin-top: 0.5rem; margin-bottom: 0; color: #cccccc;">Learn by building real projects together</p>
+                    </div>
+                    <div class="package-price">Custom Pricing</div>
+                </div>
+
+                <ul class="package-features">
+                    <li><strong>Code Review & Feedback:</strong> Get detailed reviews of your code with constructive feedback to improve your skills</li>
+                    <li><strong>Technology Stack Training:</strong> Deep dive into React, JavaScript, PHP, HTML/CSS, and modern development tools</li>
+                    <li><strong>Career Guidance:</strong> Benefit from insights on transitioning into tech, building a portfolio, and landing opportunities</li>
+                    <li><strong>Flexible Schedule:</strong> Sessions tailored to your availability and learning pace</li>
+                    <li><strong>Resource Library:</strong> Access curated learning materials, code templates, and development resources</li>
+                </ul>
+
+                <div style="background: rgba(0, 0, 0, 0.3); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
+                    <h4 style="color: #ffffff; margin-top: 0;">Who This Is For:</h4>
+                    <ul style="margin-left: 1.5rem; color: #ffffff;">
+                        <li>New developers looking to gain practical experience</li>
+                        <li>Career changers transitioning into web development</li>
+                        <li>Self-taught programmers wanting to fill knowledge gaps</li>
+                        <li>Students seeking real-world project experience</li>
+                        <li>Anyone passionate about learning modern web development</li>
+                    </ul>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="mailto:xmarcellr@gmail.com?subject=Developer Mentorship Inquiry&body=Hi Rob,%0D%0A%0D%0AI'm interested in learning more about your Developer Mentorship Program.%0D%0A%0D%0AMy experience level:%0D%0A%0D%0AWhat I want to learn:%0D%0A%0D%0AMy availability:%0D%0A%0D%0ALooking forward to hearing from you!%0D%0A%0D%0ABest," class="cta-button" style="font-size: 1.1rem;">Schedule a Consultation</a>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Free 30-minute introductory call to discuss your goals and customize a learning plan</p>
+                </div>
+            </div>
+        </section>
         
         <section id="services">
             <div class="main-experience-section" onclick="toggleMainExperience(this.querySelector('.main-experience-header'))">
@@ -1095,8 +1327,7 @@
                 </div>
             </div>
         </section>
-        
-        <section id="experience">
+<section id="experience">
             <div class="main-experience-section" onclick="toggleMainExperience(this.querySelector('.main-experience-header'))">
                 <div class="main-experience-header">
                     <h2 style="margin: 0; color: #ffffff; border-bottom: none; padding-bottom: 0;">Professional Experience</h2>
@@ -1229,7 +1460,7 @@
                 <h3 style="font-size: 2.5rem; color: #ffffff; margin-bottom: 1rem; font-weight: 700;">Marcell Fashion</h3>
                 <p style="font-size: 1.2rem; color: #cccccc; margin-bottom: 2rem;">Check out our exclusive apparel collection!</p>
                 <a href="merch.html" class="cta-button" style="font-size: 1.1rem; padding: 1.2rem 2.5rem; background: #000000; color: #ffffff; border: 2px solid #ffffff; text-decoration: none; display: inline-block;">Explore Now</a>
-                <p style="margin-top: 2rem; font-size: 1rem; color: #ffffff; font-style: italic;"</p>
+                <p style="margin-top: 2rem; font-size: 1rem; color: #ffffff; font-style: italic;"></p>
             </div>
         </section>
         
@@ -1659,4 +1890,3 @@
     </script>
 </body>
 </html>
-
