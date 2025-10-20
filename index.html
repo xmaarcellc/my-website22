@@ -329,7 +329,50 @@
             opacity: 1;
             transform: translateY(0);
         }
-#about {
+        
+        .mentorship-cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: #ffffff;
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: 600;
+            border: 2px solid #3b82f6;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        
+        .mentorship-cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.5);
+        }
+
+        .consultation-button {
+            display: inline-block;
+            background: transparent;
+            color: #ffffff;
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            transition: all 0.3s;
+            font-weight: 600;
+            border: 2px solid #ffffff;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .consultation-button:hover {
+            background: #ffffff;
+            color: #000000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        #about {
             position: relative;
             overflow: hidden;
         }
@@ -460,8 +503,7 @@
             opacity: 1;
             transform: translateX(0);
         }
-        
-        .modal {
+.modal {
             display: none;
             position: fixed;
             z-index: 1000;
@@ -903,49 +945,6 @@
         section a:hover {
             color: #60a5fa;
         }
-
-        .mentorship-package {
-            background: linear-gradient(135deg, rgba(30, 64, 175, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 2px solid #1e40af;
-            margin-top: 2rem;
-        }
-
-        .package-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .package-features {
-            list-style: none;
-            margin: 1.5rem 0;
-        }
-
-        .package-features li {
-            padding: 0.8rem 0;
-            padding-left: 2rem;
-            position: relative;
-            color: #ffffff;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .package-features li:last-child {
-            border-bottom: none;
-        }
-
-        .package-features li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #1e40af;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
         
         @media (max-width: 768px) {
             header h1 {
@@ -1140,8 +1139,7 @@
                 </div>
             </div>
         </section>
-        
-        <section id="hobbies">
+<section id="hobbies">
             <div class="main-experience-section" onclick="toggleMainExperience(this.querySelector('.main-experience-header'))" style="background: transparent; border: 2px solid #ffffff; position: relative; z-index: 1;">
                 <div class="main-experience-header">
                     <h2 style="margin: 0; color: #ffffff; border-bottom: none; padding-bottom: 0;">Hobbies & Interests</h2>
@@ -1175,36 +1173,11 @@
 
         <section id="mentorship">
             <h2>Developer Mentorship Program</h2>
+            <p style="font-size: 1.05rem; margin-bottom: 1.5rem;">Transform your coding journey with personalized guidance and hands-on mentorship. Learn modern web development from someone who's passionate about teaching.</p>
             
-            <div class="mentorship-package">
-                <div class="package-header">
-                    <div>
-                        <h3 style="margin: 0; font-size: 1.6rem;">Web Development Collaboration Package</h3>
-                    </div>
-                </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="mailto:xmarcellr@gmail.com?subject=Developer%20Mentorship%20Consultation&body=Hi%20Rob%2C%0D%0A%0D%0AI'm%20interested%20in%20learning%20more%20about%20your%20Developer%20Mentorship%20Program.%0D%0A%0D%0AMy%20experience%20level%3A%20%5BBeginner%2FIntermediate%2FAdvanced%5D%0D%0A%0D%0AWhat%20I%20want%20to%20learn%3A%20%5BYour%20goals%20here%5D%0D%0A%0D%0AMy%20availability%3A%20%5BYour%20schedule%5D%0D%0A%0D%0ALooking%20forward%20to%20hearing%20from%20you!%0D%0A%0D%0ABest%2C%0D%0A%5BYour%20Name%5D" class="consultation-button">Schedule a Free Consultation</a>
 
-                <ul class="package-features">
-                    <li><strong>Code Review & Feedback:</strong> Get detailed reviews of your code with constructive feedback to improve your skills</li>
-                    <li><strong>Technology Stack Training:</strong> Deep dive into React, JavaScript, PHP, HTML/CSS, and modern development tools</li>
-                    <li><strong>Flexible Schedule:</strong> Sessions tailored to your availability and learning pace</li>
-                    <li><strong>Resource Library:</strong> Access curated learning materials, code templates, and development resources</li>
-                </ul>
-
-                <div style="background: rgba(0, 0, 0, 0.3); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
-                    <h4 style="color: #ffffff; margin-top: 0;">Who This Is For:</h4>
-                    <ul style="margin-left: 1.5rem; color: #ffffff;">
-                        <li>New developers looking to gain practical experience</li>
-                        <li>Career changers transitioning into web development</li>
-                        <li>Self-taught programmers wanting to fill knowledge gaps</li>
-                        <li>Students seeking real-world project experience</li>
-                        <li>Anyone passionate about learning modern web development</li>
-                    </ul>
-                </div>
-
-                <div style="text-align: center; margin-top: 2rem;">
-                    <a href="mailto:xmarcellr@gmail.com?subject=Developer Mentorship Inquiry" class="cta-button" style="font-size: 1.1rem;">Schedule a Consultation</a>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Free 30-minute introductory call to discuss your goals and customize a learning plan</p>
-                </div>
             </div>
         </section>
         
@@ -1264,8 +1237,8 @@
                         </div>
                     </div>
                     
-                    <div style="margin-top: 2rem; padding: 1rem; background: rgba(0,0,0,0.3); border-radius: 8px; text-align: center; border: 2px solid #ffffff;">
-                        <a href="mailto:xmarcellr@gmail.com?subject=Let's Connect" style="font-size: 1rem; color: #ffffff; text-decoration: none; font-weight: 600;">Request Consultation →</a>
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="mailto:xmarcellr@gmail.com?subject=Service%20Inquiry" class="consultation-button">Request Consultation</a>
                     </div>
                 </div>
             </div>
@@ -1385,7 +1358,7 @@
                
             <div style="text-align: center; margin-top: 2rem;">
                 <p style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">Ready to get started?</p>
-                <a href="mailto:xmarcellr@gmail.com?subject=Let's Connect" class="cta-button" style="font-size: 1.1rem; padding: 1.2rem 2.5rem;">Contact Me</a>
+                <a href="mailto:xmarcellr@gmail.com?subject=Let's%20Connect&body=Hi%20Rob%2C%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20really%20enjoyed%20learning%20about%20your%20work!%0D%0A%0D%0AI'm%20reaching%20out%20because%3A%20%5BTell%20me%20what%20caught%20your%20interest%20or%20what%20you're%20looking%20for%5D%0D%0A%0D%0AA%20bit%20about%20me%3A%20%5BOptional%20-%20share%20what%20you%20do%20or%20what%20brings%20you%20here%5D%0D%0A%0D%0AI'd%20love%20to%3A%20%5BChat%20about%20opportunities%20%2F%20Ask%20some%20questions%20%2F%20Discuss%20a%20potential%20project%20%2F%20Just%20connect%5D%0D%0A%0D%0ALooking%20forward%20to%20hearing%20from%20you!%0D%0A%0D%0ABest%2C%0D%0A%5BYour%20Name%5D" class="consultation-button">Contact Me</a>
                 <p style="margin-top: 1rem; font-size: 0.95rem; opacity: 0.9;">Response time: Within 24 hours</p>
                 <a href="https://buy.stripe.com/cNibJ1c5u1Tg6wE0N4eZ207" target="_blank" class="cta-button" style="font-size: 1rem; padding: 1rem 2rem; margin-top: 1rem;">Contribute</a>
             </div>
@@ -1398,7 +1371,8 @@
             Portfolio by <a href="https://www.xmarcellr.com/" target="_blank" style="color: #d1d5db; text-decoration: none;">Marcell Software Services</a>
         </p>
     </footer>
-<script>
+    
+    <script>
         // Generate stars
         const starfield = document.getElementById('starfield');
         const numberOfStars = 200;
@@ -1696,19 +1670,6 @@
         }
         
         const aboutText1 = document.getElementById('aboutText1');
-        const aboutText2 = document.getElementById('aboutText2');
-        
-        if (aboutText1 && aboutText2) {
-            setInterval(() => {
-                if (aboutText1.style.opacity === '1') {
-                    aboutText1.style.opacity = '0';
-                    aboutText2.style.opacity = '1';
-                } else {
-                    aboutText1.style.opacity = '1';
-                    aboutText2.style.opacity = '0';
-                }
-            }, 6000);
-        }
         
         const edu1 = document.getElementById('edu1');
         const edu2 = document.getElementById('edu2');
@@ -1738,7 +1699,7 @@
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
+navMenu.classList.remove('active');
                 });
             });
             
@@ -1752,6 +1713,3 @@
     </script>
 </body>
 </html>
-
-
-
