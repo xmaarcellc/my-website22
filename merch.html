@@ -18,14 +18,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            .checkout-form-container {
-                width: 95%;
-                padding: 1.5rem;
-            }
-            
-            .form-row {
-                grid-template-columns: 1fr;
-            }
         }
         
         body {
@@ -35,14 +27,127 @@
             background: #000000;
         }
         
+   /* Cosmic Background with Deep Red */
+        .cosmic-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(74, 0, 0, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(90, 0, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(65, 0, 0, 0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 40% 80%, rgba(74, 0, 0, 0.18) 0%, transparent 45%),
+                radial-gradient(ellipse at 70% 20%, rgba(70, 0, 0, 0.15) 0%, transparent 55%);
+            background-size: 
+                200% 200%,
+                250% 250%,
+                180% 180%,
+                220% 220%,
+                240% 240%;
+            background-position: 
+                0% 0%,
+                100% 100%,
+                50% 50%,
+                20% 80%,
+                80% 20%;
+            animation: 
+                nebula1 30s ease-in-out infinite,
+                nebula2 25s ease-in-out infinite,
+                nebula3 35s ease-in-out infinite;
+        }
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+        
+        @keyframes nebula1 {
+            0%, 100% {
+                background-position: 
+                    0% 0%,
+                    100% 100%,
+                    50% 50%,
+                    20% 80%,
+                    80% 20%;
+            }
+            25% {
+                background-position: 
+                    25% 25%,
+                    75% 75%,
+                    45% 55%,
+                    30% 70%,
+                    70% 30%;
+            }
+            50% {
+                background-position: 
+                    50% 50%,
+                    50% 50%,
+                    40% 60%,
+                    40% 60%,
+                    60% 40%;
+            }
+            75% {
+                background-position: 
+                    75% 25%,
+                    25% 75%,
+                    55% 45%,
+                    50% 50%,
+                    50% 50%;
+            }
+        }
+        
+        @keyframes nebula2 {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+        
+        @keyframes nebula3 {
+            0%, 100% {
+                filter: brightness(1) contrast(1.2);
+            }
+            50% {
+                filter: brightness(1.15) contrast(1.1);
+            }
+        }
+        
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+        
         header {
             position: relative;
             color: white;
             padding: 4rem 2rem;
             text-align: center;
             overflow: hidden;
-            background: #000000;
+            background: transparent;
             border-bottom: 3px solid #ffffff;
+            z-index: 2;
         }
         
         header h1 {
@@ -113,7 +218,7 @@
         }
         
         nav {
-            background: #000000;
+            background: rgba(0, 0, 0, 0.0);
             padding: 1.5rem;
             position: sticky;
             top: 0;
@@ -123,7 +228,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
+            backdrop-filter: blur(10px);
         }
         
         .nav-content {
@@ -358,8 +463,7 @@
         .cart-overlay.active {
             display: block;
         }
-        
-        .checkout-modal {
+.checkout-modal {
             position: fixed;
             top: 0;
             left: 0;
@@ -543,6 +647,11 @@
             margin-bottom: 1rem;
         }
         
+
+
+
+
+
         .success-message p {
             color: #ffffff;
             margin-bottom: 0.5rem;
@@ -612,6 +721,8 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 3rem 2rem;
+            position: relative;
+            z-index: 2;
         }
         
         .merch-grid {
@@ -901,6 +1012,8 @@
             padding: 2rem;
             margin-top: 3rem;
             border-top: 2px solid #ffffff;
+            position: relative;
+            z-index: 2;
         }
         
         @media (max-width: 768px) {
@@ -964,10 +1077,22 @@
             .page-title {
                 font-size: 1.8rem;
             }
+            
+            .checkout-form-container {
+                width: 95%;
+                padding: 1.5rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="cosmic-background"></div>
+    <div class="stars" id="starfield"></div>
+    
     <header>
         <h1>
             Marcell Fashion
@@ -985,12 +1110,6 @@
         </div>
         <div class="nav-content">
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#experience">Experience</a></li>
-                <li><a href="index.html#projects">Projects</a></li>
-                <li><a href="index.html#merchandise">Back to Home</a></li>
-                <li><a href="index.html#services">Services</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </div>
@@ -1000,8 +1119,10 @@
             <span></span>
         </div>
     </nav>
-    
-    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+
+
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
     
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
@@ -1184,6 +1305,27 @@
     </footer>
     
     <script>
+        // Generate stars
+        const starfield = document.getElementById('starfield');
+        const numberOfStars = 200;
+
+        for (let i = 0; i < numberOfStars; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            
+            const size = Math.random() * 2 + 0.5;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            
+            starfield.appendChild(star);
+        }
+        
         // Initialize Stripe
         const stripe = Stripe('pk_live_51SGPAOEYipKZSkJb3qw82kiWd89UPhDkKmQK93Xx4fqoauC0NdTfXGfZAVQr7zUON3lFab50SF08CYAKHOIw6ii6002wqqrONG');
         
@@ -1314,7 +1456,7 @@
             `;
             
             checkoutSummary.innerHTML = summaryHTML;
-            checkoutTotal.textContent = `${(subtotal + 5).toFixed(2)}`;
+            checkoutTotal.textContent = `${(subtotal + 0).toFixed(2)}`;
             
             checkoutModal.classList.add('active');
         }
@@ -1382,6 +1524,7 @@
                 // Clear cart and close modals after 3 seconds
                 setTimeout(() => {
                     cart = [];
+                    saveCart();
                     updateCart();
                     closeCheckout();
                     document.getElementById('successMessage').classList.remove('active');
@@ -1397,8 +1540,11 @@
                 submitBtn.textContent = 'Place Order';
             });
         }
-        
-        // Format card number input
+
+
+
+
+// Format card number input
         document.addEventListener('DOMContentLoaded', function() {
             const cardNumberInput = document.getElementById('cardNumber');
             const expiryInput = document.getElementById('expiry');
@@ -1570,7 +1716,3 @@
     </script>
 </body>
 </html>
-
-
-
-
