@@ -1458,7 +1458,7 @@
             checkoutModal.classList.remove('active');
         }
         
-      function submitOrder(event) {
+     function submitOrder(event) {
     event.preventDefault();
     
     // Disable submit button to prevent double submission
@@ -1479,9 +1479,11 @@
     // Generate NEW confirmation number for each order
     const confirmationNumber = 'MC' + Date.now() + Math.floor(Math.random() * 1000);
     
-    // Prepare detailed order information
-    let orderDetails = 'ORDER DETAILS:\n';
-    orderDetails += '═══════════════════════════════\n\n';
+    // Prepare detailed order information to match email template
+    let orderDetails = `Hello ${fullName},\n\n`;
+    orderDetails += `Thank you for your purchase from Marcell Fashion!\n\n`;
+    orderDetails += `Order Confirmation Number: ${confirmationNumber}\n\n`;
+    orderDetails += `Order Details:\n`;
     
     let subtotal = 0;
     
@@ -1489,21 +1491,23 @@
     cart.forEach((item, index) => {
         const itemTotal = item.price * item.quantity;
         subtotal += itemTotal;
-        orderDetails += `${index + 1}. ${item.name}\n`;
-        orderDetails += `   Quantity: ${item.quantity}\n`;
-        orderDetails += `   Price: $${item.price.toFixed(2)} each\n`;
-        orderDetails += `   Subtotal: $${itemTotal.toFixed(2)}\n\n`;
+        orderDetails += `${index + 1}. ${item.name} ${item.quantity}\n`;
     });
     
     const shipping = 0.00;
     const total = subtotal + shipping;
     
+    // Add shipping address and phone
+    orderDetails += `\nShipping Address: ${address} ${city} ${state} ${zipCode} ${country}\n`;
+    orderDetails += `Phone: ${phone}\n\n`;
+    
     // Add totals
-    orderDetails += '═══════════════════════════════\n';
-    orderDetails += `Subtotal: $${subtotal.toFixed(2)}\n`;
-    orderDetails += `Shipping: $${shipping.toFixed(2)}\n`;
-    orderDetails += `═══════════════════════════════\n`;
-    orderDetails += `TOTAL: $${total.toFixed(2)}\n`;
+    orderDetails += `Total: $${total.toFixed(2)}\n`;
+    orderDetails += `---\n`;
+    orderDetails += `Your order has been received and is being processed.\n`;
+    orderDetails += `If you have any questions, please reply to this email or contact us at xmarcellr@gmail.com.\n`;
+    orderDetails += `Thank you for shopping with Marcell Fashion!\n\n`;
+    orderDetails += `Best regards,\nMarcell Fashion\nwww.xmarcellr.com`;
     
     // Send email via EmailJS
     emailjs.send("service_02aotpn", "template_sr96bdb", {
@@ -1715,6 +1719,7 @@
 </body>
 </html>
                 
+
 
 
 
