@@ -27,7 +27,7 @@
             background: #000000;
         }
         
-   /* Cosmic Background with Deep Red */
+        /* Cosmic Background with Deep Red */
         .cosmic-background {
             position: fixed;
             top: 0;
@@ -58,6 +58,7 @@
                 nebula2 25s ease-in-out infinite,
                 nebula3 35s ease-in-out infinite;
         }
+        
         .stars {
             position: fixed;
             top: 0;
@@ -260,7 +261,7 @@
             position: absolute;
             top: -5px;
             right: -5px;
-            background: #8B0000;
+            background: #4a0000;
             color: #ffffff;
             border-radius: 50%;
             width: 20px;
@@ -395,7 +396,7 @@
         .remove-item {
             background: none;
             border: none;
-            color: #8B0000;
+            color: #4a0000;
             cursor: pointer;
             font-size: 0.85rem;
             text-decoration: underline;
@@ -428,7 +429,7 @@
         
         .checkout-button {
             width: 100%;
-            background: #8B0000;
+            background: #4a0000;
             color: #ffffff;
             border: none;
             padding: 1rem;
@@ -440,7 +441,7 @@
         }
         
         .checkout-button:hover {
-            background: #a00000;
+            background: #5c0000;
         }
         
         .empty-cart {
@@ -463,7 +464,8 @@
         .cart-overlay.active {
             display: block;
         }
-.checkout-modal {
+
+        .checkout-modal {
             position: fixed;
             top: 0;
             left: 0;
@@ -492,7 +494,7 @@
             border: 5px solid transparent;
             background: 
                 linear-gradient(#000000, #000000) padding-box,
-                linear-gradient(var(--angle), #8B0000, #000000, #000000, #000000, #8B0000, #000000, #000000, #000000) border-box;
+                linear-gradient(var(--angle), #4a0000, #000000, #000000, #000000, #4a0000, #000000, #000000, #000000) border-box;
             animation: rotateGradient 35s linear infinite;
         }
         
@@ -522,7 +524,7 @@
         }
         
         .close-checkout:hover {
-            color: #8B0000;
+            color: #4a0000;
         }
         
         .form-section {
@@ -562,7 +564,7 @@
         .form-group input:focus,
         .form-group select:focus {
             outline: none;
-            border-color: #8B0000;
+            border-color: #4a0000;
         }
         
         .form-row {
@@ -604,7 +606,7 @@
         
         .submit-order-button {
             width: 100%;
-            background: #8B0000;
+            background: #4a0000;
             color: #ffffff;
             border: none;
             padding: 1.2rem;
@@ -616,7 +618,7 @@
         }
         
         .submit-order-button:hover {
-            background: #a00000;
+            background: #5c0000;
         }
         
         .submit-order-button:disabled {
@@ -630,7 +632,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background: #000000;
-            border: 3px solid #8B0000;
+            border: 3px solid #4a0000;
             border-radius: 12px;
             padding: 2rem;
             text-align: center;
@@ -643,15 +645,10 @@
         }
         
         .success-message h2 {
-            color: #8B0000;
+            color: #4a0000;
             margin-bottom: 1rem;
         }
         
-
-
-
-
-
         .success-message p {
             color: #ffffff;
             margin-bottom: 0.5rem;
@@ -660,7 +657,7 @@
         .confirmation-number {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #8B0000;
+            color: #4a0000;
             margin: 1rem 0;
         }
         
@@ -737,12 +734,12 @@
             border-radius: 12px;
             padding: 1.5rem;
             transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 3px 15px rgba(139, 0, 0, 0.3);
+            box-shadow: 0 3px 15px rgba(74, 0, 0, 0.3);
             position: relative;
             border: 5px solid transparent;
             background: 
                 linear-gradient(#000000, #000000) padding-box,
-                linear-gradient(var(--angle), #8B0000, #000000, #000000, #000000, #8B0000, #000000, #000000, #000000) border-box;
+                linear-gradient(var(--angle), #4a0000, #000000, #000000, #000000, #4a0000, #000000, #000000, #000000) border-box;
             animation: rotateGradient 35s linear infinite;
             opacity: 0;
             transform: translateY(30px);
@@ -771,13 +768,13 @@
         
         .merch-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.5);
+            box-shadow: 0 8px 25px rgba(74, 0, 0, 0.5);
         }
         
         .merch-image {
             width: 100%;
             height: 300px;
-            background: #1a1a1a;
+            background: transparent;
             border-radius: 8px;
             margin-bottom: 1rem;
             border: 2px solid #ffffff;
@@ -794,7 +791,7 @@
         .photo-box {
             width: 100%;
             height: 100%;
-            background: #0a0a0a;
+            background: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -831,7 +828,7 @@
         }
         
         .carousel-btn:hover {
-            background: rgba(139, 0, 0, 0.9);
+            background: rgba(74, 0, 0, 0.9);
         }
         
         .carousel-btn.prev {
@@ -862,7 +859,7 @@
         }
         
         .carousel-dot.active {
-            background: #8B0000;
+            background: #4a0000;
         }
         
         .merch-image img {
@@ -915,7 +912,7 @@
             position: absolute;
             top: 1rem;
             right: 1rem;
-            background: #8B0000;
+            background: #4a0000;
             color: #ffffff;
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
@@ -982,7 +979,7 @@
             border: 5px solid transparent;
             background: 
                 linear-gradient(#000000, #000000) padding-box,
-                linear-gradient(var(--angle), #8B0000, #000000, #000000, #000000, #8B0000, #000000, #000000, #000000) border-box;
+                linear-gradient(var(--angle), #4a0000, #000000, #000000, #000000, #4a0000, #000000, #000000, #000000) border-box;
             animation: rotateGradient 35s linear infinite;
             opacity: 0;
             transform: translateY(30px);
@@ -1027,7 +1024,7 @@
                 top: 70px;
                 left: 0;
                 right: 0;
-                background: rgba(0, 0, 0, 0.98);
+		background: rgba(0, 0, 0, 0.98);
                 flex-direction: column;
                 gap: 0;
                 padding: 1rem 0;
@@ -1110,7 +1107,7 @@
         </div>
         <div class="nav-content">
             <ul>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html">Home</a></li>
             </ul>
         </div>
         <div class="hamburger">
@@ -1120,9 +1117,7 @@
         </div>
     </nav>
 
-
-
-<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
     
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
@@ -1212,14 +1207,14 @@
                 </div>
                 
                 <div class="form-section">
-                    <h3>Payment Information</h3>
-                    <div style="background: #1e40af; color: #ffffff; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; text-align: center; font-weight: 600;">
-                        💳 Secure Payment Processing by Stripe
-                    </div>
-                    <p style="color: #cccccc; font-size: 0.9rem; margin-bottom: 1rem; text-align: center;">
-                        You will be redirected to Stripe's secure checkout page
-                    </p>
-                </div>
+    <h3>Payment Information</h3>
+    <div style="background: transparent; color: #ffffff; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; text-align: center; font-weight: 600;">
+         Secure Payment Processing by Stripe
+    </div>
+    <p style="color: #cccccc; font-size: 0.9rem; margin-bottom: 1rem; text-align: center;">
+        You will be redirected to Stripe's secure checkout page
+    </p>
+</div>
                 
                 <button type="submit" class="submit-order-button">Proceed to Payment</button>
             </form>
@@ -1231,7 +1226,7 @@
         <p>Thank you for testing the checkout system!</p>
         <p class="confirmation-number" id="confirmationDisplay"></p>
         <p>A test confirmation email has been sent.</p>
-        <p style="color: #8B0000; font-size: 0.9rem; margin-top: 1rem;">No payment was processed - this is test mode only.</p>
+        <p style="color: #4a0000; font-size: 0.9rem; margin-top: 1rem;">No payment was processed - this is test mode only.</p>
     </div>
     
     <div class="container">
@@ -1439,7 +1434,7 @@
                 summaryHTML += `
                     <div class="order-summary-row">
                         <span>${item.name} x${item.quantity}</span>
-                        <span>${itemTotal.toFixed(2)}</span>
+                        <span>$${itemTotal.toFixed(2)}</span>
                     </div>
                 `;
             });
@@ -1447,7 +1442,7 @@
             summaryHTML += `
                 <div class="order-summary-row">
                     <span>Subtotal:</span>
-                    <span>${subtotal.toFixed(2)}</span>
+                    <span>$${subtotal.toFixed(2)}</span>
                 </div>
                 <div class="order-summary-row">
                     <span>Shipping:</span>
@@ -1456,7 +1451,7 @@
             `;
             
             checkoutSummary.innerHTML = summaryHTML;
-            checkoutTotal.textContent = `${(subtotal + 0).toFixed(2)}`;
+            checkoutTotal.textContent = `$${subtotal.toFixed(2)}`;
             
             checkoutModal.classList.add('active');
         }
@@ -1494,15 +1489,15 @@
             cart.forEach(item => {
                 const itemTotal = item.price * item.quantity;
                 subtotal += itemTotal;
-                orderDetails += `${item.name} x${item.quantity} - ${itemTotal.toFixed(2)}\n`;
+                orderDetails += `${item.name} x${item.quantity} - $${itemTotal.toFixed(2)}\n`;
             });
             
             const shipping = 0.00;
             const total = subtotal + shipping;
             
-            orderDetails += `\nSubtotal: ${subtotal.toFixed(2)}\n`;
-            orderDetails += `Shipping: ${shipping.toFixed(2)}\n`;
-            orderDetails += `Total: ${total.toFixed(2)}`;
+            orderDetails += `\nSubtotal: $${subtotal.toFixed(2)}\n`;
+            orderDetails += `Shipping: $${shipping.toFixed(2)}\n`;
+            orderDetails += `Total: $${total.toFixed(2)}`;
             
             // Send email via EmailJS
             emailjs.send("service_02aotpn", "template_sr96bdb", {
@@ -1541,10 +1536,7 @@
             });
         }
 
-
-
-
-// Format card number input
+        // Format card number input
         document.addEventListener('DOMContentLoaded', function() {
             const cardNumberInput = document.getElementById('cardNumber');
             const expiryInput = document.getElementById('expiry');
@@ -1640,7 +1632,7 @@
                             <div class="cart-item-image">${item.emoji}</div>
                             <div class="cart-item-details">
                                 <h4>${item.name}</h4>
-                                <p class="cart-item-price">${item.price.toFixed(2)}</p>
+                                <p class="cart-item-price">$${item.price.toFixed(2)}</p>
                                 <div class="quantity-control">
                                     <button class="quantity-btn" onclick="updateQuantity('${item.name}', -1)">-</button>
                                     <span style="color: #ffffff; margin: 0 0.5rem;">${item.quantity}</span>
@@ -1657,8 +1649,8 @@
                 const shippingCost = 0.00;
                 const totalAmount = subtotalAmount + shippingCost;
                 
-                subtotal.textContent = `${subtotalAmount.toFixed(2)}`;
-                total.textContent = `${totalAmount.toFixed(2)}`;
+                subtotal.textContent = `$${subtotalAmount.toFixed(2)}`;
+                total.textContent = `$${totalAmount.toFixed(2)}`;
                 
                 cartTotal.style.display = 'block';
                 checkoutBtn.style.display = 'block';
@@ -1716,3 +1708,4 @@
     </script>
 </body>
 </html>
+                
