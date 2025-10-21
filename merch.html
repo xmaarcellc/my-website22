@@ -27,37 +27,37 @@
             background: #000000;
         }
         
-        /* Cosmic Background with Deep Red */
-        .cosmic-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            background: 
-                radial-gradient(ellipse at 20% 30%, rgba(74, 0, 0, 0.2) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 70%, rgba(90, 0, 0, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(65, 0, 0, 0.12) 0%, transparent 60%),
-                radial-gradient(ellipse at 40% 80%, rgba(74, 0, 0, 0.18) 0%, transparent 45%),
-                radial-gradient(ellipse at 70% 20%, rgba(70, 0, 0, 0.15) 0%, transparent 55%);
-            background-size: 
-                200% 200%,
-                250% 250%,
-                180% 180%,
-                220% 220%,
-                240% 240%;
-            background-position: 
-                0% 0%,
-                100% 100%,
-                50% 50%,
-                20% 80%,
-                80% 20%;
-            animation: 
-                nebula1 30s ease-in-out infinite,
-                nebula2 25s ease-in-out infinite,
-                nebula3 35s ease-in-out infinite;
-        }
+       /* Cosmic Background with Deeper Red */
+.cosmic-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: 
+        radial-gradient(ellipse at 20% 30%, rgba(50, 0, 0, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(60, 0, 0, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(45, 0, 0, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 40% 80%, rgba(50, 0, 0, 0.18) 0%, transparent 45%),
+        radial-gradient(ellipse at 70% 20%, rgba(48, 0, 0, 0.15) 0%, transparent 55%);
+    background-size: 
+        200% 200%,
+        250% 250%,
+        180% 180%,
+        220% 220%,
+        240% 240%;
+    background-position: 
+        0% 0%,
+        100% 100%,
+        50% 50%,
+        20% 80%,
+        80% 20%;
+    animation: 
+        nebula1 30s ease-in-out infinite,
+        nebula2 25s ease-in-out infinite,
+        nebula3 35s ease-in-out infinite;
+}
         
         .stars {
             position: fixed;
@@ -140,16 +140,16 @@
             }
         }
         
-        header {
-            position: relative;
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-            overflow: hidden;
-            background: transparent;
-            border-bottom: 3px solid #ffffff;
-            z-index: 2;
-        }
+       header {
+    position: relative;
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+    overflow: hidden;
+    background: transparent;
+    border-bottom: none;
+    z-index: 2;
+}
         
         header h1 {
             font-size: 3rem;
@@ -218,19 +218,19 @@
             }
         }
         
-        nav {
-            background: rgba(0, 0, 0, 0.0);
-            padding: 1.5rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 3px solid #ffffff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(10px);
-        }
+       nav {
+    background: rgba(0, 0, 0, 0.0);
+    padding: 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(10px);
+}
         
         .nav-content {
             display: flex;
