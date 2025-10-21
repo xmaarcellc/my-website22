@@ -1458,80 +1458,89 @@
             checkoutModal.classList.remove('active');
         }
         
-        function submitOrder(event) {
-            event.preventDefault();
-            
-            // Disable submit button to prevent double submission
-            const submitBtn = event.target.querySelector('.submit-order-button');
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Processing...';
-            
-            // Get form data
-            const fullName = document.getElementById('fullName').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const address = document.getElementById('address').value;
-            const city = document.getElementById('city').value;
-            const state = document.getElementById('state').value;
-            const zipCode = document.getElementById('zipCode').value;
-            const country = document.getElementById('country').value;
-            
-            // Generate confirmation number
-            const confirmationNumber = Math.floor(Math.random() * 1000000000);
-            
-            // Prepare order details
-            let orderDetails = '';
-            let subtotal = 0;
-            
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                subtotal += itemTotal;
-                orderDetails += `${item.name} x${item.quantity} - $${itemTotal.toFixed(2)}\n`;
-            });
-            
-            const shipping = 0.00;
-            const total = subtotal + shipping;
-            
-            orderDetails += `\nSubtotal: $${subtotal.toFixed(2)}\n`;
-            orderDetails += `Shipping: $${shipping.toFixed(2)}\n`;
-            orderDetails += `Total: $${total.toFixed(2)}`;
-            
-            // Send email via EmailJS
-            emailjs.send("service_02aotpn", "template_sr96bdb", {
-                to_name: fullName,
-                to_email: email,
-                from_name: "Marcell Fashion",
-                order_details: orderDetails,
-                total: total.toFixed(2),
-                confirmation_number: confirmationNumber,
-                shipping_address: `${address}, ${city}, ${state} ${zipCode}, ${country}`,
-                phone: phone
-            })
-            .then(() => {
-                // Show success message
-                document.getElementById('confirmationDisplay').textContent = 
-                    `Confirmation #: ${confirmationNumber}`;
-                document.getElementById('successMessage').classList.add('active');
-                
-                // Clear cart and close modals after 3 seconds
-                setTimeout(() => {
-                    cart = [];
-                    saveCart();
-                    updateCart();
-                    closeCheckout();
-                    document.getElementById('successMessage').classList.remove('active');
-                    document.getElementById('checkoutForm').reset();
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Place Order';
-                }, 3000);
-            })
-            .catch((error) => {
-                console.error("EmailJS error:", error);
-                alert("There was an error processing your order. Please try again.");
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Place Order';
-            });
-        }
+      function submitOrder(event) {
+    event.preventDefault();
+    
+    // Disable submit button to prevent double submission
+    const submitBtn = event.target.querySelector('.submit-order-button');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Processing...';
+    
+    // Get form data
+    const fullName = document.getElementById('fullName').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
+    const city = document.getElementById('city').value;
+    const state = document.getElementById('state').value;
+    const zipCode = document.getElementById('zipCode').value;
+    const country = document.getElementById('country').value;
+    
+    // Generate NEW confirmation number for each order
+    const confirmationNumber = 'MC' + Date.now() + Math.floor(Math.random() * 1000);
+    
+    // Prepare detailed order information
+    let orderDetails = 'ORDER DETAILS:\n';
+    orderDetails += '═══════════════════════════════\n\n';
+    
+    let subtotal = 0;
+    
+    // Add each item to order details
+    cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        subtotal += itemTotal;
+        orderDetails += `${index + 1}. ${item.name}\n`;
+        orderDetails += `   Quantity: ${item.quantity}\n`;
+        orderDetails += `   Price: $${item.price.toFixed(2)} each\n`;
+        orderDetails += `   Subtotal: $${itemTotal.toFixed(2)}\n\n`;
+    });
+    
+    const shipping = 0.00;
+    const total = subtotal + shipping;
+    
+    // Add totals
+    orderDetails += '═══════════════════════════════\n';
+    orderDetails += `Subtotal: $${subtotal.toFixed(2)}\n`;
+    orderDetails += `Shipping: $${shipping.toFixed(2)}\n`;
+    orderDetails += `═══════════════════════════════\n`;
+    orderDetails += `TOTAL: $${total.toFixed(2)}\n`;
+    
+    // Send email via EmailJS
+    emailjs.send("service_02aotpn", "template_sr96bdb", {
+        to_name: fullName,
+        to_email: email,
+        from_name: "Marcell Fashion",
+        order_details: orderDetails,
+        total: total.toFixed(2),
+        confirmation_number: confirmationNumber,
+        shipping_address: `${address}, ${city}, ${state} ${zipCode}, ${country}`,
+        phone: phone
+    })
+    .then(() => {
+        // Show success message with confirmation number
+        document.getElementById('confirmationDisplay').textContent = 
+            `Confirmation #: ${confirmationNumber}`;
+        document.getElementById('successMessage').classList.add('active');
+        
+        // Clear cart and close modals after 5 seconds
+        setTimeout(() => {
+            cart = [];
+            saveCart();
+            updateCart();
+            closeCheckout();
+            document.getElementById('successMessage').classList.remove('active');
+            document.getElementById('checkoutForm').reset();
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Proceed to Payment';
+        }, 5000);
+    })
+    .catch((error) => {
+        console.error("EmailJS error:", error);
+        alert("There was an error processing your order. Please try again.");
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Proceed to Payment';
+    });
+}
 
         // Format card number input
         document.addEventListener('DOMContentLoaded', function() {
@@ -1706,6 +1715,7 @@
 </body>
 </html>
                 
+
 
 
 
