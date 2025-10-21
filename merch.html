@@ -1479,31 +1479,42 @@
     // Generate NEW confirmation number for each order
     const confirmationNumber = 'MC' + Date.now() + Math.floor(Math.random() * 1000);
     
-    // Calculate subtotal and prepare item details
+    // Prepare detailed order information
+    let orderDetails = 'ORDER DETAILS:\n';
+    orderDetails += '═══════════════════════════════\n\n';
+    
     let subtotal = 0;
-    const items = cart.map(item => {
+    
+    // Add each item to order details
+    cart.forEach((item, index) => {
         const itemTotal = item.price * item.quantity;
         subtotal += itemTotal;
-        return {
-            name: item.name,
-            quantity: item.quantity
-        };
+        orderDetails += `${index + 1}. ${item.name}\n`;
+        orderDetails += `   Quantity: ${item.quantity}\n`;
+        orderDetails += `   Price: $${item.price.toFixed(2)} each\n`;
+        orderDetails += `   Subtotal: $${itemTotal.toFixed(2)}\n\n`;
     });
     
     const shipping = 0.00;
     const total = subtotal + shipping;
     
-    // Send email via EmailJS with individual variables
+    // Add totals
+    orderDetails += '═══════════════════════════════\n';
+    orderDetails += `Subtotal: $${subtotal.toFixed(2)}\n`;
+    orderDetails += `Shipping: $${shipping.toFixed(2)}\n`;
+    orderDetails += `═══════════════════════════════\n`;
+    orderDetails += `TOTAL: $${total.toFixed(2)}\n`;
+    
+    // Send email via EmailJS
     emailjs.send("service_02aotpn", "template_sr96bdb", {
-        name: fullName,
+        to_name: fullName,
         to_email: email,
         from_name: "Marcell Fashion",
-        confirmationNumber: confirmationNumber,
-        items: items, // Array of {name, quantity} for the template to loop through
-        shipping_address: `${address} ${city} ${state} ${zipCode} ${country}`,
-        phone: phone,
-        subtotal: subtotal.toFixed(2),
-        total: total.toFixed(2)
+        order_details: orderDetails,
+        total: total.toFixed(2),
+        confirmation_number: confirmationNumber,
+        shipping_address: `${address}, ${city}, ${state} ${zipCode}, ${country}`,
+        phone: phone
     })
     .then(() => {
         // Show success message with confirmation number
@@ -1704,6 +1715,7 @@
 </body>
 </html>
                 
+
 
 
 
