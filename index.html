@@ -499,25 +499,11 @@
             border: 2px solid rgba(0, 0, 0, 0.2);
             transition: transform 0.3s;
             margin-bottom: 2rem;
+            height: 400px;
         }
         
         .collage-container:hover {
             transform: scale(1.02);
-        }
-        
-        .collage-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 0.5rem;
-            padding: 0.5rem;
-        }
-        
-        .collage-img,
-        .collage-video {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
         }
         
         .collage-overlay {
@@ -531,6 +517,7 @@
             text-align: center;
             font-size: 1.2rem;
             font-weight: 600;
+            z-index: 10;
         }
         
         /* Hobbies Gallery */
@@ -1016,9 +1003,9 @@
             <h2>About Me</h2>
             <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;">
                 <div style="flex: 1; min-width: 300px;">
-                    <p style="font-size: 1rem; line-height: 1.8; margin-bottom: 1.5rem;">I'm a Full-Stack Developer Economics graduate from Montclair State University, I specialize in building modern web applications using cutting-edge technologies. As the founder of Marcell Software Services LLC, I provide comprehensive software development, consulting, and visual content creation services.</p>
+                    <p style="font-size: 1rem; line-height: 1.8; margin-bottom: 1.5rem;">I'm a Full-Stack Developer and recent Economics graduate from Montclair State University with a minor in Computer Science. I specialize in building modern web applications using JavaScript, React, PHP, and other cutting-edge technologies. As the founder of Marcell Software Services LLC, I provide comprehensive software development, consulting, and visual content creation services.</p>
                     
-                    <p style="font-size: 1rem; line-height: 1.8;">Beyond Web Developing, I'm passionate about visual storytelling through photography and videography. My professional journey includes leadership roles at Starbucks, where I honed my skills in team management, operational efficiency, and customer experience, even mastering the art of latte design. I channel my creative energy into passion projects, capturing compelling content that brings ideas to life.</p>
+                    <p style="font-size: 1rem; line-height: 1.8;">Beyond coding, I'm passionate about visual storytelling through photography and videography, with expertise in Adobe Premiere and Photoshop. My professional journey includes leadership roles at Starbucks, where I honed my skills in team management, operational efficiency, and customer experience—even mastering the art of latte design. I channel my creative energy into automotive passion projects, capturing compelling content that brings ideas to life. Whether I'm developing a sleek portfolio website like Elicona Visuals, mentoring aspiring developers, or exploring new technologies, I'm driven by the process of transforming concepts into meaningful realities.</p>
                 </div>
                 <div style="flex: 0 0 auto; position: relative; width: 300px; height: 300px;">
                     <img id="aboutImg1" src="Rob_1.jpg" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #000000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); opacity: 1; transition: opacity 2s ease-in-out;">
@@ -1185,13 +1172,16 @@
                     
                     <h3 style="margin-bottom: 1rem;">Photography</h3>
                     <div class="collage-container" onclick="openPhotoCollage(0)">
-                        <div class="collage-grid">
-                            <img src="Heart.jpg" alt="Latte Art Heart" class="collage-img">
-                            <img src="Swan.jpg" alt="Latte Art Swan" class="collage-img">
-                            <img src="Tulip2.jpg" alt="Latte Art Tulip" class="collage-img">
-                            <img src="Tulip1.jpg" alt="Latte Art" class="collage-img">
-                            <img src="Volley.jpg.jpg" alt="Volleyball" class="collage-img">
-                        </div>
+                        <img src="Heart.jpg" alt="Latte Art Heart" class="photo-preview" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity 1.5s ease-in-out;">
+                        <img src="Swan.jpg" alt="Latte Art Swan" class="photo-preview" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out;">
+                        <img src="Tulip2.jpg" alt="Latte Art Tulip" class="photo-preview" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out;">
+                        <img src="Tulip1.jpg" alt="Latte Art" class="photo-preview" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out;">
+                        <img src="Volley.jpg.jpg" alt="Volleyball" class="photo-preview" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out;">
+                        <img src="Rob_1.jpg" alt="Rob Marcellin" class="photo-preview" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out;">
+                        <img src="IMG_9222.jpg" alt="Rob Marcellin" class="photo-preview" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out;">
+                        <img src="Header.Jpg.JPG" alt="Rob Marcellin" class="photo-preview" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out;">
+                        <img src="WhoAmI.jpg" alt="Rob Marcellin" class="photo-preview" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out;">
+                        <img src="Thisme.jpg.jpg" alt="Rob Marcellin" class="photo-preview" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out;">
                         <div class="collage-overlay">
                             <p>Click to view gallery</p>
                         </div>
@@ -1199,20 +1189,18 @@
                     
                     <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Videography</h3>
                     <div class="collage-container" onclick="openVideoCollage(0)">
-                        <div class="collage-grid">
-                            <video muted class="collage-video">
-                                <source src="vid.1.MOV" type="video/mp4">
-                            </video>
-                            <video muted class="collage-video">
-                                <source src="lunr5.MP4" type="video/mp4">
-                            </video>
-                            <video muted class="collage-video">
-                                <source src="lunr3.mov" type="video/mp4">
-                            </video>
-                            <video muted class="collage-video">
-                                <source src="vid.2.MP4" type="video/mp4">
-                            </video>
-                        </div>
+                        <video muted playsinline loop autoplay class="video-preview" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity 1.5s ease-in-out;">
+                            <source src="vid.1.MOV" type="video/mp4">
+                        </video>
+                        <video muted playsinline loop class="video-preview" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out;">
+                            <source src="lunr5.MP4" type="video/mp4">
+                        </video>
+                        <video muted playsinline loop class="video-preview" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out;">
+                            <source src="lunr3.mov" type="video/mp4">
+                        </video>
+                        <video muted playsinline loop class="video-preview" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out;">
+                            <source src="vid.2.MP4" type="video/mp4">
+                        </video>
                         <div class="collage-overlay">
                             <p>Click to view video gallery</p>
                         </div>
@@ -1390,7 +1378,12 @@
             { src: 'Swan.jpg', caption: 'Graceful swan design', type: 'image' },
             { src: 'Tulip2.jpg', caption: 'Multi-layered tulip perfection', type: 'image' },
             { src: 'Tulip1.jpg', caption: 'Perfect microfoam texture', type: 'image' },
-            { src: 'Volley.jpg.jpg', caption: 'Sports photography - Capturing the moment', type: 'image' }
+            { src: 'Volley.jpg.jpg', caption: 'Sports photography - Capturing the moment', type: 'image' },
+            { src: 'Rob_1.jpg', caption: 'Portrait photography', type: 'image' },
+            { src: 'IMG_9222.jpg', caption: 'Creative composition', type: 'image' },
+            { src: 'Header.Jpg.JPG', caption: 'Professional headshot', type: 'image' },
+            { src: 'WhoAmI.jpg', caption: 'Personal branding photography', type: 'image' },
+            { src: 'Thisme.jpg.jpg', caption: 'Lifestyle photography', type: 'image' }
         ];
         
         const videoGallery = [
@@ -1404,6 +1397,41 @@
         let currentMediaIndex = 0;
         let touchStartX = 0;
         let touchEndX = 0;
+        
+        // Photo preview cycling
+        const photoPreviewImages = document.querySelectorAll('.photo-preview');
+        let currentPhotoPreview = 0;
+        
+        if (photoPreviewImages.length > 0) {
+            setInterval(() => {
+                photoPreviewImages[currentPhotoPreview].style.opacity = '0';
+                currentPhotoPreview = (currentPhotoPreview + 1) % photoPreviewImages.length;
+                photoPreviewImages[currentPhotoPreview].style.opacity = '1';
+            }, 3000);
+        }
+        
+        // Video preview cycling
+        const videoPreviewElements = document.querySelectorAll('.video-preview');
+        let currentVideoPreview = 0;
+        
+        if (videoPreviewElements.length > 0) {
+            // Start the first video
+            videoPreviewElements[0].play();
+            
+            setInterval(() => {
+                // Pause current video
+                videoPreviewElements[currentVideoPreview].pause();
+                videoPreviewElements[currentVideoPreview].currentTime = 0;
+                videoPreviewElements[currentVideoPreview].style.opacity = '0';
+                
+                // Move to next video
+                currentVideoPreview = (currentVideoPreview + 1) % videoPreviewElements.length;
+                
+                // Play and show next video
+                videoPreviewElements[currentVideoPreview].style.opacity = '1';
+                videoPreviewElements[currentVideoPreview].play();
+            }, 4000);
+        }
         
         function openPhotoCollage(index) {
             event.stopPropagation();
@@ -1437,12 +1465,20 @@
             if (media.type === 'video') {
                 const video = document.createElement('video');
                 video.src = media.src;
-                video.controls = true;
                 video.muted = true;
                 video.autoplay = true;
+                video.loop = true;
+                video.playsInline = true;
                 video.style.maxWidth = '100%';
                 video.style.maxHeight = '70vh';
                 video.style.borderRadius = '12px';
+                
+                // Remove controls completely - no unmute option
+                video.removeAttribute('controls');
+                
+                // Prevent context menu to avoid unmute via right-click
+                video.addEventListener('contextmenu', (e) => e.preventDefault());
+                
                 container.appendChild(video);
             } else {
                 const img = document.createElement('img');
@@ -1484,10 +1520,6 @@
             if (touchEndX > touchStartX + swipeThreshold) {
                 changeMedia(-1);
             }
-        }
-        
-        function openGallery(element, type) {
-            // Keep for backwards compatibility but not used anymore
         }
         
         function closeGallery() {
@@ -1593,4 +1625,3 @@
     </script>
 </body>
 </html>
-
