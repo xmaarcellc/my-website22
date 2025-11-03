@@ -17,48 +17,19 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #000000;
-            background: #000000;
+            background: linear-gradient(to bottom, #ffffff 0%, #f5f5f5 10%, #e0e0e0 20%, #999999 40%, #666666 60%, #333333 80%, #000000 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
         }
         
-       /* Cosmic Background with Deeper Blue */
-    .cosmic-background {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 0;
-        background: 
-        radial-gradient(ellipse at 20% 30%, rgba(10, 20, 60, 0.2) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 70%, rgba(12, 25, 70, 0.15) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 50%, rgba(8, 18, 50, 0.12) 0%, transparent 60%),
-        radial-gradient(ellipse at 40% 80%, rgba(10, 22, 65, 0.18) 0%, transparent 45%),
-        radial-gradient(ellipse at 70% 20%, rgba(9, 20, 55, 0.15) 0%, transparent 55%);
-            background-size: 
-                200% 200%,
-                250% 250%,
-                180% 180%,
-                220% 220%,
-                240% 240%;
-            background-position: 
-                0% 0%,
-                100% 100%,
-                50% 50%,
-                20% 80%,
-                80% 20%;
-            animation: 
-                nebula1 30s ease-in-out infinite,
-                nebula2 25s ease-in-out infinite,
-                nebula3 35s ease-in-out infinite;
-        }
-        
+        /* Starfield Background */
         .stars {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1;
+            z-index: 0;
             pointer-events: none;
         }
         
@@ -67,59 +38,6 @@
             background: white;
             border-radius: 50%;
             animation: twinkle 3s infinite;
-        }
-        
-        @keyframes nebula1 {
-            0%, 100% {
-                background-position: 
-                    0% 0%,
-                    100% 100%,
-                    50% 50%,
-                    20% 80%,
-                    80% 20%;
-            }
-            25% {
-                background-position: 
-                    25% 25%,
-                    75% 75%,
-                    45% 55%,
-                    30% 70%,
-                    70% 30%;
-            }
-            50% {
-                background-position: 
-                    50% 50%,
-                    50% 50%,
-                    40% 60%,
-                    40% 60%,
-                    60% 40%;
-            }
-            75% {
-                background-position: 
-                    75% 25%,
-                    25% 75%,
-                    55% 45%,
-                    50% 50%,
-                    50% 50%;
-            }
-        }
-        
-        @keyframes nebula2 {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.7;
-            }
-        }
-        
-        @keyframes nebula3 {
-            0%, 100% {
-                filter: brightness(1) contrast(1.2);
-            }
-            50% {
-                filter: brightness(1.15) contrast(1.1);
-            }
         }
         
         @keyframes twinkle {
@@ -135,7 +53,7 @@
         
         header {
             position: relative;
-            color: white;
+            color: #000000;
             padding: 6rem 2rem;
             text-align: center;
             overflow: hidden;
@@ -165,6 +83,7 @@
             animation: fadeInLogo 2s ease-in forwards;
             animation-delay: 0.3s;
             margin-top: 10px;
+            filter: invert(1);
         }
         
         @keyframes fadeInName {
@@ -195,24 +114,22 @@
             letter-spacing: 1px;
             position: relative;
             z-index: 2;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         
         nav {
-            background: rgba(0, 0, 0, 0.0);
+            background: transparent;
             padding: 1.5rem;
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 3px solid #ffffff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            border-bottom: none;
+            box-shadow: none;
             opacity: 0;
             animation: fadeInNav 1s ease-in forwards;
             animation-delay: 2.2s;
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: center;
-            backdrop-filter: blur(10px);
         }
         
         @keyframes fadeInNav {
@@ -228,41 +145,67 @@
         
         nav ul {
             list-style: none;
+            display: none;
+            position: fixed;
+            top: 80px;
+            right: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            flex-direction: column;
+            gap: 0;
+            padding: 1rem 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            min-width: 200px;
+        }
+        
+        nav ul.active {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 3rem;
+        }
+        
+        nav ul li {
+            width: 100%;
+            text-align: center;
+            padding: 0.5rem 1rem;
+        }
+        
+        nav ul li:hover {
+            background: rgba(0, 0, 0, 0.05);
         }
         
         nav a {
-            color: #ffffff;
+            color: #000000;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
-            transition: color 0.3s, transform 0.3s;
-            display: inline-block;
+            transition: all 0.3s;
+            display: block;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid #000000;
+            border-radius: 25px;
+            background: transparent;
+            margin: 0.5rem;
         }
         
         nav a:hover {
-            color: #cccccc;
+            background: #000000;
+            color: #ffffff;
             transform: translateY(-2px);
         }
         
         .hamburger {
-            display: none;
+            display: flex;
             flex-direction: column;
             cursor: pointer;
             gap: 5px;
             padding: 0.5rem;
             z-index: 1001;
-            position: absolute;
-            right: 2rem;
         }
         
         .hamburger span {
             width: 25px;
             height: 3px;
-            background: #ffffff;
+            background: #000000;
             border-radius: 2px;
             transition: all 0.3s ease;
         }
@@ -288,11 +231,11 @@
         }
         
         section {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(255, 255, 255, 0.9);
             margin-bottom: 2rem;
             padding: 3rem;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(255,255,255,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
@@ -300,14 +243,14 @@
             border: 5px solid transparent;
             border-radius: 16px;
             background: 
-                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)) padding-box,
-                linear-gradient(var(--angle), #1e40af, #000000, #000000, #000000, #1e40af, #000000, #000000, #000000) border-box;
+                linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)) padding-box,
+                linear-gradient(var(--angle), #000000, #c0c0c0, #ffffff, #c0c0c0, #000000, #c0c0c0, #ffffff, #c0c0c0) border-box;
             animation: rotateGradient 35s linear infinite;
             backdrop-filter: blur(5px);
         }
         
         section h2 {
-            color: #ffffff;
+            color: #000000;
         }
         
         @property --angle {
@@ -353,23 +296,23 @@
         .consultation-button {
             display: inline-block;
             background: transparent;
-            color: #ffffff;
+            color: #000000;
             padding: 1.2rem 2.5rem;
             text-decoration: none;
             border-radius: 8px;
             margin-top: 1.5rem;
             transition: all 0.3s;
             font-weight: 600;
-            border: 2px solid #ffffff;
+            border: 2px solid #000000;
             cursor: pointer;
             font-size: 1.1rem;
         }
 
         .consultation-button:hover {
-            background: #ffffff;
-            color: #000000;
+            background: #000000;
+            color: #ffffff;
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         #about {
@@ -380,17 +323,6 @@
         #about > * {
             position: relative;
             z-index: 1;
-        }
-        
-        #hobbies {
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: 2rem;
-            margin-top: 0;
-            padding: 2rem;
-            transition: opacity 1.5s ease-out, transform 1.5s ease-out;
-            position: relative;
-            overflow: hidden;
         }
         
         .tentacle-container {
@@ -405,11 +337,11 @@
             flex: 1;
             min-width: 280px;
             max-width: 350px;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.9);
             padding: 1.5rem;
             border-radius: 8px;
-            border: 2px solid #ffffff;
-            box-shadow: 0 3px 15px rgba(255, 255, 255, 0.2);
+            border: 2px solid #000000;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
             position: relative;
             opacity: 0;
             transform: translateY(30px);
@@ -440,15 +372,15 @@
             left: 50%;
             width: 2px;
             height: 30px;
-            background: linear-gradient(to top, #ffffff, transparent);
+            background: linear-gradient(to top, #000000, transparent);
             transform: translateX(-50%);
         }
         
         .tentacle-box h3 {
             margin-top: 0;
             font-size: 1.2rem;
-            color: #ffffff;
-            border-bottom: 2px solid #ffffff;
+            color: #000000;
+            border-bottom: 2px solid #000000;
             padding-bottom: 0.5rem;
             margin-bottom: 1rem;
         }
@@ -460,19 +392,19 @@
         .tentacle-box .skill-tag {
             font-size: 0.8rem;
             padding: 0.4rem 0.8rem;
-            background: rgba(0, 0, 0, 0.6);
-            color: #ffffff;
-            border: 1px solid #ffffff;
+            background: rgba(0, 0, 0, 0.1);
+            color: #000000;
+            border: 1px solid #000000;
         }
         
         .tentacle-box p {
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
-            color: #ffffff;
+            color: #000000;
         }
         
         .tentacle-box a {
-            color: #ffffff;
+            color: #000000;
         }
         
         .services-header {
@@ -503,10 +435,110 @@
             opacity: 1;
             transform: translateX(0);
         }
-.modal {
+        
+        /* Professional Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(180deg, #1e40af, transparent);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #1e40af;
+            border: 3px solid #ffffff;
+        }
+        
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-content h3 {
+            color: #000000;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-date {
+            color: #666666;
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Hobbies Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            height: 250px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item img,
+        .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(255,255,255,0.95), transparent);
+            padding: 1rem;
+            color: #000000;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .modal {
             display: none;
             position: fixed;
-            z-index: 1000;
+            z-index: 10000;
             left: 0;
             top: 0;
             width: 100%;
@@ -539,10 +571,11 @@
             transform: scale(1);
         }
         
-        .modal-content img {
+        .modal-content img,
+        .modal-content video {
             width: 100%;
             height: auto;
-            max-height: 70vh;
+            max-height: 80vh;
             object-fit: contain;
             border-radius: 8px;
         }
@@ -567,19 +600,27 @@
         }
         
         .close-modal {
-            position: absolute;
+            position: fixed;
             top: 20px;
             right: 40px;
             color: #ffffff;
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
-            z-index: 1001;
+            z-index: 10001;
             transition: color 0.3s;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .close-modal:hover {
             color: #999999;
+            background: rgba(0, 0, 0, 0.9);
         }
         
         .modal-nav {
@@ -609,29 +650,16 @@
             right: 20px;
         }
         
-        .image-counter {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #ffffff;
-            font-size: 1rem;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            z-index: 1001;
-        }
-        
         h2 {
-            color: #ffffff;
+            color: #000000;
             font-size: 1.6rem;
             margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
-            border-bottom: 3px solid #ffffff;
+            border-bottom: 3px solid #000000;
         }
         
         h3 {
-            color: #ffffff;
+            color: #000000;
             font-size: 1.4rem;
             margin-top: 1.5rem;
             margin-bottom: 1rem;
@@ -645,12 +673,12 @@
         }
         
         .service-card {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.9);
             padding: 1.5rem;
             border-radius: 8px;
-            border: 2px solid #ffffff;
+            border: 2px solid #000000;
             transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 3px 15px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
             cursor: pointer;
             backdrop-filter: blur(3px);
         }
@@ -662,7 +690,7 @@
             align-items: center;
             user-select: none;
             padding-bottom: 0.5rem;
-            border-bottom: 2px solid #ffffff;
+            border-bottom: 2px solid #000000;
         }
         
         .service-card-header:hover {
@@ -671,14 +699,14 @@
         
         .service-card-header h3 {
             margin: 0;
-            color: #ffffff;
+            color: #000000;
         }
         
         .service-dropdown-arrow {
             font-size: 1.2rem;
             transition: transform 0.3s ease;
             margin-left: 1rem;
-            color: #ffffff;
+            color: #000000;
         }
         
         .service-dropdown-arrow.open {
@@ -700,7 +728,7 @@
         }
         
         .service-description p {
-            color: #ffffff;
+            color: #000000;
         }
         
         .service-card:hover {
@@ -710,11 +738,11 @@
         
         .service-card h3 {
             margin-top: 0;
-            color: #ffffff;
+            color: #000000;
         }
         
         .service-card p {
-            color: #ffffff;
+            color: #000000;
         }
         
         .skills-list {
@@ -725,176 +753,22 @@
         }
         
         .skill-tag {
-            background: rgba(0, 0, 0, 0.6);
-            color: #ffffff;
+            background: rgba(0, 0, 0, 0.1);
+            color: #000000;
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 600;
-        }
-        
-        .education-item {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            border: 2px solid #ffffff;
-            box-shadow: 0 3px 15px rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-            backdrop-filter: blur(3px);
-        }
-        
-        .education-item:hover {
-            opacity: 0.9;
-        }
-        
-        .experience-header {
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            user-select: none;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #ffffff;
-        }
-        
-        .experience-header:hover {
-            opacity: 0.8;
-        }
-        
-        .dropdown-arrow {
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
-            color: #ffffff;
-        }
-        
-        .dropdown-arrow.open {
-            transform: rotate(180deg);
-        }
-        
-        .experience-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
-            opacity: 0;
-        }
-        
-        .experience-content.open {
-            max-height: 1000px;
-            opacity: 1;
-        }
-        
-        .main-experience-section {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            border: 2px solid #ffffff;
-            box-shadow: 0 3px 15px rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-            backdrop-filter: blur(3px);
-        }
-        
-        .main-experience-section:hover {
-            opacity: 0.9;
-        }
-        
-        .main-experience-header {
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            user-select: none;
-        }
-        
-        .main-experience-header:hover {
-            opacity: 0.8;
-        }
-        
-        .main-experience-header h3 {
-            color: #ffffff;
-        }
-        
-        .main-experience-header .dropdown-arrow {
-            color: #ffffff;
-        }
-        
-        .main-experience-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
-            opacity: 0;
-        }
-        
-        .main-experience-content.open {
-            max-height: 2500px;
-            opacity: 1;
-        }
-        
-        .nested-experience-item {
-            margin-top: 1rem;
-            background: rgba(0, 0, 0, 0.5);
-            border: 2px solid #ffffff;
-        }
-        
-        .nested-experience-item h3 {
-            color: #ffffff !important;
-        }
-        
-        .nested-experience-item p {
-            color: #ffffff !important;
-        }
-        
-        .latte-image-float {
-            float: right;
-            width: 250px;
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out 0.3s, transform 0.8s ease-out 0.3s;
-        }
-        
-        .experience-content.open .latte-image-float {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .team-image-float {
-            float: right;
-            width: 250px;
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out 0.3s, transform 0.8s ease-out 0.3s;
-        }
-        
-        .experience-content.open .team-image-float {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .education-item h3 {
-            margin-top: 0;
-            color: #ffffff;
-        }
-        
-        .education-item p {
-            color: #ffffff;
-        }
-        
-        .education-item ul {
-            color: #ffffff;
+            border: 1px solid #000000;
         }
         
         .date {
-            color: #cccccc;
+            color: #666666;
             font-style: italic;
         }
         
         footer {
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             color: #ffffff;
             text-align: center;
             padding: 2rem;
@@ -923,17 +797,17 @@
         }
         
         section p {
-            color: #ffffff;
+            color: #000000;
             font-size: 0.95rem;
         }
         
         section ul {
-            color: #ffffff;
+            color: #000000;
             font-size: 0.95rem;
         }
         
         section li {
-            color: #ffffff;
+            color: #000000;
             font-size: 0.95rem;
         }
         
@@ -946,58 +820,66 @@
             color: #60a5fa;
         }
         
+        .main-experience-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 2px solid #000000;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            backdrop-filter: blur(3px);
+        }
+        
+        .main-experience-section:hover {
+            opacity: 0.9;
+        }
+        
+        .main-experience-header {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+        
+        .main-experience-header:hover {
+            opacity: 0.8;
+        }
+        
+        .main-experience-header h3 {
+            color: #000000;
+        }
+        
+        .dropdown-arrow {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            color: #000000;
+        }
+        
+        .dropdown-arrow.open {
+            transform: rotate(180deg);
+        }
+        
+        .main-experience-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+            opacity: 0;
+        }
+        
+        .main-experience-content.open {
+            max-height: 2500px;
+            opacity: 1;
+        }
+        
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2rem;
             }
             
-            nav ul {
-                display: none;
-                position: fixed;
-                top: 70px;
-                left: 0;
-                right: 0;
-                background: rgba(0, 0, 0, 0.98);
-                flex-direction: column;
-                gap: 0;
-                padding: 1rem 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            }
-            
-            nav ul.active {
-                display: flex;
-            }
-            
-            nav ul li {
-                width: 100%;
-                text-align: center;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            }
-            
-            nav ul li:last-child {
-                border-bottom: none;
-            }
-            
-            nav ul li a {
-                display: block;
-                padding: 1rem;
-                font-size: 1rem;
-            }
-            
-            .hamburger {
-                display: flex;
-            }
-            
             section {
                 padding: 2rem 1rem;
-            }
-            
-            #hobbies {
-                margin-left: 0;
-                margin-right: 0;
-                max-width: 100%;
-                padding: 1.5rem;
             }
             
             .tentacle-container {
@@ -1011,13 +893,6 @@
                 padding: 1rem;
             }
             
-            .team-image-float,
-            .latte-image-float {
-                width: 150px;
-                margin-left: 1rem;
-                margin-bottom: 0.75rem;
-            }
-            
             .modal-nav {
                 padding: 0.5rem 1rem;
                 font-size: 1.5rem;
@@ -1028,11 +903,14 @@
                 right: 20px;
                 font-size: 30px;
             }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="cosmic-background"></div>
     <div class="stars" id="starfield"></div>
     
     <header>
@@ -1047,6 +925,7 @@
             <li><a href="#about">About</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
+            <li><a href="#hobbies">Hobbies</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -1059,10 +938,12 @@
     
     <div class="container">
         <section id="about">
-            <h2>What I Do</h2>
-            <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
-                <div style="flex: 1; min-width: 300px; position: relative; min-height: 120px;">
-                    <p id="aboutText1" style="position: absolute; top: 0; left: 0; width: 100%; font-weight: bold; font-style: italic; color: #ffffff; font-size: 0.75rem; opacity: 1; transition: opacity 2s ease-in-out; margin: 0;">I'm a creative problem-solver who loves turning ideas into reality through code and visual storytelling. I'm driven by the process of helping people create something meaningful.</p>
+            <h2>About Me</h2>
+            <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;">
+                    <p style="font-size: 1rem; line-height: 1.8; margin-bottom: 1.5rem;">I'm a Full-Stack Developer and graduate from Montclair State University with a focus in Computer Science. I specialize in building modern websites using JavaScript, React, HTML, and other cutting-edge technologies. As the founder of Marcell Software Services LLC, I provide comprehensive software development, consulting, and visual content creation services.</p>
+                    
+                    <p style="font-size: 1rem; line-height: 1.8;">Beyond coding, I'm passionate about storytelling through photography and videography. My professional journey includes leadership roles at Starbucks, where I honed my skills in team management, operational efficiency, and customer experience, even mastering the art of latte design. I channel my creative energy into automotive passion projects, capturing compelling content that brings ideas to life. Whether I'm developing a sleek portfolio website, mentoring aspiring developers, or exploring new technologies, I'm driven by the process of transforming concepts into meaningful realities.</p>
                 </div>
                 <div style="flex: 0 0 auto; position: relative; width: 300px; height: 300px;">
                     <img id="aboutImg1" src="Rob_1.jpg" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #000000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); opacity: 1; transition: opacity 2s ease-in-out;">
@@ -1127,9 +1008,9 @@
                         </div>
                     </div>
                     
-                    <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 2px solid #ffffff;">
-                        <a href="https://www.linkedin.com/in/rob-marcellin-0a8b75256/" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #ffffff; font-weight: 600; transition: opacity 0.3s;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#ffffff">
+                    <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 2px solid #000000;">
+                        <a href="https://www.linkedin.com/in/rob-marcellin-0a8b75256/" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #000000; font-weight: 600; transition: opacity 0.3s;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#000000">
                                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                             </svg>
                             <span>View LinkedIn Profile</span>
@@ -1138,45 +1019,152 @@
                 </div>
             </div>
         </section>
-<section id="hobbies">
-            <div class="main-experience-section" onclick="toggleMainExperience(this.querySelector('.main-experience-header'))" style="background: transparent; border: 2px solid #ffffff; position: relative; z-index: 1;">
+        
+        <section id="experience">
+            <div class="main-experience-section" onclick="toggleMainExperience(this.querySelector('.main-experience-header'))">
                 <div class="main-experience-header">
-                    <h2 style="margin: 0; color: #ffffff; border-bottom: none; padding-bottom: 0;">Hobbies & Interests</h2>
-                    <span class="dropdown-arrow" style="color: #ffffff;">▼</span>
+                    <h2 style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">Professional Experience</h2>
+                    <span class="dropdown-arrow">▼</span>
                 </div>
                 
                 <div class="main-experience-content">
-                    <div style="position: relative; width: 100%; height: 400px; margin-top: 1rem; border-radius: 8px; overflow: hidden; border: 2px solid #ffffff;">
-                        <video id="hobbyVideo1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity 1.75s ease-in-out;" muted playsinline autoplay disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback">
-                            <source src="vid.1.MOV" type="video/mp4">
-                        </video>
-                        <video id="hobbyVideo2" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.75s ease-in-out;" muted playsinline autoplay disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback">
-                            <source src="lunr5.MP4" type="video/mp4">
-                        </video>
-                        <video id="hobbyVideo3" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.75s ease-in-out;" muted playsinline autoplay disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback">
-                            <source src="lunr3.mov" type="video/mp4">
-                        </video>
-                        <video id="hobbyVideo4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.75s ease-in-out;" muted playsinline autoplay disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback">
-                            <source src="vid.2.MP4" type="video/mp4">
-                        </video>
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.3); z-index: 1; pointer-events: none;"></div>
-                    </div>
-                    <div style="margin-top: 1rem; border-top: 2px solid #ffffff; border-bottom: 2px solid #ffffff; padding: 0.75rem 2rem; background: rgba(0, 0, 0, 0.8);">
-                        <p style="color: #ffffff; font-size: 0.75rem; font-weight: 600; text-align: center; margin: 0;">
-                            Exploring creativity through photography, videography, and automotive passion
-                        </p>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h3>Founder & Lead Developer</h3>
+                                <p style="font-weight: 600; color: #000000;">Marcell Software Services LLC</p>
+                                <p class="timeline-date">2024 - Present</p>
+                                <p>Founded and operate a software development consultancy providing comprehensive web development, software consulting, and visual content creation services to clients.</p>
+                                <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                                    <li>Custom web application development</li>
+                                    <li>Technical consulting and architecture design</li>
+                                    <li>Photography and videography services</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h3>Store Manager</h3>
+                                <p style="font-weight: 600; color: #000000;">Starbucks</p>
+                                <p class="timeline-date">April 2024 - July 2025</p>
+                                <ul style="margin-left: 1.5rem;">
+                                    <li>Managed staff scheduling, training, and performance development</li>
+                                    <li>Oversaw inventory management and cost control</li>
+                                    <li>Ensured exceptional customer experience and satisfaction</li>
+                                    <li>Implemented process improvements to increase efficiency</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h3>Shift Supervisor</h3>
+                                <p style="font-weight: 600; color: #000000;">Starbucks</p>
+                                <p class="timeline-date">2019 - 2024</p>
+                                <ul style="margin-left: 1.5rem;">
+                                    <li>Supervised daily shift operations and team members</li>
+                                    <li>Trained new baristas and team members</li>
+                                    <li>Handled customer concerns and conflict resolution</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h3>Barista</h3>
+                                <p style="font-weight: 600; color: #000000;">Starbucks</p>
+                                <p class="timeline-date">November 2017 - April 2019</p>
+                                <ul style="margin-left: 1.5rem;">
+                                    <li>Mastered espresso extraction and milk steaming techniques</li>
+                                    <li>Created intricate latte art designs</li>
+                                    <li>Provided friendly and efficient customer service</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-
+        
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            
+            <div class="service-card" style="margin-bottom: 2rem;">
+                <h3>Elicona Visuals</h3>
+                <p><strong>Website:</strong> <a href="https://eliconavisuals.com" target="_blank" style="color: #3b82f6;">eliconavisuals.com</a></p>
+                <p>A modern, professional portfolio website for a barber business. Features a sleek design with smooth animations, responsive layouts, and an intuitive user interface.</p>
+                <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript, React, PHP</p>
+            </div>
+        </section>
+        
+        <section id="hobbies">
+            <div class="main-experience-section" onclick="toggleMainExperience(this.querySelector('.main-experience-header'))">
+                <div class="main-experience-header">
+                    <h2 style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">Hobbies & Creative Work</h2>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                
+                <div class="main-experience-content">
+                    <p style="opacity: 0.9; margin-bottom: 1rem;">Exploring creativity through photography, videography, and automotive passion. Here's a glimpse into my creative pursuits and personal projects.</p>
+                    
+                    <div class="gallery-grid">
+                        <div class="gallery-item" onclick="openGallery(this, 'image')">
+                            <img src="Heart.jpg" alt="Latte Art">
+                            <div class="gallery-overlay">
+                                <p style="font-weight: 600; color: #000000;">Latte Art Mastery</p>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item" onclick="openGallery(this, 'video')">
+                            <video muted loop playsinline>
+                                <source src="vid.1.MOV" type="video/mp4">
+                            </video>
+                            <div class="gallery-overlay">
+                                <p style="font-weight: 600; color: #000000;">Automotive Passion</p>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item" onclick="openGallery(this, 'image')">
+                            <img src="Volley.jpg.jpg" alt="Photography">
+                            <div class="gallery-overlay">
+                                <p style="font-weight: 600; color: #000000;">Sports Photography</p>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item" onclick="openGallery(this, 'video')">
+                            <video muted loop playsinline>
+                                <source src="lunr5.MP4" type="video/mp4">
+                            </video>
+                            <div class="gallery-overlay">
+                                <p style="font-weight: 600; color: #000000;">Videography Projects</p>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item" onclick="openGallery(this, 'image')">
+                            <img src="Swan.jpg" alt="Latte Art Swan">
+                            <div class="gallery-overlay">
+                                <p style="font-weight: 600; color: #000000;">Creative Design</p>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item" onclick="openGallery(this, 'image')">
+                            <img src="Tulip2.jpg" alt="Latte Art Tulip">
+                            <div class="gallery-overlay">
+                                <p style="font-weight: 600; color: #000000;">Precision & Detail</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
         <section id="mentorship">
             <h2>Developer Mentorship Program</h2>
             <p style="font-size: 1.05rem; margin-bottom: 1.5rem;">Transform your coding journey with personalized guidance and hands-on mentorship. Learn modern web development from someone who's passionate about teaching.</p>
             
             <div style="text-align: center; margin-top: 2rem;">
                 <a href="mailto:xmarcellr@gmail.com?subject=Developer%20Mentorship%20Consultation&body=Hi%20Rob%2C%0D%0A%0D%0AI'm%20interested%20in%20learning%20more%20about%20your%20Developer%20Mentorship%20Program.%0D%0A%0D%0AMy%20experience%20level%3A%20%5BBeginner%2FIntermediate%2FAdvanced%5D%0D%0A%0D%0AWhat%20I%20want%20to%20learn%3A%20%5BYour%20goals%20here%5D%0D%0A%0D%0AMy%20availability%3A%20%5BYour%20schedule%5D%0D%0A%0D%0ALooking%20forward%20to%20hearing%20from%20you!%0D%0A%0D%0ABest%2C%0D%0A%5BYour%20Name%5D" class="consultation-button">Schedule a Free Consultation</a>
-
             </div>
         </section>
         
@@ -1187,44 +1175,44 @@
                         <h2 style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">Services</h2>
                         <img src="JustWhite.png" alt="LLC Logo" class="services-logo">
                     </div>
-                    <span class="dropdown-arrow" style="color: #ffffff;">▼</span>
+                    <span class="dropdown-arrow">▼</span>
                 </div>
                 
                 <div class="main-experience-content">
-                    <p style="margin-bottom: 1rem; color: #ffffff;">Marcell Software Services LLC offers comprehensive software development and consulting services tailored to your business needs:</p>
+                    <p style="margin-bottom: 1rem;">Marcell Software Services LLC offers comprehensive software development and consulting services tailored to your business needs:</p>
                     
                     <div class="service-grid">
                         <div class="service-card" onclick="event.stopPropagation(); toggleService(this.querySelector('.service-card-header'))">
-                            <h3 style="color: #ffffff; margin-bottom: 1rem;">Web Development</h3>
+                            <h3 style="margin-bottom: 1rem;">Web Development</h3>
                             <div class="service-card-header">
-                                <span style="color: #ffffff; font-weight: 600;">View Details</span>
+                                <span style="font-weight: 600;">View Details</span>
                                 <span class="service-dropdown-arrow">▼</span>
                             </div>
                             <div class="service-description">
-                                <p style="color: #ffffff;">Custom websites and web applications built with modern technologies. Responsive, fast, and user-friendly solutions.</p>
+                                <p>Custom websites and web applications built with modern technologies. Responsive, fast, and user-friendly solutions.</p>
                             </div>
                         </div>
                         
                         <div class="service-card" onclick="event.stopPropagation(); toggleService(this.querySelector('.service-card-header'))">
-                            <h3 style="color: #ffffff; margin-bottom: 1rem;">Software Consulting</h3>
+                            <h3 style="margin-bottom: 1rem;">Software Consulting</h3>
                             <div class="service-card-header">
-                                <span style="color: #ffffff; font-weight: 600;">View Details</span>
+                                <span style="font-weight: 600;">View Details</span>
                                 <span class="service-dropdown-arrow">▼</span>
                             </div>
                             <div class="service-description">
-                                <p style="color: #ffffff;">Expert guidance on technology stack selection, architecture design, and project planning.</p>
+                                <p>Expert guidance on technology stack selection, architecture design, and project planning.</p>
                             </div>
                         </div>
                         
                         <div class="service-card" onclick="event.stopPropagation(); toggleService(this.querySelector('.service-card-header'))">
-                            <h3 style="color: #ffffff; margin-bottom: 1rem;">Photography & Videography</h3>
+                            <h3 style="margin-bottom: 1rem;">Photography & Videography</h3>
                             <div class="service-card-header">
-                                <span style="color: #ffffff; font-weight: 600;">View Details</span>
+                                <span style="font-weight: 600;">View Details</span>
                                 <span class="service-dropdown-arrow">▼</span>
                             </div>
                             <div class="service-description">
-                                <p style="color: #ffffff; margin-bottom: 0.8rem;">Professional visual content creation for your brand and events:</p>
-                                <ul style="margin-left: 1.5rem; color: #ffffff;">
+                                <p style="margin-bottom: 0.8rem;">Professional visual content creation for your brand and events:</p>
+                                <ul style="margin-left: 1.5rem;">
                                     <li>Event photography and videography</li>
                                     <li>Product photography for e-commerce</li>
                                     <li>Video editing and post-production</li>
@@ -1235,110 +1223,7 @@
                             </div>
                         </div>
                     </div>
-                    
                 </div>
-            </div>
-        </section>
-
-        <section id="experience">
-            <div class="main-experience-section" onclick="toggleMainExperience(this.querySelector('.main-experience-header'))">
-                <div class="main-experience-header">
-                    <h2 style="margin: 0; color: #ffffff; border-bottom: none; padding-bottom: 0;">Professional Experience</h2>
-                    <span class="dropdown-arrow" style="color: #ffffff;">▼</span>
-                </div>
-                
-                <div class="main-experience-content">
-                    <div class="education-item nested-experience-item" onclick="event.stopPropagation(); toggleExperience(this.querySelector('.experience-header'))">
-                        <h3 style="color: #ffffff; margin-bottom: 1rem;">Store Manager</h3>
-                        <p style="margin: 0 0 1rem 0; color: #ffffff; font-weight: 600;">Starbucks</p>
-                        <div class="experience-header">
-                            <span style="color: #ffffff; font-weight: 600;">View Details</span>
-                            <span class="dropdown-arrow">▼</span>
-                        </div>
-                        <div class="experience-content">
-                            <div class="team-image-float">
-                                <img src="support.jpg" alt="Team Recognition" style="width: 100%; height: auto; border-radius: 8px; border: 2px solid #000000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
-                                <p style="text-align: center; margin-top: 0.5rem; font-style: italic; color: #ffffff; font-size: 0.85rem;">Recognizing our amazing team members</p>
-                            </div>
-                            <p class="date">April 2024 - July 2025</p>
-                            <ul style="margin-top: 0.5rem; margin-left: 1.5rem; color: #ffffff;">
-                                <li>Managed staff scheduling, training, and performance development</li>
-                                <li>Oversaw inventory management and cost control</li>
-                                <li>Ensured exceptional customer experience and satisfaction</li>
-                                <li>Implemented process improvements to increase efficiency</li>
-                            </ul>
-                            <div style="clear: both;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="education-item nested-experience-item" onclick="event.stopPropagation(); toggleExperience(this.querySelector('.experience-header'))">
-                        <h3 style="color: #ffffff; margin-bottom: 1rem;">Shift Supervisor</h3>
-                        <p style="margin: 0 0 1rem 0; color: #ffffff; font-weight: 600;">Starbucks</p>
-                        <div class="experience-header">
-                            <span style="color: #ffffff; font-weight: 600;">View Details</span>
-                            <span class="dropdown-arrow">▼</span>
-                        </div>
-                        <div class="experience-content">
-                            <p class="date">2019 - 2024</p>
-                            <p style="margin-top: 1rem; color: #ffffff;">Supervised daily shift operations and team members, ensuring smooth service delivery and maintaining store standards.</p>
-                            <ul style="margin-top: 0.5rem; margin-left: 1.5rem; color: #ffffff;">
-                                <li>Coordinated team activities and delegated tasks effectively</li>
-                                <li>Trained new baristas and team members</li>
-                                <li>Handled customer concerns and conflict resolution</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="education-item nested-experience-item" onclick="event.stopPropagation(); toggleExperience(this.querySelector('.experience-header'))">
-                        <h3 style="color: #ffffff; margin-bottom: 1rem;">Barista</h3>
-                        <p style="margin: 0 0 1rem 0; color: #ffffff; font-weight: 600;">Starbucks</p>
-                        <div class="experience-header">
-                            <span style="color: #ffffff; font-weight: 600;">View Details</span>
-                            <span class="dropdown-arrow">▼</span>
-                        </div>
-                        <div class="experience-content">
-                            <div class="latte-image-float" onclick="event.stopPropagation();">
-                                <div onclick="openModal(0)" style="cursor: pointer; background: #ffffff; border-radius: 8px; overflow: hidden; border: 2px solid #000000;">
-                                    <img src="Heart.jpg" alt="Latte Art" style="width: 100%; height: 200px; object-fit: cover;">
-                                    <div style="background: #000000; color: #ffffff; padding: 0.75rem; text-align: center;">
-                                        <strong>Click to View Gallery</strong>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="date">November 2017 - April 2019</p>
-                            <ul style="margin-top: 0.5rem; margin-left: 1.5rem; color: #ffffff;">
-                                <li>Mastered espresso extraction and milk steaming techniques</li>
-                                <li>Created intricate latte art designs</li>
-                                <li>Provided friendly and efficient customer service</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <div id="imageModal" class="modal">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <div class="image-counter" id="imageCounter"></div>
-            <button class="modal-nav prev" onclick="changeModalImage(-1)">❮</button>
-            <button class="modal-nav next" onclick="changeModalImage(1)">❯</button>
-            <div class="modal-content">
-                <img id="modalImage" src="" alt="Latte Art">
-                <div class="modal-caption" id="modalCaption"></div>
-                <div class="modal-instructions">
-                    Use arrow keys or swipe to navigate • Press ESC to close
-                </div>
-            </div>
-        </div>
-        
-        <section id="projects">
-            <h2>Featured Projects</h2>
-            
-            <div class="service-card" style="margin-bottom: 2rem;">
-                <h3 style="color: #ffffff;">Elicona Visuals</h3>
-                <p style="color: #ffffff;"><strong>Website:</strong> <a href="https://eliconavisuals.com" target="_blank" style="color: #3b82f6;">eliconavisuals.com</a></p>
-                <p style="color: #ffffff;">A modern, professional portfolio website for a barber business. Features a sleek design with smooth animations, responsive layouts, and an intuitive user interface.</p>
-                <p style="color: #ffffff;"><strong>Technologies Used:</strong> HTML, CSS, JavaScript, React, PHP</p>
             </div>
         </section>
         
@@ -1353,6 +1238,13 @@
                 <a href="https://buy.stripe.com/cNibJ1c5u1Tg6wE0N4eZ207" target="_blank" class="cta-button" style="font-size: 1rem; padding: 1rem 2rem; margin-top: 1rem;">Contribute</a>
             </div>
         </section>
+    </div>
+    
+    <div id="galleryModal" class="modal" onclick="closeGallery()">
+        <span class="close-modal" onclick="closeGallery()">&times;</span>
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div id="modalMediaContainer"></div>
+        </div>
     </div>
         
     <footer>
@@ -1426,135 +1318,54 @@
             tentacleObserver.observe(box);
         });
         
-        const images = [
-            {
-                src: 'Heart.jpg',
-                caption: 'Classic heart pour'
-            },
-            {
-                src: 'Swan.jpg',
-                caption: 'Graceful swan design'
-            },
-            {
-                src: 'Tulip2.jpg',
-                caption: 'Multi-layered tulip'
-            },
-            {
-                src: 'Tulip1.jpg',
-                caption: 'Perfect microfoam texture'
+        function openGallery(element, type) {
+            const modal = document.getElementById('galleryModal');
+            const container = document.getElementById('modalMediaContainer');
+            container.innerHTML = '';
+            
+            if (type === 'video') {
+                const video = element.querySelector('video');
+                const newVideo = document.createElement('video');
+                newVideo.src = video.querySelector('source').src;
+                newVideo.controls = true;
+                newVideo.autoplay = true;
+                newVideo.style.maxWidth = '100%';
+                newVideo.style.maxHeight = '80vh';
+                newVideo.style.borderRadius = '12px';
+                container.appendChild(newVideo);
+            } else {
+                const img = element.querySelector('img');
+                const newImg = document.createElement('img');
+                newImg.src = img.src;
+                newImg.alt = img.alt;
+                container.appendChild(newImg);
             }
-        ];
-        
-        let currentModalIndex = 0;
-        let touchStartX = 0;
-        let touchEndX = 0;
-        
-        function openModal(index) {
-            currentModalIndex = index;
-            const modal = document.getElementById('imageModal');
-            const modalImage = document.getElementById('modalImage');
-            const modalCaption = document.getElementById('modalCaption');
-            const imageCounter = document.getElementById('imageCounter');
             
-            modal.style.display = 'flex';
-            setTimeout(() => {
-                modal.classList.add('active');
-            }, 10);
-            
-            modalImage.src = images[index].src;
-            modalCaption.textContent = images[index].caption;
-            imageCounter.textContent = `${index + 1} / ${images.length}`;
+            modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
         
-        function closeModal() {
-            const modal = document.getElementById('imageModal');
+        function closeGallery() {
+            const modal = document.getElementById('galleryModal');
             modal.classList.remove('active');
-            setTimeout(() => {
-                modal.style.display = 'none';
-            }, 400);
             document.body.style.overflow = 'auto';
         }
         
-        function changeModalImage(direction) {
-            currentModalIndex += direction;
-            
-            if (currentModalIndex >= images.length) {
-                currentModalIndex = 0;
-            } else if (currentModalIndex < 0) {
-                currentModalIndex = images.length - 1;
-            }
-            
-            const modalImage = document.getElementById('modalImage');
-            const modalCaption = document.getElementById('modalCaption');
-            const imageCounter = document.getElementById('imageCounter');
-            
-            const modalContent = document.querySelector('.modal-content');
-            modalContent.style.opacity = '0';
-            modalContent.style.transform = 'scale(0.95)';
-            
-            setTimeout(() => {
-                modalImage.src = images[currentModalIndex].src;
-                modalCaption.textContent = images[currentModalIndex].caption;
-                imageCounter.textContent = `${currentModalIndex + 1} / ${images.length}`;
-                
-                modalContent.style.opacity = '1';
-                modalContent.style.transform = 'scale(1)';
-            }, 200);
-        }
-        
-        function handleTouchStart(e) {
-            touchStartX = e.changedTouches[0].screenX;
-        }
-        
-        function handleTouchEnd(e) {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }
-        
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            if (touchEndX < touchStartX - swipeThreshold) {
-                changeModalImage(1);
-            }
-            if (touchEndX > touchStartX + swipeThreshold) {
-                changeModalImage(-1);
-            }
-        }
-        
-        const modal = document.getElementById('imageModal');
-        if (modal) {
-            modal.addEventListener('touchstart', handleTouchStart, false);
-            modal.addEventListener('touchend', handleTouchEnd, false);
-            
-            modal.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeModal();
-                }
+        document.querySelectorAll('.gallery-item video').forEach(video => {
+            video.parentElement.addEventListener('mouseenter', () => {
+                video.play();
             });
-        }
-        
-        document.addEventListener('keydown', function(e) {
-            const modal = document.getElementById('imageModal');
-            
-            if (modal && modal.classList.contains('active')) {
-                if (e.key === 'Escape') {
-                    closeModal();
-                } else if (e.key === 'ArrowLeft') {
-                    changeModalImage(-1);
-                } else if (e.key === 'ArrowRight') {
-                    changeModalImage(1);
-                }
-            }
+            video.parentElement.addEventListener('mouseleave', () => {
+                video.pause();
+                video.currentTime = 0;
+            });
         });
         
-        function toggleExperience(header) {
-            const content = header.nextElementSibling;
-            const arrow = header.querySelector('.dropdown-arrow');
-            
-            content.classList.toggle('open');
-            arrow.classList.toggle('open');
-        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeGallery();
+            }
+        });
         
         function toggleMainExperience(header) {
             const content = header.nextElementSibling;
@@ -1570,73 +1381,6 @@
             
             description.classList.toggle('open');
             arrow.classList.toggle('open');
-        }
-        
-        const hobbyVideo1 = document.getElementById('hobbyVideo1');
-        const hobbyVideo2 = document.getElementById('hobbyVideo2');
-        const hobbyVideo3 = document.getElementById('hobbyVideo3');
-        const hobbyVideo4 = document.getElementById('hobbyVideo4');
-        
-        if (hobbyVideo1 && hobbyVideo2 && hobbyVideo3 && hobbyVideo4) {
-            let currentVideo = 1;
-            
-            hobbyVideo1.play();
-            
-            hobbyVideo1.addEventListener('loadedmetadata', function() {
-                const duration1 = hobbyVideo1.duration;
-                
-                hobbyVideo1.addEventListener('timeupdate', function() {
-                    if (currentVideo === 1 && hobbyVideo1.currentTime >= duration1 - 1.75) {
-                        hobbyVideo2.currentTime = 0;
-                        hobbyVideo2.play();
-                        hobbyVideo2.style.opacity = '1';
-                        hobbyVideo1.style.opacity = '0';
-                        currentVideo = 2;
-                    }
-                });
-            });
-            
-            hobbyVideo2.addEventListener('loadedmetadata', function() {
-                const duration2 = hobbyVideo2.duration;
-                
-                hobbyVideo2.addEventListener('timeupdate', function() {
-                    if (currentVideo === 2 && hobbyVideo2.currentTime >= duration2 - 1.75) {
-                        hobbyVideo3.currentTime = 0;
-                        hobbyVideo3.play();
-                        hobbyVideo3.style.opacity = '1';
-                        hobbyVideo2.style.opacity = '0';
-                        currentVideo = 3;
-                    }
-                });
-            });
-            
-            hobbyVideo3.addEventListener('loadedmetadata', function() {
-                const duration3 = hobbyVideo3.duration;
-                
-                hobbyVideo3.addEventListener('timeupdate', function() {
-                    if (currentVideo === 3 && hobbyVideo3.currentTime >= duration3 - 1.5) {
-                        hobbyVideo4.currentTime = 0;
-                        hobbyVideo4.play();
-                        hobbyVideo4.style.opacity = '1';
-                        hobbyVideo3.style.opacity = '0';
-                        currentVideo = 4;
-                    }
-                });
-            });
-            
-            hobbyVideo4.addEventListener('loadedmetadata', function() {
-                const duration4 = hobbyVideo4.duration;
-                
-                hobbyVideo4.addEventListener('timeupdate', function() {
-                    if (currentVideo === 4 && hobbyVideo4.currentTime >= duration4 - 1.75) {
-                        hobbyVideo1.currentTime = 0;
-                        hobbyVideo1.play();
-                        hobbyVideo1.style.opacity = '1';
-                        hobbyVideo4.style.opacity = '0';
-                        currentVideo = 1;
-                    }
-                });
-            });
         }
         
         const aboutImages = [
@@ -1657,8 +1401,6 @@
                 aboutImages[currentAboutImg].style.opacity = '1';
             }, 4000);
         }
-        
-        const aboutText1 = document.getElementById('aboutText1');
         
         const edu1 = document.getElementById('edu1');
         const edu2 = document.getElementById('edu2');
