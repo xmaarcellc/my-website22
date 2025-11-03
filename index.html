@@ -490,6 +490,49 @@
             margin-bottom: 0.5rem;
         }
         
+        /* Hobbies Collage */
+        .collage-container {
+            position: relative;
+            cursor: pointer;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            margin-bottom: 2rem;
+        }
+        
+        .collage-container:hover {
+            transform: scale(1.02);
+        }
+        
+        .collage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+            padding: 0.5rem;
+        }
+        
+        .collage-img,
+        .collage-video {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .collage-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 2rem;
+            color: white;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
         /* Hobbies Gallery */
         .gallery-grid {
             display: grid;
@@ -578,6 +621,38 @@
             max-height: 80vh;
             object-fit: contain;
             border-radius: 8px;
+        }
+        
+        .swipe-instructions {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            z-index: 10002;
+            animation: fadeInOut 4s ease-in-out infinite;
+        }
+        
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        .media-counter {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 1rem;
+            z-index: 10002;
         }
         
         .modal-caption {
@@ -941,9 +1016,9 @@
             <h2>About Me</h2>
             <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;">
                 <div style="flex: 1; min-width: 300px;">
-                    <p style="font-size: 1rem; line-height: 1.8; margin-bottom: 1.5rem;">I'm a Full-Stack Developer and graduate from Montclair State University with a focus in Computer Science. I specialize in building modern websites using JavaScript, React, HTML, and other cutting-edge technologies. As the founder of Marcell Software Services LLC, I provide comprehensive software development, consulting, and visual content creation services.</p>
+                    <p style="font-size: 1rem; line-height: 1.8; margin-bottom: 1.5rem;">I'm a Full-Stack Developer and recent Economics graduate from Montclair State University with a minor in Computer Science. I specialize in building modern web applications using JavaScript, React, PHP, and other cutting-edge technologies. As the founder of Marcell Software Services LLC, I provide comprehensive software development, consulting, and visual content creation services.</p>
                     
-                    <p style="font-size: 1rem; line-height: 1.8;">Beyond coding, I'm passionate about storytelling through photography and videography. My professional journey includes leadership roles at Starbucks, where I honed my skills in team management, operational efficiency, and customer experience, even mastering the art of latte design. I channel my creative energy into automotive passion projects, capturing compelling content that brings ideas to life. Whether I'm developing a sleek portfolio website, mentoring aspiring developers, or exploring new technologies, I'm driven by the process of transforming concepts into meaningful realities.</p>
+                    <p style="font-size: 1rem; line-height: 1.8;">Beyond coding, I'm passionate about visual storytelling through photography and videography, with expertise in Adobe Premiere and Photoshop. My professional journey includes leadership roles at Starbucks, where I honed my skills in team management, operational efficiency, and customer experience—even mastering the art of latte design. I channel my creative energy into automotive passion projects, capturing compelling content that brings ideas to life. Whether I'm developing a sleek portfolio website like Elicona Visuals, mentoring aspiring developers, or exploring new technologies, I'm driven by the process of transforming concepts into meaningful realities.</p>
                 </div>
                 <div style="flex: 0 0 auto; position: relative; width: 300px; height: 300px;">
                     <img id="aboutImg1" src="Rob_1.jpg" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #000000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); opacity: 1; transition: opacity 2s ease-in-out;">
@@ -1106,53 +1181,40 @@
                 </div>
                 
                 <div class="main-experience-content">
-                    <p style="opacity: 0.9; margin-bottom: 1rem;">Exploring creativity through photography, videography, and automotive passion. Here's a glimpse into my creative pursuits and personal projects.</p>
+                    <p style="opacity: 0.9; margin-bottom: 2rem;">Exploring creativity through photography, videography, and automotive passion. Here's a glimpse into my creative pursuits and personal projects.</p>
                     
-                    <div class="gallery-grid">
-                        <div class="gallery-item" onclick="openGallery(this, 'image')">
-                            <img src="Heart.jpg" alt="Latte Art">
-                            <div class="gallery-overlay">
-                                <p style="font-weight: 600; color: #000000;">Latte Art Mastery</p>
-                            </div>
+                    <h3 style="margin-bottom: 1rem;">Photography</h3>
+                    <div class="collage-container" onclick="openPhotoCollage(0)">
+                        <div class="collage-grid">
+                            <img src="Heart.jpg" alt="Latte Art Heart" class="collage-img">
+                            <img src="Swan.jpg" alt="Latte Art Swan" class="collage-img">
+                            <img src="Tulip2.jpg" alt="Latte Art Tulip" class="collage-img">
+                            <img src="Tulip1.jpg" alt="Latte Art" class="collage-img">
+                            <img src="Volley.jpg.jpg" alt="Volleyball" class="collage-img">
                         </div>
-                        
-                        <div class="gallery-item" onclick="openGallery(this, 'video')">
-                            <video muted loop playsinline>
+                        <div class="collage-overlay">
+                            <p>Click to view gallery</p>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Videography</h3>
+                    <div class="collage-container" onclick="openVideoCollage(0)">
+                        <div class="collage-grid">
+                            <video muted class="collage-video">
                                 <source src="vid.1.MOV" type="video/mp4">
                             </video>
-                            <div class="gallery-overlay">
-                                <p style="font-weight: 600; color: #000000;">Automotive Passion</p>
-                            </div>
-                        </div>
-                        
-                        <div class="gallery-item" onclick="openGallery(this, 'image')">
-                            <img src="Volley.jpg.jpg" alt="Photography">
-                            <div class="gallery-overlay">
-                                <p style="font-weight: 600; color: #000000;">Sports Photography</p>
-                            </div>
-                        </div>
-                        
-                        <div class="gallery-item" onclick="openGallery(this, 'video')">
-                            <video muted loop playsinline>
+                            <video muted class="collage-video">
                                 <source src="lunr5.MP4" type="video/mp4">
                             </video>
-                            <div class="gallery-overlay">
-                                <p style="font-weight: 600; color: #000000;">Videography Projects</p>
-                            </div>
+                            <video muted class="collage-video">
+                                <source src="lunr3.mov" type="video/mp4">
+                            </video>
+                            <video muted class="collage-video">
+                                <source src="vid.2.MP4" type="video/mp4">
+                            </video>
                         </div>
-                        
-                        <div class="gallery-item" onclick="openGallery(this, 'image')">
-                            <img src="Swan.jpg" alt="Latte Art Swan">
-                            <div class="gallery-overlay">
-                                <p style="font-weight: 600; color: #000000;">Creative Design</p>
-                            </div>
-                        </div>
-                        
-                        <div class="gallery-item" onclick="openGallery(this, 'image')">
-                            <img src="Tulip2.jpg" alt="Latte Art Tulip">
-                            <div class="gallery-overlay">
-                                <p style="font-weight: 600; color: #000000;">Precision & Detail</p>
-                            </div>
+                        <div class="collage-overlay">
+                            <p>Click to view video gallery</p>
                         </div>
                     </div>
                 </div>
@@ -1242,8 +1304,13 @@
     
     <div id="galleryModal" class="modal" onclick="closeGallery()">
         <span class="close-modal" onclick="closeGallery()">&times;</span>
+        <div class="swipe-instructions">Swipe or use arrow keys to navigate</div>
+        <button class="modal-nav prev" onclick="event.stopPropagation(); changeMedia(-1)">❮</button>
+        <button class="modal-nav next" onclick="event.stopPropagation(); changeMedia(1)">❯</button>
+        <div class="media-counter" id="mediaCounter"></div>
         <div class="modal-content" onclick="event.stopPropagation()">
             <div id="modalMediaContainer"></div>
+            <div class="modal-caption" id="modalCaption"></div>
         </div>
     </div>
         
@@ -1318,31 +1385,109 @@
             tentacleObserver.observe(box);
         });
         
-        function openGallery(element, type) {
+        const photoGallery = [
+            { src: 'Heart.jpg', caption: 'Classic heart pour - Latte art mastery', type: 'image' },
+            { src: 'Swan.jpg', caption: 'Graceful swan design', type: 'image' },
+            { src: 'Tulip2.jpg', caption: 'Multi-layered tulip perfection', type: 'image' },
+            { src: 'Tulip1.jpg', caption: 'Perfect microfoam texture', type: 'image' },
+            { src: 'Volley.jpg.jpg', caption: 'Sports photography - Capturing the moment', type: 'image' }
+        ];
+        
+        const videoGallery = [
+            { src: 'vid.1.MOV', caption: 'Automotive passion project', type: 'video' },
+            { src: 'lunr5.MP4', caption: 'Creative videography', type: 'video' },
+            { src: 'lunr3.mov', caption: 'Dynamic automotive content', type: 'video' },
+            { src: 'vid.2.MP4', caption: 'Motion and style', type: 'video' }
+        ];
+        
+        let currentGallery = [];
+        let currentMediaIndex = 0;
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        function openPhotoCollage(index) {
+            event.stopPropagation();
+            currentGallery = photoGallery;
+            currentMediaIndex = index;
+            openMediaModal();
+        }
+        
+        function openVideoCollage(index) {
+            event.stopPropagation();
+            currentGallery = videoGallery;
+            currentMediaIndex = index;
+            openMediaModal();
+        }
+        
+        function openMediaModal() {
             const modal = document.getElementById('galleryModal');
+            modal.classList.add('active');
+            displayMedia();
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function displayMedia() {
             const container = document.getElementById('modalMediaContainer');
+            const caption = document.getElementById('modalCaption');
+            const counter = document.getElementById('mediaCounter');
+            const media = currentGallery[currentMediaIndex];
+            
             container.innerHTML = '';
             
-            if (type === 'video') {
-                const video = element.querySelector('video');
-                const newVideo = document.createElement('video');
-                newVideo.src = video.querySelector('source').src;
-                newVideo.controls = true;
-                newVideo.autoplay = true;
-                newVideo.style.maxWidth = '100%';
-                newVideo.style.maxHeight = '80vh';
-                newVideo.style.borderRadius = '12px';
-                container.appendChild(newVideo);
+            if (media.type === 'video') {
+                const video = document.createElement('video');
+                video.src = media.src;
+                video.controls = true;
+                video.muted = true;
+                video.autoplay = true;
+                video.style.maxWidth = '100%';
+                video.style.maxHeight = '70vh';
+                video.style.borderRadius = '12px';
+                container.appendChild(video);
             } else {
-                const img = element.querySelector('img');
-                const newImg = document.createElement('img');
-                newImg.src = img.src;
-                newImg.alt = img.alt;
-                container.appendChild(newImg);
+                const img = document.createElement('img');
+                img.src = media.src;
+                img.alt = media.caption;
+                container.appendChild(img);
             }
             
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            caption.textContent = media.caption;
+            counter.textContent = `${currentMediaIndex + 1} / ${currentGallery.length}`;
+        }
+        
+        function changeMedia(direction) {
+            currentMediaIndex += direction;
+            
+            if (currentMediaIndex >= currentGallery.length) {
+                currentMediaIndex = 0;
+            } else if (currentMediaIndex < 0) {
+                currentMediaIndex = currentGallery.length - 1;
+            }
+            
+            displayMedia();
+        }
+        
+        function handleTouchStart(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }
+        
+        function handleTouchEnd(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            if (touchEndX < touchStartX - swipeThreshold) {
+                changeMedia(1);
+            }
+            if (touchEndX > touchStartX + swipeThreshold) {
+                changeMedia(-1);
+            }
+        }
+        
+        function openGallery(element, type) {
+            // Keep for backwards compatibility but not used anymore
         }
         
         function closeGallery() {
@@ -1351,19 +1496,23 @@
             document.body.style.overflow = 'auto';
         }
         
-        document.querySelectorAll('.gallery-item video').forEach(video => {
-            video.parentElement.addEventListener('mouseenter', () => {
-                video.play();
-            });
-            video.parentElement.addEventListener('mouseleave', () => {
-                video.pause();
-                video.currentTime = 0;
-            });
-        });
+        const modal = document.getElementById('galleryModal');
+        if (modal) {
+            modal.addEventListener('touchstart', handleTouchStart, false);
+            modal.addEventListener('touchend', handleTouchEnd, false);
+        }
         
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeGallery();
+            const modal = document.getElementById('galleryModal');
+            
+            if (modal && modal.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeGallery();
+                } else if (e.key === 'ArrowLeft') {
+                    changeMedia(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeMedia(1);
+                }
             }
         });
         
