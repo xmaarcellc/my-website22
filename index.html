@@ -455,7 +455,7 @@
         
         .timeline-item {
             position: relative;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             padding-left: 2rem;
         }
         
@@ -472,10 +472,11 @@
         }
         
         .timeline-content {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 2rem;
             border-radius: 12px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            border: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
         
         .timeline-content h3 {
@@ -487,7 +488,7 @@
             color: #666666;
             font-style: italic;
             font-size: 0.9rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
         
         /* Hobbies Collage */
@@ -518,6 +519,28 @@
             font-size: 1.2rem;
             font-weight: 600;
             z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .gallery-button {
+            background: #ffffff;
+            color: #000000;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid #ffffff;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .gallery-button:hover {
+            background: transparent;
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
         }
         
         /* Hobbies Gallery */
@@ -608,6 +631,16 @@
             max-height: 80vh;
             object-fit: contain;
             border-radius: 8px;
+            animation: fadeInMedia 0.4s ease-in-out;
+        }
+        
+        @keyframes fadeInMedia {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
         
         .swipe-instructions {
@@ -1096,11 +1129,10 @@
                                 <h3>Founder & Lead Developer</h3>
                                 <p style="font-weight: 600; color: #000000;">Marcell Software Services LLC</p>
                                 <p class="timeline-date">2024 - Present</p>
-                                <p>Founded and operate a software development consultancy providing comprehensive web development, software consulting, and visual content creation services to clients.</p>
-                                <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
-                                    <li>Custom web application development</li>
-                                    <li>Technical consulting and architecture design</li>
-                                    <li>Photography and videography services</li>
+                                <ul style="margin-top: 1rem; margin-left: 1.5rem; line-height: 1.8;">
+                                    <li style="margin-bottom: 0.5rem;">Custom web application development</li>
+                                    <li style="margin-bottom: 0.5rem;">Technical consulting and architecture design</li>
+                                    <li style="margin-bottom: 0.5rem;">Photography and videography services</li>
                                 </ul>
                             </div>
                         </div>
@@ -1110,11 +1142,11 @@
                                 <h3>Store Manager</h3>
                                 <p style="font-weight: 600; color: #000000;">Starbucks</p>
                                 <p class="timeline-date">April 2024 - July 2025</p>
-                                <ul style="margin-left: 1.5rem;">
-                                    <li>Managed staff scheduling, training, and performance development</li>
-                                    <li>Oversaw inventory management and cost control</li>
-                                    <li>Ensured exceptional customer experience and satisfaction</li>
-                                    <li>Implemented process improvements to increase efficiency</li>
+                                <ul style="margin-left: 1.5rem; line-height: 1.8;">
+                                    <li style="margin-bottom: 0.5rem;">Managed staff scheduling, training, and performance development</li>
+                                    <li style="margin-bottom: 0.5rem;">Oversaw inventory management and cost control</li>
+                                    <li style="margin-bottom: 0.5rem;">Ensured exceptional customer experience and satisfaction</li>
+                                    <li style="margin-bottom: 0.5rem;">Implemented process improvements to increase efficiency</li>
                                 </ul>
                             </div>
                         </div>
@@ -1124,10 +1156,10 @@
                                 <h3>Shift Supervisor</h3>
                                 <p style="font-weight: 600; color: #000000;">Starbucks</p>
                                 <p class="timeline-date">2019 - 2024</p>
-                                <ul style="margin-left: 1.5rem;">
-                                    <li>Supervised daily shift operations and team members</li>
-                                    <li>Trained new baristas and team members</li>
-                                    <li>Handled customer concerns and conflict resolution</li>
+                                <ul style="margin-left: 1.5rem; line-height: 1.8;">
+                                    <li style="margin-bottom: 0.5rem;">Supervised daily shift operations and team members</li>
+                                    <li style="margin-bottom: 0.5rem;">Trained new baristas and team members</li>
+                                    <li style="margin-bottom: 0.5rem;">Handled customer concerns and conflict resolution</li>
                                 </ul>
                             </div>
                         </div>
@@ -1137,10 +1169,10 @@
                                 <h3>Barista</h3>
                                 <p style="font-weight: 600; color: #000000;">Starbucks</p>
                                 <p class="timeline-date">November 2017 - April 2019</p>
-                                <ul style="margin-left: 1.5rem;">
-                                    <li>Mastered espresso extraction and milk steaming techniques</li>
-                                    <li>Created intricate latte art designs</li>
-                                    <li>Provided friendly and efficient customer service</li>
+                                <ul style="margin-left: 1.5rem; line-height: 1.8;">
+                                    <li style="margin-bottom: 0.5rem;">Mastered espresso extraction and milk steaming techniques</li>
+                                    <li style="margin-bottom: 0.5rem;">Created intricate latte art designs</li>
+                                    <li style="margin-bottom: 0.5rem;">Provided friendly and efficient customer service</li>
                                 </ul>
                             </div>
                         </div>
@@ -1183,7 +1215,7 @@
                         <img src="WhoAmI.jpg" alt="Rob Marcellin" class="photo-preview" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out;">
                         <img src="Thisme.jpg.jpg" alt="Rob Marcellin" class="photo-preview" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out;">
                         <div class="collage-overlay">
-                            <p>Click to view gallery</p>
+                            <div class="gallery-button">Click to view gallery</div>
                         </div>
                     </div>
                     
@@ -1202,7 +1234,7 @@
                             <source src="vid.2.MP4" type="video/mp4">
                         </video>
                         <div class="collage-overlay">
-                            <p>Click to view video gallery</p>
+                            <div class="gallery-button">Click to view video gallery</div>
                         </div>
                     </div>
                 </div>
@@ -1223,7 +1255,7 @@
                 <div class="main-experience-header">
                     <div class="services-header" style="width: 100%; margin-bottom: 0;">
                         <h2 style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">Services</h2>
-                        <img src="JustLogo.png" alt="LLC Logo" class="services-logo">
+                        <img src="JustWhite.png" alt="LLC Logo" class="services-logo">
                     </div>
                     <span class="dropdown-arrow">▼</span>
                 </div>
@@ -1461,6 +1493,7 @@
             const media = currentGallery[currentMediaIndex];
             
             container.innerHTML = '';
+            container.style.opacity = '1';
             
             if (media.type === 'video') {
                 const video = document.createElement('video');
@@ -1492,15 +1525,27 @@
         }
         
         function changeMedia(direction) {
-            currentMediaIndex += direction;
+            // Add fade out effect
+            const container = document.getElementById('modalMediaContainer');
+            container.style.opacity = '0';
+            container.style.transition = 'opacity 0.3s ease-in-out';
             
-            if (currentMediaIndex >= currentGallery.length) {
-                currentMediaIndex = 0;
-            } else if (currentMediaIndex < 0) {
-                currentMediaIndex = currentGallery.length - 1;
-            }
-            
-            displayMedia();
+            setTimeout(() => {
+                currentMediaIndex += direction;
+                
+                if (currentMediaIndex >= currentGallery.length) {
+                    currentMediaIndex = 0;
+                } else if (currentMediaIndex < 0) {
+                    currentMediaIndex = currentGallery.length - 1;
+                }
+                
+                displayMedia();
+                
+                // Fade back in
+                setTimeout(() => {
+                    container.style.opacity = '1';
+                }, 50);
+            }, 300);
         }
         
         function handleTouchStart(e) {
@@ -1625,4 +1670,3 @@
     </script>
 </body>
 </html>
-
