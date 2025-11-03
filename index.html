@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rob Marcellin</title>
     <link rel="icon" type="image/png" href="JustLogo.png">
   
@@ -578,6 +578,7 @@
             overflow: auto;
             opacity: 0;
             transition: opacity 0.4s ease-in-out;
+            touch-action: pan-y pan-x;
         }
         
         .modal.active {
@@ -610,6 +611,10 @@
             object-fit: contain;
             border-radius: 8px;
             animation: fadeInMedia 0.4s ease-in-out;
+            touch-action: pan-y pan-x;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
         }
         
         @keyframes fadeInMedia {
@@ -632,12 +637,13 @@
             border-radius: 25px;
             font-size: 1rem;
             z-index: 10002;
-            animation: fadeInOut 4s ease-in-out infinite;
+            opacity: 1;
+            transition: opacity 0.5s ease-out;
         }
         
-        @keyframes fadeInOut {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+        .swipe-instructions.hidden {
+            opacity: 0;
+            pointer-events: none;
         }
         
         .media-counter {
@@ -1438,9 +1444,21 @@
         
         function openMediaModal() {
             const modal = document.getElementById('galleryModal');
+            const swipeInstructions = document.querySelector('.swipe-instructions');
+            
             modal.classList.add('active');
             displayMedia();
             document.body.style.overflow = 'hidden';
+            
+            // Show instructions initially
+            if (swipeInstructions) {
+                swipeInstructions.classList.remove('hidden');
+                
+                // Hide after 2 seconds
+                setTimeout(() => {
+                    swipeInstructions.classList.add('hidden');
+                }, 2000);
+            }
         }
         
         function displayMedia() {
@@ -1534,6 +1552,16 @@
         if (modal) {
             modal.addEventListener('touchstart', handleTouchStart, false);
             modal.addEventListener('touchend', handleTouchEnd, false);
+            
+            // Prevent double-tap zoom
+            let lastTouchEnd = 0;
+            modal.addEventListener('touchend', function(e) {
+                const now = (new Date()).getTime();
+                if (now - lastTouchEnd <= 300) {
+                    e.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
         }
         
         document.addEventListener('keydown', (e) => {
