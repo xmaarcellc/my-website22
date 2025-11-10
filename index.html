@@ -44,7 +44,7 @@
         .snowflake {
             position: absolute;
             top: -10px;
-            color: #ffffff;
+            color: #ffffff !important;
             font-size: 1em;
             font-family: Arial, sans-serif;
             text-shadow: 0 0 5px #ffffff;
@@ -256,7 +256,7 @@
         
         .star {
             position: absolute;
-            color: white;
+            color: white !important;
             background: transparent;
             border-radius: 50%;
             font-family: Arial, sans-serif;
@@ -1576,7 +1576,7 @@
             snowflake.textContent = '❄';
             snowflake.style.left = Math.random() * 100 + '%';
             snowflake.style.fontSize = (Math.random() * 1.5 + 0.5) + 'em';
-            snowflake.style.animationDuration = (Math.random() * 10 + 15) + 's'; // Changed from 8 to 15 base (15-25 seconds)
+            snowflake.style.animationDuration = (Math.random() * 10 + 15) + 's';
             snowflake.style.animationDelay = Math.random() * 5 + 's';
             document.getElementById('loadingScreen').appendChild(snowflake);
             
@@ -1599,7 +1599,7 @@
         // Randomize loading time: 3.2s, 4.3s, 5.4s, or 2.1s
         const loadingTimes = [3200, 4300, 5400, 7100];
         const selectedTime = loadingTimes[Math.floor(Math.random() * loadingTimes.length)];
-        const intervalTime = selectedTime / 50; // 50 steps to reach 100%
+        const intervalTime = selectedTime / 50;
         
         let currentMessageIndex = 0;
         let progress = 0;
@@ -1649,22 +1649,22 @@
         
         // Generate falling snowflakes for main page
         const starfield = document.getElementById('starfield');
-        const numberOfSnowflakes = 50; // Reduced from 200
+        const numberOfSnowflakes = 50;
 
         function createFallingSnowflake() {
             const snowflake = document.createElement('div');
             snowflake.className = 'star';
             snowflake.textContent = '❄';
             
-            const size = Math.random() * 0.6 + 0.3; // Small sizes (0.3 to 0.9)
+            const size = Math.random() * 0.6 + 0.3;
             snowflake.style.fontSize = size + 'em';
             snowflake.style.width = 'auto';
             snowflake.style.height = 'auto';
             
             snowflake.style.left = Math.random() * 100 + '%';
-            snowflake.style.top = '-10px'; // Start above viewport
+            snowflake.style.top = '-10px';
             
-            const duration = Math.random() * 15 + 20; // 20-35 seconds to fall
+            const duration = Math.random() * 15 + 20;
             snowflake.style.animationName = 'fall';
             snowflake.style.animationDuration = duration + 's';
             snowflake.style.animationDelay = Math.random() * 10 + 's';
@@ -1996,5 +1996,3 @@
     </script>
 </body>
 </html>
-
-
