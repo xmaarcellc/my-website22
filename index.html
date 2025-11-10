@@ -47,13 +47,15 @@
             color: #ffffff !important;
             font-size: 1em;
             font-family: Arial, sans-serif;
-            text-shadow: 0 0 5px #ffffff;
+            text-shadow: 0 0 5px #ffffff !important;
             opacity: 0.8;
             pointer-events: none;
             z-index: 10000;
             animation-name: fall;
             animation-timing-function: linear;
             animation-iteration-count: infinite;
+            filter: brightness(1) !important;
+            -webkit-text-fill-color: #ffffff !important;
         }
         
         @keyframes fall {
@@ -260,6 +262,9 @@
             background: transparent;
             border-radius: 50%;
             font-family: Arial, sans-serif;
+            filter: brightness(1) !important;
+            -webkit-text-fill-color: #ffffff !important;
+            text-shadow: 0 0 3px #ffffff !important;
         }
         
         @keyframes fall {
@@ -1175,6 +1180,15 @@
         }
         
         @media (max-width: 768px) {
+            /* Force white snowflakes on mobile */
+            .snowflake,
+            .star {
+                color: #ffffff !important;
+                -webkit-text-fill-color: #ffffff !important;
+                text-shadow: 0 0 5px #ffffff !important;
+                filter: brightness(1.2) !important;
+            }
+            
             .loading-title {
                 font-size: 1.8rem;
             }
