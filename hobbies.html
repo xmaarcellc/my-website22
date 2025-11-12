@@ -32,39 +32,6 @@
             overflow-x: hidden;
         }
         
-        /* Starfield Background */
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-        
-        .star {
-            position: absolute;
-            color: white !important;
-            background: transparent;
-            border-radius: 50%;
-            font-family: Arial, sans-serif;
-            filter: brightness(1) !important;
-            -webkit-text-fill-color: #ffffff !important;
-            text-shadow: 0 0 3px #ffffff !important;
-        }
-        
-        @keyframes fall {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0.3;
-            }
-        }
-        
         header {
             position: relative;
             color: #000000;
@@ -478,13 +445,6 @@
         }
         
         @media (max-width: 768px) {
-            .star {
-                color: #ffffff !important;
-                -webkit-text-fill-color: #ffffff !important;
-                text-shadow: 0 0 5px #ffffff !important;
-                filter: brightness(1.2) !important;
-            }
-            
             header h1 {
                 font-size: 2rem;
             }
@@ -512,8 +472,6 @@
     </style>
 </head>
 <body>
-    <div class="stars" id="starfield"></div>
-    
     <header>
         <h1>Hobbies & Interests</h1>
         <p>Exploring creativity through photography, videography, and passion projects</p>
@@ -603,38 +561,6 @@
     </footer>
     
     <script>
-        // Generate falling snowflakes
-        const starfield = document.getElementById('starfield');
-        const numberOfSnowflakes = 50;
-
-        function createFallingSnowflake() {
-            const snowflake = document.createElement('div');
-            snowflake.className = 'star';
-            snowflake.textContent = '❄';
-            
-            const size = Math.random() * 0.6 + 0.3;
-            snowflake.style.fontSize = size + 'em';
-            snowflake.style.width = 'auto';
-            snowflake.style.height = 'auto';
-            
-            snowflake.style.left = Math.random() * 100 + '%';
-            snowflake.style.top = '-10px';
-            
-            const duration = Math.random() * 15 + 20;
-            snowflake.style.animationName = 'fall';
-            snowflake.style.animationDuration = duration + 's';
-            snowflake.style.animationDelay = Math.random() * 10 + 's';
-            snowflake.style.animationTimingFunction = 'linear';
-            snowflake.style.animationIterationCount = 'infinite';
-            
-            starfield.appendChild(snowflake);
-        }
-
-        // Create initial snowflakes
-        for (let i = 0; i < numberOfSnowflakes; i++) {
-            createFallingSnowflake();
-        }
-        
         const photoGallery = [
             { src: 'Heart.jpg', caption: 'Classic heart pour - Latte art mastery', type: 'image' },
             { src: 'Swan.jpg', caption: 'Graceful swan design', type: 'image' },
