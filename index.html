@@ -49,44 +49,6 @@
             overflow: hidden;
         }
         
-        /* Snowflakes */
-        .snowflake {
-            position: absolute;
-            top: -10px;
-            color: #ffffff !important;
-            font-size: 1em;
-            font-family: Arial, sans-serif;
-            text-shadow: 0 0 5px #ffffff !important;
-            opacity: 0.8;
-            pointer-events: none;
-            z-index: 10000;
-            animation-name: fall;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-            filter: brightness(1) !important;
-            -webkit-text-fill-color: #ffffff !important;
-        }
-        
-        @keyframes fall {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0.3;
-            }
-        }
-        
-        @keyframes sway {
-            0%, 100% {
-                transform: translateX(0);
-            }
-            50% {
-                transform: translateX(20px);
-            }
-        }
-        
         #loadingScreen.fade-out {
             opacity: 0;
             visibility: hidden;
@@ -149,11 +111,11 @@
             border-radius: 20px;
             width: 0%;
             transition: width 0.3s ease;
-            animation: christmasShimmer 3s infinite;
+            animation: shimmer 3s infinite;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
         }
         
-        @keyframes christmasShimmer {
+        @keyframes shimmer {
             0% {
                 background-position: 0% 0;
             }
@@ -183,24 +145,6 @@
             animation-delay: 1.2s;
             transition: opacity 0.5s ease-in-out;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-        
-        .christmas-decoration {
-            font-size: 2rem;
-            margin: 0 0.5rem;
-            display: inline-block;
-            animation: twinkle 1.5s infinite alternate;
-        }
-        
-        @keyframes twinkle {
-            0% {
-                opacity: 0.5;
-                transform: scale(1);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1.1);
-            }
         }
         
         @keyframes fadeInTitle {
@@ -252,28 +196,6 @@
         
         .main-content.visible {
             opacity: 1;
-        }
-        
-        /* Starfield Background */
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-        
-        .star {
-            position: absolute;
-            color: white !important;
-            background: transparent;
-            border-radius: 50%;
-            font-family: Arial, sans-serif;
-            filter: brightness(1) !important;
-            -webkit-text-fill-color: #ffffff !important;
-            text-shadow: 0 0 3px #ffffff !important;
         }
         
         header {
@@ -918,15 +840,6 @@
         }
         
         @media (max-width: 768px) {
-            /* Force white snowflakes on mobile */
-            .snowflake,
-            .star {
-                color: #ffffff !important;
-                -webkit-text-fill-color: #ffffff !important;
-                text-shadow: 0 0 5px #ffffff !important;
-                filter: brightness(1.2) !important;
-            }
-            
             .loading-title {
                 font-size: 1.8rem;
             }
@@ -982,8 +895,6 @@
 
     <!-- Main Content -->
     <div class="main-content" id="mainContent">
-        <div class="stars" id="starfield"></div>
-        
         <header>
             <h1>
                 Rob Marcellin
@@ -1209,33 +1120,6 @@
             " Where creativity meets technology "
         ];
         
-        // Generate snowflakes
-        function createSnowflake() {
-            const snowflake = document.createElement('div');
-            snowflake.className = 'snowflake';
-            snowflake.textContent = '❄';
-            snowflake.style.left = Math.random() * 100 + '%';
-            snowflake.style.fontSize = (Math.random() * 1.5 + 0.5) + 'em';
-            snowflake.style.animationDuration = (Math.random() * 10 + 15) + 's';
-            snowflake.style.animationDelay = Math.random() * 5 + 's';
-            document.getElementById('loadingScreen').appendChild(snowflake);
-            
-            // Remove snowflake after animation
-            setTimeout(() => {
-                snowflake.remove();
-            }, (parseFloat(snowflake.style.animationDuration) + parseFloat(snowflake.style.animationDelay)) * 1000);
-        }
-        
-        // Create multiple snowflakes
-        for (let i = 0; i < 50; i++) {
-            setTimeout(() => createSnowflake(), i * 200);
-        }
-        
-        // Continue creating snowflakes during loading
-        const snowInterval = setInterval(() => {
-            createSnowflake();
-        }, 300);
-        
         // Randomize loading time: 3.2s, 4.3s, 5.4s, or 2.1s
         const loadingTimes = [3200, 4300, 5400, 7100];
         const selectedTime = loadingTimes[Math.floor(Math.random() * loadingTimes.length)];
@@ -1266,7 +1150,6 @@
             if (progress >= 100) {
                 clearInterval(progressInterval);
                 clearInterval(messageInterval);
-                clearInterval(snowInterval);
                 
                 setTimeout(() => {
                     loadingScreen.classList.add('fade-out');
@@ -1286,38 +1169,6 @@
         
         // Prevent scrolling during loading
         document.body.style.overflow = 'hidden';
-        
-        // Generate falling snowflakes for main page
-        const starfield = document.getElementById('starfield');
-        const numberOfSnowflakes = 50;
-
-        function createFallingSnowflake() {
-            const snowflake = document.createElement('div');
-            snowflake.className = 'star';
-            snowflake.textContent = '❄';
-            
-            const size = Math.random() * 0.6 + 0.3;
-            snowflake.style.fontSize = size + 'em';
-            snowflake.style.width = 'auto';
-            snowflake.style.height = 'auto';
-            
-            snowflake.style.left = Math.random() * 100 + '%';
-            snowflake.style.top = '-10px';
-            
-            const duration = Math.random() * 15 + 20;
-            snowflake.style.animationName = 'fall';
-            snowflake.style.animationDuration = duration + 's';
-            snowflake.style.animationDelay = Math.random() * 10 + 's';
-            snowflake.style.animationTimingFunction = 'linear';
-            snowflake.style.animationIterationCount = 'infinite';
-            
-            starfield.appendChild(snowflake);
-        }
-
-        // Create initial snowflakes
-        for (let i = 0; i < numberOfSnowflakes; i++) {
-            createFallingSnowflake();
-        }
         
         const sections = document.querySelectorAll('section');
         
