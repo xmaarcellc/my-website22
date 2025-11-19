@@ -583,6 +583,159 @@
             transform: translateX(0);
         }
         
+        /* Animated Services Hero */
+        .services-hero {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .services-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            animation: pulseBackground 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulseBackground {
+            0%, 100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+        
+        .animated-logo-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+        
+        .animated-services-logo {
+            width: 100px;
+            height: 100px;
+            animation: floatLogo 3s ease-in-out infinite, glowPulse 2s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+            position: relative;
+            z-index: 2;
+        }
+        
+        @keyframes floatLogo {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+        
+        @keyframes glowPulse {
+            0% {
+                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
+            }
+            100% {
+                filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 60px rgba(255, 255, 255, 0.2));
+            }
+        }
+        
+        .logo-glow-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: ringPulse 2s ease-in-out infinite;
+        }
+        
+        .logo-glow-ring:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            animation-delay: 0.5s;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .logo-glow-ring:nth-child(3) {
+            width: 180px;
+            height: 180px;
+            animation-delay: 1s;
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        @keyframes ringPulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 0.5;
+            }
+        }
+        
+        .services-hero-tagline {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0;
+            letter-spacing: 1px;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .services-hero-subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.5rem;
+            font-weight: 400;
+            position: relative;
+            z-index: 2;
+        }
+        
+        @media (max-width: 768px) {
+            .services-hero {
+                padding: 2rem 1rem;
+            }
+            
+            .services-hero-tagline {
+                font-size: 1.5rem;
+            }
+            
+            .animated-services-logo {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .logo-glow-ring {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .logo-glow-ring:nth-child(2) {
+                width: 125px;
+                height: 125px;
+            }
+            
+            .logo-glow-ring:nth-child(3) {
+                width: 150px;
+                height: 150px;
+            }
+        }
+        
         /* Professional Experience Timeline */
         .timeline {
             position: relative;
@@ -1032,6 +1185,18 @@
             </section>
             
             <section id="services">
+                <!-- Animated Services Hero -->
+                <div class="services-hero">
+                    <div class="animated-logo-container">
+                        <div class="logo-glow-ring"></div>
+                        <div class="logo-glow-ring"></div>
+                        <div class="logo-glow-ring"></div>
+                        <img src="JustWhite.png" alt="Marcell Software Services" class="animated-services-logo">
+                    </div>
+                    <h2 class="services-hero-tagline">Accelerate Your Business Presence</h2>
+                    <p class="services-hero-subtitle">Professional solutions tailored to your needs</p>
+                </div>
+                
                 <div class="main-experience-section" onclick="toggleMainExperience(this.querySelector('.main-experience-header'))">
                     <div class="main-experience-header">
                         <div class="services-header" style="width: 100%; margin-bottom: 0;">
