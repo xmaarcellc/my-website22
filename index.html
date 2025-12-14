@@ -419,6 +419,53 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Bio Cycling Styles */
+        .bio-text-container {
+            position: relative;
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .bio-paragraph {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            font-size: 1rem;
+            line-height: 1.8;
+            padding: 1.5rem;
+            border: 3px solid transparent;
+            border-radius: 12px;
+            background: 
+                linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)) padding-box,
+                linear-gradient(var(--bio-angle), #000000, #c0c0c0, #ffffff, #c0c0c0, #000000, #c0c0c0, #ffffff, #c0c0c0) border-box;
+            animation: bioRazorGradient 35s linear infinite;
+        }
+
+        @property --bio-angle {
+            syntax: '<angle>';
+            initial-value: 0deg;
+            inherits: false;
+        }
+
+        @keyframes bioRazorGradient {
+            0% {
+                --bio-angle: 0deg;
+            }
+            100% {
+                --bio-angle: 360deg;
+            }
+        }
+
+        .bio-paragraph.active {
+            opacity: 1;
+        }
         
         .mentorship-cta-button {
             display: inline-block;
@@ -707,6 +754,15 @@
         }
         
         @media (max-width: 768px) {
+            .bio-text-container {
+                min-height: 240px;
+            }
+
+            .bio-paragraph {
+                font-size: 0.95rem;
+                padding: 1.2rem;
+            }
+
             .services-hero {
                 padding: 2rem 1rem;
             }
@@ -733,6 +789,17 @@
             .logo-glow-ring:nth-child(3) {
                 width: 150px;
                 height: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .bio-text-container {
+                min-height: 280px;
+            }
+
+            .bio-paragraph {
+                font-size: 0.9rem;
+                padding: 1rem;
             }
         }
         
@@ -1075,9 +1142,13 @@
                 <h2>Rob Marcellin - Solo Founder</h2>
                 <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;">
                     <div style="flex: 1; min-width: 300px;">
-                        <p style="font-size: 1rem; line-height: 1.8; margin-bottom: 1.5rem;">A Full-Stack Developer and Economics graduate from Montclair State University, I specialize in building modern websites using cutting-edge technologies. As the founder of Marcell Software Services LLC, I provide comprehensive software development, consulting, and visual content creation services.</p>
-                        
-                        <p style="font-size: 1rem; line-height: 1.8;">Beyond Web Developing, I'm passionate about visual storytelling through photography and videography.I channel my creative energy into passion projects, capturing compelling content that brings ideas to life. Whether I'm developing a portfolio website, mentoring aspiring developers, or exploring new technologies, I'm driven by the process of transforming concepts into meaningful realities.</p>
+                        <div class="bio-text-container">
+                            <p class="bio-paragraph active">A Full-Stack Developer and Economics graduate from Montclair State University, I specialize in building modern websites using cutting-edge technologies. As the founder of Marcell Software Services LLC, We provide software development, consulting, and visual content creation services.</p>
+                            
+                            <p class="bio-paragraph">I channel my creative energy into passion projects, capturing compelling content that brings ideas to life. Whether I'm developing a portfolio website, mentoring aspiring developers, or exploring new technologies, I'm driven by the process of transforming concepts into meaningful realities.</p>
+
+                            <p class="bio-paragraph">I leverage AI-driven technology to build innovative website functions, streamline development workflows, and rapidly diagnose and resolve bugs. By integrating intelligent automation and advanced problem-solving tools, I create more efficient, dynamic web experiences that adapt to user needs.</p>
+                        </div>
                     </div>
                     <div style="flex: 0 0 auto; position: relative; width: 300px; height: 300px;">
                         <img id="aboutImg1" src="Rob_1.jpg" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #000000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); opacity: 1; transition: opacity 2s ease-in-out;">
@@ -1277,6 +1348,24 @@
     </div>
     
     <script>
+        // Bio Cycling System
+        let currentBioIndex = 0;
+        const bioParagraphs = document.querySelectorAll('.bio-paragraph');
+
+        function cycleBio() {
+            // Remove active class from current paragraph
+            bioParagraphs[currentBioIndex].classList.remove('active');
+            
+            // Move to next paragraph
+            currentBioIndex = (currentBioIndex + 1) % bioParagraphs.length;
+            
+            // Add active class to new paragraph
+            bioParagraphs[currentBioIndex].classList.add('active');
+        }
+
+        // Start bio cycling - runs every 5.5 seconds
+        setInterval(cycleBio, 5500);
+
         // Loading Screen Logic
         const welcomeMessages = [
             " Welcome to my portfolio ",
@@ -1454,8 +1543,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
