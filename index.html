@@ -25,11 +25,190 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #000000;
-            background: linear-gradient(to bottom, #ffffff 0%, #e8e8e8 5%, #cccccc 10%, #999999 20%, #666666 35%, #333333 50%, #000000 70%);
+            color: #ffffff;
+            background: linear-gradient(to bottom, #000000 0%, #0a0a0a 20%, #1a1a1a 40%, #0f0f0f 60%, #000000 100%);
             background-attachment: fixed;
             min-height: 100vh;
             overflow-x: hidden;
+            transition: background 1.5s ease, color 1.5s ease;
+        }
+        
+        /* Light Theme */
+        body.light-theme {
+            color: #000000;
+            background: linear-gradient(to bottom, #ffffff 0%, #e8e8e8 5%, #cccccc 10%, #999999 20%, #666666 35%, #333333 50%, #000000 70%);
+        }
+        
+        body.light-theme header,
+        body.light-theme header h1,
+        body.light-theme header p {
+            color: #000000;
+            transition: color 1.5s ease;
+        }
+        
+        body.light-theme .logo {
+            filter: invert(1);
+            transition: filter 1.5s ease;
+        }
+        
+        body.light-theme nav a,
+        body.light-theme .hamburger span,
+        body.light-theme .theme-toggle,
+        body.light-theme .theme-toggle svg {
+            color: #000000;
+            border-color: #000000;
+            transition: color 1.5s ease, border-color 1.5s ease, background 1.5s ease;
+        }
+        
+        body.light-theme nav ul {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            transition: background 1.5s ease, border-color 1.5s ease;
+        }
+        
+        body.light-theme nav ul li:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        
+        body.light-theme nav a:hover {
+            background: #000000;
+            color: #ffffff;
+        }
+        
+        body.light-theme .theme-toggle:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        body.light-theme section {
+            background: 
+                linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)) padding-box,
+                linear-gradient(var(--angle), #000000, #c0c0c0, #ffffff, #c0c0c0, #000000, #c0c0c0, #ffffff, #c0c0c0) border-box;
+            transition: background 1.5s ease;
+        }
+        
+        body.light-theme section h2,
+        body.light-theme section h3,
+        body.light-theme section p,
+        body.light-theme section ul,
+        body.light-theme section li {
+            color: #000000;
+            transition: color 1.5s ease;
+        }
+        
+        body.light-theme .bio-paragraph {
+            background: 
+                linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)) padding-box,
+                linear-gradient(var(--bio-angle), #000000, #c0c0c0, #ffffff, #c0c0c0, #000000, #c0c0c0, #ffffff, #c0c0c0) border-box;
+            color: #000000;
+            transition: background 1.5s ease, color 1.5s ease;
+        }
+        
+        body.light-theme .tentacle-box,
+        body.light-theme .service-card,
+        body.light-theme .main-experience-section {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #000000;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+            transition: background 1.5s ease, border-color 1.5s ease, box-shadow 1.5s ease;
+        }
+        
+        body.light-theme .tentacle-box h3,
+        body.light-theme .tentacle-box p,
+        body.light-theme .service-card h3,
+        body.light-theme .service-card p,
+        body.light-theme .dropdown-arrow,
+        body.light-theme .service-dropdown-arrow {
+            color: #000000;
+            border-color: #000000;
+            transition: color 1.5s ease, border-color 1.5s ease;
+        }
+        
+        body.light-theme .tentacle-box::before {
+            background: linear-gradient(to top, #000000, transparent);
+            transition: background 1.5s ease;
+        }
+        
+        body.light-theme .skill-tag {
+            background: rgba(0, 0, 0, 0.1);
+            color: #000000;
+            border-color: #000000;
+            transition: background 1.5s ease, color 1.5s ease, border-color 1.5s ease;
+        }
+        
+        body.light-theme .services-hero {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+            border-color: rgba(255, 255, 255, 0.2);
+            transition: background 1.5s ease, border-color 1.5s ease;
+        }
+        
+        body.light-theme .services-hero-tagline,
+        body.light-theme .services-hero-subtitle {
+            color: #ffffff;
+            transition: color 1.5s ease;
+        }
+        
+        body.light-theme .timeline-content {
+            background: rgba(255, 255, 255, 0.5);
+            transition: background 1.5s ease;
+        }
+        
+        body.light-theme .timeline-content h3 {
+            color: #000000;
+            transition: color 1.5s ease;
+        }
+        
+        body.light-theme .timeline-date,
+        body.light-theme .date {
+            color: #666666;
+            transition: color 1.5s ease;
+        }
+        
+        body.light-theme .consultation-button {
+            color: #000000;
+            border-color: #000000;
+            transition: color 1.5s ease, border-color 1.5s ease, background 1.5s ease;
+        }
+        
+        body.light-theme .consultation-button:hover {
+            background: #000000;
+            color: #ffffff;
+        }
+        
+        body.light-theme .cta-button {
+            background: #000000;
+            color: #ffffff;
+            border-color: #ffffff;
+            transition: background 1.5s ease, color 1.5s ease, border-color 1.5s ease;
+        }
+        
+        body.light-theme .cta-button:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+        
+        body.light-theme section a {
+            color: #3b82f6;
+            transition: color 1.5s ease;
+        }
+        
+        body.light-theme section a:hover {
+            color: #60a5fa;
+        }
+        
+        body.light-theme .tentacle-box a {
+            color: #3b82f6;
+            transition: color 1.5s ease;
+        }
+        
+        body.light-theme img[src*="Rob_"],
+        body.light-theme img[src*="IMG_"],
+        body.light-theme img[src*="Header"],
+        body.light-theme img[src*="Volley"],
+        body.light-theme img[src*="WhoAmI"],
+        body.light-theme img[src*="Thisme"] {
+            border-color: #000000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: border-color 1.5s ease, box-shadow 1.5s ease;
         }
         
         /* Loading Screen Styles */
@@ -80,7 +259,7 @@
         .loading-title {
             font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 3rem;
+            margin-bottom: 0;
             color: #ffffff;
             letter-spacing: 2px;
             opacity: 0;
@@ -89,99 +268,10 @@
             text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.3);
         }
         
-        .progress-container {
-            width: 100%;
-            max-width: 500px;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            overflow: hidden;
-            margin-bottom: 2rem;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            opacity: 0;
-            animation: fadeInProgress 1s ease-in forwards;
-            animation-delay: 0.6s;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-        }
-        
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, #ffffff, #cccccc, #ffffff, #cccccc, #ffffff);
-            background-size: 400% 100%;
-            border-radius: 20px;
-            width: 0%;
-            transition: width 0.3s ease;
-            animation: shimmer 3s infinite;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-        }
-        
-        @keyframes shimmer {
-            0% {
-                background-position: 0% 0;
-            }
-            100% {
-                background-position: 400% 0;
-            }
-        }
-        
-        .loading-percentage {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            animation: fadeInPercentage 1s ease-in forwards;
-            animation-delay: 0.9s;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-        }
-        
-        .welcome-message {
-            font-size: 1.1rem;
-            color: #e8f4f8;
-            font-weight: 500;
-            min-height: 30px;
-            opacity: 0;
-            animation: fadeInMessage 1s ease-in forwards;
-            animation-delay: 1.2s;
-            transition: opacity 0.5s ease-in-out;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-        
         @keyframes fadeInTitle {
             from {
                 opacity: 0;
                 transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeInProgress {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        
-        @keyframes fadeInPercentage {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        
-        @keyframes fadeInMessage {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
             }
             to {
                 opacity: 1;
@@ -200,12 +290,13 @@
         
         header {
             position: relative;
-            color: #000000;
+            color: #ffffff;
             padding: 6rem 2rem;
             text-align: center;
             overflow: hidden;
             background: transparent;
             z-index: 2;
+            transition: color 1.5s ease;
         }
         
         header h1 {
@@ -221,6 +312,8 @@
             justify-content: center;
             gap: 1rem;
             flex-wrap: wrap;
+            color: #ffffff;
+            transition: color 1.5s ease;
         }
         
         .logo {
@@ -230,7 +323,7 @@
             animation: fadeInLogo 2s ease-in forwards;
             animation-delay: 0.3s;
             margin-top: 10px;
-            filter: invert(1);
+            transition: filter 1.5s ease;
         }
         
         @keyframes fadeInName {
@@ -261,6 +354,8 @@
             letter-spacing: 1px;
             position: relative;
             z-index: 2;
+            color: #ffffff;
+            transition: color 1.5s ease;
         }
         
         nav {
@@ -277,6 +372,37 @@
             display: flex;
             justify-content: flex-end;
             align-items: center;
+            gap: 1rem;
+        }
+        
+        .theme-toggle {
+            cursor: pointer;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+        
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(20deg);
+        }
+        
+        .theme-toggle svg {
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+        
+        .sun-icon,
+        .moon-icon {
+            width: 24px;
+            height: 24px;
         }
         
         @keyframes fadeInNav {
@@ -296,14 +422,15 @@
             position: fixed;
             top: 80px;
             right: 2rem;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(20, 20, 20, 0.98);
             flex-direction: column;
             gap: 0;
             padding: 1rem 0;
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             min-width: 200px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         nav ul.active {
@@ -317,26 +444,26 @@
         }
         
         nav ul li:hover {
-            background: rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.05);
         }
         
         nav a {
-            color: #000000;
+            color: #ffffff;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
             transition: all 0.3s;
             display: block;
             padding: 0.8rem 1.5rem;
-            border: 2px solid #000000;
+            border: 2px solid #ffffff;
             border-radius: 25px;
             background: transparent;
             margin: 0.5rem;
         }
         
         nav a:hover {
-            background: #000000;
-            color: #ffffff;
+            background: #ffffff;
+            color: #000000;
             transform: translateY(-2px);
         }
         
@@ -352,7 +479,7 @@
         .hamburger span {
             width: 25px;
             height: 3px;
-            background: #000000;
+            background: #ffffff;
             border-radius: 2px;
             transition: all 0.3s ease;
         }
@@ -378,26 +505,27 @@
         }
         
         section {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(20, 20, 20, 0.95);
             margin-bottom: 2rem;
             padding: 3rem;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out, background 1.5s ease, box-shadow 1.5s ease;
             position: relative;
             border: 5px solid transparent;
             border-radius: 16px;
             background: 
-                linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)) padding-box,
-                linear-gradient(var(--angle), #000000, #c0c0c0, #ffffff, #c0c0c0, #000000, #c0c0c0, #ffffff, #c0c0c0) border-box;
+                linear-gradient(rgba(20, 20, 20, 0.95), rgba(20, 20, 20, 0.95)) padding-box,
+                linear-gradient(var(--angle), #ffffff, #808080, #404040, #808080, #ffffff, #808080, #404040, #808080) border-box;
             animation: rotateGradient 35s linear infinite;
             backdrop-filter: blur(10px);
         }
         
         section h2 {
-            color: #000000;
+            color: #ffffff;
+            transition: color 1.5s ease;
         }
         
         @property --angle {
@@ -443,9 +571,10 @@
             border: 3px solid transparent;
             border-radius: 12px;
             background: 
-                linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)) padding-box,
-                linear-gradient(var(--bio-angle), #000000, #c0c0c0, #ffffff, #c0c0c0, #000000, #c0c0c0, #ffffff, #c0c0c0) border-box;
+                linear-gradient(rgba(20, 20, 20, 0.95), rgba(20, 20, 20, 0.95)) padding-box,
+                linear-gradient(var(--bio-angle), #ffffff, #808080, #404040, #808080, #ffffff, #808080, #404040, #808080) border-box;
             animation: bioRazorGradient 35s linear infinite;
+            color: #ffffff;
         }
 
         @property --bio-angle {
@@ -467,46 +596,27 @@
             opacity: 1;
         }
         
-        .mentorship-cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-            color: #ffffff;
-            padding: 1.2rem 2.5rem;
-            text-decoration: none;
-            border-radius: 8px;
-            margin-top: 1.5rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            font-weight: 600;
-            border: 2px solid #3b82f6;
-            cursor: pointer;
-            font-size: 1.1rem;
-        }
         
-        .mentorship-cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.5);
-        }
-
         .consultation-button {
             display: inline-block;
             background: transparent;
-            color: #000000;
+            color: #ffffff;
             padding: 1.2rem 2.5rem;
             text-decoration: none;
             border-radius: 8px;
             margin-top: 1.5rem;
             transition: all 0.3s;
             font-weight: 600;
-            border: 2px solid #000000;
+            border: 2px solid #ffffff;
             cursor: pointer;
             font-size: 1.1rem;
         }
 
         .consultation-button:hover {
-            background: #000000;
-            color: #ffffff;
+            background: #ffffff;
+            color: #000000;
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
         }
 
         #about {
@@ -531,11 +641,11 @@
             flex: 1;
             min-width: 280px;
             max-width: 350px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(30, 30, 30, 0.9);
             padding: 1.5rem;
             border-radius: 8px;
-            border: 2px solid #000000;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+            border: 2px solid #ffffff;
+            box-shadow: 0 3px 15px rgba(255, 255, 255, 0.1);
             position: relative;
             opacity: 0;
             transform: translateY(30px);
@@ -566,15 +676,15 @@
             left: 50%;
             width: 2px;
             height: 10px;
-            background: linear-gradient(to top, #000000, transparent);
+            background: linear-gradient(to top, #ffffff, transparent);
             transform: translateX(-50%);
         }
         
         .tentacle-box h3 {
             margin-top: 0;
             font-size: 1.2rem;
-            color: #000000;
-            border-bottom: 2px solid #000000;
+            color: #ffffff;
+            border-bottom: 2px solid #ffffff;
             padding-bottom: 0.5rem;
             margin-bottom: 1rem;
         }
@@ -586,19 +696,19 @@
         .tentacle-box .skill-tag {
             font-size: 0.8rem;
             padding: 0.4rem 0.8rem;
-            background: rgba(0, 0, 0, 0.1);
-            color: #000000;
-            border: 1px solid #000000;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid #ffffff;
         }
         
         .tentacle-box p {
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
-            color: #000000;
+            color: #ffffff;
         }
         
         .tentacle-box a {
-            color: #000000;
+            color: #60a5fa;
         }
         
         .services-header {
@@ -632,13 +742,14 @@
         
         /* Animated Services Hero */
         .services-hero {
-            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
             border-radius: 16px;
             padding: 3rem 2rem;
             margin-bottom: 2rem;
             text-align: center;
             position: relative;
             overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
         
         .services-hero::before {
@@ -817,35 +928,35 @@
         }
         
         .timeline-content {
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(30, 30, 30, 0.5);
             padding: 2rem;
             border-radius: 12px;
             border: none;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.08);
         }
         
         .timeline-content h3 {
-            color: #000000;
+            color: #ffffff;
             margin-bottom: 0.5rem;
         }
         
         .timeline-date {
-            color: #666666;
+            color: #cccccc;
             font-style: italic;
             font-size: 0.9rem;
             margin-bottom: 1rem;
         }
         
         h2 {
-            color: #000000;
+            color: #ffffff;
             font-size: 1.6rem;
             margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
-            border-bottom: 3px solid #000000;
+            border-bottom: 3px solid #ffffff;
         }
         
         h3 {
-            color: #000000;
+            color: #ffffff;
             font-size: 1.4rem;
             margin-top: 1.5rem;
             margin-bottom: 1rem;
@@ -859,12 +970,12 @@
         }
         
         .service-card {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(30, 30, 30, 0.9);
             padding: 1.5rem;
             border-radius: 8px;
-            border: 2px solid #000000;
+            border: 2px solid #ffffff;
             transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 3px 15px rgba(255, 255, 255, 0.1);
             cursor: pointer;
             backdrop-filter: blur(3px);
         }
@@ -876,7 +987,7 @@
             align-items: center;
             user-select: none;
             padding-bottom: 0.5rem;
-            border-bottom: 2px solid #000000;
+            border-bottom: 2px solid #ffffff;
         }
         
         .service-card-header:hover {
@@ -885,14 +996,14 @@
         
         .service-card-header h3 {
             margin: 0;
-            color: #000000;
+            color: #ffffff;
         }
         
         .service-dropdown-arrow {
             font-size: 1.2rem;
             transition: transform 0.3s ease;
             margin-left: 1rem;
-            color: #000000;
+            color: #ffffff;
         }
         
         .service-dropdown-arrow.open {
@@ -914,21 +1025,21 @@
         }
         
         .service-description p {
-            color: #000000;
+            color: #ffffff;
         }
         
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
         }
         
         .service-card h3 {
             margin-top: 0;
-            color: #000000;
+            color: #ffffff;
         }
         
         .service-card p {
-            color: #000000;
+            color: #ffffff;
         }
         
         .skills-list {
@@ -939,17 +1050,17 @@
         }
         
         .skill-tag {
-            background: rgba(0, 0, 0, 0.1);
-            color: #000000;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 600;
-            border: 1px solid #000000;
+            border: 1px solid #ffffff;
         }
         
         .date {
-            color: #666666;
+            color: #cccccc;
             font-style: italic;
         }
         
@@ -962,12 +1073,13 @@
             position: relative;
             z-index: 2;
             backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .cta-button {
             display: inline-block;
-            background: #000000;
-            color: #ffffff;
+            background: #ffffff;
+            color: #000000;
             padding: 1rem 2rem;
             text-decoration: none;
             border-radius: 5px;
@@ -978,41 +1090,41 @@
         }
         
         .cta-button:hover {
-            background: #ffffff;
-            color: #000000;
+            background: transparent;
+            color: #ffffff;
         }
         
         section p {
-            color: #000000;
+            color: #ffffff;
             font-size: 0.95rem;
         }
         
         section ul {
-            color: #000000;
+            color: #ffffff;
             font-size: 0.95rem;
         }
         
         section li {
-            color: #000000;
+            color: #ffffff;
             font-size: 0.95rem;
         }
         
         section a {
-            color: #3b82f6;
+            color: #60a5fa;
             text-decoration: underline;
         }
         
         section a:hover {
-            color: #60a5fa;
+            color: #93c5fd;
         }
         
         .main-experience-section {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(30, 30, 30, 0.9);
             padding: 1.5rem;
             border-radius: 8px;
             margin-bottom: 1rem;
-            border: 2px solid #000000;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+            border: 2px solid #ffffff;
+            box-shadow: 0 3px 15px rgba(255, 255, 255, 0.1);
             cursor: pointer;
             backdrop-filter: blur(3px);
         }
@@ -1034,13 +1146,13 @@
         }
         
         .main-experience-header h2 {
-            color: #000000;
+            color: #ffffff;
         }
         
         .dropdown-arrow {
             font-size: 1.5rem;
             transition: transform 0.3s ease;
-            color: #000000;
+            color: #ffffff;
         }
         
         .dropdown-arrow.open {
@@ -1067,15 +1179,6 @@
             .loading-logo {
                 width: 80px;
                 height: 80px;
-            }
-            
-            .progress-container {
-                max-width: 90%;
-            }
-            
-            .welcome-message {
-                font-size: 0.95rem;
-                padding: 0 1rem;
             }
             
             header h1 {
@@ -1105,11 +1208,6 @@
         <div class="loading-content">
             <img src="JustWhite.png" alt="Logo" class="loading-logo">
             <h1 class="loading-title">Marcell Software Services</h1>
-            <div class="progress-container">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-            <div class="loading-percentage" id="loadingPercentage">0%</div>
-            <div class="welcome-message" id="welcomeMessage">Welcome to my portfolio</div>
         </div>
     </div>
 
@@ -1123,6 +1221,22 @@
         </header>
         
         <nav>
+            <div class="theme-toggle" id="themeToggle" title="Toggle theme">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </div>
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -1151,43 +1265,16 @@
                         </div>
                     </div>
                     <div style="flex: 0 0 auto; position: relative; width: 300px; height: 300px;">
-                        <img id="aboutImg1" src="Rob_1.jpg" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #000000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); opacity: 1; transition: opacity 2s ease-in-out;">
-                        <img id="aboutImg2" src="IMG_9222.jpg" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #000000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); opacity: 0; transition: opacity 2s ease-in-out;">
-                        <img id="aboutImg4" src="Header.Jpg.JPG" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; object-position: center 30%; border-radius: 8px; border: 3px solid #000000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); opacity: 0; transition: opacity 2s ease-in-out;">
-                        <img id="aboutImg6" src="Volley.jpg.jpg" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #000000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); opacity: 0; transition: opacity 2s ease-in-out;">
-                        <img id="aboutImg7" src="WhoAmI.jpg" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #000000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); opacity: 0; transition: opacity 2s ease-in-out;">
-                        <img id="aboutImg8" src="Thisme.jpg.jpg" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #000000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); opacity: 0; transition: opacity 2s ease-in-out;">
+                        <img id="aboutImg1" src="Rob_1.jpg" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #ffffff; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); opacity: 1; transition: opacity 2s ease-in-out;">
+                        <img id="aboutImg2" src="IMG_9222.jpg" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #ffffff; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); opacity: 0; transition: opacity 2s ease-in-out;">
+                        <img id="aboutImg4" src="Header.Jpg.JPG" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; object-position: center 30%; border-radius: 8px; border: 3px solid #ffffff; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); opacity: 0; transition: opacity 2s ease-in-out;">
+                        <img id="aboutImg6" src="Volley.jpg.jpg" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #ffffff; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); opacity: 0; transition: opacity 2s ease-in-out;">
+                        <img id="aboutImg7" src="WhoAmI.jpg" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #ffffff; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); opacity: 0; transition: opacity 2s ease-in-out;">
+                        <img id="aboutImg8" src="Thisme.jpg.jpg" alt="Rob Marcellin" style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 8px; border: 3px solid #ffffff; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); opacity: 0; transition: opacity 2s ease-in-out;">
                     </div>
                 </div>
                 
                 <div class="tentacle-container">
-                    <div class="tentacle-box">
-                        <h3>Technical Skills</h3>
-                        <p style="font-weight: 600; margin-bottom: 1.5rem;">Languages & Frameworks</p>
-                        <div class="skills-list">
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">PHP</span>
-                            <span class="skill-tag">HTML/CSS</span>
-                        </div>
-                        <p style="font-weight: 600; margin-top: 1rem; margin-bottom: 0.5rem;">Photography & Videography</p>
-                        <div class="skills-list">
-                            <span class="skill-tag">Adobe Premiere</span>
-                            <span class="skill-tag">Adobe Photoshop</span>
-                            <span class="skill-tag">Video Editing</span>
-                            <span class="skill-tag">Color Grading</span>
-                            <span class="skill-tag">Composition</span>
-                            <span class="skill-tag">Lighting</span>
-                        </div>
-                        <p style="font-weight: 600; margin-top: 1rem; margin-bottom: 0.5rem;">Professional Skills</p>
-                        <div class="skills-list">
-                            <span class="skill-tag">Full-Stack</span>
-                            <span class="skill-tag">Data Analysis</span>
-                            <span class="skill-tag">Leadership</span>
-                            <span class="skill-tag">Sales Strategy</span>
-                        </div>
-                    </div>
-                    
                     <div class="tentacle-box">
                         <h3>Education</h3>
                         <div style="position: relative; min-height: 150px;">
@@ -1200,7 +1287,7 @@
                                     </div>
                                 </div>
                                 <p style="margin-bottom: 0.3rem;">Minor in Computer Science</p>
-                                <p style="font-style: italic; color: #666666;">Graduated: May 2025</p>
+                                <p style="font-style: italic; color: #cccccc;">Graduated: May 2025</p>
                             </div>
                             <div id="edu2" style="position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity 2s ease-in-out;">
                                 <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
@@ -1210,13 +1297,13 @@
                                         <p style="margin-bottom: 0.3rem;">Associate in Science, Natural Sciences and Math, Computer Science</p>
                                     </div>
                                 </div>
-                                <p style="font-style: italic; color: #666666;">Graduated: May 2020</p>
+                                <p style="font-style: italic; color: #cccccc;">Graduated: May 2020</p>
                             </div>
                         </div>
                         
-                        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 2px solid #000000;">
-                            <a href="https://www.linkedin.com/in/rob-marcellin-0a8b75256/" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #000000; font-weight: 600; transition: opacity 0.3s;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#000000">
+                        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 2px solid #ffffff;">
+                            <a href="https://www.linkedin.com/in/rob-marcellin-0a8b75256/" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #ffffff; font-weight: 600; transition: opacity 0.3s;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#ffffff">
                                     <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                                 </svg>
                                 <span>View LinkedIn Profile</span>
@@ -1231,7 +1318,7 @@
                 
                 <div class="service-card" style="margin-bottom: 2rem;">
                     <h3>Elicona Visuals</h3>
-                    <p><strong>Website:</strong> <a href="https://eliconavisuals.com" target="_blank" style="color: #3b82f6;">eliconavisuals.com</a></p>
+                    <p><strong>Website:</strong> <a href="https://eliconavisuals.com" target="_blank" style="color: #60a5fa;">eliconavisuals.com</a></p>
                     <p>A modern, professional portfolio website for a barber business. Features a sleek design with smooth animations, responsive layouts, and an intuitive user interface.</p>
                     <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript, React, PHP</p>
                 </div>
@@ -1247,14 +1334,6 @@
                 </div>
             </section>
             
-            <section id="mentorship">
-                <h2>Developer Mentorship Program</h2>
-                <p style="font-size: 1.05rem; margin-bottom: 1.5rem;">Transform your coding journey with personalized guidance and hands-on mentorship. Learn modern web development from someone who's passionate about teaching.</p>
-                
-                <div style="text-align: center; margin-top: 2rem;">
-                    <a href="mailto:xmarcellr@gmail.com?subject=Developer%20Mentorship%20Consultation&body=Hi%20Rob%2C%0D%0A%0D%0AI'm%20interested%20in%20learning%20more%20about%20your%20Developer%20Mentorship%20Program.%0D%0A%0D%0AMy%20experience%20level%3A%20%5BBeginner%2FIntermediate%2FAdvanced%5D%0D%0A%0D%0AWhat%20I%20want%20to%20learn%3A%20%5BYour%20goals%20here%5D%0D%0A%0D%0AMy%20availability%3A%20%5BYour%20schedule%5D%0D%0A%0D%0ALooking%20forward%20to%20hearing%20from%20you!%0D%0A%0D%0ABest%2C%0D%0A%5BYour%20Name%5D" class="consultation-button">Schedule a Free Consultation</a>
-                </div>
-            </section>
             
             <section id="services">
                 <!-- Animated Services Hero -->
@@ -1335,7 +1414,7 @@
                     <p style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">Ready to get started?</p>
                     <a href="mailto:xmarcellr@gmail.com?subject=Let's%20Connect&body=Hi%20Rob%2C%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20really%20enjoyed%20learning%20about%20your%20work!%0D%0A%0D%0AI'm%20reaching%20out%20because%3A%20%5BTell%20me%20what%20caught%20your%20interest%20or%20what%20you're%20looking%20for%5D%0D%0A%0D%0AA%20bit%20about%20me%3A%20%5BOptional%20-%20share%20what%20you%20do%20or%20what%20brings%20you%20here%5D%0D%0A%0D%0AI'd%20love%20to%3A%20%5BChat%20about%20opportunities%20%2F%20Ask%20some%20questions%20%2F%20Discuss%20a%20potential%20project%20%2F%20Just%20connect%5D%0D%0A%0D%0ALooking%20forward%20to%20hearing%20from%20you!%0D%0A%0D%0ABest%2C%0D%0A%5BYour%20Name%5D" class="consultation-button">Contact Me</a>
                     <p style="margin-top: 1rem; font-size: 0.95rem; opacity: 0.9;">Response time: Within 24 hours</p>
-                    <a href="https://buy.stripe.com/cNibJ1c5u1Tg6wE0N4eZ207" target="_blank" class="cta-button" style="font-size: 1rem; padding: 1rem 2rem; margin-top: 1rem;">Contribute</a>
+                    <a href="https://buy.stripe.com/cNibJ1c5u1Tg6wE0N4eZ207" target="_blank" class="cta-button" style="font-size: 1rem; padding: 1rem 2rem; margin-top: 1rem; display: none;">Contribute</a>
                 </div>
             </section>
         </div>
@@ -1367,63 +1446,23 @@
         // Start bio cycling - runs every 5.5 seconds
         setInterval(cycleBio, 5500);
 
-        // Loading Screen Logic
-        const welcomeMessages = [
-            " Welcome to my portfolio ",
-            " Let's build something amazing together ",
-            " Crafting digital experiences with passion ",
-            " Where creativity meets technology "
-        ];
-        
-        // Randomize loading time: 3.2s, 4.3s, 5.4s, or 2.1s
-        const loadingTimes = [3200, 4300, 5400, 7100];
-        const selectedTime = loadingTimes[Math.floor(Math.random() * loadingTimes.length)];
-        const intervalTime = selectedTime / 50;
-        
-        let currentMessageIndex = 0;
-        let progress = 0;
-        const progressBar = document.getElementById('progressBar');
-        const loadingPercentage = document.getElementById('loadingPercentage');
-        const welcomeMessage = document.getElementById('welcomeMessage');
+        // Loading Screen Logic - Simple 2.5 second display
         const loadingScreen = document.getElementById('loadingScreen');
         const mainContent = document.getElementById('mainContent');
         
-        // Rotate welcome messages
-        function rotateMessages() {
-            welcomeMessage.style.opacity = '0';
-            setTimeout(() => {
-                currentMessageIndex = (currentMessageIndex + 1) % welcomeMessages.length;
-                welcomeMessage.textContent = welcomeMessages[currentMessageIndex];
-                welcomeMessage.style.opacity = '1';
-            }, 500);
-        }
-        
-        const messageInterval = setInterval(rotateMessages, 2000);
-        
-        // Progress bar animation with randomized time
-        const progressInterval = setInterval(() => {
-            if (progress >= 100) {
-                clearInterval(progressInterval);
-                clearInterval(messageInterval);
-                
-                setTimeout(() => {
-                    loadingScreen.classList.add('fade-out');
-                    mainContent.classList.add('visible');
-                    
-                    setTimeout(() => {
-                        loadingScreen.style.display = 'none';
-                        document.body.style.overflow = 'auto';
-                    }, 800);
-                }, 500);
-            } else {
-                progress += 2;
-                progressBar.style.width = progress + '%';
-                loadingPercentage.textContent = progress + '%';
-            }
-        }, intervalTime);
-        
         // Prevent scrolling during loading
         document.body.style.overflow = 'hidden';
+        
+        // After 2.5 seconds, fade out loading screen and show main content
+        setTimeout(() => {
+            loadingScreen.classList.add('fade-out');
+            mainContent.classList.add('visible');
+            
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 800);
+        }, 2500);
         
         const sections = document.querySelectorAll('section');
         
@@ -1541,6 +1580,38 @@
                 }
             });
         }
+        
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const sunIcon = document.querySelector('.sun-icon');
+        const moonIcon = document.querySelector('.moon-icon');
+        
+        // Check for saved theme preference or default to dark
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        
+        // Apply saved theme on load
+        if (currentTheme === 'light') {
+            document.body.classList.add('light-theme');
+            sunIcon.style.display = 'none';
+            moonIcon.style.display = 'block';
+        }
+        
+        // Toggle theme on click
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            
+            if (document.body.classList.contains('light-theme')) {
+                // Switch to light theme - show moon icon
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+                localStorage.setItem('theme', 'light');
+            } else {
+                // Switch to dark theme - show sun icon
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
     </script>
 </body>
 </html>
