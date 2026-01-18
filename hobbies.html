@@ -30,6 +30,76 @@
             background-attachment: fixed;
             min-height: 100vh;
             overflow-x: hidden;
+            transition: background 1.5s ease, color 1.5s ease;
+        }
+        
+        /* Dark Theme */
+        body.dark-theme {
+            color: #ffffff;
+            background: linear-gradient(to bottom, #000000 0%, #0a0a0a 20%, #1a1a1a 40%, #0f0f0f 60%, #000000 100%);
+        }
+        
+        body.dark-theme header,
+        body.dark-theme h1,
+        body.dark-theme h2,
+        body.dark-theme h3,
+        body.dark-theme p {
+            color: #ffffff;
+            transition: color 1.5s ease;
+        }
+        
+        body.dark-theme .back-button,
+        body.dark-theme .hamburger span,
+        body.dark-theme nav a,
+        body.dark-theme .theme-toggle,
+        body.dark-theme .theme-toggle svg {
+            color: #ffffff;
+            border-color: #ffffff;
+            transition: color 1.5s ease, border-color 1.5s ease, background 1.5s ease;
+        }
+        
+        body.dark-theme .back-button:hover,
+        body.dark-theme nav a:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+        
+        body.dark-theme .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        body.dark-theme nav ul {
+            background: rgba(20, 20, 20, 0.98);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: background 1.5s ease, border-color 1.5s ease;
+        }
+        
+        body.dark-theme nav ul li:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        body.dark-theme section {
+            background: rgba(20, 20, 20, 0.95);
+            border: 3px solid #ffffff;
+            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+            transition: background 1.5s ease, border-color 1.5s ease, box-shadow 1.5s ease;
+        }
+        
+        body.dark-theme .collage-container {
+            border-color: rgba(255, 255, 255, 0.2);
+            transition: border-color 1.5s ease;
+        }
+        
+        body.dark-theme .gallery-button {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+            transition: background 1.5s ease, color 1.5s ease, border-color 1.5s ease;
+        }
+        
+        body.dark-theme .gallery-button:hover {
+            background: transparent;
+            color: #ffffff;
         }
         
         header {
@@ -40,6 +110,7 @@
             overflow: hidden;
             background: transparent;
             z-index: 2;
+            transition: color 1.5s ease;
         }
         
         header h1 {
@@ -47,6 +118,7 @@
             margin-bottom: 0.5rem;
             font-weight: 700;
             letter-spacing: 2px;
+            transition: color 1.5s ease;
         }
         
         header p {
@@ -54,6 +126,7 @@
             font-weight: 300;
             letter-spacing: 1px;
             opacity: 0.9;
+            transition: color 1.5s ease;
         }
         
         nav {
@@ -67,6 +140,37 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1rem;
+        }
+        
+        .theme-toggle {
+            cursor: pointer;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #000000;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+        
+        .theme-toggle:hover {
+            background: rgba(0, 0, 0, 0.1);
+            transform: rotate(20deg);
+        }
+        
+        .theme-toggle svg {
+            color: #000000;
+            transition: all 0.3s ease;
+        }
+        
+        .sun-icon,
+        .moon-icon {
+            width: 24px;
+            height: 24px;
         }
         
         .back-button {
@@ -185,31 +289,12 @@
             background: rgba(255, 255, 255, 0.95);
             margin-bottom: 2rem;
             padding: 3rem;
-            border-radius: 8px;
+            border-radius: 16px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: relative;
-            border: 5px solid transparent;
-            border-radius: 16px;
-            background: 
-                linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)) padding-box,
-                linear-gradient(var(--angle), #000000, #c0c0c0, #ffffff, #c0c0c0, #000000, #c0c0c0, #ffffff, #c0c0c0) border-box;
-            animation: rotateGradient 35s linear infinite;
+            border: 3px solid #000000;
             backdrop-filter: blur(10px);
-        }
-        
-        @property --angle {
-            syntax: '<angle>';
-            initial-value: 0deg;
-            inherits: false;
-        }
-        
-        @keyframes rotateGradient {
-            0% {
-                --angle: 0deg;
-            }
-            100% {
-                --angle: 360deg;
-            }
+            transition: background 1.5s ease, border-color 1.5s ease, box-shadow 1.5s ease;
         }
         
         h2 {
@@ -218,6 +303,7 @@
             margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
             border-bottom: 3px solid #000000;
+            transition: color 1.5s ease, border-color 1.5s ease;
         }
         
         h3 {
@@ -225,6 +311,7 @@
             font-size: 1.4rem;
             margin-top: 1.5rem;
             margin-bottom: 1rem;
+            transition: color 1.5s ease;
         }
         
         /* Hobbies Collage */
@@ -234,7 +321,7 @@
             border-radius: 12px;
             overflow: hidden;
             border: 2px solid rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s;
+            transition: transform 0.3s, border-color 1.5s ease;
             margin-bottom: 2rem;
             height: 400px;
         }
@@ -482,6 +569,22 @@
             <span class="back-arrow">←</span>
             <span>Back to Home</span>
         </a>
+        <div class="theme-toggle" id="themeToggle" title="Toggle theme">
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </div>
         <div class="hamburger">
             <span></span>
             <span></span>
@@ -585,6 +688,38 @@
         let currentMediaIndex = 0;
         let touchStartX = 0;
         let touchEndX = 0;
+        
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const sunIcon = document.querySelector('.sun-icon');
+        const moonIcon = document.querySelector('.moon-icon');
+        
+        // Check for saved theme preference or default to light
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        
+        // Apply saved theme on load
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-theme');
+            sunIcon.style.display = 'none';
+            moonIcon.style.display = 'block';
+        }
+        
+        // Toggle theme on click
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            
+            if (document.body.classList.contains('dark-theme')) {
+                // Switch to dark theme - show moon icon
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                // Switch to light theme - show sun icon
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+                localStorage.setItem('theme', 'light');
+            }
+        });
         
         // Photo preview cycling
         const photoPreviewImages = document.querySelectorAll('.photo-preview');
