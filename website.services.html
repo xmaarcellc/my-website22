@@ -175,7 +175,17 @@
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
             </svg>
         </div>
-      
+        <ul>
+            <li><a href="index.html#about">Work</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
 
     <header>
         <h1>
@@ -194,13 +204,13 @@
         <div class="page-hero">
             <div class="hero-badge">Marcell Services</div>
             <h2>Accelerate Your Business Presence</h2>
-            <p>Custom-built websites that convert visitors into clients. Fast, mobile-friendly, and designed to make your brand stand out.</p>
+            <p>Custom-built websites that convert visitors into clients. Fast, mobile-first, and designed to make your brand impossible to ignore.</p>
         </div>
 
         <!-- WHAT WE BUILD -->
         <section id="services">
             <h2>What We Build</h2>
-            <p style="margin-bottom: 0.5rem;">Every website we deliver is built from scratch, no templates, no shortcuts.</p>
+            <p style="margin-bottom: 0.5rem;">Every website we deliver is built from scratch — no templates, no shortcuts.</p>
             <div class="tile-grid">
 
                 <div class="service-tile">
@@ -217,7 +227,7 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
                     </div>
                     <h3>Portfolio Sites</h3>
-                    <p>Clean, striking portfolio pages for photographers and small businesses.</p>
+                    <p>Clean, striking portfolio pages for photographers, creatives, and freelancers that let your work speak for itself.</p>
                     <div class="tags"><span class="tag">Gallery</span><span class="tag">Animation</span><span class="tag">Mobile</span></div>
                 </div>
 
@@ -235,7 +245,7 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                     </div>
                     <h3>React Web Apps</h3>
-                    <p>Dynamic, component-driven applications for businesses that need more than a standard website.</p>
+                    <p>Dynamic, component-driven applications built with React for businesses that need more than a standard website.</p>
                     <div class="tags"><span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">API</span></div>
                 </div>
 
@@ -269,13 +279,13 @@
                 <div class="process-step">
                     <div class="step-num">01</div>
                     <h4>Discovery Call</h4>
-                    <p>We talk through your business, goals, and what you need the website to do.</p>
+                    <p>We talk through your business, goals, and what you need the website to do. No pressure, no jargon.</p>
                 </div>
 
                 <div class="process-step">
                     <div class="step-num">02</div>
                     <h4>Proposal & Scope</h4>
-                    <p>You receive a clear breakdown of what gets built, the timeline, and the price.</p>
+                    <p>You receive a clear breakdown of what gets built, the timeline, and the price. No surprises.</p>
                 </div>
 
                 <div class="process-step">
@@ -302,7 +312,7 @@
         <!-- PRICING -->
         <section id="pricing" style="text-align: center;">
             <h2 style="text-align: left;">Pricing</h2>
-            <p style="max-width: 580px; margin: 0 auto 0.5rem; text-align: center;">Every project is scoped and priced individually based on your specific needs. Reach out and we'll put together a custom quote.</p>
+            <p style="max-width: 580px; margin: 0 auto 0.5rem; text-align: center;">Every project is scoped and priced individually based on your specific needs. Reach out and we'll put together a custom quote — no obligation, no pressure.</p>
 
             <p style="margin-top: 1rem; color: #aaaaaa; font-size: 0.9rem;">Pricing is sent directly to your inbox after a quick conversation about your project.</p>
             <a href="mailto:xmarcellr@gmail.com?subject=Website%20Pricing%20Request&body=Hi%20Rob%2C%0D%0A%0D%0AI'd%20like%20to%20get%20a%20quote%20for%20a%20website.%0D%0A%0D%0AType%20of%20site%3A%20%5BBusiness%20site%2C%20portfolio%2C%20web%20app%2C%20etc.%5D%0D%0A%0D%0ANumber%20of%20pages%20(approx.)%3A%20%5BYour%20estimate%5D%0D%0A%0D%0AFeatures%20needed%3A%20%5BContact%20form%2C%20booking%2C%20gallery%2C%20etc.%5D%0D%0A%0D%0ATimeline%3A%20%5BWhen%20you%20need%20it%5D%0D%0A%0D%0ALooking%20forward%20to%20hearing%20from%20you!%0D%0A%0D%0ABest%2C%0D%0A%5BYour%20Name%5D" class="consultation-button">Request Pricing</a>
@@ -336,7 +346,16 @@
         }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
         document.querySelectorAll('section').forEach(s => observer.observe(s));
 
-       
+        // Hamburger
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('nav ul');
+        hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navMenu.classList.toggle('active'); });
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => { hamburger.classList.remove('active'); navMenu.classList.remove('active'); });
+        });
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) { hamburger.classList.remove('active'); navMenu.classList.remove('active'); }
+        });
 
         // Theme
         const themeToggle = document.getElementById('themeToggle');
@@ -352,5 +371,4 @@
         });
     </script>
 </body>
-
-</html>
+</html
