@@ -339,7 +339,7 @@
         }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
         document.querySelectorAll('section').forEach(s => observer.observe(s));
 
-        // Hamburger
+           // Hamburger
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('nav ul');
         hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navMenu.classList.toggle('active'); });
@@ -349,7 +349,6 @@
         document.addEventListener('click', (e) => {
             if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) { hamburger.classList.remove('active'); navMenu.classList.remove('active'); }
         });
-
         // Theme
         const themeToggle = document.getElementById('themeToggle');
         const sunIcon = document.querySelector('.sun-icon');
@@ -365,3 +364,4 @@
     </script>
 </body>
 </html>
+
