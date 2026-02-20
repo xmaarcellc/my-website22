@@ -139,16 +139,17 @@
             background: rgba(20,20,20,0.9);
             transition: transform 0.35s ease, box-shadow 0.35s ease;
             cursor: pointer;
+            position: relative; min-height: 280px;
+            background-size: cover; background-position: center; background-repeat: no-repeat;
         }
         .showcase-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(255,255,255,0.12); }
+        .showcase-card:hover { background-size: 108%; }
 
-        .showcase-img-wrap { width: 100%; aspect-ratio: 16/9; overflow: hidden; position: relative; background: #111; }
-        .showcase-img-wrap img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.5s ease; display: block; }
-        .showcase-card:hover .showcase-img-wrap img { transform: scale(1.04); }
+        .showcase-img-wrap { display: none; }
 
-        .showcase-badge { position: absolute; top: 1rem; left: 1rem; background: #000000; color: #ffffff; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.3); }
+        .showcase-badge { position: absolute; top: 1rem; left: 1rem; background: #000000; color: #ffffff; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.3); z-index: 2; }
 
-        .showcase-body { padding: 1.6rem; }
+        .showcase-body { padding: 1.6rem; position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.7) 60%, transparent 100%); z-index: 2; }
         .showcase-tagline { font-size: 1.3rem; font-weight: 700; letter-spacing: 0.5px; color: #ffffff; margin-bottom: 0.6rem; line-height: 1.2; }
         .showcase-desc { font-size: 0.9rem; color: #aaaaaa; line-height: 1.7; margin-bottom: 1.2rem; }
         .showcase-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
@@ -303,7 +304,7 @@
 
                     <!-- Card 1: Website Services -->
                     <a href="website.services.html">
-                    <div class="showcase-card">
+                    <div class="showcase-card" style="background-image: url('eliconavisuals.com screenshot.png');">
                         <div class="showcase-img-wrap">
                             <img src="eliconavisuals.com screenshot.png" alt="Business website example"
                                  onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><path d=\'M3 9h18M9 21V9\'/></svg>BUSINESS SITE</div>'">
@@ -323,7 +324,7 @@
 
                     <!-- Card 2: Consulting Services -->
                     <a href="consulting-services.html">
-                    <div class="showcase-card">
+                    <div class="showcase-card" style="background-image: url('booking-screenshot.jpg');">
                         <div class="showcase-img-wrap">
                             <img src="booking-screenshot.jpg" alt="Booking and e-commerce site"
                                  onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><rect x=\'2\' y=\'4\' width=\'20\' height=\'16\' rx=\'2\'/><path d=\'M8 2v4M16 2v4M2 10h20\'/></svg>CONSULTING</div>'">
@@ -343,7 +344,7 @@
 
                     <!-- Card 3: Business Photography -->
                     <a href="business-photography.html">
-                    <div class="showcase-card">
+                    <div class="showcase-card" style="background-image: url('portfolio-screenshot.jpg');">
                         <div class="showcase-img-wrap">
                             <img src="portfolio-screenshot.jpg" alt="Business photography"
                                  onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z\'/><circle cx=\'12\' cy=\'13\' r=\'4\'/></svg>PHOTOGRAPHY</div>'">
@@ -363,7 +364,7 @@
 
                     <!-- Card 4: Business Facilities -->
                     <a href="business-facilities.html">
-                    <div class="showcase-card">
+                    <div class="showcase-card" style="background-image: url('consulting-screenshot.jpg');">
                         <div class="showcase-img-wrap">
                             <img src="consulting-screenshot.jpg" alt="Business facilities"
                                  onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><rect x=\'2\' y=\'7\' width=\'20\' height=\'14\' rx=\'2\'/><path d=\'M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M12 12v4M10 14h4\'/></svg>BUSINESS FACILITIES</div>'">
