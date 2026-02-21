@@ -14,335 +14,358 @@
     <link rel="icon" type="image/png" href="JustLogo.png">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #ffffff; background: linear-gradient(to bottom, #1a1a1a 0%, #222222 20%, #2a2a2a 40%, #222222 60%, #1a1a1a 100%); background-attachment: fixed; min-height: 100vh; overflow-x: hidden; }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #ffffff;
-            background: linear-gradient(to bottom, #1a1a1a 0%, #222222 20%, #2a2a2a 40%, #222222 60%, #1a1a1a 100%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+        /* NAV */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(20,20,20,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; gap: 2.5rem; padding: 0.9rem 2rem; }
+        nav a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.85rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; }
+        nav a:hover { color: #ffffff; }
+        nav a.active { color: #ffffff; border-bottom: 2px solid #ffffff; padding-bottom: 2px; }
 
-        .main-content { opacity: 1; }
-
-        header { position: relative; color: #ffffff; padding: 8rem 2rem 6rem; text-align: center; background: rgba(30,30,30,0.6); z-index: 2; }
-        header h1 { font-size: 3.5rem; margin-bottom: 1rem; font-weight: 700; letter-spacing: 2px; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; color: #ffffff; opacity: 0; animation: fadeInHeader 1s ease-out forwards; animation-delay: 0.2s; }
+        /* HEADER */
+        header { position: relative; color: #ffffff; padding: 8rem 2rem 4rem; text-align: center; background: rgba(30,30,30,0.6); z-index: 2; }
+        header h1 { font-size: clamp(2.2rem, 6vw, 3.5rem); font-weight: 700; letter-spacing: 2px; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; color: #ffffff; opacity: 0; animation: fadeInHeader 1s ease-out forwards; animation-delay: 0.2s; }
         .logo { width: 60px; height: 60px; margin-top: 10px; opacity: 0; animation: fadeInHeader 1s ease-out forwards; animation-delay: 0.4s; }
         @keyframes fadeInHeader { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
-        .container { max-width: 1400px; margin: 0 auto; padding: 3rem 2rem; position: relative; z-index: 2; }
-
-        section {
-            background: rgba(30,30,30,0.25);
-            margin-bottom: 2rem; padding: 3rem; border-radius: 16px;
-            box-shadow: 0 2px 10px rgba(255,255,255,0.08);
-            position: relative; border: none; backdrop-filter: blur(10px);
-            z-index: 2;
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-        }
-        section.fade-in { opacity: 1; transform: translateY(0); }
-
-        .showcase-intro { color: #aaaaaa; font-size: 1rem; margin-bottom: 2.5rem; }
-        .showcase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .showcase-grid a { text-decoration: none; display: block; }
-
-        .showcase-card {
-            border: 2px solid #ffffff; border-radius: 14px; overflow: hidden;
-            background: #1a1a1a;
-            transition: transform 0.35s ease, box-shadow 0.35s ease;
-            cursor: pointer; position: relative; min-height: 280px;
-            background-size: cover; background-position: center; background-repeat: no-repeat;
-        }
-        .showcase-card:hover { transform: translateY(-6px); box-shadow: 0 6px 20px rgba(255,255,255,0.06); background-size: 108%; }
-        .showcase-img-wrap { display: none; }
-        .showcase-badge { position: absolute; top: 1rem; left: 1rem; background: #1a1a1a; color: #ffffff; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.3); z-index: 2; }
-        .showcase-body { padding: 1.6rem; position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(20,20,20,0.95) 0%, rgba(20,20,20,0.7) 60%, transparent 100%); z-index: 2; }
-        .showcase-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .showcase-tag { font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 0.3rem 0.7rem; border-radius: 20px; border: 1px solid #ffffff; color: #ffffff; background: transparent; }
-
-        .founder-strip { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
-        .founder-strip .muted { color: #aaaaaa; }
-
-        h2 { color: #ffffff; font-size: 1.6rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 3px solid #ffffff; }
-        h3 { color: #ffffff; font-size: 1.4rem; margin-top: 1.5rem; margin-bottom: 1rem; }
-
-        .service-card { background: rgba(38,38,38,0.9); padding: 1.5rem; border-radius: 8px; border: 2px solid #ffffff; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 3px 15px rgba(255,255,255,0.08); cursor: pointer; backdrop-filter: blur(3px); }
-        .project-card-header { cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; user-select: none; padding-bottom: 1rem; border-bottom: 2px solid #ffffff; }
-        .project-card-header:hover { opacity: 0.8; }
-        .service-dropdown-arrow { font-size: 1.2rem; transition: transform 0.3s ease; margin-left: 1rem; color: #ffffff; }
-        .service-dropdown-arrow.open { transform: rotate(180deg); }
-        .project-description { max-height: 0; overflow: hidden; transition: max-height 0.7s cubic-bezier(0.4,0,0.2,1), opacity 0.5s ease, margin-top 0.3s ease; opacity: 0; margin-top: 0; }
-        .project-description.open { max-height: 5000px; opacity: 1; margin-top: 1rem; }
-        .project-description p, .project-description ul, .project-description li { color: #ffffff; }
-        .project-description h4 { color: #ffffff; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 0.5rem; }
-        .project-description strong { color: #ffffff; font-weight: 700; }
-        .service-card:hover { transform: translateY(-5px); box-shadow: 0 5px 20px rgba(255,255,255,0.15); }
-        .service-card h3 { margin-top: 0; color: #ffffff; }
-        .service-card p { color: #ffffff; }
-
-        /* TOPIC CARD */
-        .topic-card { border: 2px solid #ffffff; border-radius: 14px; overflow: hidden; background: rgba(38,38,38,0.9); transition: transform 0.35s ease, box-shadow 0.35s ease; display: block; text-decoration: none; }
-        .topic-card:hover { transform: translateY(-6px); box-shadow: 0 6px 20px rgba(255,255,255,0.06); }
-        .topic-card-body { padding: 2.5rem 2.5rem 1.5rem; }
-        .topic-meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
-        .topic-badge { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.2); padding: 0.25rem 0.8rem; border-radius: 20px; }
-        .topic-date { font-size: 0.85rem; color: #aaaaaa; }
-        .topic-card h3 { font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 700; color: #ffffff; line-height: 1.3; margin: 0 0 1rem; }
-        .topic-card p { color: #aaaaaa; font-size: 0.95rem; line-height: 1.8; margin: 0; }
-        .topic-card-footer { padding: 1.2rem 2.5rem 2rem; display: flex; align-items: center; gap: 0.5rem; color: #ffffff; font-weight: 600; font-size: 0.9rem; text-decoration: none; }
-
-        .consultation-button { display: inline-block; background: transparent; color: #ffffff; padding: 1.2rem 2.5rem; text-decoration: none; border-radius: 8px; margin-top: 1.5rem; transition: all 0.3s; font-weight: 600; border: 2px solid #ffffff; cursor: pointer; font-size: 1.1rem; }
-        .consultation-button:hover { background: #ffffff; color: #000000; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255,255,255,0.3); }
-
-        footer { background: transparent; color: #ffffff; text-align: center; padding: 2rem; margin-top: 3rem; position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.2); }
-
-        section p { color: #ffffff; font-size: 0.95rem; }
-        section ul { color: #ffffff; font-size: 0.95rem; }
-        section li { color: #ffffff; font-size: 0.95rem; }
-        section a { color: #ffffff; text-decoration: underline; }
-        section a:hover { color: #cccccc; }
-
+        /* BG IMAGES */
         .bg-image { position: fixed; left: 0; right: 0; width: 100%; height: 40vh; background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0.15; z-index: 0; pointer-events: none; }
         .bg-image-1 { top: 0; background-image: url('background1.jpg'); }
         .bg-image-2 { top: 50%; transform: translateY(-50%); background-image: url('background2.jpg'); }
         .bg-image-3 { bottom: 0; background-image: url('background3.jpg'); }
 
-        @media (max-width: 768px) {
-            header h1 { font-size: 2rem; }
-            section { padding: 2rem 1rem; }
-            .showcase-grid { grid-template-columns: 1fr; }
-            .topic-card-body { padding: 1.5rem 1.5rem 1rem; }
-            .topic-card-footer { padding: 1rem 1.5rem 1.5rem; }
-        }
+        /* BENTO GRID */
+        .container { max-width: 1400px; margin: 0 auto; padding: 3rem 2rem 5rem; position: relative; z-index: 2; }
 
-        nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 100;
-            background: rgba(20,20,20,0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2.5rem;
-            padding: 0.9rem 2rem;
+        .bento { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: minmax(80px, auto); gap: 1.2rem; }
+
+        /* BASE CARD */
+        .bcard {
+            background: rgba(30,30,30,0.25);
+            border-radius: 18px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s;
+            overflow: hidden;
+            position: relative;
         }
-        nav a {
-            color: rgba(255,255,255,0.65);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            transition: color 0.2s;
+        .bcard.fade-in { opacity: 1; transform: translateY(0); }
+        .bcard:hover { box-shadow: 0 8px 32px rgba(255,255,255,0.06); }
+
+        /* GRID PLACEMENTS */
+        .bcard-intro      { grid-column: 1 / 8;  grid-row: 1; }
+        .bcard-founder    { grid-column: 8 / 13; grid-row: 1; }
+        .bcard-webdev     { grid-column: 1 / 6;  grid-row: 2 / 4; min-height: 320px; }
+        .bcard-facilities { grid-column: 6 / 13; grid-row: 2; min-height: 200px; }
+        .bcard-topics-hdr { grid-column: 6 / 13; grid-row: 3; }
+        .bcard-article1   { grid-column: 1 / 7;  grid-row: 4; }
+        .bcard-article2   { grid-column: 7 / 13; grid-row: 4; }
+        .bcard-collab     { grid-column: 1 / 9;  grid-row: 5; }
+        .bcard-contact    { grid-column: 9 / 13; grid-row: 5; }
+
+        /* CARD TYPES */
+        .bcard h2 { font-size: 1.3rem; font-weight: 700; color: #ffffff; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid rgba(255,255,255,0.2); }
+        .bcard h3 { font-size: 1rem; font-weight: 700; color: #ffffff; margin-bottom: 0.5rem; }
+        .bcard p  { color: #aaaaaa; font-size: 0.9rem; line-height: 1.8; }
+
+        /* SHOWCASE CARDS */
+        .showcase-card {
+            display: block; text-decoration: none; height: 100%; width: 100%;
+            position: absolute; inset: 0;
+            background-size: cover; background-position: center;
+            border-radius: 18px;
+            transition: background-size 0.4s ease;
         }
-        nav a:hover { color: #ffffff; }
-        nav a.active { color: #ffffff; border-bottom: 2px solid #ffffff; padding-bottom: 2px; }
-        @media (max-width: 768px) {
-            nav { gap: 1.5rem; padding: 0.8rem 1rem; }
-            nav a { font-size: 0.75rem; letter-spacing: 1px; }
+        .showcase-card:hover { background-size: 108%; }
+        .bcard-webdev .showcase-card { background-image: url('eliconavisuals.com screenshot.png'); }
+        .bcard-facilities .showcase-card { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('consulting-screenshot.jpg'); }
+        .showcase-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.4) 50%, transparent 100%); border-radius: 18px; }
+        .showcase-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; z-index: 2; }
+        .showcase-badge { display: inline-block; background: rgba(20,20,20,0.9); color: #ffffff; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.3); margin-bottom: 0.8rem; }
+        .showcase-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .showcase-tag { font-size: 0.7rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.6); color: #ffffff; }
+
+        /* FOUNDER */
+        .founder-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.2rem; }
+        .founder-role { color: #aaaaaa; font-size: 0.85rem; margin-bottom: 0.1rem; }
+        .linkedin-link { display: inline-flex; align-items: center; gap: 0.4rem; text-decoration: none; color: #ffffff; font-weight: 600; font-size: 0.85rem; margin-top: 1rem; opacity: 0.7; transition: opacity 0.2s; }
+        .linkedin-link:hover { opacity: 1; }
+
+        /* TOPICS HEADER CARD */
+        .bcard-topics-hdr { display: flex; flex-direction: column; justify-content: center; background: rgba(255,255,255,0.04); }
+        .topics-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 0.4rem; }
+        .bcard-topics-hdr h2 { border: none; padding: 0; margin: 0; font-size: 1.5rem; }
+        .bcard-topics-hdr p { margin-top: 0.3rem; font-size: 0.85rem; }
+
+        /* ARTICLE CARDS */
+        .topic-card-link { text-decoration: none; display: flex; flex-direction: column; height: 100%; }
+        .topic-badge { font-size: 0.68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.15); padding: 0.2rem 0.7rem; border-radius: 20px; display: inline-block; margin-bottom: 0.8rem; }
+        .topic-date { font-size: 0.8rem; color: #aaaaaa; margin-bottom: 0.6rem; }
+        .topic-title { font-size: 1rem; font-weight: 700; color: #ffffff; line-height: 1.4; margin-bottom: 0.6rem; }
+        .topic-preview { font-size: 0.85rem; color: #888; line-height: 1.7; flex: 1; }
+        .topic-read { display: inline-flex; align-items: center; gap: 0.4rem; color: #ffffff; font-size: 0.82rem; font-weight: 600; margin-top: 1rem; opacity: 0.7; transition: opacity 0.2s; }
+        .topic-read:hover { opacity: 1; }
+        .bcard-article1:hover .topic-read, .bcard-article2:hover .topic-read { opacity: 1; }
+
+        /* COLLAB CARD */
+        .collab-inner { background: rgba(38,38,38,0.9); border: 2px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 1.5rem; cursor: pointer; }
+        .collab-header { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .collab-arrow { font-size: 1rem; transition: transform 0.3s; color: rgba(255,255,255,0.5); }
+        .collab-arrow.open { transform: rotate(180deg); }
+        .collab-desc { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.7s cubic-bezier(0.4,0,0.2,1), opacity 0.5s ease, margin-top 0.3s ease; }
+        .collab-desc.open { max-height: 5000px; opacity: 1; margin-top: 1rem; }
+        .collab-desc p, .collab-desc li { color: #cccccc; font-size: 0.88rem; line-height: 1.8; }
+        .collab-desc h4 { color: #ffffff; font-size: 0.95rem; margin: 1rem 0 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.3rem; }
+        .collab-desc ul { margin-left: 1.2rem; }
+        .collab-desc strong { color: #ffffff; }
+
+        /* CONTACT CARD */
+        .bcard-contact { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); }
+        .contact-btn { display: inline-block; background: transparent; color: #ffffff; padding: 0.9rem 2rem; text-decoration: none; border-radius: 8px; margin-top: 1rem; transition: all 0.3s; font-weight: 600; border: 2px solid #ffffff; font-size: 0.95rem; }
+        .contact-btn:hover { background: #ffffff; color: #000000; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,255,255,0.2); }
+        .contact-note { margin-top: 0.8rem; font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+
+        footer { background: transparent; color: #ffffff; text-align: center; padding: 2rem; position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.85rem; color: #9ca3af; }
+        footer a { color: #9ca3af; text-decoration: none; }
+
+        @media (max-width: 900px) {
+            .bento { grid-template-columns: 1fr 1fr; grid-auto-rows: auto; gap: 1rem; }
+            .bcard-intro, .bcard-founder, .bcard-webdev, .bcard-facilities,
+            .bcard-topics-hdr, .bcard-article1, .bcard-article2,
+            .bcard-collab, .bcard-contact { grid-column: 1 / -1; grid-row: auto; min-height: unset; }
+            .bcard-webdev { min-height: 260px; }
+            .bcard-facilities { min-height: 220px; }
+        }
+        @media (max-width: 600px) {
+            .bento { grid-template-columns: 1fr; gap: 0.9rem; }
+            .bcard-webdev { min-height: 240px; }
+            .bcard-facilities { min-height: 200px; }
+            .bcard-article1, .bcard-article2 { grid-column: 1 / -1; }
+        }
+        @media (max-width: 500px) {
+            nav { gap: 1rem; } nav a { font-size: 0.72rem; letter-spacing: 1px; }
+            header h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="/" class="active">Home</a>
-        <a href="website.services.html">Web Development</a>
-        <a href="business-facilities.html">Business Facilities</a>
-    </nav>
     <div class="bg-image bg-image-1"></div>
     <div class="bg-image bg-image-2"></div>
     <div class="bg-image bg-image-3"></div>
 
-    <div class="main-content" id="mainContent">
-        <header>
-            <h1>
-                Marcell Services
-                <img src="JustWhite.png" alt="Marcell Services Logo" class="logo">
-            </h1>
-        </header>
+    <nav>
+        <a href="/" class="active">Home</a>
+        <a href="website-services.html">Web Development</a>
+        <a href="business-facilities.html">Business Facilities</a>
+    </nav>
 
-        <div class="container">
+    <header>
+        <h1>Marcell Services <img src="JustWhite.png" alt="Logo" class="logo"></h1>
+    </header>
 
-            <!-- WHAT WE OFFER -->
-            <section id="about">
+    <div class="container">
+        <div class="bento">
+
+            <!-- INTRO -->
+            <div class="bcard bcard-intro">
                 <h2>What We Offer</h2>
-                <p class="showcase-intro">We offer web development with photography and business facilities services. Most businesses need both a website that's easy to find and reflects what you do, and a space that's stocked and presentable. Handling both through one point of contact keeps things simpler and ensures your online presence and crucial day-to-day operations stay consistent.</p>
+                <p>We offer web development with photography and business facilities services. Most businesses need both a website that's easy to find and reflects what you do, and a space that's stocked and presentable. Handling both through one point of contact keeps things simpler and ensures your online presence and day-to-day operations stay consistent.</p>
+            </div>
 
-                <div class="showcase-grid" style="grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));">
-                    <a href="website.services.html">
-                        <div class="showcase-card" style="background-image: url('eliconavisuals.com screenshot.png');">
-                            <div class="showcase-img-wrap"></div>
-                            <span class="showcase-badge">Web Dev</span>
-                            <div class="showcase-body">
-                                <div class="showcase-tags">
-                                    <span class="showcase-tag">Booking</span>
-                                    <span class="showcase-tag">Payment Processing</span>
-                                    <span class="showcase-tag">SEO</span>
-                                    <span class="showcase-tag">Headshots</span>
-                                    <span class="showcase-tag">Branding Photos</span>
-                                </div>
-                            </div>
+            <!-- FOUNDER -->
+            <div class="bcard bcard-founder">
+                <p class="founder-name">Rob Marcellin</p>
+                <p class="founder-role">Solo Founder</p>
+                <p class="founder-role">Full-Stack Developer</p>
+                <p class="founder-role" style="margin-top:0.2rem; font-size:0.8rem; color:#666;">Montclair State University Est. 2024</p>
+                <a href="https://www.linkedin.com/in/rob-marcellin-0a8b75256/" target="_blank" class="linkedin-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    LinkedIn
+                </a>
+            </div>
+
+            <!-- WEB DEV SHOWCASE -->
+            <div class="bcard bcard-webdev" style="padding:0;">
+                <a href="website-services.html" class="showcase-card">
+                    <div class="showcase-overlay"></div>
+                    <div class="showcase-content">
+                        <div class="showcase-badge">Web Dev</div>
+                        <div class="showcase-tags">
+                            <span class="showcase-tag">Booking</span>
+                            <span class="showcase-tag">Payment Processing</span>
+                            <span class="showcase-tag">SEO</span>
+                            <span class="showcase-tag">Headshots</span>
                         </div>
-                    </a>
-
-                    <a href="business-facilities.html">
-                        <div class="showcase-card" style="background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('consulting-screenshot.jpg');">
-                            <div class="showcase-img-wrap"></div>
-                            <span class="showcase-badge">Facilities</span>
-                            <div class="showcase-body">
-                                <div class="showcase-tags">
-                                    <span class="showcase-tag">Uniforms</span>
-                                    <span class="showcase-tag">Cleaning Supplies</span>
-                                    <span class="showcase-tag">Floor Mats</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="founder-strip">
-                    <div>
-                        <p style="font-weight: 600; margin-bottom: 0.2rem;">Rob Marcellin</p>
-                        <p style="font-weight: 400; margin-bottom: 0.2rem; color: #aaaaaa;">Solo Founder</p>
-                        <p class="muted" style="font-size: 0.9rem;">Full-Stack Developer</p>
-                        <p class="muted" style="font-size: 0.9rem;">Montclair State University Est. 2024</p>
-                    </div>
-                    <div style="margin-left: auto;">
-                        <a href="https://www.linkedin.com/in/rob-marcellin-0a8b75256/" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #ffffff; font-weight: 600; font-size: 0.9rem;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                            </svg>
-                            LinkedIn
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- TOPICS -->
-            <section id="topics">
-                <h2>Marcell Topics</h2>
-                <p style="color: #aaaaaa; margin-bottom: 2rem;">Articles on tech, web development, and running a small business.</p>
-
-                <a href="article-ai-small-business.html" class="topic-card">
-                    <div class="topic-card-body">
-                        <div class="topic-meta">
-                            <span class="topic-badge">Technology</span>
-                            <span class="topic-date">February 21, 2026 &nbsp;·&nbsp; 4 min read</span>
-                        </div>
-                        <h3>How AI Tools Are Changing the Way Small Businesses Operate</h3>
-                        <p>From automating repetitive tasks to drafting client emails, AI is no longer just for big tech companies. Here's a practical look at what's actually useful for small business owners right now.</p>
-                    </div>
-                    <div class="topic-card-footer">
-                        Read Article
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </div>
                 </a>
+            </div>
 
-                <a href="business-facilities-article.html" class="topic-card" style="margin-top: 1.5rem;">
-                    <div class="topic-card-body">
-                        <div class="topic-meta">
-                            <span class="topic-badge">Business</span>
-                            <span class="topic-date">February 21, 2026 &nbsp;·&nbsp; 5 min read</span>
+            <!-- FACILITIES SHOWCASE -->
+            <div class="bcard bcard-facilities" style="padding:0;">
+                <a href="business-facilities.html" class="showcase-card">
+                    <div class="showcase-overlay"></div>
+                    <div class="showcase-content">
+                        <div class="showcase-badge">Facilities</div>
+                        <div class="showcase-tags">
+                            <span class="showcase-tag">Uniforms</span>
+                            <span class="showcase-tag">Cleaning Supplies</span>
+                            <span class="showcase-tag">Floor Mats</span>
                         </div>
-                        <h3>Why Businesses Can No Longer Afford to Overlook Facility Services</h3>
-                        <p>From post-war uniform programs to post-pandemic hygiene standards, facility services went from an afterthought to a competitive baseline. Here's how that shift happened and why it matters.</p>
-                    </div>
-                    <div class="topic-card-footer">
-                        Read Article
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </div>
                 </a>
-            </section>
+            </div>
 
+            <!-- TOPICS HEADER -->
+            <div class="bcard bcard-topics-hdr">
+                <p class="topics-label">Marcell Topics</p>
+                <h2>Articles & Insights</h2>
+                <p>Tech, web development, and running a small business.</p>
+            </div>
 
+            <!-- ARTICLE 1 -->
+            <div class="bcard bcard-article1">
+                <a href="article-ai-small-business.html" class="topic-card-link">
+                    <span class="topic-badge">Technology</span>
+                    <p class="topic-date">Feb 21, 2026 · 4 min read</p>
+                    <p class="topic-title">How AI Tools Are Changing the Way Small Businesses Operate</p>
+                    <p class="topic-preview">From automating repetitive tasks to drafting client emails, AI is no longer just for big tech. Here's what's actually useful right now.</p>
+                    <span class="topic-read">Read Article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+            </div>
 
-            <!-- PROJECTS -->
-            <section id="projects">
+            <!-- ARTICLE 2 -->
+            <div class="bcard bcard-article2">
+                <a href="business-facilities-article.html" class="topic-card-link">
+                    <span class="topic-badge">Business</span>
+                    <p class="topic-date">Feb 21, 2026 · 5 min read</p>
+                    <p class="topic-title">Why Businesses Can No Longer Afford to Overlook Facility Services</p>
+                    <p class="topic-preview">From post-war uniform programs to post-pandemic hygiene standards, here's how facility services became a competitive baseline.</p>
+                    <span class="topic-read">Read Article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+            </div>
+
+            <!-- FEATURED COLLABORATIONS -->
+            <div class="bcard bcard-collab">
                 <h2>Featured Collaborations</h2>
-                <div class="service-card" style="margin-bottom: 2rem;" onclick="toggleProjectDetails(this.querySelector('.project-card-header'))">
-                    <div class="project-card-header">
+                <div class="collab-inner" onclick="toggleCollab(this)">
+                    <div class="collab-header">
                         <div>
-                            <h3 style="margin-bottom: 0.5rem;">Elicona Visuals (Development and Ongoing Support - July 2025)</h3>
-                            <p style="margin-bottom: 0;"><strong>Website:</strong> <a href="https://eliconavisuals.com" target="_blank" style="color: #ffffff;" onclick="event.stopPropagation();">eliconavisuals.com</a></p>
+                            <h3 style="color:#ffffff; font-size:0.95rem; margin-bottom:0.3rem;">Elicona Visuals — Development & Ongoing Support (July 2025)</h3>
+                            <p style="color:#aaaaaa; font-size:0.85rem;"><strong style="color:#ffffff;">Website:</strong> <a href="https://eliconavisuals.com" target="_blank" style="color:#aaaaaa;" onclick="event.stopPropagation();">eliconavisuals.com</a></p>
                         </div>
-                        <span class="service-dropdown-arrow">▼</span>
+                        <span class="collab-arrow">▼</span>
                     </div>
-                    <div class="project-description">
-                        <p style="margin-top: 1rem; font-size: 1rem; line-height: 1.8;">A modern, professional portfolio website for a premium barber business, transforming their digital presence and client engagement.</p>
-                        <h4 style="font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.8rem;">Project Overview</h4>
-                        <p>Elicona Visuals needed a sophisticated online presence to match their high-end barbering services. We created a sleek, responsive website that showcases their expertise, builds client trust, and streamlines their booking process.</p>
-                        <h4 style="font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.8rem;">Business Impact</h4>
-                        <ul style="margin-left: 1.5rem; line-height: 1.8;">
-                            <li><strong>Enhanced Client Trust:</strong> Professional website design established credibility and legitimacy in a competitive market</li>
-                            <li><strong>Streamlined Booking:</strong> Integrated booking functionality reduced no-shows and improved appointment management</li>
-                            <li><strong>Increased Visibility:</strong> SEO optimization and mobile responsiveness expanded their reach to new clients</li>
-                            <li><strong>Client Engagement:</strong> Portfolio gallery showcasing work quality attracted higher-value clientele</li>
+                    <div class="collab-desc">
+                        <p style="margin-top:0.8rem;">A modern portfolio website for a premium barber business, transforming their digital presence and client engagement.</p>
+                        <h4>Business Impact</h4>
+                        <ul>
+                            <li><strong>Enhanced Client Trust:</strong> Professional design established credibility in a competitive market</li>
+                            <li><strong>Streamlined Booking:</strong> Integrated booking reduced no-shows and improved appointment management</li>
+                            <li><strong>Increased Visibility:</strong> SEO optimization expanded reach to new clients</li>
                         </ul>
-                        <h4 style="font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.8rem;">Technical Implementation</h4>
-                        <p><strong>Technologies Used:</strong> HTML5, CSS3, JavaScript, React, PHP</p>
-                        <ul style="margin-left: 1.5rem; margin-top: 0.8rem; line-height: 1.8;">
-                            <li><strong>Responsive Design:</strong> Mobile-first approach ensuring seamless experience across all devices</li>
-                            <li><strong>Interactive Animations:</strong> Smooth transitions and scroll effects for engaging user experience</li>
-                            <li><strong>Contact Integration:</strong> Custom contact forms with backend PHP processing for reliable communication</li>
-                            <li><strong>Performance Optimization:</strong> Image compression and lazy loading for fast page speeds</li>
-                            <li><strong>Cross-Browser Compatibility:</strong> Tested and optimized for all major browsers</li>
+                        <h4>Technical Implementation</h4>
+                        <p><strong>Stack:</strong> HTML5, CSS3, JavaScript, React, PHP</p>
+                        <ul style="margin-top:0.5rem;">
+                            <li><strong>Responsive Design:</strong> Mobile-first across all devices</li>
+                            <li><strong>Performance:</strong> Image compression and lazy loading — 65% faster load time</li>
+                            <li><strong>Cross-Browser:</strong> Tested across all major browsers</li>
                         </ul>
-                        <h4 style="font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.8rem;">Challenges &amp; Solutions</h4>
-                        <div style="margin-top: 1rem;">
-                            <p style="margin-bottom: 0.5rem;"><strong>Challenge 1: Form Submission Reliability - Updated September 13, 2025</strong></p>
-                            <p style="margin-left: 1rem; margin-bottom: 1rem;"><em>Issue:</em> Initial contact form submissions were intermittently failing.<br>
-                            <em>Solution:</em> Implemented robust error handling, client-side and server-side validation, and a backup submission method using a third-party service.</p>
-                        </div>
-                        <div style="margin-top: 1rem;">
-                            <p style="margin-bottom: 0.5rem;"><strong>Challenge 2: Mobile Performance Issues - Updated November 2, 2025</strong></p>
-                            <p style="margin-left: 1rem; margin-bottom: 1rem;"><em>Issue:</em> High-resolution images causing slow load times on mobile.<br>
-                            <em>Solution:</em> Implemented WebP format, lazy loading, and multiple image size variants. Reduced initial page load time by 65%.</p>
-                        </div>
-                        <div style="margin-top: 1rem;">
-                            <p style="margin-bottom: 0.5rem;"><strong>Challenge 3: Browser Compatibility with Animations - Updated December 21, 2025</strong></p>
-                            <p style="margin-left: 1rem; margin-bottom: 1rem;"><em>Issue:</em> CSS animations not rendering consistently across Safari and older browsers.<br>
-                            <em>Solution:</em> Added vendor prefixes, feature detection, and graceful degradation fallbacks.</p>
-                        </div>
                     </div>
                 </div>
-            </section>
+                <button onclick="document.getElementById('bugModal').classList.add('open')" style="margin-top:1rem; background:transparent; border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.6); font-size:0.78rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; padding:0.5rem 1.2rem; border-radius:20px; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.borderColor='#ffffff';this.style.color='#ffffff'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.6)'">
+                    See What We Fixed →
+                </button>
+            </div>
 
             <!-- CONTACT -->
-            <section id="contact">
-                <h2>Contact Us</h2>
-                <div style="text-align: center; margin-top: 2rem;">
-                    <a href="/cdn-cgi/l/email-protection#e89085899a8b8d84849aa88f85898184c68b8785d79b9d8a828d8b9cd5a48d9ccf9bcddad8ab8786868d8b9cce8a878c91d5a081cddad8ba878acddaabcdd8accdd8a9cdd8accdd8a9a1cddad88b89858dcddad8898b9a879b9bcddad891879d9acddad898879a9c8e87848187cddad889868ccddad89a8d89848491cddad88d868287918d8ccddad8848d899a8681868fcddad8898a879d9ccddad891879d9acddad89f879a83c9cdd8accdd8a9cdd8accdd8a9a1cf85cddad89a8d898b8081868fcddad8879d9ccddad88a8d8b899d9b8dcddba9cddad8cdddaabc8d8484cddad8858dcddad89f80899ccddad88b899d8f809ccddad891879d9acddad881869c8d9a8d9b9ccddad8879acddad89f80899ccddad891879dcf9a8dcddad88487878381868fcddad88e879acdddaccdd8accdd8a9cdd8accdd8a9a487878381868fcddad88e879a9f899a8ccddad89c87cddad8808d899a81868fcddad88e9a8785cddad891879dc9cdd8accdd8a9cdd8accdd8a9aa8d9b9ccddaabcdd8accdd8a9cdddaab1879d9acddad8a689858dcdddac" class="consultation-button">Contact Me</a>
-                    <p style="margin-top: 1rem; font-size: 0.95rem; opacity: 0.9;">Response time: Within 24 hours</p>
-                </div>
-            </section>
+            <div class="bcard bcard-contact">
+                <h2 style="border:none; padding:0; margin-bottom:0.3rem;">Contact Us</h2>
+                <p style="color:#aaaaaa; font-size:0.85rem;">Let's talk about your project.</p>
+                <a href="mailto:xmarcellr@gmail.com?subject=Let's%20Connect&body=Hi%20Rob%2C%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20I'm%20reaching%20out%20because%3A%20" class="contact-btn">Contact Me</a>
+                <p class="contact-note">Response within 24 hours</p>
+            </div>
 
         </div>
-
-        <footer>
-            <p>&copy; 2026 Marcell Services LLC. All rights reserved.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #9ca3af;">
-                <a href="https://www.xmarcellr.com/" target="_blank" style="color: #d1d5db; text-decoration: none;">Marcell Services</a>
-            </p>
-        </footer>
     </div>
+
+    <footer>
+        <p>&copy; 2026 Marcell Services LLC. All rights reserved. &nbsp;·&nbsp; <a href="https://www.xmarcellr.com/" target="_blank">Marcell Services</a></p>
+    </footer>
+
+    <!-- BUG FIXES MODAL -->
+    <div id="bugModal" style="
+        display:none; position:fixed; inset:0; z-index:999;
+        background:rgba(0,0,0,0.75); backdrop-filter:blur(6px);
+        align-items:center; justify-content:center; padding:1.5rem;
+    " onclick="if(event.target===this)this.classList.remove('open')">
+        <div style="
+            background:#1a1a1a; border:1px solid rgba(255,255,255,0.12);
+            border-radius:18px; max-width:640px; width:100%;
+            max-height:85vh; overflow-y:auto; padding:2.5rem;
+            position:relative;
+        ">
+            <button onclick="document.getElementById('bugModal').classList.remove('open')" style="position:absolute; top:1.2rem; right:1.2rem; background:transparent; border:none; color:rgba(255,255,255,0.4); font-size:1.4rem; cursor:pointer; line-height:1; transition:color 0.2s;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">✕</button>
+
+            <p style="font-size:0.7rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:0.5rem;">Elicona Visuals</p>
+            <h2 style="font-size:1.4rem; font-weight:700; color:#ffffff; margin-bottom:0.3rem;">Bugs Fixed & Updates</h2>
+            <p style="font-size:0.85rem; color:#666; margin-bottom:2rem;">Ongoing support log from July 2025 onward.</p>
+
+            <!-- FIX 1 -->
+            <div style="border-left:2px solid rgba(255,255,255,0.15); padding-left:1.2rem; margin-bottom:1.8rem;">
+                <p style="font-size:0.72rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:0.3rem;">September 13, 2025</p>
+                <p style="font-weight:700; color:#ffffff; margin-bottom:0.4rem;">Form Submission Reliability</p>
+                <p style="font-size:0.88rem; color:#888; line-height:1.8; margin-bottom:0.4rem;"><span style="color:rgba(255,255,255,0.4); font-weight:600;">Issue:</span> Contact form submissions were intermittently failing — some messages never reached the client.</p>
+                <p style="font-size:0.88rem; color:#888; line-height:1.8;"><span style="color:rgba(255,255,255,0.4); font-weight:600;">Fix:</span> Implemented robust error handling, client-side and server-side validation, and a backup submission method via a third-party service.</p>
+            </div>
+
+            <!-- FIX 2 -->
+            <div style="border-left:2px solid rgba(255,255,255,0.15); padding-left:1.2rem; margin-bottom:1.8rem;">
+                <p style="font-size:0.72rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:0.3rem;">November 2, 2025</p>
+                <p style="font-weight:700; color:#ffffff; margin-bottom:0.4rem;">Mobile Performance Issues</p>
+                <p style="font-size:0.88rem; color:#888; line-height:1.8; margin-bottom:0.4rem;"><span style="color:rgba(255,255,255,0.4); font-weight:600;">Issue:</span> High-resolution images causing slow load times on mobile devices.</p>
+                <p style="font-size:0.88rem; color:#888; line-height:1.8;"><span style="color:rgba(255,255,255,0.4); font-weight:600;">Fix:</span> Converted images to WebP format, added lazy loading, and implemented multiple size variants. Initial page load time reduced by 65%.</p>
+            </div>
+
+            <!-- FIX 3 -->
+            <div style="border-left:2px solid rgba(255,255,255,0.15); padding-left:1.2rem;">
+                <p style="font-size:0.72rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:0.3rem;">December 21, 2025</p>
+                <p style="font-weight:700; color:#ffffff; margin-bottom:0.4rem;">Browser Compatibility with Animations</p>
+                <p style="font-size:0.88rem; color:#888; line-height:1.8; margin-bottom:0.4rem;"><span style="color:rgba(255,255,255,0.4); font-weight:600;">Issue:</span> CSS animations not rendering consistently across Safari and older browsers.</p>
+                <p style="font-size:0.88rem; color:#888; line-height:1.8;"><span style="color:rgba(255,255,255,0.4); font-weight:600;">Fix:</span> Added vendor prefixes, feature detection, and graceful degradation fallbacks ensuring consistent experience across all browsers.</p>
+            </div>
+        </div>
+    </div>
+
     <script>
-        function toggleProjectDetails(header) {
-            header.nextElementSibling.classList.toggle('open');
-            header.querySelector('.service-dropdown-arrow').classList.toggle('open');
+        // Modal open/close toggle via class
+        const modal = document.getElementById('bugModal');
+        const observer2 = new MutationObserver(() => {
+            modal.style.display = modal.classList.contains('open') ? 'flex' : 'none';
+        });
+        observer2.observe(modal, { attributes: true, attributeFilter: ['class'] });
+    </script>
+
+    <script>
+        function toggleCollab(card) {
+            card.querySelector('.collab-desc').classList.toggle('open');
+            card.querySelector('.collab-arrow').classList.toggle('open');
         }
     </script>
     <script>
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('fade-in'); });
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('fade-in'), entry.target.dataset.delay || 0);
+                }
+            });
         }, { threshold: 0.05 });
-        document.querySelectorAll('section').forEach(s => observer.observe(s));
+        document.querySelectorAll('.bcard').forEach((card, i) => {
+            card.dataset.delay = i * 60;
+            observer.observe(card);
+        });
     </script>
 </body>
 </html>
-
