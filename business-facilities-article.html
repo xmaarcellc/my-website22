@@ -10,120 +10,104 @@
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="How Businesses Became Dependent on Facility Services — Marcell Topics">
-    <title>How Businesses Became Dependent on Facility Services — Marcell Topics</title>
+    <meta name="description" content="Marcell Services — Business Facilities. Uniform services, restroom and cleaning supplies, and customizable floor mats for your business.">
+    <title>Business Facilities — Marcell Services</title>
     <link rel="icon" type="image/png" href="JustLogo.png">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #ffffff; background: linear-gradient(to bottom, #1a1a1a 0%, #222222 20%, #2a2a2a 40%, #222222 60%, #1a1a1a 100%); background-attachment: fixed; min-height: 100vh; overflow-x: hidden; }
+
+        /* NAV */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(20,20,20,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; gap: 2.5rem; padding: 0.9rem 2rem; }
+        nav a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.85rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; }
+        nav a:hover { color: #ffffff; }
+        nav a.active { color: #ffffff; border-bottom: 2px solid #ffffff; padding-bottom: 2px; }
+
+        /* BG */
         .bg-image { position: fixed; left: 0; right: 0; width: 100%; height: 40vh; background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0.15; z-index: 0; pointer-events: none; }
         .bg-image-1 { top: 0; background-image: url('background1.jpg'); }
         .bg-image-2 { top: 50%; transform: translateY(-50%); background-image: url('background2.jpg'); }
         .bg-image-3 { bottom: 0; background-image: url('background3.jpg'); }
-        header { position: relative; color: #ffffff; padding: 5rem 2rem 3rem; text-align: center; background: rgba(30,30,30,0.6); z-index: 2; }
-        header h1 { font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: 1px; color: #ffffff; line-height: 1.3; max-width: 800px; margin: 0 auto; }
-        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: #ffffff; text-decoration: none; font-weight: 600; font-size: 0.95rem; border: 2px solid #ffffff; border-radius: 25px; padding: 0.6rem 1.4rem; margin-top: 1.5rem; transition: all 0.3s; }
-        .back-link:hover { background: #ffffff; color: #000000; transform: translateY(-2px); }
-        .meta { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.2rem; }
-        .meta-badge { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.2); padding: 0.25rem 0.8rem; border-radius: 20px; }
-        .meta-date { font-size: 0.85rem; color: #aaaaaa; }
-        .container { max-width: 780px; margin: 0 auto; padding: 3rem 2rem 5rem; position: relative; z-index: 2; }
-        .article-body { background: rgba(30,30,30,0.25); backdrop-filter: blur(10px); border-radius: 16px; padding: 3rem; opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
-        .article-body.fade-in { opacity: 1; transform: translateY(0); }
-        .article-body p { color: #dddddd; font-size: 1rem; line-height: 1.9; margin-bottom: 1.5rem; }
-        .article-body h2 { color: #ffffff; font-size: 1.3rem; font-weight: 700; margin: 2.5rem 0 1rem; padding-bottom: 0.4rem; border-bottom: 2px solid rgba(255,255,255,0.2); }
-        .article-body ul { color: #dddddd; font-size: 1rem; line-height: 1.9; margin: 0 0 1.5rem 1.5rem; }
-        .article-body li { margin-bottom: 0.5rem; }
-        .article-body strong { color: #ffffff; font-weight: 700; }
-        .article-body .callout { background: rgba(38,38,38,0.9); border-left: 3px solid #ffffff; border-radius: 0 8px 8px 0; padding: 1.2rem 1.5rem; margin: 2rem 0; color: #cccccc; font-size: 0.95rem; font-style: italic; }
-        .author-strip { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.15); }
-        .author-strip p { color: #aaaaaa; font-size: 0.9rem; margin: 0; }
-        .author-strip strong { color: #ffffff; }
-        footer { background: transparent; color: #ffffff; text-align: center; padding: 2rem; margin-top: 3rem; position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.9rem; }
+
+        /* HEADER */
+        header { position: relative; color: #ffffff; padding: 7rem 2rem 3rem; text-align: center; background: rgba(30,30,30,0.6); z-index: 2; }
+        header h1 { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 700; letter-spacing: 2px; color: #ffffff; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeInHeader 1s ease-out forwards; animation-delay: 0.2s; }
+        .logo { width: 55px; height: 55px; margin-top: 8px; opacity: 0; animation: fadeInHeader 1s ease-out forwards; animation-delay: 0.4s; }
+        @keyframes fadeInHeader { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        header p { font-size: 1rem; font-weight: 300; letter-spacing: 1px; color: rgba(255,255,255,0.6); margin-top: 0.6rem; }
+
+        /* BENTO */
+        .container { max-width: 1400px; margin: 0 auto; padding: 2.5rem 2rem 5rem; position: relative; z-index: 2; }
+        .bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.2rem; }
+
+        /* BASE CARD */
+        .bcard { background: rgba(30,30,30,0.25); border-radius: 18px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); padding: 2rem; opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s; overflow: hidden; position: relative; }
+        .bcard.fade-in { opacity: 1; transform: translateY(0); }
+        .bcard:hover { box-shadow: 0 8px 32px rgba(255,255,255,0.05); }
+        .bcard h2 { font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-bottom: 1.2rem; padding-bottom: 0.5rem; border-bottom: 2px solid rgba(255,255,255,0.15); }
+
+        /* GRID PLACEMENTS */
+        .bcard-hero       { grid-column: 1 / 13; }
+        .bcard-uniforms   { grid-column: 1 / 8;  }
+        .bcard-supplies   { grid-column: 8 / 13; }
+        .bcard-mats-intro { grid-column: 1 / 5;  }
+        .bcard-mats-grid  { grid-column: 5 / 13; }
+        .bcard-cta        { grid-column: 1 / 13; text-align: center; }
+
+        /* HERO CARD */
+        .bcard-hero { text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 3rem 2rem; }
+        .hero-badge { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.15); padding: 0.25rem 1rem; border-radius: 20px; margin-bottom: 1rem; }
+        .bcard-hero h2 { font-size: clamp(1.6rem, 4vw, 2.4rem); border: none; padding: 0; margin-bottom: 0.5rem; letter-spacing: 0.5px; }
+        .bcard-hero p { color: rgba(255,255,255,0.55); font-size: 0.95rem; max-width: 560px; margin: 0 auto; }
+
+        /* FACILITY CARDS */
+        .fac-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1.2rem; }
+        .fac-card { background: rgba(38,38,38,0.85); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.3rem; transition: transform 0.3s, box-shadow 0.3s; }
+        .fac-card:hover { transform: translateY(-4px); box-shadow: 0 6px 20px rgba(255,255,255,0.05); }
+        .fac-icon { width: 40px; height: 40px; border-radius: 8px; border: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 0.8rem; }
+        .fac-icon svg { width: 20px; height: 20px; }
+        .fac-card h3 { color: #ffffff; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; }
+        .fac-card p { color: #888; font-size: 0.8rem; line-height: 1.6; margin-bottom: 0.7rem; }
+        .tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+        .tag { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; padding: 0.15rem 0.5rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.5); }
+
+        /* ICON COLORS */
+        .icon-blue   { border-color: #7a9ab5; } .icon-blue svg   { stroke: #7a9ab5; }
+        .icon-green  { border-color: #7aab8a; } .icon-green svg  { stroke: #7aab8a; }
+        .icon-purple { border-color: #9a8ab5; } .icon-purple svg { stroke: #9a8ab5; }
+        .icon-orange { border-color: #b59a7a; } .icon-orange svg { stroke: #b59a7a; }
+        .icon-teal   { border-color: #7aabb5; } .icon-teal svg   { stroke: #7aabb5; }
+        .icon-rose   { border-color: #b57a8a; } .icon-rose svg   { stroke: #b57a8a; }
+        .icon-amber  { border-color: #b5a87a; } .icon-amber svg  { stroke: #b5a87a; }
+        .icon-sage   { border-color: #8ab57a; } .icon-sage svg   { stroke: #8ab57a; }
+        .icon-slate  { border-color: #8a9ab5; } .icon-slate svg  { stroke: #8a9ab5; }
+        .icon-mauve  { border-color: #b58aaa; } .icon-mauve svg  { stroke: #b58aaa; }
+
+        /* MATS INTRO CARD */
+        .bcard-mats-intro { display: flex; flex-direction: column; justify-content: center; background: rgba(255,255,255,0.02); }
+        .bcard-mats-intro h2 { border-color: rgba(255,255,255,0.1); }
+        .bcard-mats-intro p { color: #888; font-size: 0.88rem; line-height: 1.8; }
+
+        /* CTA */
+        .bcard-cta h2 { border: none; padding: 0; font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .bcard-cta p { color: #888; font-size: 0.9rem; margin-bottom: 0; }
+        .cta-btn { display: inline-block; background: transparent; color: #ffffff; padding: 0.9rem 2.2rem; text-decoration: none; border-radius: 8px; margin-top: 1.2rem; transition: all 0.3s; font-weight: 600; border: 2px solid #ffffff; font-size: 0.95rem; }
+        .cta-btn:hover { background: #ffffff; color: #000000; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,255,255,0.2); }
+        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; font-weight: 600; margin-top: 1rem; transition: color 0.2s; }
+        .back-link:hover { color: #ffffff; }
+
+        footer { background: transparent; color: #9ca3af; text-align: center; padding: 2rem; position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.85rem; }
         footer a { color: #9ca3af; text-decoration: none; }
 
-        /* AUDIO PLAYER */
-        .audio-player {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            background: rgba(38,38,38,0.9);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 50px;
-            padding: 0.75rem 1.5rem;
-            margin: 0 auto 2rem;
-            max-width: 780px;
-            backdrop-filter: blur(10px);
-            position: relative;
-            z-index: 2;
+        @media (max-width: 900px) {
+            .bcard-hero, .bcard-uniforms, .bcard-supplies,
+            .bcard-mats-intro, .bcard-mats-grid, .bcard-cta { grid-column: 1 / -1; }
+            .fac-grid { grid-template-columns: 1fr 1fr; }
         }
-        .audio-play-btn {
-            width: 38px; height: 38px; min-width: 38px;
-            border-radius: 50%;
-            border: 2px solid #ffffff;
-            background: transparent;
-            cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            transition: all 0.2s ease;
+        @media (max-width: 500px) {
+            nav { gap: 1rem; } nav a { font-size: 0.72rem; letter-spacing: 1px; }
+            .fac-grid { grid-template-columns: 1fr; }
         }
-        .audio-play-btn:hover { background: #ffffff; }
-        .audio-play-btn:hover svg { stroke: #000000; fill: #000000; }
-        .audio-play-btn svg { width: 14px; height: 14px; stroke: #ffffff; fill: #ffffff; transition: all 0.2s; }
-        .audio-label { font-size: 0.82rem; color: rgba(255,255,255,0.6); letter-spacing: 0.5px; flex: 1; }
-        .audio-label span { color: #ffffff; font-weight: 600; }
-        .audio-progress {
-            flex: 2;
-            height: 3px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 2px;
-            overflow: hidden;
-        }
-        .audio-progress-bar {
-            height: 100%;
-            width: 0%;
-            background: #ffffff;
-            border-radius: 2px;
-            transition: width 0.5s linear;
-        }
-        .audio-speed {
-            font-size: 0.75rem;
-            color: rgba(255,255,255,0.4);
-            cursor: pointer;
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 20px;
-            padding: 0.2rem 0.6rem;
-            background: transparent;
-            color: rgba(255,255,255,0.5);
-            transition: all 0.2s;
-            white-space: nowrap;
-        }
-        .audio-speed:hover { border-color: #ffffff; color: #ffffff; }
-        @media (max-width: 768px) { .article-body { padding: 2rem 1.2rem; } }
-
-        /* FLOATING SHARE */
-        .share-sidebar {
-            position: fixed;
-            right: 1.5rem;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            z-index: 10;
-        }
-        .share-btn {
-            width: 44px; height: 44px;
-            border-radius: 50%;
-            background: rgba(38,38,38,0.9);
-            border: 2px solid rgba(255,255,255,0.2);
-            display: flex; align-items: center; justify-content: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-        .share-btn:hover { border-color: #ffffff; transform: scale(1.1); background: rgba(60,60,60,0.95); }
-        .share-btn svg { width: 18px; height: 18px; fill: #ffffff; }
-        @media (max-width: 768px) { .share-sidebar { display: none; } }
     </style>
 </head>
 <body>
@@ -131,289 +115,140 @@
     <div class="bg-image bg-image-2"></div>
     <div class="bg-image bg-image-3"></div>
 
+    <nav>
+        <a href="/">Home</a>
+        <a href="website-services.html">Web Development</a>
+        <a href="business-facilities.html" class="active">Business Facilities</a>
+    </nav>
+
     <header>
-        <div class="meta">
-            <span class="meta-badge">Business</span>
-            <span class="meta-date">February 21, 2026 &nbsp;·&nbsp; 5 min read</span>
-        </div>
-        <h1>Why Businesses Can No Longer Afford to Overlook Facility Services</h1>
-        <a href="/" class="back-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-            Back to Home
-        </a>
+        <h1>Business Facilities <img src="JustWhite.png" alt="Logo" class="logo"></h1>
+        <p>Uniforms &middot; Supplies &middot; Floor Mats</p>
     </header>
 
-    
-    <!-- AUDIO PLAYER -->
-    <div class="audio-player" id="audioPlayer">
-        <button class="audio-play-btn" id="playBtn" onclick="toggleAudio()">
-            <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
-        </button>
-        <div class="audio-label"><span id="audioStatus">Listen to article</span></div>
-        <div class="audio-progress"><div class="audio-progress-bar" id="progressBar"></div></div>
-        <button class="audio-speed" id="speedBtn" onclick="cycleSpeed()">1x</button>
-    </div>
-
-    <script>
-        const speeds = [1, 1.25, 1.5, 2];
-        let speedIndex = 0;
-        let utterance = null;
-        let synth = window.speechSynthesis;
-        let playing = false;
-        let totalChars = 0;
-        let spokenChars = 0;
-
-        const playIcon = `<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>`;
-        const pauseIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="4" x2="6" y2="20"/><line x1="18" y1="4" x2="18" y2="20"/></svg>`;
-
-        function getArticleText() {
-            const body = document.getElementById('articleBody');
-            const clone = body.cloneNode(true);
-            // Remove references section and author strip
-            const h2s = clone.querySelectorAll('h2');
-            h2s.forEach(h => { if (h.textContent.trim() === 'References') {
-                let el = h.nextElementSibling;
-                while (el) { let next = el.nextElementSibling; el.remove(); el = next; }
-                h.remove();
-            }});
-            clone.querySelector('.author-strip') && clone.querySelector('.author-strip').remove();
-            return clone.innerText.replace(/\s+/g, ' ').trim();
-        }
-
-        function toggleAudio() {
-            if (!playing) startAudio();
-            else pauseAudio();
-        }
-
-        function startAudio() {
-            if (synth.paused && utterance) {
-                synth.resume();
-                playing = true;
-                document.getElementById('playBtn').innerHTML = pauseIcon;
-                document.getElementById('audioStatus').textContent = 'Playing...';
-                return;
-            }
-            synth.cancel();
-            const text = getArticleText();
-            totalChars = text.length;
-            utterance = new SpeechSynthesisUtterance(text);
-            utterance.rate = speeds[speedIndex] * 1.08;
-            utterance.pitch = 1.3;
-            utterance.lang = 'en-US';
-
-            // Pick the most natural/upbeat sounding voice available
-            const voices = synth.getVoices();
-            const preferred = [
-                'Google US English',
-                'Microsoft Aria Online (Natural)',
-                'Microsoft Jenny Online (Natural)',
-                'Samantha',
-                'Karen',
-                'en-US',
-            ];
-            let chosen = null;
-            for (const pref of preferred) {
-                chosen = voices.find(v => v.name.includes(pref) || v.voiceURI.includes(pref));
-                if (chosen) break;
-            }
-            // Fallback: any en-US voice
-            if (!chosen) chosen = voices.find(v => v.lang === 'en-US');
-            // Last resort: any English voice
-            if (!chosen) chosen = voices.find(v => v.lang.startsWith('en'));
-            if (chosen) utterance.voice = chosen;
-
-            utterance.onboundary = (e) => {
-                if (e.name === 'word') {
-                    spokenChars = e.charIndex;
-                    document.getElementById('progressBar').style.width = ((spokenChars / totalChars) * 100) + '%';
-                }
-            };
-            utterance.onend = () => {
-                playing = false;
-                document.getElementById('playBtn').innerHTML = playIcon;
-                document.getElementById('audioStatus').textContent = 'Listen to article';
-                document.getElementById('progressBar').style.width = '100%';
-                setTimeout(() => document.getElementById('progressBar').style.width = '0%', 1500);
-            };
-
-            synth.speak(utterance);
-            playing = true;
-            document.getElementById('playBtn').innerHTML = pauseIcon;
-            document.getElementById('audioStatus').textContent = 'Playing...';
-        }
-
-        function pauseAudio() {
-            synth.pause();
-            playing = false;
-            document.getElementById('playBtn').innerHTML = playIcon;
-            document.getElementById('audioStatus').textContent = 'Paused';
-        }
-
-        function cycleSpeed() {
-            speedIndex = (speedIndex + 1) % speeds.length;
-            document.getElementById('speedBtn').textContent = speeds[speedIndex] + 'x';
-            if (playing) { synth.cancel(); startAudio(); }
-        }
-
-        // Stop if user leaves page
-        window.addEventListener('beforeunload', () => synth.cancel());
-    </script>
     <div class="container">
-        <div class="article-body" id="articleBody">
+        <div class="bento">
 
-            <p>Walk into almost any professional business today — a restaurant, a barbershop, a medical office, a logistics warehouse — and you'll find the same things: branded uniforms on the staff, stocked restrooms, and floor mats at every entrance. These aren't coincidences. They're the result of a decades-long shift in how businesses think about their physical environment.</p>
+            <!-- HERO -->
+            <div class="bcard bcard-hero">
+                <div class="hero-badge">Marcell Services</div>
+                <h2>Keep Your Business Looking Its Best</h2>
+                <p>Professional facility services that keep your team sharp, your space clean, and your brand front and center.</p>
+            </div>
 
-            <p>Facility services used to be an afterthought. Today, they're a baseline expectation — from employees, customers, and regulators alike.</p>
+            <!-- UNIFORMS -->
+            <div class="bcard bcard-uniforms">
+                <h2>Uniform Services</h2>
+                <p style="color:#888; font-size:0.88rem; margin-bottom:0.5rem;">A sharp, consistent look builds trust and reinforces your brand every day.</p>
+                <div class="fac-grid">
+                    <div class="fac-card">
+                        <div class="fac-icon icon-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg></div>
+                        <h3>Branded Uniform Program</h3>
+                        <p>Uniforms embroidered or printed with your logo.</p>
+                        <div class="tags"><span class="tag">Embroidery</span><span class="tag">Custom</span></div>
+                    </div>
+                    <div class="fac-card">
+                        <div class="fac-icon icon-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h4l2 9h10l2-9H7"/><circle cx="9" cy="20" r="1"/><circle cx="19" cy="20" r="1"/></svg></div>
+                        <h3>Uniform Rental & Laundry</h3>
+                        <p>Weekly pickup, cleaning, and redelivery.</p>
+                        <div class="tags"><span class="tag">Rental</span><span class="tag">Weekly</span></div>
+                    </div>
+                    <div class="fac-card">
+                        <div class="fac-icon icon-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg></div>
+                        <h3>Workwear & Safety Gear</h3>
+                        <p>Safety gear customizable with your branding.</p>
+                        <div class="tags"><span class="tag">Safety</span><span class="tag">PPE</span></div>
+                    </div>
+                </div>
+            </div>
 
-            <h2>A Brief History of How We Got Here</h2>
+            <!-- SUPPLIES -->
+            <div class="bcard bcard-supplies">
+                <h2>Restroom & Cleaning Supplies</h2>
+                <p style="color:#888; font-size:0.88rem; margin-bottom:0.5rem;">Keep your restrooms and common areas stocked at all times.</p>
+                <div class="fac-grid" style="grid-template-columns: 1fr 1fr;">
+                    <div class="fac-card">
+                        <div class="fac-icon icon-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12h8M12 8v8"/></svg></div>
+                        <h3>Restroom Essentials</h3>
+                        <p>Paper goods, soap, and sanitizer restocked regularly.</p>
+                        <div class="tags"><span class="tag">Scheduled</span></div>
+                    </div>
+                    <div class="fac-card">
+                        <div class="fac-icon icon-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c0 0-4 4-4 8a4 4 0 0 0 8 0c0-4-4-8-4-8z"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="9" y1="22" x2="15" y2="22"/></svg></div>
+                        <h3>Air & Odor Control</h3>
+                        <p>Dispensers and neutralizers all day.</p>
+                        <div class="tags"><span class="tag">Auto</span></div>
+                    </div>
+                    <div class="fac-card">
+                        <div class="fac-icon icon-rose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.5 2h5l1 7H8.5L9.5 2z"/><path d="M8.5 9c0 0-2 1-2 5s2 8 5.5 8 5.5-4 5.5-8-2-5-2-5"/><path d="M9 13h6"/></svg></div>
+                        <h3>Cleaning Products</h3>
+                        <p>Bulk disinfectants and degreasers for high-traffic areas.</p>
+                        <div class="tags"><span class="tag">Bulk</span></div>
+                    </div>
+                    <div class="fac-card">
+                        <div class="fac-icon icon-amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
+                        <h3>Dispensers & Accessories</h3>
+                        <p>Installed and serviced regularly.</p>
+                        <div class="tags"><span class="tag">Install</span></div>
+                    </div>
+                </div>
+            </div>
 
-            <p>The concept of managed facility services traces back to the post-World War II industrial boom in the United States. As factories scaled rapidly through the 1950s and 60s, plant managers realized that keeping facilities clean, workers uniformed, and spaces safe wasn't something you could improvise. Systematic approaches started to emerge.</p>
+            <!-- MATS INTRO -->
+            <div class="bcard bcard-mats-intro">
+                <h2>Floor Mat Services</h2>
+                <p>The right mat at the right entrance keeps your space clean, safe, and on-brand. We handle branded logo mats, anti-fatigue solutions, and a full rental and cleaning service so you never have to think about it.</p>
+            </div>
 
-            <p>By the 1970s, the uniform rental industry was already well established. Companies like Cintas — founded in 1929 but scaled through the mid-century — built entire business models around the idea that businesses shouldn't have to manage workwear themselves. The pitch was simple: you focus on your business, we'll handle the laundry.</p>
+            <!-- MATS GRID -->
+            <div class="bcard bcard-mats-grid">
+                <div class="fac-grid" style="grid-template-columns: repeat(3, 1fr);">
+                    <div class="fac-card">
+                        <div class="fac-icon icon-sage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M2 10h20"/></svg></div>
+                        <h3>Logo & Branded Mats</h3>
+                        <p>Mats printed with your logo for a clean entrance.</p>
+                        <div class="tags"><span class="tag">Custom</span><span class="tag">Branding</span></div>
+                    </div>
+                    <div class="fac-card">
+                        <div class="fac-icon icon-slate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V12M12 12L7 7M12 12l5-5"/><rect x="2" y="19" width="20" height="3" rx="1"/></svg></div>
+                        <h3>Anti-Fatigue & Safety</h3>
+                        <p>Slip-resistant mats for work areas.</p>
+                        <div class="tags"><span class="tag">Safety</span><span class="tag">Non-Slip</span></div>
+                    </div>
+                    <div class="fac-card">
+                        <div class="fac-icon icon-mauve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+                        <h3>Mat Rental & Cleaning</h3>
+                        <p>Weekly pickup, cleaning, and redelivery.</p>
+                        <div class="tags"><span class="tag">Rental</span><span class="tag">Weekly</span></div>
+                    </div>
+                </div>
+            </div>
 
-            <p>The 1980s brought OSHA regulations that formalized safety standards across industries. Anti-fatigue mats, non-slip surfaces, and proper restroom maintenance weren't just good practice anymore — they were legally required in many contexts. Businesses that ignored their facilities started facing fines, lawsuits, and reputational damage.</p>
-
-            <div class="callout">"A clean, well-maintained facility isn't a luxury — it's a signal. It tells customers you're serious, and it tells employees you respect them."</div>
-
-            <h2>The Hygiene Standard Shift After 2020</h2>
-
-            <p>The COVID-19 pandemic accelerated what was already a slow-building trend. Between 2020 and 2022, businesses across every sector were forced to re-examine their sanitation practices from the ground up. The global cleaning products market grew significantly during this period, and many of the habits formed then — air purification, sanitizer stations, more frequent restroom restocking — never went away.</p>
-
-            <p>Customers noticed. A 2022 survey by the ISSA (the worldwide cleaning industry association) found that cleanliness was one of the top three factors influencing whether customers returned to a business. Not price. Not location. Cleanliness.</p>
-
-            <h2>Uniforms as Brand Infrastructure</h2>
-
-            <p>Branded workwear has a longer history than most people realize. In the early 20th century, department stores began putting employees in standardized dress to distinguish staff from customers — a practical decision that had an unintended effect: it made the business look more credible and organized.</p>
-
-            <p>That effect is now well documented. Studies on consumer psychology consistently show that uniformed staff are perceived as more authoritative, trustworthy, and competent — regardless of the actual quality of service. For small businesses competing against larger brands, a consistent uniform can close a significant perception gap.</p>
-
-            <p>The uniform rental model — where a third party handles laundering, repairs, and replacements — became the dominant approach because it solved a real operational problem. Managing workwear in-house means tracking inventory, dealing with sizing changes, handling damaged items, and running laundry. Outsourcing it removes all of that.</p>
-
-            <h2>Floor Mats — The Overlooked Detail</h2>
-
-            <p>It sounds minor, but floor mats have a surprisingly large footprint in the facility services industry. The U.S. floor care market is valued in the billions, and commercial mats account for a substantial share of that.</p>
-
-            <p>The reason is practical: a quality entrance mat traps an estimated 80% of dirt and moisture that would otherwise be tracked through a building. That translates directly into reduced floor maintenance costs, fewer slip-and-fall incidents, and a cleaner-looking space overall. Anti-fatigue mats in kitchens and workstations have been shown to reduce worker fatigue and injury, which affects both productivity and insurance costs.</p>
-
-            <p>Branded logo mats added another layer — turning a functional item into a first impression. For many businesses, it's the first branded thing a customer physically steps on.</p>
-
-            <h2>Where Things Stand Now</h2>
-
-            <p>The facility services industry in the U.S. is currently valued at over $1 trillion when you account for cleaning, maintenance, uniforms, and related services. The growth isn't slowing. As businesses become more competitive and customer expectations around presentation continue to rise, the baseline for what a "professional" space looks like keeps moving up.</p>
-
-            <p>For small and mid-sized businesses, the challenge isn't understanding why these things matter — most owners already know. The challenge is finding a way to manage them without adding operational complexity. That's what's driven the growth of managed facility service providers: businesses want the results without the overhead of running it themselves.</p>
-
-            <div class="callout">"The companies that figured out facilities early didn't just look better — they operated better. Cleaner spaces, better-dressed teams, and safer floors aren't aesthetic decisions. They're operational ones."</div>
-
-            <h2>The Bottom Line</h2>
-
-            <p>Facility services went from an afterthought to a competitive differentiator over the course of about 70 years. The businesses that treat their physical environment as a reflection of their standards — rather than a cost to minimize — consistently outperform those that don't. That's not a sales pitch. It's just what the history shows.</p>
-
-            <h2>References</h2>
-            <ul style="list-style: none; margin-left: 0; display: flex; flex-direction: column; gap: 0.6rem;">
-                <li><a href="https://www.cintas.com/company/our-story/" target="_blank" style="color: #aaaaaa; font-size: 0.85rem;">Cintas Corporation — Company History</a></li>
-                <li><a href="https://www.osha.gov/laws-regs/oshact/completeoshact" target="_blank" style="color: #aaaaaa; font-size: 0.85rem;">U.S. OSHA — The Occupational Safety and Health Act of 1970</a></li>
-                <li><a href="https://www.issa.com/research-and-advocacy" target="_blank" style="color: #aaaaaa; font-size: 0.85rem;">ISSA — Worldwide Cleaning Industry Association, Research & Advocacy</a></li>
-                <li><a href="https://www.ibisworld.com/industry-statistics/market-size/uniform-rental-laundry-services-united-states/" target="_blank" style="color: #aaaaaa; font-size: 0.85rem;">IBISWorld — Uniform Rental & Laundry Services Industry Report</a></li>
-                <li><a href="https://www.sciencedirect.com/journal/journal-of-retailing-and-consumer-services" target="_blank" style="color: #aaaaaa; font-size: 0.85rem;">Journal of Retailing and Consumer Services — ScienceDirect</a></li>
-                <li><a href="https://www.3m.com/3M/en_US/safety-us/personal-protective-equipment/safety-matting/" target="_blank" style="color: #aaaaaa; font-size: 0.85rem;">3M — Entrance Matting & Safety Flooring Research</a></li>
-                <li><a href="https://www.grandviewresearch.com/industry-analysis/facility-management-market" target="_blank" style="color: #aaaaaa; font-size: 0.85rem;">Grand View Research — Global Facility Management Market Report</a></li>
-            </ul>
-
-            <div class="author-strip">
-                <p><strong>Rob Marcellin</strong></p>
-                <p>Founder, Marcell Services &nbsp;·&nbsp; Montclair State University</p>
+            <!-- CTA -->
+            <div class="bcard bcard-cta">
+                <h2>Ready to Equip Your Business?</h2>
+                <p>Let us handle the supplies, uniforms, and facility details so you can stay focused on running your business.</p>
+                <a href="/cdn-cgi/l/email-protection#5c24313d2e3f3930302e1c3b313d3530723f3331632f293e36393f28611e292f3532392f2f796e6c1a3d3f3530352835392f796e6c15322d29352e257a3e333825611435796e6c0e333e796e1f796c18796c1d796c18796c1d157b31796e6c353228392e392f283938796e6c3532796e6c2533292e796e6c1e292f3532392f2f796e6c1a3d3f3530352835392f796e6c2f392e2a353f392f72" class="cta-btn">Get in Touch</a>
+                <br>
+                <a href="/" class="back-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                    Back to Home
+                </a>
             </div>
 
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 Marcell Services LLC. All rights reserved.</p>
-        <p style="margin-top: 0.4rem; color: #9ca3af;"><a href="/">Marcell Services</a></p>
+        <p>&copy; 2026 Marcell Services LLC. All rights reserved. &nbsp;·&nbsp; <a href="/">Marcell Services</a></p>
     </footer>
-
     <script>
-        const el = document.getElementById('articleBody');
-        const obs = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) el.classList.add('fade-in'); });
-        }, { threshold: 0.05 });
-        obs.observe(el);
-    </script>
-
-    <!-- FLOATING SHARE -->
-    <div class="share-sidebar" id="shareSidebar">
-        <span style="font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); text-align: center;">Share</span>
-        <!-- LinkedIn -->
-        <a class="share-btn" id="shareLinkedIn" href="#" target="_blank" title="Share on LinkedIn">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-        </a>
-        <!-- X / Twitter -->
-        <a class="share-btn" id="shareX" href="#" target="_blank" title="Share on X">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        </a>
-        <!-- Facebook -->
-        <a class="share-btn" id="shareFacebook" href="#" target="_blank" title="Share on Facebook">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        </a>
-    </div>
-
-    <script>
-        const pageUrl = encodeURIComponent(window.location.href);
-        const pageTitle = encodeURIComponent(document.title);
-        document.getElementById('shareLinkedIn').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + pageUrl;
-        document.getElementById('shareX').href = 'https://twitter.com/intent/tweet?url=' + pageUrl + '&text=' + pageTitle;
-        document.getElementById('shareFacebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + pageUrl;
-
-        // Snake/trail scroll effect
-        const shareBtns = Array.from(document.querySelectorAll('.share-btn'));
-        let lastScrollY = window.scrollY;
-        let scrollTimeout;
-        let isScrolling = false;
-        let floatT = 0;
-        let positions = shareBtns.map(() => 0); // current Y offset per icon
-        let velocity = 0;
-
-        // Animate loop
-        function animate() {
-            floatT += 0.025;
-
-            if (isScrolling) {
-                // Lead icon follows scroll velocity, each subsequent one trails behind
-                positions[0] += (velocity - positions[0]) * 0.3;
-                for (let i = 1; i < shareBtns.length; i++) {
-                    positions[i] += (positions[i - 1] - positions[i]) * 0.25;
-                }
-                velocity *= 0.85; // dampen velocity
-            } else {
-                // Idle gentle float wave when not scrolling
-                for (let i = 0; i < shareBtns.length; i++) {
-                    const wave = Math.sin(floatT + i * 0.9) * 5;
-                    positions[i] += (wave - positions[i]) * 0.08;
-                }
-            }
-
-            shareBtns.forEach((btn, i) => {
-                btn.style.transform = `translateY(${positions[i].toFixed(2)}px)`;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('fade-in');
             });
-
-            requestAnimationFrame(animate);
-        }
-        animate();
-
-        window.addEventListener('scroll', () => {
-            const currentY = window.scrollY;
-            const delta = currentY - lastScrollY;
-            velocity = delta * 1.8; // amplify for feel
-            lastScrollY = currentY;
-            isScrolling = true;
-
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                isScrolling = false;
-                velocity = 0;
-            }, 150);
-        });
+        }, { threshold: 0.05 });
+        document.querySelectorAll('.bcard').forEach(card => observer.observe(card));
     </script>
 </body>
 </html>
