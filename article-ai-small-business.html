@@ -398,7 +398,7 @@
         document.getElementById('shareFacebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + pageUrl;
 
         // Snake/trail scroll effect
-        const shareBtns = Array.from(document.querySelectorAll('.share-btn'));
+        const shareBtns = Array.from(document.querySelectorAll('.share-btn, .mobile-share-btn'));
         let lastScrollY = window.scrollY;
         let scrollTimeout;
         let isScrolling = false;
