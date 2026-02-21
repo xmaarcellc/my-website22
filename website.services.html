@@ -13,7 +13,6 @@
     <meta name="description" content="Marcell Services — Website Services. Custom-built websites that convert visitors into clients.">
     <title>Website Services — Marcell Services</title>
     <link rel="icon" type="image/png" href="JustLogo.png">
-
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -21,80 +20,42 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #ffffff;
-            background: linear-gradient(to bottom, #000000 0%, #0a0a0a 20%, #1a1a1a 40%, #0f0f0f 60%, #000000 100%);
+            background: linear-gradient(to bottom, #1a1a1a 0%, #222222 20%, #2a2a2a 40%, #222222 60%, #1a1a1a 100%);
             background-attachment: fixed;
             min-height: 100vh;
             overflow-x: hidden;
-            transition: background 1.5s ease, color 1.5s ease;
         }
 
-        body.light-theme {
-            color: #000000;
-            background: linear-gradient(to bottom, #ffffff 0%, #e8e8e8 5%, #cccccc 10%, #999999 20%, #666666 35%, #333333 50%, #000000 70%);
+        /* Background images */
+        .bg-image {
+            position: fixed;
+            left: 0; right: 0;
+            width: 100%; height: 40vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
         }
+        .bg-image-1 { top: 0; background-image: url('background1.jpg'); }
+        .bg-image-2 { top: 50%; transform: translateY(-50%); background-image: url('background2.jpg'); }
+        .bg-image-3 { bottom: 0; background-image: url('background3.jpg'); }
 
-        body.light-theme header, body.light-theme header h1, body.light-theme header p { color: #000000; }
-        body.light-theme .logo { filter: invert(1); }
-        body.light-theme nav a, body.light-theme .hamburger span, body.light-theme .theme-toggle, body.light-theme .theme-toggle svg { color: #000000; border-color: #000000; }
-        body.light-theme nav ul { background: rgba(255,255,255,0.95); border: 1px solid rgba(0,0,0,0.2); }
-        body.light-theme nav ul li:hover { background: rgba(0,0,0,0.05); }
-        body.light-theme nav a:hover { background: #000000; color: #ffffff; }
-        body.light-theme .theme-toggle:hover { background: rgba(0,0,0,0.1); }
-        body.light-theme section { background: rgba(255,255,255,0.95); box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        body.light-theme section h2, body.light-theme section h3, body.light-theme section p, body.light-theme section ul, body.light-theme section li { color: #000000; }
-        body.light-theme .service-tile { background: rgba(255,255,255,0.9); border-color: #000000; }
-        body.light-theme .service-tile h3, body.light-theme .service-tile p { color: #000000; }
-        body.light-theme .tile-icon { border-color: #000000; color: #000000; }
-        body.light-theme .tile-icon svg { stroke: #000000; }
-        body.light-theme .back-link { color: #000000; border-color: #000000; }
-        body.light-theme .back-link:hover { background: #000000; color: #ffffff; }
-        body.light-theme .consultation-button { color: #000000; border-color: #000000; }
-        body.light-theme .consultation-button:hover { background: #000000; color: #ffffff; }
-        body.light-theme .hero-badge { border-color: rgba(0,0,0,0.2); color: rgba(0,0,0,0.5); }
-        body.light-theme .tag { border-color: #000000; color: #000000; background: rgba(0,0,0,0.06); }
-        body.light-theme .process-step { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.1); }
-        body.light-theme .process-step h4, body.light-theme .process-step p { color: #000000; }
-        body.light-theme .step-num { color: rgba(0,0,0,0.15); }
-        body.light-theme .pricing-card { background: rgba(255,255,255,0.9); border-color: #000000; }
-        body.light-theme .pricing-card h3, body.light-theme .pricing-card p, body.light-theme .pricing-card li { color: #000000; }
-        body.light-theme .pricing-card .price { color: #000000; }
-        body.light-theme .pricing-card ul li::before { color: #000000; }
-        body.light-theme section a { color: #3b82f6; }
+        /* NAV - removed, back link in header serves navigation */
 
-        /* NAV */
-        nav { background: transparent; padding: 1.5rem; position: sticky; top: 0; z-index: 100; display: flex; justify-content: flex-end; align-items: center; gap: 1rem; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.08); transition: background 1.5s ease; }
-        body.light-theme nav { background: rgba(245,245,240,0.85); border-bottom-color: rgba(0,0,0,0.1); }
-        .theme-toggle { cursor: pointer; padding: 0.5rem; display: flex; align-items: center; justify-content: center; border: 2px solid #ffffff; border-radius: 50%; width: 44px; height: 44px; transition: all 0.3s ease; background: transparent; }
-        .theme-toggle:hover { background: rgba(255,255,255,0.1); transform: rotate(20deg); }
-        .theme-toggle svg { color: #ffffff; transition: all 0.3s ease; }
-        .sun-icon, .moon-icon { width: 24px; height: 24px; }
-        nav ul { list-style: none; display: none; position: fixed; top: 80px; right: 2rem; background: rgba(20,20,20,0.98); flex-direction: column; padding: 1rem 0; border-radius: 12px; box-shadow: 0 4px 20px rgba(255,255,255,0.1); backdrop-filter: blur(10px); min-width: 200px; border: 1px solid rgba(255,255,255,0.2); }
-        nav ul.active { display: flex; }
-        nav ul li { width: 100%; text-align: center; padding: 0.5rem 1rem; }
-        nav ul li:hover { background: rgba(255,255,255,0.05); }
-        nav a { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s; display: block; padding: 0.8rem 1.5rem; border: 2px solid #ffffff; border-radius: 25px; background: transparent; margin: 0.5rem; }
-        nav a:hover { background: #ffffff; color: #000000; transform: translateY(-2px); }
-        .hamburger { display: flex; flex-direction: column; cursor: pointer; gap: 5px; padding: 0.5rem; z-index: 1001; }
-        .hamburger span { width: 25px; height: 3px; background: #ffffff; border-radius: 2px; transition: all 0.3s ease; }
-        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-        /* HEADER */
-        header { padding: 5rem 2rem 3rem; text-align: center; position: relative; z-index: 2; }
-        header h1 { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 700; letter-spacing: 2px; color: #ffffff; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; animation: fadeUp 1s ease forwards; transition: color 1.5s ease; }
-        .logo { width: 55px; height: 55px; margin-top: 8px; transition: filter 1.5s ease; }
-        header p { font-size: 1.1rem; font-weight: 300; letter-spacing: 1px; color: rgba(255,255,255,0.7); margin-top: 0.8rem; transition: color 1.5s ease; }
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        header { position: relative; color: #ffffff; padding: 5rem 2rem 3rem; text-align: center; background: rgba(30,30,30,0.6); z-index: 2; }
+        header h1 { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 700; letter-spacing: 2px; color: #ffffff; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+        .logo { width: 55px; height: 55px; margin-top: 8px; }
+        header p { font-size: 1.1rem; font-weight: 300; letter-spacing: 1px; color: rgba(255,255,255,0.7); margin-top: 0.8rem; }
 
         .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: #ffffff; text-decoration: none; font-weight: 600; font-size: 0.95rem; border: 2px solid #ffffff; border-radius: 25px; padding: 0.6rem 1.4rem; margin-top: 1rem; transition: all 0.3s; }
         .back-link:hover { background: #ffffff; color: #000000; transform: translateY(-2px); }
 
-        /* CONTAINER */
         .container { max-width: 1200px; margin: 0 auto; padding: 2rem 2rem 4rem; position: relative; z-index: 2; }
 
         /* HERO BANNER */
-        .page-hero { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%); border-radius: 16px; padding: 3rem 2rem; margin-bottom: 3rem; text-align: center; position: relative; overflow: hidden; border: 2px solid rgba(255,255,255,0.15); }
+        .page-hero { background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%); border-radius: 16px; padding: 3rem 2rem; margin-bottom: 3rem; text-align: center; position: relative; overflow: hidden; border: 2px solid rgba(255,255,255,0.15); }
         .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.07) 0%, transparent 60%); animation: pulse 4s ease-in-out infinite; }
         @keyframes pulse { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }
         .hero-badge { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.2); padding: 0.3rem 1rem; border-radius: 20px; margin-bottom: 1.2rem; position: relative; z-index: 2; }
@@ -102,97 +63,71 @@
         .page-hero p { font-size: 1rem; color: rgba(255,255,255,0.65); margin-top: 0.8rem; position: relative; z-index: 2; }
 
         /* SECTIONS */
-        section { background: rgba(20,20,20,0.95); margin-bottom: 2rem; padding: 3rem; border-radius: 16px; box-shadow: 0 2px 10px rgba(255,255,255,0.08); opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease-out, transform 0.8s ease-out, background 1.5s ease; border: none; backdrop-filter: blur(10px); }
-        section.fade-in { opacity: 1; transform: translateY(0); }
-        section h2 { color: #ffffff; font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 3px solid #ffffff; transition: color 1.5s ease, border-color 1.5s ease; }
-        section p { color: #ffffff; font-size: 0.95rem; transition: color 1.5s ease; }
-        section a { color: #60a5fa; text-decoration: underline; }
-        section a:hover { color: #93c5fd; }
+        section { background: rgba(30,30,30,0.25); margin-bottom: 2rem; padding: 3rem; border-radius: 16px; box-shadow: 0 2px 10px rgba(255,255,255,0.08); position: relative; border: none; backdrop-filter: blur(10px); z-index: 2; }
+        section h2 { color: #ffffff; font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 3px solid #ffffff; }
+        section p { color: #ffffff; font-size: 0.95rem; }
+        section a { color: #ffffff; text-decoration: underline; }
+        section a:hover { color: #cccccc; }
 
         /* SERVICE TILES */
         .tile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
-
-        .service-tile { background: rgba(30,30,30,0.9); border: 2px solid #ffffff; border-radius: 12px; padding: 1.8rem; transition: transform 0.3s ease, box-shadow 0.3s ease, background 1.5s ease, border-color 1.5s ease; backdrop-filter: blur(3px); }
-        .service-tile:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(255,255,255,0.12); }
-
-        .tile-icon { width: 48px; height: 48px; border-radius: 10px; border: 2px solid #ffffff; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; transition: border-color 1.5s ease; }
-        .tile-icon svg { width: 22px; height: 22px; stroke: #ffffff; transition: stroke 1.5s ease; }
-
-        .service-tile h3 { color: #ffffff; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; transition: color 1.5s ease; }
-        .service-tile p { color: #aaaaaa; font-size: 0.88rem; line-height: 1.7; margin-bottom: 1rem; transition: color 1.5s ease; }
-        body.light-theme .service-tile p { color: #555555; }
-
+        .service-tile { background: rgba(38,38,38,0.9); border: 2px solid #ffffff; border-radius: 12px; padding: 1.8rem; transition: transform 0.3s ease, box-shadow 0.3s ease; backdrop-filter: blur(3px); }
+        .service-tile:hover { transform: translateY(-5px); box-shadow: 0 6px 20px rgba(255,255,255,0.06); }
+        .tile-icon { width: 48px; height: 48px; border-radius: 10px; border: 2px solid #ffffff; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+        .tile-icon svg { width: 22px; height: 22px; stroke: #ffffff; }
+        /* 30% saturation unique colors per tile */
+        .tile-blue   { border-color: #7a9ab5; }  /* blue */
+        .tile-blue svg { stroke: #7a9ab5; }
+        .tile-green  { border-color: #7aab8a; }  /* green */
+        .tile-green svg { stroke: #7aab8a; }
+        .tile-purple { border-color: #9a8ab5; }  /* purple */
+        .tile-purple svg { stroke: #9a8ab5; }
+        .tile-orange { border-color: #b59a7a; }  /* orange */
+        .tile-orange svg { stroke: #b59a7a; }
+        .tile-teal   { border-color: #7aabb5; }  /* teal */
+        .tile-teal svg { stroke: #7aabb5; }
+        .tile-rose   { border-color: #b57a8a; }  /* rose */
+        .tile-rose svg { stroke: #b57a8a; }
+        .service-tile h3 { color: #ffffff; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .service-tile p { color: #aaaaaa; font-size: 0.88rem; line-height: 1.7; margin-bottom: 1rem; }
         .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-        .tag { font-size: 0.72rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 20px; border: 1px solid #ffffff; color: #ffffff; background: transparent; transition: border-color 1.5s ease, color 1.5s ease; }
+        .tag { font-size: 0.72rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 20px; border: 1px solid #ffffff; color: #ffffff; background: transparent; }
 
         /* PROCESS */
         .process-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
-        .process-step { position: relative; background: rgba(30,30,30,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1.4rem 1.4rem 1.4rem 4rem; transition: background 1.5s ease, border-color 1.5s ease; }
-        .step-num { position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); font-size: 2rem; font-weight: 900; color: rgba(255,255,255,0.1); line-height: 1; transition: color 1.5s ease; }
-        .process-step h4 { color: #ffffff; font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; transition: color 1.5s ease; }
-        .process-step p { color: #aaaaaa; font-size: 0.88rem; transition: color 1.5s ease; }
-        body.light-theme .process-step p { color: #555555; }
+        .process-step { position: relative; background: rgba(38,38,38,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1.4rem 1.4rem 1.4rem 4rem; }
+        .step-num { position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); font-size: 2rem; font-weight: 900; color: rgba(255,255,255,0.1); line-height: 1; }
+        .process-step h4 { color: #ffffff; font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .process-step p { color: #aaaaaa; font-size: 0.88rem; }
 
-        /* PRICING */
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
-        .pricing-card { background: rgba(30,30,30,0.9); border: 2px solid #ffffff; border-radius: 12px; padding: 2rem; transition: transform 0.3s ease, box-shadow 0.3s ease, background 1.5s ease, border-color 1.5s ease; backdrop-filter: blur(3px); }
-        .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(255,255,255,0.1); }
-        .pricing-card h3 { color: #ffffff; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; transition: color 1.5s ease; }
-        .pricing-card .price { font-size: 1.8rem; font-weight: 900; color: #ffffff; margin-bottom: 0.3rem; transition: color 1.5s ease; }
-        .pricing-card .price span { font-size: 0.9rem; font-weight: 400; color: #aaaaaa; }
-        .pricing-card p { color: #aaaaaa; font-size: 0.85rem; margin-bottom: 1.2rem; transition: color 1.5s ease; }
-        body.light-theme .pricing-card p, body.light-theme .pricing-card .price span { color: #555555; }
-        .pricing-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-        .pricing-card ul li { color: #ffffff; font-size: 0.88rem; padding-left: 1.2rem; position: relative; transition: color 1.5s ease; }
-        .pricing-card ul li::before { content: '✓'; position: absolute; left: 0; color: #ffffff; font-weight: 700; transition: color 1.5s ease; }
-
-        /* CTA */
+        /* BUTTONS */
         .consultation-button { display: inline-block; background: transparent; color: #ffffff; padding: 1rem 2.2rem; text-decoration: none; border-radius: 8px; margin-top: 1.5rem; transition: all 0.3s; font-weight: 600; border: 2px solid #ffffff; cursor: pointer; font-size: 1rem; }
         .consultation-button:hover { background: #ffffff; color: #000000; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255,255,255,0.25); }
 
-        footer { background: rgba(0,0,0,0.95); color: #ffffff; text-align: center; padding: 2rem; margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.9rem; }
+        footer { background: transparent; color: #ffffff; text-align: center; padding: 2rem; margin-top: 3rem; position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.9rem; }
         footer a { color: #9ca3af; text-decoration: none; }
 
         @media (max-width: 768px) {
             header h1 { font-size: 1.8rem; }
             section { padding: 2rem 1.2rem; }
-            .tile-grid, .pricing-grid { grid-template-columns: 1fr; }
+            .tile-grid { grid-template-columns: 1fr; }
             .page-hero { padding: 2rem 1rem; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="theme-toggle" id="themeToggle" title="Toggle theme">
-            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-            </svg>
-            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-            </svg>
-        </div>
-        <ul>
-            <li><a href="index.html#about">Work</a></li>
-            <li><a href="index.html#projects">Projects</a></li>
-            <li><a href="hobbies.html">Hobbies</a></li>
-            <li><a href="index.html#services">Services</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
-        </ul>
-        <div class="hamburger">
-            <span></span><span></span><span></span>
-        </div>
-    </nav>
+    <!-- Background Images -->
+    <div class="bg-image bg-image-1"></div>
+    <div class="bg-image bg-image-2"></div>
+    <div class="bg-image bg-image-3"></div>
 
     <header>
         <h1>
             Website Services
             <img src="JustWhite.png" alt="Marcell Services Logo" class="logo">
         </h1>
-        <p>Custom Websites · Web Apps · SEO</p>
+        <p>Custom Websites &middot; Web Apps &middot; SEO</p>
         <a href="index.html" class="back-link">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
             Back to Home
@@ -214,7 +149,7 @@
             <div class="tile-grid">
 
                 <div class="service-tile">
-                    <div class="tile-icon">
+                    <div class="tile-icon tile-blue">
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
                     </div>
                     <h3>Business Websites</h3>
@@ -223,7 +158,7 @@
                 </div>
 
                 <div class="service-tile">
-                    <div class="tile-icon">
+                    <div class="tile-icon tile-green">
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
                     </div>
                     <h3>Portfolio Sites</h3>
@@ -232,16 +167,16 @@
                 </div>
 
                 <div class="service-tile">
-                    <div class="tile-icon">
+                    <div class="tile-icon tile-purple">
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M8 2v4M16 2v4M2 10h20"/></svg>
                     </div>
-                    <h3>Booking & Scheduling</h3>
+                    <h3>Booking &amp; Scheduling</h3>
                     <p>Online appointment systems integrated directly into your site so clients can book 24/7 without a phone call.</p>
                     <div class="tags"><span class="tag">Booking</span><span class="tag">Calendar</span><span class="tag">PHP</span></div>
                 </div>
 
                 <div class="service-tile">
-                    <div class="tile-icon">
+                    <div class="tile-icon tile-orange">
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                     </div>
                     <h3>React Web Apps</h3>
@@ -250,7 +185,7 @@
                 </div>
 
                 <div class="service-tile">
-                    <div class="tile-icon">
+                    <div class="tile-icon tile-teal">
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
                     </div>
                     <h3>SEO Optimization</h3>
@@ -259,10 +194,10 @@
                 </div>
 
                 <div class="service-tile">
-                    <div class="tile-icon">
+                    <div class="tile-icon tile-rose">
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                     </div>
-                    <h3>Maintenance & Support</h3>
+                    <h3>Maintenance &amp; Support</h3>
                     <p>Ongoing updates, bug fixes, security patches, and content changes so your site stays fresh without the headache.</p>
                     <div class="tags"><span class="tag">Support</span><span class="tag">Updates</span><span class="tag">Security</span></div>
                 </div>
@@ -275,37 +210,31 @@
             <h2>How It Works</h2>
             <p style="margin-bottom: 0.5rem;">A straightforward process from first conversation to launch day.</p>
             <div class="process-list">
-
                 <div class="process-step">
                     <div class="step-num">01</div>
                     <h4>Discovery Call</h4>
                     <p>We talk through your business, goals, and what you need the website to do.</p>
                 </div>
-
                 <div class="process-step">
                     <div class="step-num">02</div>
-                    <h4>Proposal & Scope</h4>
+                    <h4>Proposal &amp; Scope</h4>
                     <p>You receive a clear breakdown of what gets built, the timeline, and the price.</p>
                 </div>
-
                 <div class="process-step">
                     <div class="step-num">03</div>
-                    <h4>Design & Build</h4>
+                    <h4>Design &amp; Build</h4>
                     <p>Development begins. You'll see progress updates and have the chance to give feedback at key checkpoints.</p>
                 </div>
-
                 <div class="process-step">
                     <div class="step-num">04</div>
-                    <h4>Review & Revisions</h4>
+                    <h4>Review &amp; Revisions</h4>
                     <p>You review the finished site and request any changes. We refine until it's exactly right.</p>
                 </div>
-
                 <div class="process-step">
                     <div class="step-num">05</div>
                     <h4>Launch</h4>
                     <p>Your site goes live. We handle the technical deployment so the handoff is smooth and stress-free.</p>
                 </div>
-
             </div>
         </section>
 
@@ -313,7 +242,6 @@
         <section id="pricing" style="text-align: center;">
             <h2 style="text-align: left;">Pricing</h2>
             <p style="max-width: 580px; margin: 0 auto 0.5rem; text-align: center;">Every project is scoped and priced individually based on your specific needs. Reach out and we'll put together a custom quote.</p>
-
             <p style="margin-top: 1rem; color: #aaaaaa; font-size: 0.9rem;">Pricing is sent directly to your inbox after a quick conversation about your project.</p>
             <a href="mailto:xmarcellr@gmail.com?subject=Website%20Pricing%20Request&body=Hi%20Rob%2C%0D%0A%0D%0AI'd%20like%20to%20get%20a%20quote%20for%20a%20website.%0D%0A%0D%0AType%20of%20site%3A%20%5BBusiness%20site%2C%20portfolio%2C%20web%20app%2C%20etc.%5D%0D%0A%0D%0ANumber%20of%20pages%20(approx.)%3A%20%5BYour%20estimate%5D%0D%0A%0D%0AFeatures%20needed%3A%20%5BContact%20form%2C%20booking%2C%20gallery%2C%20etc.%5D%0D%0A%0D%0ATimeline%3A%20%5BWhen%20you%20need%20it%5D%0D%0A%0D%0ALooking%20forward%20to%20hearing%20from%20you!%0D%0A%0D%0ABest%2C%0D%0A%5BYour%20Name%5D" class="consultation-button">Request Pricing</a>
         </section>
@@ -340,36 +268,10 @@
     </footer>
 
     <script>
-        // Scroll reveal
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('fade-in'); });
-        }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
-        document.querySelectorAll('section').forEach(s => observer.observe(s));
-
-        // Hamburger
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('nav ul');
-        hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navMenu.classList.toggle('active'); });
-        document.querySelectorAll('nav ul li a').forEach(link => {
-            link.addEventListener('click', () => { hamburger.classList.remove('active'); navMenu.classList.remove('active'); });
-        });
-        document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) { hamburger.classList.remove('active'); navMenu.classList.remove('active'); }
-        });
-
-        // Theme
-        const themeToggle = document.getElementById('themeToggle');
-        const sunIcon = document.querySelector('.sun-icon');
-        const moonIcon = document.querySelector('.moon-icon');
-        if (localStorage.getItem('theme') === 'light') { document.body.classList.add('light-theme'); sunIcon.style.display = 'none'; moonIcon.style.display = 'block'; }
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('light-theme');
-            const isLight = document.body.classList.contains('light-theme');
-            sunIcon.style.display = isLight ? 'none' : 'block';
-            moonIcon.style.display = isLight ? 'block' : 'none';
-            localStorage.setItem('theme', isLight ? 'light' : 'dark');
-        });
+        function toggleProjectDetails(header) {
+            header.nextElementSibling.classList.toggle('open');
+            header.querySelector('.service-dropdown-arrow').classList.toggle('open');
+        }
     </script>
 </body>
-</html
-
+</html>
