@@ -15,68 +15,63 @@
     <link rel="icon" type="image/png" href="JustLogo.png">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #ffffff; background: linear-gradient(to bottom, #1a1a1a 0%, #222222 20%, #2a2a2a 40%, #222222 60%, #1a1a1a 100%); background-attachment: fixed; min-height: 100vh; overflow-x: hidden; }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #ffffff;
-            background: linear-gradient(to bottom, #1a1a1a 0%, #222222 20%, #2a2a2a 40%, #222222 60%, #1a1a1a 100%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+        /* NAV */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(20,20,20,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; gap: 2.5rem; padding: 0.9rem 2rem; }
+        nav a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.85rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; }
+        nav a:hover { color: #ffffff; }
+        nav a.active { color: #ffffff; border-bottom: 2px solid #ffffff; padding-bottom: 2px; }
 
-        /* Background images */
-        .bg-image {
-            position: fixed;
-            left: 0; right: 0;
-            width: 100%; height: 40vh;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.15;
-            z-index: 0;
-            pointer-events: none;
-        }
+        /* BG */
+        .bg-image { position: fixed; left: 0; right: 0; width: 100%; height: 40vh; background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0.15; z-index: 0; pointer-events: none; }
         .bg-image-1 { top: 0; background-image: url('background1.jpg'); }
         .bg-image-2 { top: 50%; transform: translateY(-50%); background-image: url('background2.jpg'); }
         .bg-image-3 { bottom: 0; background-image: url('background3.jpg'); }
 
-        header { position: relative; color: #ffffff; padding: 5rem 2rem 3rem; text-align: center; background: rgba(30,30,30,0.6); z-index: 2; }
-        header h1 { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 700; letter-spacing: 2px; color: #ffffff; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-        .logo { width: 55px; height: 55px; margin-top: 8px; }
-        header p { font-size: 1.1rem; font-weight: 300; letter-spacing: 1px; color: rgba(255,255,255,0.7); margin-top: 0.8rem; }
+        /* HEADER */
+        header { position: relative; color: #ffffff; padding: 7rem 2rem 3rem; text-align: center; background: rgba(30,30,30,0.6); z-index: 2; }
+        header h1 { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 700; letter-spacing: 2px; color: #ffffff; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeInHeader 1s ease-out forwards; animation-delay: 0.2s; }
+        .logo { width: 55px; height: 55px; margin-top: 8px; opacity: 0; animation: fadeInHeader 1s ease-out forwards; animation-delay: 0.4s; }
+        @keyframes fadeInHeader { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        header p { font-size: 1rem; font-weight: 300; letter-spacing: 1px; color: rgba(255,255,255,0.6); margin-top: 0.6rem; }
 
-        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: #ffffff; text-decoration: none; font-weight: 600; font-size: 0.95rem; border: 2px solid #ffffff; border-radius: 25px; padding: 0.6rem 1.4rem; margin-top: 1rem; transition: all 0.3s; }
-        .back-link:hover { background: #ffffff; color: #000000; transform: translateY(-2px); }
+        /* BENTO */
+        .container { max-width: 1400px; margin: 0 auto; padding: 2.5rem 2rem 5rem; position: relative; z-index: 2; }
+        .bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.2rem; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 2rem 4rem; position: relative; z-index: 2; }
+        /* BASE CARD */
+        .bcard { background: rgba(30,30,30,0.25); border-radius: 18px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); padding: 2rem; opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s; overflow: hidden; position: relative; }
+        .bcard.fade-in { opacity: 1; transform: translateY(0); }
+        .bcard:hover { box-shadow: 0 8px 32px rgba(255,255,255,0.05); }
+        .bcard h2 { font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-bottom: 1.2rem; padding-bottom: 0.5rem; border-bottom: 2px solid rgba(255,255,255,0.15); }
 
-        /* HERO BANNER */
-        .page-hero { background: rgba(30,30,30,0.25); backdrop-filter: blur(10px); border-radius: 16px; padding: 3rem 2rem; margin-bottom: 3rem; text-align: center; position: relative; overflow: hidden; border: none; }
-        .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.07) 0%, transparent 60%); animation: pulse 4s ease-in-out infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }
-        .hero-badge { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.2); padding: 0.3rem 1rem; border-radius: 20px; margin-bottom: 1.2rem; position: relative; z-index: 2; }
-        .page-hero h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: #ffffff; letter-spacing: 1px; text-shadow: 0 0 30px rgba(255,255,255,0.4); position: relative; z-index: 2; margin: 0; border: none; padding: 0; }
-        .page-hero p { font-size: 1rem; color: rgba(255,255,255,0.65); margin-top: 0.8rem; position: relative; z-index: 2; }
+        /* GRID PLACEMENTS */
+        .bcard-hero       { grid-column: 1 / 13; }
+        .bcard-uniforms   { grid-column: 1 / 8;  }
+        .bcard-supplies   { grid-column: 8 / 13; }
+        .bcard-mats-intro { grid-column: 1 / 5;  }
+        .bcard-mats-grid  { grid-column: 5 / 13; }
+        .bcard-cta        { grid-column: 1 / 13; text-align: center; }
 
-        /* SECTIONS */
-        section { background: rgba(30,30,30,0.25); margin-bottom: 2rem; padding: 3rem; border-radius: 16px; box-shadow: 0 2px 10px rgba(255,255,255,0.08); position: relative; border: none; backdrop-filter: blur(10px); z-index: 2; }
-        section h2 { color: #ffffff; font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 3px solid #ffffff; }
-        section p { color: #ffffff; font-size: 0.95rem; }
-        section a { color: #ffffff; text-decoration: underline; }
-        section a:hover { color: #cccccc; }
+        /* HERO CARD */
+        .bcard-hero { text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 3rem 2rem; }
+        .hero-badge { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.15); padding: 0.25rem 1rem; border-radius: 20px; margin-bottom: 1rem; }
+        .bcard-hero h2 { font-size: clamp(1.6rem, 4vw, 2.4rem); border: none; padding: 0; margin-bottom: 0.5rem; letter-spacing: 0.5px; }
+        .bcard-hero p { color: rgba(255,255,255,0.55); font-size: 0.95rem; max-width: 560px; margin: 0 auto; }
 
         /* FACILITY CARDS */
-        .facility-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
-        .facility-card { background: rgba(38,38,38,0.9); border: 2px solid #ffffff; border-radius: 12px; padding: 1.8rem; transition: transform 0.3s ease, box-shadow 0.3s ease; backdrop-filter: blur(3px); }
-        .facility-card:hover { transform: translateY(-5px); box-shadow: 0 6px 20px rgba(255,255,255,0.06); }
-        .facility-icon { width: 48px; height: 48px; border-radius: 10px; border: 2px solid #ffffff; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
-        .facility-icon svg { width: 24px; height: 24px; stroke: #ffffff; }
-        .facility-card h3 { color: #ffffff; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.6rem; }
-        .facility-card p { color: #aaaaaa; font-size: 0.88rem; line-height: 1.7; }
+        .fac-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1.2rem; }
+        .fac-card { background: rgba(38,38,38,0.85); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.3rem; transition: transform 0.3s, box-shadow 0.3s; }
+        .fac-card:hover { transform: translateY(-4px); box-shadow: 0 6px 20px rgba(255,255,255,0.05); }
+        .fac-icon { width: 40px; height: 40px; border-radius: 8px; border: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 0.8rem; }
+        .fac-icon svg { width: 20px; height: 20px; }
+        .fac-card h3 { color: #ffffff; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; }
+        .fac-card p { color: #888; font-size: 0.8rem; line-height: 1.6; margin-bottom: 0.7rem; }
+        .tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+        .tag { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; padding: 0.15rem 0.5rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.5); }
 
-        /* 30% saturation icon colors */
+        /* ICON COLORS */
         .icon-blue   { border-color: #7a9ab5; } .icon-blue svg   { stroke: #7a9ab5; }
         .icon-green  { border-color: #7aab8a; } .icon-green svg  { stroke: #7aab8a; }
         .icon-purple { border-color: #9a8ab5; } .icon-purple svg { stroke: #9a8ab5; }
@@ -88,190 +83,178 @@
         .icon-slate  { border-color: #8a9ab5; } .icon-slate svg  { stroke: #8a9ab5; }
         .icon-mauve  { border-color: #b58aaa; } .icon-mauve svg  { stroke: #b58aaa; }
 
-        .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
-        .tag { font-size: 0.72rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 20px; border: 1px solid #ffffff; color: #ffffff; background: transparent; }
+        /* MATS INTRO CARD */
+        .bcard-mats-intro { display: flex; flex-direction: column; justify-content: center; background: rgba(255,255,255,0.02); }
+        .bcard-mats-intro h2 { border-color: rgba(255,255,255,0.1); }
+        .bcard-mats-intro p { color: #888; font-size: 0.88rem; line-height: 1.8; }
 
-        .consultation-button { display: inline-block; background: transparent; color: #ffffff; padding: 1rem 2.2rem; text-decoration: none; border-radius: 8px; margin-top: 1.5rem; transition: all 0.3s; font-weight: 600; border: 2px solid #ffffff; cursor: pointer; font-size: 1rem; }
-        .consultation-button:hover { background: #ffffff; color: #000000; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255,255,255,0.25); }
+        /* CTA */
+        .bcard-cta h2 { border: none; padding: 0; font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .bcard-cta p { color: #888; font-size: 0.9rem; margin-bottom: 0; }
+        .cta-btn { display: inline-block; background: transparent; color: #ffffff; padding: 0.9rem 2.2rem; text-decoration: none; border-radius: 8px; margin-top: 1.2rem; transition: all 0.3s; font-weight: 600; border: 2px solid #ffffff; font-size: 0.95rem; }
+        .cta-btn:hover { background: #ffffff; color: #000000; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,255,255,0.2); }
+        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; font-weight: 600; margin-top: 1rem; transition: color 0.2s; }
+        .back-link:hover { color: #ffffff; }
 
-        footer { background: transparent; color: #ffffff; text-align: center; padding: 2rem; margin-top: 3rem; position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.9rem; }
+        footer { background: transparent; color: #9ca3af; text-align: center; padding: 2rem; position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.85rem; }
         footer a { color: #9ca3af; text-decoration: none; }
 
-        @media (max-width: 768px) {
-            header h1 { font-size: 1.8rem; }
-            section { padding: 2rem 1.2rem; }
-            .facility-grid { grid-template-columns: 1fr; }
-            .page-hero { padding: 2rem 1rem; }
+        @media (max-width: 900px) {
+            .bcard-hero, .bcard-uniforms, .bcard-supplies,
+            .bcard-mats-intro, .bcard-mats-grid, .bcard-cta { grid-column: 1 / -1; }
+            .fac-grid { grid-template-columns: 1fr 1fr; }
         }
-
-        section {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        @media (max-width: 500px) {
+            nav { gap: 1rem; } nav a { font-size: 0.72rem; letter-spacing: 1px; }
+            .fac-grid { grid-template-columns: 1fr; }
         }
-        section.fade-in { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
-
-    <!-- Background Images -->
     <div class="bg-image bg-image-1"></div>
     <div class="bg-image bg-image-2"></div>
     <div class="bg-image bg-image-3"></div>
 
+    <nav>
+        <a href="/">Home</a>
+        <a href="website-services.html">Web Development</a>
+        <a href="business-facilities.html" class="active">Business Facilities</a>
+    </nav>
+
     <header>
-        <h1>
-            Business Facilities
-            <img src="JustWhite.png" alt="Marcell Services Logo" class="logo">
-        </h1>
+        <h1>Business Facilities <img src="JustWhite.png" alt="Logo" class="logo"></h1>
         <p>Uniforms &middot; Supplies &middot; Floor Mats</p>
-        <a href="/" class="back-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-            Back to Home
-        </a>
     </header>
 
     <div class="container">
+        <div class="bento">
 
-        <div class="page-hero">
-            <div class="hero-badge">Marcell Services</div>
-            <h2>Keep Your Business Looking Its Best</h2>
-            <p>Professional facility services that keep your team sharp, your space clean, and your brand front and center.</p>
+            <!-- HERO -->
+            <div class="bcard bcard-hero">
+                <div class="hero-badge">Marcell Services</div>
+                <h2>Keep Your Business Looking Its Best</h2>
+                <p>Professional facility services that keep your team sharp, your space clean, and your brand front and center.</p>
+            </div>
+
+            <!-- UNIFORMS -->
+            <div class="bcard bcard-uniforms">
+                <h2>Uniform Services</h2>
+                <p style="color:#888; font-size:0.88rem; margin-bottom:0.5rem;">A sharp, consistent look builds trust and reinforces your brand every day.</p>
+                <div class="fac-grid">
+                    <div class="fac-card">
+                        <div class="fac-icon icon-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg></div>
+                        <h3>Branded Uniform Program</h3>
+                        <p>Uniforms embroidered or printed with your logo.</p>
+                        <div class="tags"><span class="tag">Embroidery</span><span class="tag">Custom</span></div>
+                    </div>
+                    <div class="fac-card">
+                        <div class="fac-icon icon-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h4l2 9h10l2-9H7"/><circle cx="9" cy="20" r="1"/><circle cx="19" cy="20" r="1"/></svg></div>
+                        <h3>Uniform Rental & Laundry</h3>
+                        <p>Weekly pickup, cleaning, and redelivery.</p>
+                        <div class="tags"><span class="tag">Rental</span><span class="tag">Weekly</span></div>
+                    </div>
+                    <div class="fac-card">
+                        <div class="fac-icon icon-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg></div>
+                        <h3>Workwear & Safety Gear</h3>
+                        <p>Safety gear customizable with your branding.</p>
+                        <div class="tags"><span class="tag">Safety</span><span class="tag">PPE</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUPPLIES -->
+            <div class="bcard bcard-supplies">
+                <h2>Restroom & Cleaning Supplies</h2>
+                <p style="color:#888; font-size:0.88rem; margin-bottom:0.5rem;">Keep your restrooms and common areas stocked at all times.</p>
+                <div class="fac-grid" style="grid-template-columns: 1fr 1fr;">
+                    <div class="fac-card">
+                        <div class="fac-icon icon-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12h8M12 8v8"/></svg></div>
+                        <h3>Restroom Essentials</h3>
+                        <p>Paper goods, soap, and sanitizer restocked regularly.</p>
+                        <div class="tags"><span class="tag">Scheduled</span></div>
+                    </div>
+                    <div class="fac-card">
+                        <div class="fac-icon icon-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c0 0-4 4-4 8a4 4 0 0 0 8 0c0-4-4-8-4-8z"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="9" y1="22" x2="15" y2="22"/></svg></div>
+                        <h3>Air & Odor Control</h3>
+                        <p>Dispensers and neutralizers all day.</p>
+                        <div class="tags"><span class="tag">Auto</span></div>
+                    </div>
+                    <div class="fac-card">
+                        <div class="fac-icon icon-rose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.5 2h5l1 7H8.5L9.5 2z"/><path d="M8.5 9c0 0-2 1-2 5s2 8 5.5 8 5.5-4 5.5-8-2-5-2-5"/><path d="M9 13h6"/></svg></div>
+                        <h3>Cleaning Products</h3>
+                        <p>Bulk disinfectants and degreasers for high-traffic areas.</p>
+                        <div class="tags"><span class="tag">Bulk</span></div>
+                    </div>
+                    <div class="fac-card">
+                        <div class="fac-icon icon-amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
+                        <h3>Dispensers & Accessories</h3>
+                        <p>Installed and serviced regularly.</p>
+                        <div class="tags"><span class="tag">Install</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MATS INTRO -->
+            <div class="bcard bcard-mats-intro">
+                <h2>Floor Mat Services</h2>
+                <p>The right mat at the right entrance keeps your space clean, safe, and on-brand. We handle branded logo mats, anti-fatigue solutions, and a full rental and cleaning service so you never have to think about it.</p>
+            </div>
+
+            <!-- MATS GRID -->
+            <div class="bcard bcard-mats-grid">
+                <div class="fac-grid" style="grid-template-columns: repeat(3, 1fr);">
+                    <div class="fac-card">
+                        <div class="fac-icon icon-sage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M2 10h20"/></svg></div>
+                        <h3>Logo & Branded Mats</h3>
+                        <p>Mats printed with your logo for a clean entrance.</p>
+                        <div class="tags"><span class="tag">Custom</span><span class="tag">Branding</span></div>
+                    </div>
+                    <div class="fac-card">
+                        <div class="fac-icon icon-slate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V12M12 12L7 7M12 12l5-5"/><rect x="2" y="19" width="20" height="3" rx="1"/></svg></div>
+                        <h3>Anti-Fatigue & Safety</h3>
+                        <p>Slip-resistant mats for work areas.</p>
+                        <div class="tags"><span class="tag">Safety</span><span class="tag">Non-Slip</span></div>
+                    </div>
+                    <div class="fac-card">
+                        <div class="fac-icon icon-mauve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+                        <h3>Mat Rental & Cleaning</h3>
+                        <p>Weekly pickup, cleaning, and redelivery.</p>
+                        <div class="tags"><span class="tag">Rental</span><span class="tag">Weekly</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="bcard bcard-cta">
+                <h2>Ready to Equip Your Business?</h2>
+                <p>Let us handle the supplies, uniforms, and facility details so you can stay focused on running your business.</p>
+                <a href="mailto:xmarcellr@gmail.com?subject=Business%20Facilities%20Inquiry&body=Hi%20Rob%2C%0D%0A%0D%0AI'm%20interested%20in%20your%20Business%20Facilities%20services." class="cta-btn">Get in Touch</a>
+                <br>
+                <a href="/" class="back-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                    Back to Home
+                </a>
+            </div>
+
         </div>
-
-        <section id="uniforms">
-            <h2>Uniform Services</h2>
-            <p style="margin-bottom: 0.5rem;">A sharp, consistent look builds trust and reinforces your brand every single day.</p>
-            <div class="facility-grid">
-
-                <div class="facility-card">
-                    <div class="facility-icon icon-blue">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg>
-                    </div>
-                    <h3>Branded Uniform Program</h3>
-                    <p>Uniforms embroidered or printed with your logo.</p>
-                    <div class="tags"><span class="tag">Embroidery</span><span class="tag">Branding</span><span class="tag">Custom</span></div>
-                </div>
-
-                <div class="facility-card">
-                    <div class="facility-icon icon-green">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h4l2 9h10l2-9H7"/><circle cx="9" cy="20" r="1"/><circle cx="19" cy="20" r="1"/></svg>
-                    </div>
-                    <h3>Uniform Rental &amp; Laundry</h3>
-                    <p>Weekly pickup, cleaning, and redelivery — always fresh.</p>
-                    <div class="tags"><span class="tag">Rental</span><span class="tag">Laundry</span><span class="tag">Weekly Service</span></div>
-                </div>
-
-                <div class="facility-card">
-                    <div class="facility-icon icon-purple">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
-                    </div>
-                    <h3>Workwear &amp; Safety Gear</h3>
-                    <p>Safety gear and workwear customizable with your branding.</p>
-                    <div class="tags"><span class="tag">Safety</span><span class="tag">PPE</span><span class="tag">Workwear</span></div>
-                </div>
-
-            </div>
-        </section>
-
-        <section id="supplies">
-            <h2>Restroom &amp; Cleaning Supplies</h2>
-            <p style="margin-bottom: 0.5rem;">Keep your restrooms and common areas stocked and spotless at all times.</p>
-            <div class="facility-grid">
-
-                <div class="facility-card">
-                    <div class="facility-icon icon-orange">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12h8M12 8v8"/></svg>
-                    </div>
-                    <h3>Restroom Essentials</h3>
-                    <p>Regular restocking of paper goods, soap, and sanitizer.</p>
-                    <div class="tags"><span class="tag">Paper Goods</span><span class="tag">Hand Soap</span><span class="tag">Scheduled</span></div>
-                </div>
-
-                <div class="facility-card">
-                    <div class="facility-icon icon-teal">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c0 0-4 4-4 8a4 4 0 0 0 8 0c0-4-4-8-4-8z"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="9" y1="22" x2="15" y2="22"/></svg>
-                    </div>
-                    <h3>Air Fresheners &amp; Odor Control</h3>
-                    <p>Dispensers and neutralizers keeping your space fresh all day.</p>
-                    <div class="tags"><span class="tag">Air Fresheners</span><span class="tag">Odor Control</span><span class="tag">Auto Dispensers</span></div>
-                </div>
-
-                <div class="facility-card">
-                    <div class="facility-icon icon-rose">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.5 2h5l1 7H8.5L9.5 2z"/><path d="M8.5 9c0 0-2 1-2 5s2 8 5.5 8 5.5-4 5.5-8-2-5-2-5"/><path d="M9 13h6"/></svg>
-                    </div>
-                    <h3>Commercial Cleaning Products</h3>
-                    <p>Bulk disinfectants, degreasers, and cleaners for high-traffic areas.</p>
-                    <div class="tags"><span class="tag">Disinfectants</span><span class="tag">Degreasers</span><span class="tag">Bulk Supply</span></div>
-                </div>
-
-                <div class="facility-card">
-                    <div class="facility-icon icon-amber">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-                    </div>
-                    <h3>Dispensers &amp; Accessories</h3>
-                    <p>Dispensers and receptacles installed and serviced regularly.</p>
-                    <div class="tags"><span class="tag">Dispensers</span><span class="tag">Installation</span><span class="tag">Maintenance</span></div>
-                </div>
-
-            </div>
-        </section>
-
-        <section id="floormats">
-            <h2>Floor Mat Services</h2>
-            <p style="margin-bottom: 0.5rem;">The right mat at the right entrance keeps your space clean, safe, and on-brand.</p>
-            <div class="facility-grid">
-
-                <div class="facility-card">
-                    <div class="facility-icon icon-sage">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M2 10h20"/></svg>
-                    </div>
-                    <h3>Logo &amp; Branded Mats</h3>
-                    <p>Mats printed with your logo for a clean entrance look.</p>
-                    <div class="tags"><span class="tag">Logo</span><span class="tag">Custom Print</span><span class="tag">Branding</span></div>
-                </div>
-
-                <div class="facility-card">
-                    <div class="facility-icon icon-slate">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V12M12 12L7 7M12 12l5-5"/><rect x="2" y="19" width="20" height="3" rx="1"/></svg>
-                    </div>
-                    <h3>Anti-Fatigue &amp; Safety Mats</h3>
-                    <p>Anti-fatigue and slip-resistant mats for work areas.</p>
-                    <div class="tags"><span class="tag">Anti-Fatigue</span><span class="tag">Safety</span><span class="tag">Non-Slip</span></div>
-                </div>
-
-                <div class="facility-card">
-                    <div class="facility-icon icon-mauve">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-                    </div>
-                    <h3>Mat Rental &amp; Cleaning Service</h3>
-                    <p>Weekly pickup, cleaning, and redelivery of your mats.</p>
-                    <div class="tags"><span class="tag">Rental</span><span class="tag">Cleaning</span><span class="tag">Scheduled</span></div>
-                </div>
-
-            </div>
-        </section>
-
-        <section id="cta" style="text-align: center;">
-            <h2>Ready to Equip Your Business?</h2>
-            <p style="font-size: 1.05rem; max-width: 600px; margin: 0 auto 0.5rem;">Let us handle the supplies, uniforms, and facility details so you can stay focused on running your business.</p>
-            <a href="mailto:xmarcellr@gmail.com?subject=Business%20Facilities%20Inquiry&body=Hi%20Rob%2C%0D%0A%0D%0AI'm%20interested%20in%20your%20Business%20Facilities%20services." class="consultation-button">Get in Touch</a>
-            <br>
-            <a href="/" class="back-link" style="margin-top: 1.5rem;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-                Back to Home
-            </a>
-        </section>
-
     </div>
 
     <footer>
-        <p>&copy; 2026 Marcell Services LLC. All righ
+        <p>&copy; 2026 Marcell Services LLC. All rights reserved. &nbsp;·&nbsp; <a href="/">Marcell Services</a></p>
+    </footer>
+
     <script>
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('fade-in'); });
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('fade-in'), entry.target.dataset.delay || 0);
+                }
+            });
         }, { threshold: 0.05 });
-        document.querySelectorAll('section').forEach(s => observer.observe(s));
+        document.querySelectorAll('.bcard').forEach((card, i) => {
+            card.dataset.delay = i * 80;
+            observer.observe(card);
+        });
     </script>
+</body>
 </html>
