@@ -41,6 +41,63 @@
         .author-strip strong { color: #ffffff; }
         footer { background: transparent; color: #ffffff; text-align: center; padding: 2rem; margin-top: 3rem; position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.9rem; }
         footer a { color: #9ca3af; text-decoration: none; }
+
+        /* AUDIO PLAYER */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(38,38,38,0.9);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            margin: 0 auto 2rem;
+            max-width: 780px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 2;
+        }
+        .audio-play-btn {
+            width: 38px; height: 38px; min-width: 38px;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            background: transparent;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s ease;
+        }
+        .audio-play-btn:hover { background: #ffffff; }
+        .audio-play-btn:hover svg { stroke: #000000; fill: #000000; }
+        .audio-play-btn svg { width: 14px; height: 14px; stroke: #ffffff; fill: #ffffff; transition: all 0.2s; }
+        .audio-label { font-size: 0.82rem; color: rgba(255,255,255,0.6); letter-spacing: 0.5px; flex: 1; }
+        .audio-label span { color: #ffffff; font-weight: 600; }
+        .audio-progress {
+            flex: 2;
+            height: 3px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .audio-progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #ffffff;
+            border-radius: 2px;
+            transition: width 0.5s linear;
+        }
+        .audio-speed {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.4);
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 0.2rem 0.6rem;
+            background: transparent;
+            color: rgba(255,255,255,0.5);
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .audio-speed:hover { border-color: #ffffff; color: #ffffff; }
         @media (max-width: 768px) { .article-body { padding: 2rem 1.2rem; } }
 
         /* FLOATING SHARE */
@@ -86,6 +143,121 @@
         </a>
     </header>
 
+    
+    <!-- AUDIO PLAYER -->
+    <div class="audio-player" id="audioPlayer">
+        <button class="audio-play-btn" id="playBtn" onclick="toggleAudio()">
+            <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+        </button>
+        <div class="audio-label"><span id="audioStatus">Listen to article</span></div>
+        <div class="audio-progress"><div class="audio-progress-bar" id="progressBar"></div></div>
+        <button class="audio-speed" id="speedBtn" onclick="cycleSpeed()">1x</button>
+    </div>
+
+    <script>
+        const speeds = [1, 1.25, 1.5, 2];
+        let speedIndex = 0;
+        let utterance = null;
+        let synth = window.speechSynthesis;
+        let playing = false;
+        let totalChars = 0;
+        let spokenChars = 0;
+
+        const playIcon = `<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>`;
+        const pauseIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="4" x2="6" y2="20"/><line x1="18" y1="4" x2="18" y2="20"/></svg>`;
+
+        function getArticleText() {
+            const body = document.getElementById('articleBody');
+            const clone = body.cloneNode(true);
+            // Remove references section and author strip
+            const h2s = clone.querySelectorAll('h2');
+            h2s.forEach(h => { if (h.textContent.trim() === 'References') {
+                let el = h.nextElementSibling;
+                while (el) { let next = el.nextElementSibling; el.remove(); el = next; }
+                h.remove();
+            }});
+            clone.querySelector('.author-strip') && clone.querySelector('.author-strip').remove();
+            return clone.innerText.replace(/\s+/g, ' ').trim();
+        }
+
+        function toggleAudio() {
+            if (!playing) startAudio();
+            else pauseAudio();
+        }
+
+        function startAudio() {
+            if (synth.paused && utterance) {
+                synth.resume();
+                playing = true;
+                document.getElementById('playBtn').innerHTML = pauseIcon;
+                document.getElementById('audioStatus').textContent = 'Playing...';
+                return;
+            }
+            synth.cancel();
+            const text = getArticleText();
+            totalChars = text.length;
+            utterance = new SpeechSynthesisUtterance(text);
+            utterance.rate = speeds[speedIndex] * 1.08;
+            utterance.pitch = 1.3;
+            utterance.lang = 'en-US';
+
+            // Pick the most natural/upbeat sounding voice available
+            const voices = synth.getVoices();
+            const preferred = [
+                'Google US English',
+                'Microsoft Aria Online (Natural)',
+                'Microsoft Jenny Online (Natural)',
+                'Samantha',
+                'Karen',
+                'en-US',
+            ];
+            let chosen = null;
+            for (const pref of preferred) {
+                chosen = voices.find(v => v.name.includes(pref) || v.voiceURI.includes(pref));
+                if (chosen) break;
+            }
+            // Fallback: any en-US voice
+            if (!chosen) chosen = voices.find(v => v.lang === 'en-US');
+            // Last resort: any English voice
+            if (!chosen) chosen = voices.find(v => v.lang.startsWith('en'));
+            if (chosen) utterance.voice = chosen;
+
+            utterance.onboundary = (e) => {
+                if (e.name === 'word') {
+                    spokenChars = e.charIndex;
+                    document.getElementById('progressBar').style.width = ((spokenChars / totalChars) * 100) + '%';
+                }
+            };
+            utterance.onend = () => {
+                playing = false;
+                document.getElementById('playBtn').innerHTML = playIcon;
+                document.getElementById('audioStatus').textContent = 'Listen to article';
+                document.getElementById('progressBar').style.width = '100%';
+                setTimeout(() => document.getElementById('progressBar').style.width = '0%', 1500);
+            };
+
+            synth.speak(utterance);
+            playing = true;
+            document.getElementById('playBtn').innerHTML = pauseIcon;
+            document.getElementById('audioStatus').textContent = 'Playing...';
+        }
+
+        function pauseAudio() {
+            synth.pause();
+            playing = false;
+            document.getElementById('playBtn').innerHTML = playIcon;
+            document.getElementById('audioStatus').textContent = 'Paused';
+        }
+
+        function cycleSpeed() {
+            speedIndex = (speedIndex + 1) % speeds.length;
+            document.getElementById('speedBtn').textContent = speeds[speedIndex] + 'x';
+            if (playing) { synth.cancel(); startAudio(); }
+        }
+
+        // Stop if user leaves page
+        window.addEventListener('beforeunload', () => synth.cancel());
+    </script>
     <div class="container">
         <div class="article-body" id="articleBody">
 
