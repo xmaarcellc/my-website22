@@ -16,54 +16,101 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #ffffff; background: linear-gradient(to bottom, #1a1a1a 0%, #222222 20%, #2a2a2a 40%, #222222 60%, #1a1a1a 100%); background-attachment: fixed; min-height: 100vh; overflow-x: hidden; }
+
+        /* NAV */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(20,20,20,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; gap: 2.5rem; padding: 0.9rem 2rem; }
+        nav a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.85rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; }
+        nav a:hover { color: #ffffff; }
+        nav a.active { color: #ffffff; border-bottom: 2px solid #ffffff; padding-bottom: 2px; }
+
+        /* BG */
         .bg-image { position: fixed; left: 0; right: 0; width: 100%; height: 40vh; background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0.15; z-index: 0; pointer-events: none; }
         .bg-image-1 { top: 0; background-image: url('background1.jpg'); }
         .bg-image-2 { top: 50%; transform: translateY(-50%); background-image: url('background2.jpg'); }
         .bg-image-3 { bottom: 0; background-image: url('background3.jpg'); }
-        header { position: relative; color: #ffffff; padding: 5rem 2rem 3rem; text-align: center; background: rgba(30,30,30,0.6); z-index: 2; }
-        header h1 { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 700; letter-spacing: 2px; color: #ffffff; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-        .logo { width: 55px; height: 55px; margin-top: 8px; }
-        header p { font-size: 1.1rem; font-weight: 300; letter-spacing: 1px; color: rgba(255,255,255,0.7); margin-top: 0.8rem; }
-        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: #ffffff; text-decoration: none; font-weight: 600; font-size: 0.95rem; border: 2px solid #ffffff; border-radius: 25px; padding: 0.6rem 1.4rem; margin-top: 1rem; transition: all 0.3s; }
-        .back-link:hover { background: #ffffff; color: #000000; transform: translateY(-2px); }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 2rem 4rem; position: relative; z-index: 2; }
-        .page-hero { background: rgba(30,30,30,0.25); backdrop-filter: blur(10px); border-radius: 16px; padding: 3rem 2rem; margin-bottom: 3rem; text-align: center; position: relative; overflow: hidden; border: none; }
-        .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.07) 0%, transparent 60%); animation: pulse 4s ease-in-out infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }
-        .hero-badge { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.2); padding: 0.3rem 1rem; border-radius: 20px; margin-bottom: 1.2rem; position: relative; z-index: 2; }
-        .page-hero h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: #ffffff; letter-spacing: 1px; text-shadow: 0 0 30px rgba(255,255,255,0.4); position: relative; z-index: 2; margin: 0; border: none; padding: 0; }
-        .page-hero p { font-size: 1rem; color: rgba(255,255,255,0.65); margin-top: 0.8rem; position: relative; z-index: 2; }
-        section { background: rgba(30,30,30,0.25); margin-bottom: 2rem; padding: 3rem; border-radius: 16px; box-shadow: 0 2px 10px rgba(255,255,255,0.08); position: relative; border: none; backdrop-filter: blur(10px); z-index: 2; opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
-        section.fade-in { opacity: 1; transform: translateY(0); }
-        section h2 { color: #ffffff; font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 3px solid #ffffff; }
-        section p { color: #ffffff; font-size: 0.95rem; }
-        section a { color: #ffffff; text-decoration: underline; }
-        section a:hover { color: #cccccc; }
-        .tile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
-        .service-tile { background: rgba(38,38,38,0.9); border: 2px solid #ffffff; border-radius: 12px; padding: 1.8rem; transition: transform 0.3s ease, box-shadow 0.3s ease; backdrop-filter: blur(3px); }
-        .service-tile:hover { transform: translateY(-5px); box-shadow: 0 6px 20px rgba(255,255,255,0.06); }
-        .tile-icon { width: 48px; height: 48px; border-radius: 10px; border: 2px solid #ffffff; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
-        .tile-icon svg { width: 22px; height: 22px; stroke: #ffffff; }
+
+        /* HEADER */
+        header { position: relative; color: #ffffff; padding: 7rem 2rem 3rem; text-align: center; background: rgba(30,30,30,0.6); z-index: 2; }
+        header h1 { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 700; letter-spacing: 2px; color: #ffffff; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeInHeader 1s ease-out forwards; animation-delay: 0.2s; }
+        .logo { width: 55px; height: 55px; margin-top: 8px; opacity: 0; animation: fadeInHeader 1s ease-out forwards; animation-delay: 0.4s; }
+        @keyframes fadeInHeader { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        header p { font-size: 1rem; font-weight: 300; letter-spacing: 1px; color: rgba(255,255,255,0.6); margin-top: 0.6rem; }
+
+        /* BENTO */
+        .container { max-width: 1400px; margin: 0 auto; padding: 2.5rem 2rem 5rem; position: relative; z-index: 2; }
+        .bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.2rem; }
+
+        /* BASE CARD */
+        .bcard { background: rgba(30,30,30,0.25); border-radius: 18px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); padding: 2rem; opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s; overflow: hidden; position: relative; }
+        .bcard.fade-in { opacity: 1; transform: translateY(0); }
+        .bcard:hover { box-shadow: 0 8px 32px rgba(255,255,255,0.05); }
+        .bcard h2 { font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-bottom: 1.2rem; padding-bottom: 0.5rem; border-bottom: 2px solid rgba(255,255,255,0.15); }
+
+        /* GRID PLACEMENTS */
+        .bcard-hero      { grid-column: 1 / 13; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 3rem 2rem; }
+        .bcard-services  { grid-column: 1 / 13; }
+        .bcard-process   { grid-column: 1 / 6; }
+        .bcard-pricing   { grid-column: 6 / 13; display: flex; flex-direction: column; justify-content: center; text-align: center; }
+        .bcard-cta       { grid-column: 1 / 13; text-align: center; background: rgba(255,255,255,0.02); }
+
+        /* HERO */
+        .hero-badge { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.15); padding: 0.25rem 1rem; border-radius: 20px; margin-bottom: 1rem; }
+        .bcard-hero h2 { font-size: clamp(1.6rem, 4vw, 2.4rem); border: none; padding: 0; margin-bottom: 0.5rem; letter-spacing: 0.5px; text-shadow: 0 0 30px rgba(255,255,255,0.3); }
+        .bcard-hero p { color: rgba(255,255,255,0.55); font-size: 0.95rem; max-width: 560px; margin: 0 auto; }
+
+        /* SERVICE TILES */
+        .tile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.2rem; }
+        .service-tile { background: rgba(38,38,38,0.85); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem; transition: transform 0.3s, box-shadow 0.3s; }
+        .service-tile:hover { transform: translateY(-4px); box-shadow: 0 6px 20px rgba(255,255,255,0.05); }
+        .tile-icon { width: 42px; height: 42px; border-radius: 8px; border: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 0.8rem; }
+        .tile-icon svg { width: 20px; height: 20px; }
         .tile-blue { border-color: #7a9ab5; } .tile-blue svg { stroke: #7a9ab5; }
         .tile-green { border-color: #7aab8a; } .tile-green svg { stroke: #7aab8a; }
         .tile-purple { border-color: #9a8ab5; } .tile-purple svg { stroke: #9a8ab5; }
         .tile-orange { border-color: #b59a7a; } .tile-orange svg { stroke: #b59a7a; }
         .tile-teal { border-color: #7aabb5; } .tile-teal svg { stroke: #7aabb5; }
         .tile-rose { border-color: #b57a8a; } .tile-rose svg { stroke: #b57a8a; }
-        .service-tile h3 { color: #ffffff; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .service-tile p { color: #aaaaaa; font-size: 0.88rem; line-height: 1.7; margin-bottom: 1rem; }
-        .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-        .tag { font-size: 0.72rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 20px; border: 1px solid #ffffff; color: #ffffff; background: transparent; }
-        .process-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
-        .process-step { position: relative; background: rgba(38,38,38,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1.4rem 1.4rem 1.4rem 4rem; }
-        .step-num { position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); font-size: 2rem; font-weight: 900; color: rgba(255,255,255,0.1); line-height: 1; }
-        .process-step h4 { color: #ffffff; font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
-        .process-step p { color: #aaaaaa; font-size: 0.88rem; }
-        .consultation-button { display: inline-block; background: transparent; color: #ffffff; padding: 1rem 2.2rem; text-decoration: none; border-radius: 8px; margin-top: 1.5rem; transition: all 0.3s; font-weight: 600; border: 2px solid #ffffff; cursor: pointer; font-size: 1rem; }
-        .consultation-button:hover { background: #ffffff; color: #000000; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255,255,255,0.25); }
-        footer { background: transparent; color: #ffffff; text-align: center; padding: 2rem; margin-top: 3rem; position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.9rem; }
+        .service-tile h3 { color: #ffffff; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; }
+        .service-tile p { color: #888; font-size: 0.82rem; line-height: 1.7; margin-bottom: 0.7rem; }
+        .tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+        .tag { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; padding: 0.15rem 0.5rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.5); }
+
+        /* PROCESS */
+        .process-list { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.2rem; }
+        .process-step { position: relative; background: rgba(38,38,38,0.5); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 1.1rem 1.2rem 1.1rem 3.5rem; }
+        .step-num { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); font-size: 1.6rem; font-weight: 900; color: rgba(255,255,255,0.08); line-height: 1; }
+        .process-step h4 { color: #ffffff; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.2rem; }
+        .process-step p { color: #888; font-size: 0.82rem; }
+
+        /* PRICING */
+        .bcard-pricing h2 { text-align: left; }
+        .bcard-pricing p { color: #888; font-size: 0.88rem; line-height: 1.8; }
+        .cta-btn { display: inline-block; background: transparent; color: #ffffff; padding: 0.9rem 2rem; text-decoration: none; border-radius: 8px; margin-top: 1.2rem; transition: all 0.3s; font-weight: 600; border: 2px solid #ffffff; font-size: 0.95rem; }
+        .cta-btn:hover { background: #ffffff; color: #000000; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,255,255,0.2); }
+
+        /* CTA */
+        .bcard-cta h2 { border: none; padding: 0; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 0.8rem; }
+        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: color 0.2s; }
+        .back-link:hover { color: #ffffff; }
+
+        footer { background: transparent; color: #9ca3af; text-align: center; padding: 2rem; position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.85rem; }
         footer a { color: #9ca3af; text-decoration: none; }
-        @media (max-width: 768px) { header h1 { font-size: 1.8rem; } section { padding: 2rem 1.2rem; } .tile-grid { grid-template-columns: 1fr; } .page-hero { padding: 2rem 1rem; } }
+
+        /* SHARE SIDEBAR */
+        .share-sidebar { position: fixed; right: 1.5rem; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 0.75rem; z-index: 10; }
+        .share-btn { width: 44px; height: 44px; border-radius: 50%; background: rgba(38,38,38,0.9); border: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease; backdrop-filter: blur(10px); }
+        .share-btn:hover { border-color: #ffffff; transform: scale(1.1); background: rgba(60,60,60,0.95); }
+        .share-btn svg { width: 18px; height: 18px; fill: #ffffff; }
+
+        @media (max-width: 900px) {
+            .bcard-hero, .bcard-services, .bcard-process, .bcard-pricing, .bcard-cta { grid-column: 1 / -1; }
+            .tile-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 500px) {
+            nav { gap: 1rem; } nav a { font-size: 0.72rem; letter-spacing: 1px; }
+            .tile-grid { grid-template-columns: 1fr; }
+            .share-sidebar { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -71,102 +118,182 @@
     <div class="bg-image bg-image-2"></div>
     <div class="bg-image bg-image-3"></div>
 
+    <nav>
+        <a href="/">Home</a>
+        <a href="website-services.html" class="active">Web Development</a>
+        <a href="business-facilities.html">Business Facilities</a>
+    </nav>
+
     <header>
-        <h1>Website Services <img src="JustWhite.png" alt="Marcell Services Logo" class="logo"></h1>
+        <h1>Website Services <img src="JustWhite.png" alt="Logo" class="logo"></h1>
         <p>Custom Websites &middot; Web Apps &middot; SEO</p>
-        <a href="/" class="back-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-            Back to Home
-        </a>
     </header>
 
     <div class="container">
-        <div class="page-hero">
-            <div class="hero-badge">Marcell Services</div>
-            <h2>Accelerate Your Business Presence</h2>
-            <p>Custom-built websites that convert visitors into clients. Fast, mobile-first, and designed to make your brand impossible to ignore.</p>
+        <div class="bento">
+
+            <!-- HERO -->
+            <div class="bcard bcard-hero">
+                <div class="hero-badge">Marcell Services</div>
+                <h2>Accelerate Your Business Presence</h2>
+                <p>Custom-built websites that convert visitors into clients. Fast, mobile-first, and designed to make your brand impossible to ignore.</p>
+            </div>
+
+            <!-- SERVICES -->
+            <div class="bcard bcard-services">
+                <h2>What We Build</h2>
+                <p style="color:#888; font-size:0.88rem; margin-bottom:0.2rem;">Every website we deliver is built from scratch.</p>
+                <div class="tile-grid">
+                    <div class="service-tile">
+                        <div class="tile-icon tile-blue"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+                        <h3>Business Websites</h3>
+                        <p>Professional, conversion-focused sites for local businesses, service providers, and brands ready to grow.</p>
+                        <div class="tags"><span class="tag">HTML/CSS</span><span class="tag">JS</span><span class="tag">Responsive</span></div>
+                    </div>
+                    <div class="service-tile">
+                        <div class="tile-icon tile-green"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+                        <h3>Portfolio Sites</h3>
+                        <p>Clean, striking portfolio pages for photographers, creatives, and freelancers.</p>
+                        <div class="tags"><span class="tag">Gallery</span><span class="tag">Animation</span><span class="tag">Mobile</span></div>
+                    </div>
+                    <div class="service-tile">
+                        <div class="tile-icon tile-purple"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M8 2v4M16 2v4M2 10h20"/></svg></div>
+                        <h3>Booking & Scheduling</h3>
+                        <p>Online appointment systems so clients can book 24/7 without a phone call.</p>
+                        <div class="tags"><span class="tag">Booking</span><span class="tag">Calendar</span><span class="tag">PHP</span></div>
+                    </div>
+                    <div class="service-tile">
+                        <div class="tile-icon tile-orange"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+                        <h3>React Web Apps</h3>
+                        <p>Dynamic, component-driven applications for businesses that need more than a standard website.</p>
+                        <div class="tags"><span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">API</span></div>
+                    </div>
+                    <div class="service-tile">
+                        <div class="tile-icon tile-teal"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+                        <h3>SEO Optimization</h3>
+                        <p>On-page SEO, meta setup, Google Search Console integration so you rank and get found.</p>
+                        <div class="tags"><span class="tag">SEO</span><span class="tag">Google</span><span class="tag">Performance</span></div>
+                    </div>
+                    <div class="service-tile">
+                        <div class="tile-icon tile-rose"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                        <h3>Maintenance & Support</h3>
+                        <p>Ongoing updates, bug fixes, and content changes so your site stays fresh.</p>
+                        <div class="tags"><span class="tag">Support</span><span class="tag">Updates</span><span class="tag">Security</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROCESS -->
+            <div class="bcard bcard-process">
+                <h2>How It Works</h2>
+                <p style="color:#888; font-size:0.88rem; margin-bottom:0.2rem;">From first conversation to launch day.</p>
+                <div class="process-list">
+                    <div class="process-step"><div class="step-num">01</div><h4>Discovery Call</h4><p>We talk through your business, goals, and what you need the website to do.</p></div>
+                    <div class="process-step"><div class="step-num">02</div><h4>Proposal & Scope</h4><p>A clear breakdown of what gets built, the timeline, and the price.</p></div>
+                    <div class="process-step"><div class="step-num">03</div><h4>Design & Build</h4><p>Development begins with progress updates and feedback checkpoints.</p></div>
+                    <div class="process-step"><div class="step-num">04</div><h4>Review & Revisions</h4><p>You review the finished site and request changes until it's exactly right.</p></div>
+                    <div class="process-step"><div class="step-num">05</div><h4>Launch</h4><p>Your site goes live. We handle deployment so the handoff is smooth.</p></div>
+                </div>
+            </div>
+
+            <!-- PRICING -->
+            <div class="bcard bcard-pricing">
+                <h2>Pricing</h2>
+                <p>Every project is scoped and priced individually based on your specific needs. Reach out and we'll put together a custom quote.</p>
+                <p style="margin-top:0.8rem; color:#666; font-size:0.82rem;">Pricing is sent directly to your inbox after a quick conversation about your project.</p>
+                <a href="mailto:xmarcellr@gmail.com?subject=Website%20Pricing%20Request&body=Hi%20Rob%2C%0D%0A%0D%0AI'd%20like%20to%20get%20a%20quote%20for%20a%20website." class="cta-btn">Request Pricing</a>
+            </div>
+
+            <!-- CTA -->
+            <div class="bcard bcard-cta">
+                <h2>Navigation</h2>
+                <a href="/" class="back-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                    Back to Home
+                </a>
+            </div>
+
         </div>
-
-        <section id="services">
-            <h2>What We Build</h2>
-            <p style="margin-bottom: 0.5rem;">Every website we deliver is built from scratch.</p>
-            <div class="tile-grid">
-                <div class="service-tile">
-                    <div class="tile-icon tile-blue"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-                    <h3>Business Websites</h3>
-                    <p>Professional, conversion-focused sites for local businesses, service providers, and brands ready to grow their online presence.</p>
-                    <div class="tags"><span class="tag">HTML/CSS</span><span class="tag">JS</span><span class="tag">Responsive</span></div>
-                </div>
-                <div class="service-tile">
-                    <div class="tile-icon tile-green"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
-                    <h3>Portfolio Sites</h3>
-                    <p>Clean, striking portfolio pages for photographers, creatives, and freelancers that let your work speak for itself.</p>
-                    <div class="tags"><span class="tag">Gallery</span><span class="tag">Animation</span><span class="tag">Mobile</span></div>
-                </div>
-                <div class="service-tile">
-                    <div class="tile-icon tile-purple"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M8 2v4M16 2v4M2 10h20"/></svg></div>
-                    <h3>Booking &amp; Scheduling</h3>
-                    <p>Online appointment systems integrated directly into your site so clients can book 24/7 without a phone call.</p>
-                    <div class="tags"><span class="tag">Booking</span><span class="tag">Calendar</span><span class="tag">PHP</span></div>
-                </div>
-                <div class="service-tile">
-                    <div class="tile-icon tile-orange"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-                    <h3>React Web Apps</h3>
-                    <p>Dynamic, component-driven applications built with React for businesses that need more than a standard website.</p>
-                    <div class="tags"><span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">API</span></div>
-                </div>
-                <div class="service-tile">
-                    <div class="tile-icon tile-teal"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-                    <h3>SEO Optimization</h3>
-                    <p>On-page SEO, meta setup, Google Search Console integration, and site speed improvements so you rank and get found.</p>
-                    <div class="tags"><span class="tag">SEO</span><span class="tag">Google</span><span class="tag">Performance</span></div>
-                </div>
-                <div class="service-tile">
-                    <div class="tile-icon tile-rose"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-                    <h3>Maintenance &amp; Support</h3>
-                    <p>Ongoing updates, bug fixes, security patches, and content changes so your site stays fresh without the headache.</p>
-                    <div class="tags"><span class="tag">Support</span><span class="tag">Updates</span><span class="tag">Security</span></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="process">
-            <h2>How It Works</h2>
-            <p style="margin-bottom: 0.5rem;">A straightforward process from first conversation to launch day.</p>
-            <div class="process-list">
-                <div class="process-step"><div class="step-num">01</div><h4>Discovery Call</h4><p>We talk through your business, goals, and what you need the website to do.</p></div>
-                <div class="process-step"><div class="step-num">02</div><h4>Proposal &amp; Scope</h4><p>You receive a clear breakdown of what gets built, the timeline, and the price.</p></div>
-                <div class="process-step"><div class="step-num">03</div><h4>Design &amp; Build</h4><p>Development begins. You'll see progress updates and have the chance to give feedback at key checkpoints.</p></div>
-                <div class="process-step"><div class="step-num">04</div><h4>Review &amp; Revisions</h4><p>You review the finished site and request any changes. We refine until it's exactly right.</p></div>
-                <div class="process-step"><div class="step-num">05</div><h4>Launch</h4><p>Your site goes live. We handle the technical deployment so the handoff is smooth and stress-free.</p></div>
-            </div>
-        </section>
-
-        <section id="pricing" style="text-align: center;">
-            <h2 style="text-align: left;">Pricing</h2>
-            <p style="max-width: 580px; margin: 0 auto 0.5rem; text-align: center;">Every project is scoped and priced individually based on your specific needs. Reach out and we'll put together a custom quote.</p>
-            <p style="margin-top: 1rem; color: #aaaaaa; font-size: 0.9rem;">Pricing is sent directly to your inbox after a quick conversation about your project.</p>
-            <a href="mailto:xmarcellr@gmail.com?subject=Website%20Pricing%20Request&body=Hi%20Rob%2C%0D%0A%0D%0AI'd%20like%20to%20get%20a%20quote%20for%20a%20website." class="consultation-button">Request Pricing</a>
-        </section>
-
-        <section id="cta" style="text-align: center;">
-            <a href="index.html" class="back-link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-                Back to Home
-            </a>
-        </section>
     </div>
 
     <footer>
-        <p>&copy; 2026 Marcell Services LLC. All rights reserved.</p>
-        <p style="margin-top: 0.4rem; color: #9ca3af;"><a href="/">Marcell Services</a></p>
+        <p>&copy; 2026 Marcell Services LLC. All rights reserved. &nbsp;·&nbsp; <a href="/">Marcell Services</a></p>
     </footer>
+
+    <!-- FLOATING SHARE -->
+    <div class="share-sidebar" id="shareSidebar">
+        <span style="font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); text-align: center;">Share</span>
+        <a class="share-btn" id="shareLinkedIn" href="#" target="_blank" title="Share on LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+        <a class="share-btn" id="shareX" href="#" target="_blank" title="Share on X">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a class="share-btn" id="shareFacebook" href="#" target="_blank" title="Share on Facebook">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+    </div>
+
+    <script>
+        const pageUrl = encodeURIComponent(window.location.href);
+        const pageTitle = encodeURIComponent(document.title);
+        document.getElementById('shareLinkedIn').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + pageUrl;
+        document.getElementById('shareX').href = 'https://twitter.com/intent/tweet?url=' + pageUrl + '&text=' + pageTitle;
+        document.getElementById('shareFacebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + pageUrl;
+
+        // Snake/trail scroll effect
+        const shareBtns = Array.from(document.querySelectorAll('.share-btn'));
+        let lastScrollY = window.scrollY;
+        let scrollTimeout;
+        let isScrolling = false;
+        let floatT = 0;
+        let positions = shareBtns.map(() => 0);
+        let velocity = 0;
+
+        function animate() {
+            floatT += 0.025;
+            if (isScrolling) {
+                positions[0] += (velocity - positions[0]) * 0.3;
+                for (let i = 1; i < shareBtns.length; i++) {
+                    positions[i] += (positions[i - 1] - positions[i]) * 0.25;
+                }
+                velocity *= 0.85;
+            } else {
+                for (let i = 0; i < shareBtns.length; i++) {
+                    const wave = Math.sin(floatT + i * 0.9) * 5;
+                    positions[i] += (wave - positions[i]) * 0.08;
+                }
+            }
+            shareBtns.forEach((btn, i) => {
+                btn.style.transform = `translateY(${positions[i].toFixed(2)}px)`;
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        window.addEventListener('scroll', () => {
+            const currentY = window.scrollY;
+            const delta = currentY - lastScrollY;
+            velocity = delta * 1.8;
+            lastScrollY = currentY;
+            isScrolling = true;
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => { isScrolling = false; velocity = 0; }, 150);
+        });
+    </script>
 
     <script>
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('fade-in'); });
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('fade-in'), entry.target.dataset.delay || 0);
+                }
+            });
         }, { threshold: 0.05 });
-        document.querySelectorAll('section').forEach(s => observer.observe(s));
+        document.querySelectorAll('.bcard').forEach((card, i) => {
+            card.dataset.delay = i * 80;
+            observer.observe(card);
+        });
     </script>
 </body>
 </html>
