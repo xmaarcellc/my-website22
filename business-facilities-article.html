@@ -16,19 +16,11 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #ffffff; background: linear-gradient(to bottom, #1a1a1a 0%, #222222 20%, #2a2a2a 40%, #222222 60%, #1a1a1a 100%); background-attachment: fixed; min-height: 100vh; overflow-x: hidden; }
-
-
-
-
-
-
-
-
         .bg-image { position: fixed; left: 0; right: 0; width: 100%; height: 40vh; background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0.15; z-index: 0; pointer-events: none; }
         .bg-image-1 { top: 0; background-image: url('background1.jpg'); }
         .bg-image-2 { top: 50%; transform: translateY(-50%); background-image: url('background2.jpg'); }
         .bg-image-3 { bottom: 0; background-image: url('background3.jpg'); }
-        header { position: relative; color: #ffffff; padding: 5rem 2rem 3rem; text-align: center; background: rgba(30,30,30,0.6); z-index: 2; }
+        header { position: relative; color: #ffffff; padding: 7rem 2rem 3rem; text-align: center; background: rgba(30,30,30,0.6); z-index: 2; }
         header h1 { font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: 1px; color: #ffffff; line-height: 1.3; max-width: 800px; margin: 0 auto; }
         .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: #ffffff; text-decoration: none; font-weight: 600; font-size: 0.95rem; border: 2px solid #ffffff; border-radius: 25px; padding: 0.6rem 1.4rem; margin-top: 1.5rem; transition: all 0.3s; }
         .back-link:hover { background: #ffffff; color: #000000; transform: translateY(-2px); }
@@ -108,18 +100,6 @@
         .audio-speed:hover { border-color: #ffffff; color: #ffffff; }
         @media (max-width: 768px) { .article-body { padding: 2rem 1.2rem; } }
 
-
-
-
-
-
-
-
-
-
-
-
-
         /* FLOATING SHARE */
         .share-sidebar {
             position: fixed;
@@ -144,18 +124,22 @@
         .share-btn:hover { border-color: #ffffff; transform: scale(1.1); background: rgba(60,60,60,0.95); }
         .share-btn svg { width: 18px; height: 18px; fill: #ffffff; }
         @media (max-width: 768px) { .share-sidebar { display: none; } }
+
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(20,20,20,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; gap: 2.5rem; padding: 0.9rem 2rem; }
+        nav a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.85rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; }
+        nav a:hover { color: #ffffff; }
+        @media (max-width: 500px) { nav { gap: 1rem; } nav a { font-size: 0.72rem; } }
     </style>
 </head>
 <body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="website-services.html">Web Development</a>
+        <a href="business-facilities.html">Business Facilities</a>
+    </nav>
     <div class="bg-image bg-image-1"></div>
     <div class="bg-image bg-image-2"></div>
     <div class="bg-image bg-image-3"></div>
-
-
-
-
-
-
 
     <header>
         <div class="meta">
@@ -331,67 +315,9 @@
 
             <div class="callout">"The companies that figured out facilities early didn't just look better — they operated better. Cleaner spaces, better-dressed teams, and safer floors aren't aesthetic decisions. They're operational ones."</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <h2>The Bottom Line</h2>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <p>Facility services went from an afterthought to a competitive differentiator over the course of about 70 years. The businesses that treat their physical environment as a reflection of their standards — rather than a cost to minimize — consistently outperform those that don't. That's not a sales pitch. It's just what the history shows.</p>
-
-
-
-
 
             <h2>References</h2>
             <ul style="list-style: none; margin-left: 0; display: flex; flex-direction: column; gap: 0.6rem;">
@@ -404,29 +330,9 @@
                 <li><a href="https://www.grandviewresearch.com/industry-analysis/facility-management-market" target="_blank" style="color: #aaaaaa; font-size: 0.85rem;">Grand View Research — Global Facility Management Market Report</a></li>
             </ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
             <div class="author-strip">
                 <p><strong>Rob Marcellin</strong></p>
                 <p>Founder, Marcell Services &nbsp;·&nbsp; Montclair State University</p>
-
-
-
-
-
-
-
             </div>
 
         </div>
