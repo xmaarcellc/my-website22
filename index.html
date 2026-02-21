@@ -25,27 +25,12 @@
             overflow-x: hidden;
         }
 
-        /* Loading Screen */
-        #loadingScreen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #000000; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; z-index: 9999;
-            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
-        }
-        #loadingScreen.fade-out { opacity: 0; visibility: hidden; }
-        .loading-content { text-align: center; max-width: 600px; padding: 2rem; }
-        .loading-logo { width: 120px; height: 120px; margin-bottom: 2rem; opacity: 0; animation: fadeInLogo 1s ease-in forwards, logoGlow 2s infinite alternate; }
-        @keyframes logoGlow { 0% { filter: drop-shadow(0 0 10px rgba(255,255,255,0.5)); } 100% { filter: drop-shadow(0 0 25px rgba(255,255,255,0.8)); } }
-        .loading-title { font-size: 2.5rem; font-weight: 700; color: #ffffff; letter-spacing: 2px; opacity: 0; animation: fadeInTitle 1s ease-in forwards; animation-delay: 0.3s; text-shadow: 0 0 20px rgba(255,255,255,0.5); }
-        @keyframes fadeInTitle { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-        .main-content { opacity: 0; transition: opacity 0.8s ease-in; }
+        .main-content { opacity: 1; }
         .main-content.visible { opacity: 1; }
 
-        header { position: relative; color: #ffffff; padding: 6rem 2rem; text-align: center; background: transparent; z-index: 2; }
-        header h1 { font-size: 3.5rem; margin-bottom: 1rem; font-weight: 700; letter-spacing: 2px; opacity: 0; animation: fadeInName 2s ease-in forwards; animation-delay: 0.3s; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; color: #ffffff; }
-        .logo { width: 60px; height: 60px; opacity: 0; animation: fadeInLogo 2s ease-in forwards; animation-delay: 0.3s; margin-top: 10px; }
-        @keyframes fadeInName { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInLogo { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        header { position: relative; color: #ffffff; padding: 6rem 2rem; text-align: center; background: rgba(0,0,0,0.6); z-index: 2; }
+        header h1 { font-size: 3.5rem; margin-bottom: 1rem; font-weight: 700; letter-spacing: 2px; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; color: #ffffff; }
+        .logo { width: 60px; height: 60px; margin-top: 10px; }
 
         .container { max-width: 1400px; margin: 0 auto; padding: 3rem 2rem; position: relative; z-index: 2; }
 
@@ -53,11 +38,9 @@
             background: rgba(15,15,15,0.95);
             margin-bottom: 2rem; padding: 3rem; border-radius: 16px;
             box-shadow: 0 2px 10px rgba(255,255,255,0.08);
-            opacity: 0; transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
             position: relative; border: none; backdrop-filter: blur(10px);
+            z-index: 2;
         }
-        section.fade-in { opacity: 1; transform: translateY(0); }
 
         .showcase-intro { color: #aaaaaa; font-size: 1rem; margin-bottom: 2.5rem; }
         .showcase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
@@ -102,13 +85,29 @@
         .consultation-button { display: inline-block; background: transparent; color: #ffffff; padding: 1.2rem 2.5rem; text-decoration: none; border-radius: 8px; margin-top: 1.5rem; transition: all 0.3s; font-weight: 600; border: 2px solid #ffffff; cursor: pointer; font-size: 1.1rem; }
         .consultation-button:hover { background: #ffffff; color: #000000; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255,255,255,0.3); }
 
-        footer { background: rgba(0,0,0,0.98); color: #ffffff; text-align: center; padding: 2rem; margin-top: 3rem; position: relative; z-index: 2; backdrop-filter: blur(10px); border-top: 1px solid rgba(255,255,255,0.2); }
+        footer { background: transparent; color: #ffffff; text-align: center; padding: 2rem; margin-top: 3rem; position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.2); }
 
         section p { color: #ffffff; font-size: 0.95rem; }
         section ul { color: #ffffff; font-size: 0.95rem; }
         section li { color: #ffffff; font-size: 0.95rem; }
         section a { color: #ffffff; text-decoration: underline; }
         section a:hover { color: #cccccc; }
+
+        /* Background images */
+        .bg-image {
+            position: fixed;
+            left: 0; right: 0;
+            width: 100%; height: 40vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .bg-image-1 { top: 0; background-image: url('background1.jpg'); }
+        .bg-image-2 { top: 50%; transform: translateY(-50%); background-image: url('background2.jpg'); }
+        .bg-image-3 { bottom: 0; background-image: url('background3.jpg'); }
 
         @media (max-width: 768px) {
             .loading-title { font-size: 1.8rem; }
@@ -120,13 +119,10 @@
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loadingScreen">
-        <div class="loading-content">
-            <img src="JustWhite.png" alt="Logo" class="loading-logo">
-            <h1 class="loading-title">Marcell Services</h1>
-        </div>
-    </div>
+    <!-- Background Images -->
+    <div class="bg-image bg-image-1"></div>
+    <div class="bg-image bg-image-2"></div>
+    <div class="bg-image bg-image-3"></div>
 
     <!-- Main Content -->
     <div class="main-content" id="mainContent">
@@ -149,10 +145,9 @@
                     <a href="website.services.html">
                     <div class="showcase-card" style="background-image: url('eliconavisuals.com screenshot.png');">
                         <div class="showcase-img-wrap"></div>
-                        <span class="showcase-badge">Web Develpment & More</span>
+                        <span class="showcase-badge">Web Dev</span>
                         <div class="showcase-body">
-                   
-                            <p class="showcase-desc">Your business needs to show up everywhere — online and in person. We build custom websites that establish your digital presence and attract new clients, paired with professional photography that captures your brand, team, and story. Together, they give your business the polished, credible look that earns trust the moment someone lands on your page or walks through your door.</p>
+                                                       <p class="showcase-desc">We build custom websites that establish your digital presence and attract new clients, paired with professional photography that captures your brand, team, and story.</p>
                             <div class="showcase-tags">
                                 <span class="showcase-tag">Booking</span>
                                 <span class="showcase-tag">Payment Processing</span>
@@ -167,10 +162,9 @@
                     <a href="business-facilities.html">
                     <div class="showcase-card" style="background-image: url('consulting-screenshot.jpg');">
                         <div class="showcase-img-wrap"></div>
-                        <span class="showcase-badge">Facilities and Indoor Business Services</span>
+                        <span class="showcase-badge">Facilities</span>
                         <div class="showcase-body">
-                        
-                            <p class="showcase-desc">First impressions happen online and in person. We equip your physical space with everything it needs to look sharp and run smoothly — branded uniforms, restroom supplies, and custom floor mats — so your business makes the right impression the moment someone steps inside.</p>
+                                                        <p class="showcase-desc">First impressions happen online and in person. We equip your physical space with branded uniforms, restroom supplies, and custom floor mats.</p>
                             <div class="showcase-tags">
                                 <span class="showcase-tag">Uniforms</span>
                                 <span class="showcase-tag">Cleaning Supplies</span>
@@ -185,7 +179,7 @@
                 <div class="founder-strip">
                     <div>
                         <p style="font-weight: 600; margin-bottom: 0.2rem;">Rob Marcellin &nbsp; Solo Founder</p>
-                        <p class="muted" style="font-size: 0.9rem;">·Full-Stack Developer·Montclair State University Est. 2024</p>
+                        <p class="muted" style="font-size: 0.9rem;"> · Montclair State University Est . 2024</p>
                     </div>
                     <div style="margin-left: auto;">
                         <a href="https://www.linkedin.com/in/rob-marcellin-0a8b75256/" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #ffffff; font-weight: 600; font-size: 0.9rem;">
@@ -255,7 +249,7 @@
                 <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Take the first step to turn your visions into an online reality.</p>
                 <div style="text-align: center; margin-top: 2rem;">
                     <p style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">Ready to get started?</p>
-                    <a href="mailto:xmarcellr@gmail.com?subject=Let's%20Connect&body=Hi%20Rob%2C%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20really%20enjoyed%20learning%20about%20your%20work!%0D%0A%0D%0AI'm%20reaching%20out%20because%3A%20%5BTell%20me%20what%20caught%20your%20interest%20or%20what%20you're%20looking%20for%5D%0D%0A%0D%0ALooking%20forward%20to%20hearing%20from%20you!%0D%0A%0D%0ABest%2C%0D%0A%5BYour%20Name%5D" class="consultation-button">Contact Me</a>
+                    <a href="/cdn-cgi/l/email-protection#126a7f736071777e7e6052757f737b7e3c717d7f2d616770787771662f5e77663561372022517d7c7c77716634707d766b2f5a7b372022407d703720513722563722533722563722535b37202271737f773720227371607d61613720226b7d6760372022627d6066747d7e7b7d372022737c763720226077737e7e6b372022777c787d6b77763720227e7773607c7b7c7537202273707d67663720226b7d6760372022657d6079333722563722533722563722535b357f372022607773717a7b7c753720227d67663720227077717367617737215337202237275046777e7e3720227f77372022657a7366372022717367757a663720226b7d67603720227b7c6677607761663720227d60372022657a73663720226b7d673560773720227e7d7d797b7c75372022747d603727563722563722533722563722535e7d7d797b7c75372022747d6065736076372022667d3720227a7773607b7c7537202274607d7f3720226b7d6733372256372253372256372253507761663720513722563722533727504b7d67603720225c737f77372756" class="consultation-button">Contact Me</a>
                     <p style="margin-top: 1rem; font-size: 0.95rem; opacity: 0.9;">Response time: Within 24 hours</p>
                 </div>
             </section>
@@ -269,37 +263,8 @@
             </p>
         </footer>
     </div>
-
     <script>
-        // Loading Screen - only show once per session
-        const loadingScreen = document.getElementById('loadingScreen');
-        const mainContent = document.getElementById('mainContent');
-
-        if (sessionStorage.getItem('hasVisited')) {
-            loadingScreen.style.display = 'none';
-            mainContent.classList.add('visible');
-        } else {
-            sessionStorage.setItem('hasVisited', 'true');
-            document.body.style.overflow = 'hidden';
-            setTimeout(() => {
-                loadingScreen.classList.add('fade-out');
-                mainContent.classList.add('visible');
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }, 800);
-            }, 2500);
-        }
-
-        // Scroll reveal
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('fade-in');
-            });
-        }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
-        document.querySelectorAll('section').forEach(s => observer.observe(s));
-
-        // Project dropdown
+        // Project dropdown toggle
         function toggleProjectDetails(header) {
             header.nextElementSibling.classList.toggle('open');
             header.querySelector('.service-dropdown-arrow').classList.toggle('open');
@@ -307,4 +272,3 @@
     </script>
 </body>
 </html>
-
