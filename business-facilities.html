@@ -53,7 +53,7 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 2rem 2rem 4rem; position: relative; z-index: 2; }
 
         /* HERO BANNER */
-        .page-hero { background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%); border-radius: 16px; padding: 3rem 2rem; margin-bottom: 3rem; text-align: center; position: relative; overflow: hidden; border: 2px solid rgba(255,255,255,0.15); }
+        .page-hero { background: rgba(30,30,30,0.25); backdrop-filter: blur(10px); border-radius: 16px; padding: 3rem 2rem; margin-bottom: 3rem; text-align: center; position: relative; overflow: hidden; border: none; }
         .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.07) 0%, transparent 60%); animation: pulse 4s ease-in-out infinite; }
         @keyframes pulse { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }
         .hero-badge { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.2); padding: 0.3rem 1rem; border-radius: 20px; margin-bottom: 1.2rem; position: relative; z-index: 2; }
@@ -103,6 +103,13 @@
             .facility-grid { grid-template-columns: 1fr; }
             .page-hero { padding: 2rem 1rem; }
         }
+
+        section {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        section.fade-in { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
@@ -118,7 +125,7 @@
             <img src="JustWhite.png" alt="Marcell Services Logo" class="logo">
         </h1>
         <p>Uniforms &middot; Supplies &middot; Floor Mats</p>
-        <a href="index.html" class="back-link">
+        <a href="/" class="back-link">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
             Back to Home
         </a>
@@ -151,7 +158,7 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h4l2 9h10l2-9H7"/><circle cx="9" cy="20" r="1"/><circle cx="19" cy="20" r="1"/></svg>
                     </div>
                     <h3>Uniform Rental &amp; Laundry</h3>
-                    <p>Weekly pickup, cleaning, and redelivery.</p>
+                    <p>Weekly pickup, cleaning, and redelivery — always fresh.</p>
                     <div class="tags"><span class="tag">Rental</span><span class="tag">Laundry</span><span class="tag">Weekly Service</span></div>
                 </div>
 
@@ -249,9 +256,9 @@
         <section id="cta" style="text-align: center;">
             <h2>Ready to Equip Your Business?</h2>
             <p style="font-size: 1.05rem; max-width: 600px; margin: 0 auto 0.5rem;">Let us handle the supplies, uniforms, and facility details so you can stay focused on running your business.</p>
-            <a href="mailto:xmarcellr@gmail.com?subject=Business%20Facilities%20Inquiry&body=Hi%20Rob%2C%0D%0A%0D%0AI'm%20interested%20in%20your%20Business%20Facilities%20services.%0D%0A%0D%0AWhat%20I%20need%20help%20with%3A%20%5BDescribe%20your%20needs%5D%0D%0A%0D%0ABusiness%20type%3A%20%5BYour%20industry%5D%0D%0A%0D%0ALooking%20forward%20to%20hearing%20from%20you!%0D%0A%0D%0ABest%2C%0D%0A%5BYour%20Name%5D" class="consultation-button">Get in Touch</a>
+            <a href="mailto:xmarcellr@gmail.com?subject=Business%20Facilities%20Inquiry&body=Hi%20Rob%2C%0D%0A%0D%0AI'm%20interested%20in%20your%20Business%20Facilities%20services." class="consultation-button">Get in Touch</a>
             <br>
-            <a href="index.html" class="back-link" style="margin-top: 1.5rem;">
+            <a href="/" class="back-link" style="margin-top: 1.5rem;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
                 Back to Home
             </a>
@@ -260,17 +267,11 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Marcell Services LLC. All rights reserved.</p>
-        <p style="margin-top: 0.4rem; color: #9ca3af;">
-            <a href="index.html">Marcell Services</a>
-        </p>
-    </footer>
-
+        <p>&copy; 2026 Marcell Services LLC. All righ
     <script>
-        function toggleProjectDetails(header) {
-            header.nextElementSibling.classList.toggle('open');
-            header.querySelector('.service-dropdown-arrow').classList.toggle('open');
-        }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('fade-in'); });
+        }, { threshold: 0.05 });
+        document.querySelectorAll('section').forEach(s => observer.observe(s));
     </script>
-</body>
 </html>
