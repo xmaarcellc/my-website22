@@ -29,8 +29,9 @@
         .main-content.visible { opacity: 1; }
 
         header { position: relative; color: #ffffff; padding: 6rem 2rem; text-align: center; background: rgba(30,30,30,0.6); z-index: 2; }
-        header h1 { font-size: 3.5rem; margin-bottom: 1rem; font-weight: 700; letter-spacing: 2px; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; color: #ffffff; }
-        .logo { width: 60px; height: 60px; margin-top: 10px; }
+        header h1 { font-size: 3.5rem; margin-bottom: 1rem; font-weight: 700; letter-spacing: 2px; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; color: #ffffff; opacity: 0; animation: fadeInHeader 1s ease-out forwards; animation-delay: 0.2s; }
+        .logo { width: 60px; height: 60px; margin-top: 10px; opacity: 0; animation: fadeInHeader 1s ease-out forwards; animation-delay: 0.4s; }
+        @keyframes fadeInHeader { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
         .container { max-width: 1400px; margin: 0 auto; padding: 3rem 2rem; position: relative; z-index: 2; }
 
@@ -116,6 +117,13 @@
             section { padding: 2rem 1rem; }
             .showcase-grid { grid-template-columns: 1fr; }
         }
+
+        section {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        section.fade-in { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
@@ -138,7 +146,7 @@
             <!-- SHOWCASE / ABOUT -->
             <section id="about">
                 <h2>What We Offer</h2>
-                <p class="showcase-intro">We offer web development with photography and business facilities services. Most businesses need both a website that reflects what you do, and a physical space that's stocked and presentable. Handling both through one point of contact keeps things simpler and ensures your online presence and crucial day-to-day operations stay consistent.</p>
+                <p class="showcase-intro">We offer web development with photography and business facilities services. Most businesses need both — a website that's easy to find and reflects what you do, and a physical space that's stocked and presentable. Handling both through one point of contact keeps things simpler and ensures your online presence and day-to-day operations stay consistent.</p>
 
                 <div class="showcase-grid" style="grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));">
 
@@ -147,7 +155,6 @@
                         <div class="showcase-img-wrap"></div>
                         <span class="showcase-badge">Web Dev</span>
                         <div class="showcase-body">
-                            <p class="showcase-desc"><strong>We build custom websites that establish your digital presence and attract new clients, paired with professional photography that captures your brand, team, and story.</strong></p>
                             <div class="showcase-tags">
                                 <span class="showcase-tag">Booking</span>
                                 <span class="showcase-tag">Payment Processing</span>
@@ -164,7 +171,6 @@
                         <div class="showcase-img-wrap"></div>
                         <span class="showcase-badge">Facilities</span>
                         <div class="showcase-body">
-                            <p class="showcase-desc"><strong>First impressions happen online and in person. We equip your physical space with branded uniforms, restroom supplies, and custom floor mats.</strong></p>
                             <div class="showcase-tags">
                                 <span class="showcase-tag">Uniforms</span>
                                 <span class="showcase-tag">Cleaning Supplies</span>
@@ -179,7 +185,7 @@
                 <div class="founder-strip">
                     <div>
                         <p style="font-weight: 600; margin-bottom: 0.2rem;">Rob Marcellin &nbsp; Solo Founder</p>
-                        <p class="muted" style="font-size: 0.9rem;">· Web Developer · Montclair State University Est. 2024</p>
+                        <p class="muted" style="font-size: 0.9rem;">·Full-Stack Developer·Montclair State University Est. 2024</p>
                     </div>
                     <div style="margin-left: auto;">
                         <a href="https://www.linkedin.com/in/rob-marcellin-0a8b75256/" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #ffffff; font-weight: 600; font-size: 0.9rem;">
@@ -270,6 +276,12 @@
             header.querySelector('.service-dropdown-arrow').classList.toggle('open');
         }
     </script>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('fade-in'); });
+        }, { threshold: 0.05 });
+        document.querySelectorAll('section').forEach(s => observer.observe(s));
+    </script>
 </body>
 </html>
-
