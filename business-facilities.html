@@ -13,7 +13,6 @@
     <meta name="description" content="Marcell Services — Business Facilities. Uniform services, restroom and cleaning supplies, and customizable floor mats for your business.">
     <title>Business Facilities — Marcell Services</title>
     <link rel="icon" type="image/png" href="JustLogo.png">
-
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -21,128 +20,81 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #ffffff;
-            background: linear-gradient(to bottom, #000000 0%, #0a0a0a 20%, #1a1a1a 40%, #0f0f0f 60%, #000000 100%);
+            background: linear-gradient(to bottom, #1a1a1a 0%, #222222 20%, #2a2a2a 40%, #222222 60%, #1a1a1a 100%);
             background-attachment: fixed;
             min-height: 100vh;
             overflow-x: hidden;
-            transition: background 1.5s ease, color 1.5s ease;
         }
 
-        body.light-theme {
-            color: #000000;
-            background: linear-gradient(to bottom, #ffffff 0%, #e8e8e8 5%, #cccccc 10%, #999999 20%, #666666 35%, #333333 50%, #000000 70%);
+        /* Background images */
+        .bg-image {
+            position: fixed;
+            left: 0; right: 0;
+            width: 100%; height: 40vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
         }
+        .bg-image-1 { top: 0; background-image: url('background1.jpg'); }
+        .bg-image-2 { top: 50%; transform: translateY(-50%); background-image: url('background2.jpg'); }
+        .bg-image-3 { bottom: 0; background-image: url('background3.jpg'); }
 
-        body.light-theme header, body.light-theme header h1, body.light-theme header p { color: #000000; }
-        body.light-theme .logo { filter: invert(1); }
-        body.light-theme nav a, body.light-theme .hamburger span, body.light-theme .theme-toggle, body.light-theme .theme-toggle svg { color: #000000; border-color: #000000; }
-        body.light-theme nav ul { background: rgba(255,255,255,0.95); border: 1px solid rgba(0,0,0,0.2); }
-        body.light-theme nav ul li:hover { background: rgba(0,0,0,0.05); }
-        body.light-theme nav a:hover { background: #000000; color: #ffffff; }
-        body.light-theme .theme-toggle:hover { background: rgba(0,0,0,0.1); }
-        body.light-theme section { background: rgba(255,255,255,0.95); box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        body.light-theme section h2, body.light-theme section h3, body.light-theme section p, body.light-theme section ul, body.light-theme section li { color: #000000; }
-        body.light-theme .facility-card { background: rgba(255,255,255,0.9); border-color: #000000; }
-        body.light-theme .facility-card h3, body.light-theme .facility-card p { color: #000000; }
-        body.light-theme .facility-icon { border-color: #000000; color: #000000; }
-        body.light-theme .back-link { color: #000000; border-color: #000000; }
-        body.light-theme .back-link:hover { background: #000000; color: #ffffff; }
-        body.light-theme .consultation-button { color: #000000; border-color: #000000; }
-        body.light-theme .consultation-button:hover { background: #000000; color: #ffffff; }
-        body.light-theme .hero-badge { border-color: rgba(0,0,0,0.2); color: rgba(0,0,0,0.5); }
-        body.light-theme section a { color: #3b82f6; }
-        body.light-theme .tag { border-color: #000000; color: #000000; background: rgba(0,0,0,0.06); }
+        header { position: relative; color: #ffffff; padding: 5rem 2rem 3rem; text-align: center; background: rgba(30,30,30,0.6); z-index: 2; }
+        header h1 { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 700; letter-spacing: 2px; color: #ffffff; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+        .logo { width: 55px; height: 55px; margin-top: 8px; }
+        header p { font-size: 1.1rem; font-weight: 300; letter-spacing: 1px; color: rgba(255,255,255,0.7); margin-top: 0.8rem; }
 
-        /* NAV */
-        nav { background: transparent; padding: 1.5rem; position: sticky; top: 0; z-index: 100; display: flex; justify-content: flex-end; align-items: center; gap: 1rem; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.08); }
-        body.light-theme nav { background: rgba(245,245,240,0.85); border-bottom-color: rgba(0,0,0,0.1); }
-        .theme-toggle { cursor: pointer; padding: 0.5rem; display: flex; align-items: center; justify-content: center; border: 2px solid #ffffff; border-radius: 50%; width: 44px; height: 44px; transition: all 0.3s ease; background: transparent; }
-        .theme-toggle:hover { background: rgba(255,255,255,0.1); transform: rotate(20deg); }
-        .theme-toggle svg { color: #ffffff; transition: all 0.3s ease; }
-        .sun-icon, .moon-icon { width: 24px; height: 24px; }
-        nav ul { list-style: none; display: none; position: fixed; top: 80px; right: 2rem; background: rgba(20,20,20,0.98); flex-direction: column; padding: 1rem 0; border-radius: 12px; box-shadow: 0 4px 20px rgba(255,255,255,0.1); backdrop-filter: blur(10px); min-width: 200px; border: 1px solid rgba(255,255,255,0.2); }
-        nav ul.active { display: flex; }
-        nav ul li { width: 100%; text-align: center; padding: 0.5rem 1rem; }
-        nav ul li:hover { background: rgba(255,255,255,0.05); }
-        nav a { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s; display: block; padding: 0.8rem 1.5rem; border: 2px solid #ffffff; border-radius: 25px; background: transparent; margin: 0.5rem; }
-        nav a:hover { background: #ffffff; color: #000000; transform: translateY(-2px); }
-        .hamburger { display: flex; flex-direction: column; cursor: pointer; gap: 5px; padding: 0.5rem; z-index: 1001; }
-        .hamburger span { width: 25px; height: 3px; background: #ffffff; border-radius: 2px; transition: all 0.3s ease; }
-        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-        /* HEADER */
-        header { padding: 5rem 2rem 3rem; text-align: center; position: relative; z-index: 2; }
-        header h1 { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 700; letter-spacing: 2px; color: #ffffff; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; animation: fadeUp 1s ease forwards; transition: color 1.5s ease; }
-        .logo { width: 55px; height: 55px; margin-top: 8px; transition: filter 1.5s ease; }
-        header p { font-size: 1.1rem; font-weight: 300; letter-spacing: 1px; color: rgba(255,255,255,0.7); margin-top: 0.8rem; transition: color 1.5s ease; }
-
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* BACK LINK */
-        .back-link {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            color: #ffffff; text-decoration: none; font-weight: 600; font-size: 0.95rem;
-            border: 2px solid #ffffff; border-radius: 25px; padding: 0.6rem 1.4rem;
-            margin: 1rem 0 0 0; transition: all 0.3s;
-        }
+        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: #ffffff; text-decoration: none; font-weight: 600; font-size: 0.95rem; border: 2px solid #ffffff; border-radius: 25px; padding: 0.6rem 1.4rem; margin-top: 1rem; transition: all 0.3s; }
         .back-link:hover { background: #ffffff; color: #000000; transform: translateY(-2px); }
 
-        /* CONTAINER */
         .container { max-width: 1200px; margin: 0 auto; padding: 2rem 2rem 4rem; position: relative; z-index: 2; }
 
         /* HERO BANNER */
-        .page-hero {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
-            border-radius: 16px; padding: 3rem 2rem; margin-bottom: 3rem;
-            text-align: center; position: relative; overflow: hidden;
-            border: 2px solid rgba(255,255,255,0.15);
-        }
+        .page-hero { background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%); border-radius: 16px; padding: 3rem 2rem; margin-bottom: 3rem; text-align: center; position: relative; overflow: hidden; border: 2px solid rgba(255,255,255,0.15); }
         .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.07) 0%, transparent 60%); animation: pulse 4s ease-in-out infinite; }
         @keyframes pulse { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }
         .hero-badge { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.2); padding: 0.3rem 1rem; border-radius: 20px; margin-bottom: 1.2rem; position: relative; z-index: 2; }
         .page-hero h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: #ffffff; letter-spacing: 1px; text-shadow: 0 0 30px rgba(255,255,255,0.4); position: relative; z-index: 2; margin: 0; border: none; padding: 0; }
         .page-hero p { font-size: 1rem; color: rgba(255,255,255,0.65); margin-top: 0.8rem; position: relative; z-index: 2; }
 
-        /* SECTION */
-        section { background: rgba(20,20,20,0.95); margin-bottom: 2rem; padding: 3rem; border-radius: 16px; box-shadow: 0 2px 10px rgba(255,255,255,0.08); opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease-out, transform 0.8s ease-out, background 1.5s ease; border: none; backdrop-filter: blur(10px); }
-        section.fade-in { opacity: 1; transform: translateY(0); }
-        section h2 { color: #ffffff; font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 3px solid #ffffff; transition: color 1.5s ease, border-color 1.5s ease; }
-        section p { color: #ffffff; font-size: 0.95rem; transition: color 1.5s ease; }
-        section a { color: #60a5fa; text-decoration: underline; }
-        section a:hover { color: #93c5fd; }
+        /* SECTIONS */
+        section { background: rgba(30,30,30,0.25); margin-bottom: 2rem; padding: 3rem; border-radius: 16px; box-shadow: 0 2px 10px rgba(255,255,255,0.08); position: relative; border: none; backdrop-filter: blur(10px); z-index: 2; }
+        section h2 { color: #ffffff; font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 3px solid #ffffff; }
+        section p { color: #ffffff; font-size: 0.95rem; }
+        section a { color: #ffffff; text-decoration: underline; }
+        section a:hover { color: #cccccc; }
 
-        /* FACILITY CARDS GRID */
+        /* FACILITY CARDS */
         .facility-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+        .facility-card { background: rgba(38,38,38,0.9); border: 2px solid #ffffff; border-radius: 12px; padding: 1.8rem; transition: transform 0.3s ease, box-shadow 0.3s ease; backdrop-filter: blur(3px); }
+        .facility-card:hover { transform: translateY(-5px); box-shadow: 0 6px 20px rgba(255,255,255,0.06); }
+        .facility-icon { width: 48px; height: 48px; border-radius: 10px; border: 2px solid #ffffff; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+        .facility-icon svg { width: 24px; height: 24px; stroke: #ffffff; }
+        .facility-card h3 { color: #ffffff; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.6rem; }
+        .facility-card p { color: #aaaaaa; font-size: 0.88rem; line-height: 1.7; }
 
-        .facility-card {
-            background: rgba(30,30,30,0.9);
-            border: 2px solid #ffffff; border-radius: 12px; padding: 1.8rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 1.5s ease, border-color 1.5s ease;
-            backdrop-filter: blur(3px);
-        }
-        .facility-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(255,255,255,0.12); }
-
-        .facility-icon {
-            width: 48px; height: 48px; border-radius: 10px;
-            border: 2px solid #ffffff; display: flex; align-items: center; justify-content: center;
-            margin-bottom: 1rem; color: #ffffff; transition: border-color 1.5s ease, color 1.5s ease;
-        }
-        .facility-icon svg { width: 24px; height: 24px; }
-
-        .facility-card h3 { color: #ffffff; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.6rem; transition: color 1.5s ease; }
-        .facility-card p { color: #aaaaaa; font-size: 0.88rem; line-height: 1.7; transition: color 1.5s ease; }
-        body.light-theme .facility-card p { color: #555555; }
+        /* 30% saturation icon colors */
+        .icon-blue   { border-color: #7a9ab5; } .icon-blue svg   { stroke: #7a9ab5; }
+        .icon-green  { border-color: #7aab8a; } .icon-green svg  { stroke: #7aab8a; }
+        .icon-purple { border-color: #9a8ab5; } .icon-purple svg { stroke: #9a8ab5; }
+        .icon-orange { border-color: #b59a7a; } .icon-orange svg { stroke: #b59a7a; }
+        .icon-teal   { border-color: #7aabb5; } .icon-teal svg   { stroke: #7aabb5; }
+        .icon-rose   { border-color: #b57a8a; } .icon-rose svg   { stroke: #b57a8a; }
+        .icon-amber  { border-color: #b5a87a; } .icon-amber svg  { stroke: #b5a87a; }
+        .icon-sage   { border-color: #8ab57a; } .icon-sage svg   { stroke: #8ab57a; }
+        .icon-slate  { border-color: #8a9ab5; } .icon-slate svg  { stroke: #8a9ab5; }
+        .icon-mauve  { border-color: #b58aaa; } .icon-mauve svg  { stroke: #b58aaa; }
 
         .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
-        .tag { font-size: 0.72rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 20px; border: 1px solid #ffffff; color: #ffffff; background: transparent; transition: border-color 1.5s ease, color 1.5s ease; }
+        .tag { font-size: 0.72rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 20px; border: 1px solid #ffffff; color: #ffffff; background: transparent; }
 
-        /* CTA */
         .consultation-button { display: inline-block; background: transparent; color: #ffffff; padding: 1rem 2.2rem; text-decoration: none; border-radius: 8px; margin-top: 1.5rem; transition: all 0.3s; font-weight: 600; border: 2px solid #ffffff; cursor: pointer; font-size: 1rem; }
         .consultation-button:hover { background: #ffffff; color: #000000; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255,255,255,0.25); }
 
-        footer { background: rgba(0,0,0,0.95); color: #ffffff; text-align: center; padding: 2rem; margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.9rem; }
+        footer { background: transparent; color: #ffffff; text-align: center; padding: 2rem; margin-top: 3rem; position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.9rem; }
         footer a { color: #9ca3af; text-decoration: none; }
 
         @media (max-width: 768px) {
@@ -155,28 +107,10 @@
 </head>
 <body>
 
-    <nav>
-        <div class="theme-toggle" id="themeToggle" title="Toggle theme">
-            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-            </svg>
-            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-            </svg>
-        </div>
-        <ul>
-            <li><a href="index.html#about">Work</a></li>
-            <li><a href="index.html#projects">Projects</a></li>
-            <li><a href="index.html#services">Services</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
-        </ul>
-        <div class="hamburger">
-            <span></span><span></span><span></span>
-        </div>
-    </nav>
+    <!-- Background Images -->
+    <div class="bg-image bg-image-1"></div>
+    <div class="bg-image bg-image-2"></div>
+    <div class="bg-image bg-image-3"></div>
 
     <header>
         <h1>
@@ -200,33 +134,33 @@
 
         <section id="uniforms">
             <h2>Uniform Services</h2>
-            <p style="margin-bottom: 0.5rem;">A sharp, consistent look builds trust and reinforces your brand every single day. Keep your team looking professional with managed uniform solutions.</p>
+            <p style="margin-bottom: 0.5rem;">A sharp, consistent look builds trust and reinforces your brand every single day.</p>
             <div class="facility-grid">
 
                 <div class="facility-card">
-                    <div class="facility-icon">
+                    <div class="facility-icon icon-blue">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg>
                     </div>
                     <h3>Branded Uniform Program</h3>
-                    <p>Custom-branded uniforms for your entire team. Polos, shirts, jackets, and more — embroidered or printed with your logo for a polished, professional look.</p>
+                    <p>Uniforms embroidered or printed with your logo.</p>
                     <div class="tags"><span class="tag">Embroidery</span><span class="tag">Branding</span><span class="tag">Custom</span></div>
                 </div>
 
                 <div class="facility-card">
-                    <div class="facility-icon">
+                    <div class="facility-icon icon-green">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h4l2 9h10l2-9H7"/><circle cx="9" cy="20" r="1"/><circle cx="19" cy="20" r="1"/></svg>
                     </div>
-                    <h3>Uniform Rental & Laundry</h3>
-                    <p>Weekly pickup, cleaning, and redelivery of your team's uniforms so they're always fresh, pressed, and ready — no hassle on your end.</p>
+                    <h3>Uniform Rental &amp; Laundry</h3>
+                    <p>Weekly pickup, cleaning, and redelivery.</p>
                     <div class="tags"><span class="tag">Rental</span><span class="tag">Laundry</span><span class="tag">Weekly Service</span></div>
                 </div>
 
                 <div class="facility-card">
-                    <div class="facility-icon">
+                    <div class="facility-icon icon-purple">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
                     </div>
-                    <h3>Workwear & Safety Gear</h3>
-                    <p>High-visibility vests, work pants, safety boots, and PPE — compliant with industry standards and customizable with your branding.</p>
+                    <h3>Workwear &amp; Safety Gear</h3>
+                    <p>Safety gear and workwear customizable with your branding.</p>
                     <div class="tags"><span class="tag">Safety</span><span class="tag">PPE</span><span class="tag">Workwear</span></div>
                 </div>
 
@@ -234,43 +168,43 @@
         </section>
 
         <section id="supplies">
-            <h2>Restroom & Cleaning Supplies</h2>
-            <p style="margin-bottom: 0.5rem;">A clean, fresh-smelling facility is a professional one. Keep your restrooms and common areas stocked and spotless at all times.</p>
+            <h2>Restroom &amp; Cleaning Supplies</h2>
+            <p style="margin-bottom: 0.5rem;">Keep your restrooms and common areas stocked and spotless at all times.</p>
             <div class="facility-grid">
 
                 <div class="facility-card">
-                    <div class="facility-icon">
+                    <div class="facility-icon icon-orange">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12h8M12 8v8"/></svg>
                     </div>
                     <h3>Restroom Essentials</h3>
-                    <p>Scheduled restocking of paper towels, toilet paper, seat covers, hand soap, and hand sanitizer — delivered on a regular cadence so you never run out.</p>
+                    <p>Regular restocking of paper goods, soap, and sanitizer.</p>
                     <div class="tags"><span class="tag">Paper Goods</span><span class="tag">Hand Soap</span><span class="tag">Scheduled</span></div>
                 </div>
 
                 <div class="facility-card">
-                    <div class="facility-icon">
+                    <div class="facility-icon icon-teal">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c0 0-4 4-4 8a4 4 0 0 0 8 0c0-4-4-8-4-8z"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="9" y1="22" x2="15" y2="22"/></svg>
                     </div>
-                    <h3>Air Fresheners & Odor Control</h3>
-                    <p>Automatic aerosol dispensers, gel fresheners, urinal screens, and odor neutralizers — keeping your restrooms and common spaces smelling clean and inviting around the clock.</p>
+                    <h3>Air Fresheners &amp; Odor Control</h3>
+                    <p>Dispensers and neutralizers keeping your space fresh all day.</p>
                     <div class="tags"><span class="tag">Air Fresheners</span><span class="tag">Odor Control</span><span class="tag">Auto Dispensers</span></div>
                 </div>
 
                 <div class="facility-card">
-                    <div class="facility-icon">
+                    <div class="facility-icon icon-rose">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.5 2h5l1 7H8.5L9.5 2z"/><path d="M8.5 9c0 0-2 1-2 5s2 8 5.5 8 5.5-4 5.5-8-2-5-2-5"/><path d="M9 13h6"/></svg>
                     </div>
                     <h3>Commercial Cleaning Products</h3>
-                    <p>Industrial-grade disinfectants, floor cleaners, degreasers, glass cleaners, and multi-surface sanitizers — bulk supply for kitchens, floors, and high-traffic areas.</p>
+                    <p>Bulk disinfectants, degreasers, and cleaners for high-traffic areas.</p>
                     <div class="tags"><span class="tag">Disinfectants</span><span class="tag">Degreasers</span><span class="tag">Bulk Supply</span></div>
                 </div>
 
                 <div class="facility-card">
-                    <div class="facility-icon">
+                    <div class="facility-icon icon-amber">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
                     </div>
-                    <h3>Dispensers & Accessories</h3>
-                    <p>Soap dispensers, paper towel holders, hand sanitizer stations, feminine hygiene units, and trash receptacles — installed and serviced on a regular maintenance schedule.</p>
+                    <h3>Dispensers &amp; Accessories</h3>
+                    <p>Dispensers and receptacles installed and serviced regularly.</p>
                     <div class="tags"><span class="tag">Dispensers</span><span class="tag">Installation</span><span class="tag">Maintenance</span></div>
                 </div>
 
@@ -279,33 +213,33 @@
 
         <section id="floormats">
             <h2>Floor Mat Services</h2>
-            <p style="margin-bottom: 0.5rem;">A sharp, consistent look builds trust and reinforces your brand every single day. Keep your team looking professional with managed uniform solutions.</p>
+            <p style="margin-bottom: 0.5rem;">The right mat at the right entrance keeps your space clean, safe, and on-brand.</p>
             <div class="facility-grid">
 
                 <div class="facility-card">
-                    <div class="facility-icon">
+                    <div class="facility-icon icon-sage">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M2 10h20"/></svg>
                     </div>
-                    <h3>Logo & Branded Mats</h3>
-                    <p>Custom floor mats printed or woven with your business logo, colors, and name. A professional first impression at every entrance.</p>
+                    <h3>Logo &amp; Branded Mats</h3>
+                    <p>Mats printed with your logo for a clean entrance look.</p>
                     <div class="tags"><span class="tag">Logo</span><span class="tag">Custom Print</span><span class="tag">Branding</span></div>
                 </div>
 
                 <div class="facility-card">
-                    <div class="facility-icon">
+                    <div class="facility-icon icon-slate">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V12M12 12L7 7M12 12l5-5"/><rect x="2" y="19" width="20" height="3" rx="1"/></svg>
                     </div>
-                    <h3>Anti-Fatigue & Safety Mats</h3>
-                    <p>Ergonomic anti-fatigue mats for workstations and kitchens, plus slip-resistant safety mats for wet or high-traffic zones — keeping your team safe and comfortable.</p>
+                    <h3>Anti-Fatigue &amp; Safety Mats</h3>
+                    <p>Anti-fatigue and slip-resistant mats for work areas.</p>
                     <div class="tags"><span class="tag">Anti-Fatigue</span><span class="tag">Safety</span><span class="tag">Non-Slip</span></div>
                 </div>
 
                 <div class="facility-card">
-                    <div class="facility-icon">
+                    <div class="facility-icon icon-mauve">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
                     </div>
-                    <h3>Mat Rental & Cleaning Service</h3>
-                    <p>Scheduled pickup, deep cleaning, and redelivery of your mats on a weekly or bi-weekly basis — always fresh, always presentable.</p>
+                    <h3>Mat Rental &amp; Cleaning Service</h3>
+                    <p>Weekly pickup, cleaning, and redelivery of your mats.</p>
                     <div class="tags"><span class="tag">Rental</span><span class="tag">Cleaning</span><span class="tag">Scheduled</span></div>
                 </div>
 
@@ -314,7 +248,7 @@
 
         <section id="cta" style="text-align: center;">
             <h2>Ready to Equip Your Business?</h2>
-            <p style="font-size: 1.05rem; max-width: 600px; margin: 0 auto 0.5rem;">Let us handle the supplies, uniforms, and facility details so you can stay focused on what matters — running your business.</p>
+            <p style="font-size: 1.05rem; max-width: 600px; margin: 0 auto 0.5rem;">Let us handle the supplies, uniforms, and facility details so you can stay focused on running your business.</p>
             <a href="mailto:xmarcellr@gmail.com?subject=Business%20Facilities%20Inquiry&body=Hi%20Rob%2C%0D%0A%0D%0AI'm%20interested%20in%20your%20Business%20Facilities%20services.%0D%0A%0D%0AWhat%20I%20need%20help%20with%3A%20%5BDescribe%20your%20needs%5D%0D%0A%0D%0ABusiness%20type%3A%20%5BYour%20industry%5D%0D%0A%0D%0ALooking%20forward%20to%20hearing%20from%20you!%0D%0A%0D%0ABest%2C%0D%0A%5BYour%20Name%5D" class="consultation-button">Get in Touch</a>
             <br>
             <a href="index.html" class="back-link" style="margin-top: 1.5rem;">
@@ -333,35 +267,10 @@
     </footer>
 
     <script>
-        // Scroll reveal
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('fade-in'); });
-        }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
-        document.querySelectorAll('section').forEach(s => observer.observe(s));
-
-           // Hamburger
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('nav ul');
-        hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navMenu.classList.toggle('active'); });
-        document.querySelectorAll('nav ul li a').forEach(link => {
-            link.addEventListener('click', () => { hamburger.classList.remove('active'); navMenu.classList.remove('active'); });
-        });
-        document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) { hamburger.classList.remove('active'); navMenu.classList.remove('active'); }
-        });
-        // Theme
-        const themeToggle = document.getElementById('themeToggle');
-        const sunIcon = document.querySelector('.sun-icon');
-        const moonIcon = document.querySelector('.moon-icon');
-        if (localStorage.getItem('theme') === 'light') { document.body.classList.add('light-theme'); sunIcon.style.display = 'none'; moonIcon.style.display = 'block'; }
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('light-theme');
-            const isLight = document.body.classList.contains('light-theme');
-            sunIcon.style.display = isLight ? 'none' : 'block';
-            moonIcon.style.display = isLight ? 'block' : 'none';
-            localStorage.setItem('theme', isLight ? 'light' : 'dark');
-        });
+        function toggleProjectDetails(header) {
+            header.nextElementSibling.classList.toggle('open');
+            header.querySelector('.service-dropdown-arrow').classList.toggle('open');
+        }
     </script>
 </body>
 </html>
-
