@@ -27,7 +27,7 @@
 
         .main-content { opacity: 1; }
 
-        header { position: relative; color: #ffffff; padding: 6rem 2rem; text-align: center; background: rgba(30,30,30,0.6); z-index: 2; }
+        header { position: relative; color: #ffffff; padding: 8rem 2rem 6rem; text-align: center; background: rgba(30,30,30,0.6); z-index: 2; }
         header h1 { font-size: 3.5rem; margin-bottom: 1rem; font-weight: 700; letter-spacing: 2px; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; color: #ffffff; opacity: 0; animation: fadeInHeader 1s ease-out forwards; animation-delay: 0.2s; }
         .logo { width: 60px; height: 60px; margin-top: 10px; opacity: 0; animation: fadeInHeader 1s ease-out forwards; animation-delay: 0.4s; }
         @keyframes fadeInHeader { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
@@ -118,9 +118,43 @@
             .topic-card-body { padding: 1.5rem 1.5rem 1rem; }
             .topic-card-footer { padding: 1rem 1.5rem 1.5rem; }
         }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(20,20,20,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+            padding: 0.9rem 2rem;
+        }
+        nav a {
+            color: rgba(255,255,255,0.65);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: #ffffff; }
+        nav a.active { color: #ffffff; border-bottom: 2px solid #ffffff; padding-bottom: 2px; }
+        @media (max-width: 768px) {
+            nav { gap: 1.5rem; padding: 0.8rem 1rem; }
+            nav a { font-size: 0.75rem; letter-spacing: 1px; }
+        }
     </style>
 </head>
 <body>
+    <nav>
+        <a href="/" class="active">Home</a>
+        <a href="website-services.html">Web Development</a>
+        <a href="business-facilities.html">Business Facilities</a>
+    </nav>
     <div class="bg-image bg-image-1"></div>
     <div class="bg-image bg-image-2"></div>
     <div class="bg-image bg-image-3"></div>
