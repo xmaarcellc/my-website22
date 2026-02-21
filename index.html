@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SBYX1GSJS8"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -13,184 +12,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Marcell Services</title>
     <link rel="icon" type="image/png" href="JustLogo.png">
-  
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #ffffff;
-            background: linear-gradient(to bottom, #020b18 0%, #041428 20%, #020b18 40%, #041428 60%, #020b18 100%);
+            background: linear-gradient(to bottom, #000000 0%, #0a0a0a 20%, #111111 40%, #0a0a0a 60%, #000000 100%);
             background-attachment: fixed;
             min-height: 100vh;
             overflow-x: hidden;
-            transition: background 1.5s ease, color 1.5s ease;
         }
-        
-        
-        
+
         /* Loading Screen */
         #loadingScreen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #020b18; display: flex; flex-direction: column;
+            background: #000000; display: flex; flex-direction: column;
             justify-content: center; align-items: center; z-index: 9999;
-            transition: opacity 0.8s ease-out, visibility 0.8s ease-out; overflow: hidden;
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
         }
         #loadingScreen.fade-out { opacity: 0; visibility: hidden; }
         .loading-content { text-align: center; max-width: 600px; padding: 2rem; }
         .loading-logo { width: 120px; height: 120px; margin-bottom: 2rem; opacity: 0; animation: fadeInLogo 1s ease-in forwards, logoGlow 2s infinite alternate; }
         @keyframes logoGlow { 0% { filter: drop-shadow(0 0 10px rgba(255,255,255,0.5)); } 100% { filter: drop-shadow(0 0 25px rgba(255,255,255,0.8)); } }
-        .loading-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 0; color: #ffffff; letter-spacing: 2px; opacity: 0; animation: fadeInTitle 1s ease-in forwards; animation-delay: 0.3s; text-shadow: 0 0 20px rgba(255,255,255,0.5), 0 0 40px rgba(255,255,255,0.3); }
+        .loading-title { font-size: 2.5rem; font-weight: 700; color: #ffffff; letter-spacing: 2px; opacity: 0; animation: fadeInTitle 1s ease-in forwards; animation-delay: 0.3s; text-shadow: 0 0 20px rgba(255,255,255,0.5); }
         @keyframes fadeInTitle { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
         .main-content { opacity: 0; transition: opacity 0.8s ease-in; }
         .main-content.visible { opacity: 1; }
-        
-        header { position: relative; color: #ffffff; padding: 6rem 2rem; text-align: center; overflow: hidden; background: transparent; z-index: 2; transition: color 1.5s ease; }
-        header h1 { font-size: 3.5rem; margin-bottom: 1rem; font-weight: 700; letter-spacing: 2px; opacity: 0; animation: fadeInName 2s ease-in forwards; animation-delay: 0.3s; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; color: #ffffff; transition: color 1.5s ease; }
-        .logo { width: 60px; height: 60px; opacity: 0; animation: fadeInLogo 2s ease-in forwards; animation-delay: 0.3s; margin-top: 10px; transition: filter 1.5s ease; }
+
+        header { position: relative; color: #ffffff; padding: 6rem 2rem; text-align: center; background: transparent; z-index: 2; }
+        header h1 { font-size: 3.5rem; margin-bottom: 1rem; font-weight: 700; letter-spacing: 2px; opacity: 0; animation: fadeInName 2s ease-in forwards; animation-delay: 0.3s; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; color: #ffffff; }
+        .logo { width: 60px; height: 60px; opacity: 0; animation: fadeInLogo 2s ease-in forwards; animation-delay: 0.3s; margin-top: 10px; }
         @keyframes fadeInName { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeInLogo { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-        header p { font-size: 1.5rem; font-weight: 300; letter-spacing: 1px; position: relative; z-index: 2; color: #ffffff; transition: color 1.5s ease; }
-        
-        nav { background: transparent; padding: 1.5rem; position: sticky; top: 0; z-index: 100; border-bottom: none; box-shadow: none; opacity: 0; animation: fadeInNav 1s ease-in forwards; animation-delay: 2.2s; display: flex; justify-content: flex-end; align-items: center; gap: 1rem; }
-        
-        @keyframes fadeInNav { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        nav ul { list-style: none; display: none; position: fixed; top: 80px; right: 2rem; background: rgba(4,20,40,0.98); flex-direction: column; gap: 0; padding: 1rem 0; border-radius: 12px; box-shadow: 0 4px 20px rgba(255,255,255,0.1); backdrop-filter: blur(10px); min-width: 200px; border: 1px solid rgba(255,255,255,0.2); }
-        nav ul.active { display: flex; }
-        nav ul li { width: 100%; text-align: center; padding: 0.5rem 1rem; }
-        nav ul li:hover { background: rgba(255,255,255,0.05); }
-        nav a { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s; display: block; padding: 0.8rem 1.5rem; border: 2px solid #ffffff; border-radius: 25px; background: transparent; margin: 0.5rem; }
-        nav a:hover { background: #ffffff; color: #000000; transform: translateY(-2px); }
-        .hamburger { display: flex; flex-direction: column; cursor: pointer; gap: 5px; padding: 0.5rem; z-index: 1001; }
-        .hamburger span { width: 25px; height: 3px; background: #ffffff; border-radius: 2px; transition: all 0.3s ease; }
-        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-        
+
         .container { max-width: 1400px; margin: 0 auto; padding: 3rem 2rem; position: relative; z-index: 2; }
-        
-        /* NO border on sections */
+
         section {
-            background: rgba(4,20,40,0.95);
+            background: rgba(15,15,15,0.95);
             margin-bottom: 2rem; padding: 3rem; border-radius: 16px;
-            box-shadow: 0 2px 10px rgba(255,255,255,0.1);
+            box-shadow: 0 2px 10px rgba(255,255,255,0.08);
             opacity: 0; transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out, background 1.5s ease, box-shadow 1.5s ease;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
             position: relative; border: none; backdrop-filter: blur(10px);
         }
-        section h2 { color: #ffffff; transition: color 1.5s ease; }
         section.fade-in { opacity: 1; transform: translateY(0); }
 
-        /* ── SHOWCASE SECTION ── */
         .showcase-intro { color: #aaaaaa; font-size: 1rem; margin-bottom: 2.5rem; }
-
         .showcase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-
-        /* Anchor wrappers for clickable cards */
         .showcase-grid a { text-decoration: none; display: block; }
 
         .showcase-card {
             border: 2px solid #ffffff; border-radius: 14px; overflow: hidden;
-            background: rgba(20,20,20,0.9);
+            background: #000000;
             transition: transform 0.35s ease, box-shadow 0.35s ease;
-            cursor: pointer;
-            position: relative; min-height: 280px;
+            cursor: pointer; position: relative; min-height: 280px;
             background-size: cover; background-position: center; background-repeat: no-repeat;
         }
-        .showcase-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(255,255,255,0.12); }
-        .showcase-card:hover { background-size: 108%; }
-
+        .showcase-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(255,255,255,0.12); background-size: 108%; }
         .showcase-img-wrap { display: none; }
-
         .showcase-badge { position: absolute; top: 1rem; left: 1rem; background: #000000; color: #ffffff; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.3); z-index: 2; }
-
-        .showcase-body { padding: 1.6rem; position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.7) 60%, transparent 100%); z-index: 2; }
-        .showcase-tagline { font-size: 1.3rem; font-weight: 700; letter-spacing: 0.5px; color: #ffffff; margin-bottom: 0.6rem; line-height: 1.2; }
+        .showcase-body { padding: 1.6rem; position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 60%, transparent 100%); z-index: 2; }
+        .showcase-tagline { font-size: 1.3rem; font-weight: 700; color: #ffffff; margin-bottom: 0.6rem; line-height: 1.2; }
         .showcase-desc { font-size: 0.9rem; color: #aaaaaa; line-height: 1.7; margin-bottom: 1.2rem; }
         .showcase-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
         .showcase-tag { font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 0.3rem 0.7rem; border-radius: 20px; border: 1px solid #ffffff; color: #ffffff; background: transparent; }
 
-        .img-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #0d0d0d 100%); color: rgba(255,255,255,0.2); font-size: 0.85rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; gap: 0.8rem; }
-        .img-placeholder svg { width: 40px; height: 40px; opacity: 0.25; }
-
         .founder-strip { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
         .founder-strip .muted { color: #aaaaaa; }
-
-        /* ── EXISTING STYLES ── */
-        .consultation-button { display: inline-block; background: transparent; color: #ffffff; padding: 1.2rem 2.5rem; text-decoration: none; border-radius: 8px; margin-top: 1.5rem; transition: all 0.3s; font-weight: 600; border: 2px solid #ffffff; cursor: pointer; font-size: 1.1rem; }
-        .consultation-button:hover { background: #ffffff; color: #000000; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255,255,255,0.3); }
-
-        .services-header { display: flex; align-items: center; justify-content: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1.5rem; }
-        .services-header h2 { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
-        .services-logo { width: 100px; height: auto; opacity: 0; transition: opacity 1.2s ease-in, transform 1.2s ease-in; transition-delay: 0.5s; transform: translateX(-20px); }
-        .services-logo.fade-in-logo { opacity: 1; transform: translateX(0); }
-
-        .services-hero { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%); border-radius: 16px; padding: 3rem 2rem; margin-bottom: 2rem; text-align: center; position: relative; overflow: hidden; border: 2px solid rgba(255,255,255,0.2); }
-        .services-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 50%); animation: pulseBackground 4s ease-in-out infinite; }
-        @keyframes pulseBackground { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.1); } }
-        .animated-logo-container { position: relative; display: inline-block; margin-bottom: 1.5rem; }
-        .animated-services-logo { width: 100px; height: 100px; animation: floatLogo 3s ease-in-out infinite, glowPulse 2s ease-in-out infinite alternate; filter: drop-shadow(0 0 20px rgba(255,255,255,0.5)); position: relative; z-index: 2; }
-        @keyframes floatLogo { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-        @keyframes glowPulse { 0% { filter: drop-shadow(0 0 10px rgba(255,255,255,0.3)) drop-shadow(0 0 20px rgba(255,255,255,0.2)); } 100% { filter: drop-shadow(0 0 20px rgba(255,255,255,0.6)) drop-shadow(0 0 40px rgba(255,255,255,0.4)) drop-shadow(0 0 60px rgba(255,255,255,0.2)); } }
-        .logo-glow-ring { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 120px; height: 120px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); animation: ringPulse 2s ease-in-out infinite; }
-        .logo-glow-ring:nth-child(2) { width: 150px; height: 150px; animation-delay: 0.5s; border-color: rgba(255,255,255,0.2); }
-        .logo-glow-ring:nth-child(3) { width: 180px; height: 180px; animation-delay: 1s; border-color: rgba(255,255,255,0.1); }
-        @keyframes ringPulse { 0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: 1; } 50% { transform: translate(-50%,-50%) scale(1.1); opacity: 0.5; } }
-        .services-hero-tagline { font-size: 2.2rem; font-weight: 700; color: #ffffff; margin: 0; letter-spacing: 1px; text-shadow: 0 0 30px rgba(255,255,255,0.5); position: relative; z-index: 2; }
-        .services-hero-subtitle { font-size: 1rem; color: rgba(255,255,255,0.7); margin-top: 0.5rem; font-weight: 400; position: relative; z-index: 2; }
-
-        .timeline { position: relative; padding-left: 0; margin-top: 2rem; }
-        .timeline-item { position: relative; margin-bottom: 2.5rem; padding-left: 0; }
-        .timeline-content { background: rgba(5,25,50,0.5); padding: 2rem; border-radius: 12px; border: none; box-shadow: 0 2px 8px rgba(255,255,255,0.08); }
-        .timeline-content h3 { color: #ffffff; margin-bottom: 0.5rem; }
-        .timeline-date { color: #cccccc; font-style: italic; font-size: 0.9rem; margin-bottom: 1rem; }
 
         h2 { color: #ffffff; font-size: 1.6rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 3px solid #ffffff; }
         h3 { color: #ffffff; font-size: 1.4rem; margin-top: 1.5rem; margin-bottom: 1rem; }
 
-        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
-        .service-card { background: rgba(5,25,50,0.9); padding: 1.5rem; border-radius: 8px; border: 2px solid #ffffff; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 3px 15px rgba(255,255,255,0.1); cursor: pointer; backdrop-filter: blur(3px); }
-        .service-card-header { cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; padding-bottom: 0.5rem; border-bottom: 2px solid #ffffff; }
+        .service-card { background: rgba(20,20,20,0.9); padding: 1.5rem; border-radius: 8px; border: 2px solid #ffffff; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 3px 15px rgba(255,255,255,0.08); cursor: pointer; backdrop-filter: blur(3px); }
         .project-card-header { cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; user-select: none; padding-bottom: 1rem; border-bottom: 2px solid #ffffff; }
-        .project-card-header:hover, .service-card-header:hover { opacity: 0.8; }
-        .service-card-header h3 { margin: 0; color: #ffffff; }
+        .project-card-header:hover { opacity: 0.8; }
         .service-dropdown-arrow { font-size: 1.2rem; transition: transform 0.3s ease; margin-left: 1rem; color: #ffffff; }
         .service-dropdown-arrow.open { transform: rotate(180deg); }
-        .service-description { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease, margin-top 0.3s ease; opacity: 0; margin-top: 0; }
         .project-description { max-height: 0; overflow: hidden; transition: max-height 0.7s cubic-bezier(0.4,0,0.2,1), opacity 0.5s ease, margin-top 0.3s ease; opacity: 0; margin-top: 0; }
-        .service-description.open { max-height: 500px; opacity: 1; margin-top: 1rem; }
         .project-description.open { max-height: 5000px; opacity: 1; margin-top: 1rem; }
-        .service-description p { color: #ffffff; }
-        .project-description p, .project-description ul, .project-description li { color: #ffffff; transition: color 1.5s ease; }
-        .project-description h4 { color: #ffffff; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 0.5rem; transition: color 1.5s ease, border-color 1.5s ease; }
-        .project-description strong { color: #60a5fa; transition: color 1.5s ease; }
-        .service-card:hover { transform: translateY(-5px); box-shadow: 0 5px 20px rgba(255,255,255,0.2); }
+        .project-description p, .project-description ul, .project-description li { color: #ffffff; }
+        .project-description h4 { color: #ffffff; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 0.5rem; }
+        .project-description strong { color: #ffffff; font-weight: 700; }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 5px 20px rgba(255,255,255,0.15); }
         .service-card h3 { margin-top: 0; color: #ffffff; }
         .service-card p { color: #ffffff; }
-        .skills-list { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
-        .skill-tag { background: rgba(255,255,255,0.1); color: #ffffff; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; border: 1px solid #ffffff; }
-        .date { color: #cccccc; font-style: italic; }
 
-        footer { background: rgba(2,11,24,0.98); color: #ffffff; text-align: center; padding: 2rem; margin-top: 3rem; position: relative; z-index: 2; backdrop-filter: blur(10px); border-top: 1px solid rgba(255,255,255,0.2); }
-        .cta-button { display: inline-block; background: #ffffff; color: #000000; padding: 1rem 2rem; text-decoration: none; border-radius: 5px; margin-top: 1rem; transition: background 0.3s; font-weight: 600; border: 2px solid #ffffff; }
-        .cta-button:hover { background: transparent; color: #ffffff; }
+        .consultation-button { display: inline-block; background: transparent; color: #ffffff; padding: 1.2rem 2.5rem; text-decoration: none; border-radius: 8px; margin-top: 1.5rem; transition: all 0.3s; font-weight: 600; border: 2px solid #ffffff; cursor: pointer; font-size: 1.1rem; }
+        .consultation-button:hover { background: #ffffff; color: #000000; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255,255,255,0.3); }
+
+        footer { background: rgba(0,0,0,0.98); color: #ffffff; text-align: center; padding: 2rem; margin-top: 3rem; position: relative; z-index: 2; backdrop-filter: blur(10px); border-top: 1px solid rgba(255,255,255,0.2); }
 
         section p { color: #ffffff; font-size: 0.95rem; }
         section ul { color: #ffffff; font-size: 0.95rem; }
         section li { color: #ffffff; font-size: 0.95rem; }
-        section a { color: #60a5fa; text-decoration: underline; }
-        section a:hover { color: #93c5fd; }
-
-        .main-experience-section { background: rgba(5,25,50,0.9); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; border: 2px solid #ffffff; box-shadow: 0 3px 15px rgba(255,255,255,0.1); cursor: pointer; backdrop-filter: blur(3px); }
-        .main-experience-section:hover { opacity: 0.9; }
-        .main-experience-header { cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
-        .main-experience-header:hover { opacity: 0.8; }
-        .main-experience-header h2 { color: #ffffff; }
-        .dropdown-arrow { font-size: 1.5rem; transition: transform 0.3s ease; color: #ffffff; }
-        .dropdown-arrow.open { transform: rotate(180deg); }
-        .main-experience-content { max-height: 0; overflow: hidden; transition: max-height 0.7s cubic-bezier(0.4,0,0.2,1), opacity 0.5s ease; opacity: 0; }
-        .main-experience-content.open { max-height: 2500px; opacity: 1; }
+        section a { color: #ffffff; text-decoration: underline; }
+        section a:hover { color: #cccccc; }
 
         @media (max-width: 768px) {
             .loading-title { font-size: 1.8rem; }
@@ -198,12 +116,6 @@
             header h1 { font-size: 2rem; }
             section { padding: 2rem 1rem; }
             .showcase-grid { grid-template-columns: 1fr; }
-            .services-hero { padding: 2rem 1rem; }
-            .services-hero-tagline { font-size: 1.5rem; }
-            .animated-services-logo { width: 80px; height: 80px; }
-            .logo-glow-ring { width: 100px; height: 100px; }
-            .logo-glow-ring:nth-child(2) { width: 125px; height: 125px; }
-            .logo-glow-ring:nth-child(3) { width: 150px; height: 150px; }
         }
     </style>
 </head>
@@ -224,29 +136,20 @@
                 <img src="JustWhite.png" alt="Marcell Services Logo" class="logo">
             </h1>
         </header>
-        
-   
-           
-       
-    
-        
+
         <div class="container">
 
-            <!-- ── SHOWCASE / ABOUT ── -->
+            <!-- SHOWCASE / ABOUT -->
             <section id="about">
                 <h2>What We Offer</h2>
                 <p class="showcase-intro">Every business deserves a powerful digital presence. Here's how we make that happen.</p>
 
                 <div class="showcase-grid">
 
-                    <!-- Card 1: Website Services -->
                     <a href="website.services.html">
                     <div class="showcase-card" style="background-image: url('eliconavisuals.com screenshot.png');">
-                        <div class="showcase-img-wrap">
-                            <img src="eliconavisuals.com screenshot.png" alt="Business website example"
-                                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><path d=\'M3 9h18M9 21V9\'/></svg>BUSINESS SITE</div>'">
-                            <span class="showcase-badge">Web Dev</span>
-                        </div>
+                        <div class="showcase-img-wrap"></div>
+                        <span class="showcase-badge">Web Dev</span>
                         <div class="showcase-body">
                             <div class="showcase-tagline">Website Development</div>
                             <p class="showcase-desc">Custom-built business websites that convert visitors into clients.</p>
@@ -259,14 +162,10 @@
                     </div>
                     </a>
 
-                    <!-- Card 3: Business Photography -->
                     <a href="business-photography.html">
                     <div class="showcase-card" style="background-image: url('portfolio-screenshot.jpg');">
-                        <div class="showcase-img-wrap">
-                            <img src="portfolio-screenshot.jpg" alt="Business photography"
-                                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z\'/><circle cx=\'12\' cy=\'13\' r=\'4\'/></svg>PHOTOGRAPHY</div>'">
-                            <span class="showcase-badge">Photography</span>
-                        </div>
+                        <div class="showcase-img-wrap"></div>
+                        <span class="showcase-badge">Photography</span>
                         <div class="showcase-body">
                             <div class="showcase-tagline">Photography</div>
                             <p class="showcase-desc">Professional business photography that captures your brand, team, and story.</p>
@@ -278,17 +177,13 @@
                     </div>
                     </a>
 
-                    <!-- Card 4: Business Facilities -->
                     <a href="business-facilities.html">
                     <div class="showcase-card" style="background-image: url('consulting-screenshot.jpg');">
-                        <div class="showcase-img-wrap">
-                            <img src="consulting-screenshot.jpg" alt="Business facilities"
-                                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><rect x=\'2\' y=\'7\' width=\'20\' height=\'14\' rx=\'2\'/><path d=\'M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M12 12v4M10 14h4\'/></svg>BUSINESS FACILITIES</div>'">
-                            <span class="showcase-badge">Facilities</span>
-                        </div>
+                        <div class="showcase-img-wrap"></div>
+                        <span class="showcase-badge">Facilities</span>
                         <div class="showcase-body">
                             <div class="showcase-tagline">Facilities</div>
-                            <p class="showcase-desc">From branded uniform services and restroom &amp; cleaning supplies to customizable floor mats</p>
+                            <p class="showcase-desc">From branded uniform services and restroom &amp; cleaning supplies to customizable floor mats.</p>
                             <div class="showcase-tags">
                                 <span class="showcase-tag">Uniforms</span>
                                 <span class="showcase-tag">Cleaning Supplies</span>
@@ -302,12 +197,11 @@
 
                 <div class="founder-strip">
                     <div>
-                        <p style="font-weight: 600; margin-bottom: 0.2rem;">Rob Marcellin
-                            Solo Founder</p>
+                        <p style="font-weight: 600; margin-bottom: 0.2rem;">Rob Marcellin &nbsp; Solo Founder</p>
                         <p class="muted" style="font-size: 0.9rem;">·Full-Stack Developer·Montclair State University Est. 2024</p>
                     </div>
                     <div style="margin-left: auto;">
-                        <a href="https://www.linkedin.com/in/rob-marcellin-0a8b75256/" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #ffffff; font-weight: 600; font-size: 0.9rem; transition: opacity 0.3s;">
+                        <a href="https://www.linkedin.com/in/rob-marcellin-0a8b75256/" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #ffffff; font-weight: 600; font-size: 0.9rem;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                             </svg>
@@ -316,25 +210,22 @@
                     </div>
                 </div>
             </section>
-            
-            <!-- ── PROJECTS ── -->
+
+            <!-- PROJECTS -->
             <section id="projects">
-                <h2>Featured Projects</h2>    
+                <h2>Featured Projects</h2>
                 <div class="service-card" style="margin-bottom: 2rem;" onclick="toggleProjectDetails(this.querySelector('.project-card-header'))">
                     <div class="project-card-header">
                         <div>
-                            <h3 style="margin-bottom: 0.5rem;">Elicona Visuals (Development and Ongoing Support - July 2025) </h3>
-                            <p style="margin-bottom: 0;"><strong>Website:</strong> <a href="https://eliconavisuals.com" target="_blank" style="color: #60a5fa;" onclick="event.stopPropagation();">eliconavisuals.com</a></p>
+                            <h3 style="margin-bottom: 0.5rem;">Elicona Visuals (Development and Ongoing Support - July 2025)</h3>
+                            <p style="margin-bottom: 0;"><strong>Website:</strong> <a href="https://eliconavisuals.com" target="_blank" style="color: #ffffff;" onclick="event.stopPropagation();">eliconavisuals.com</a></p>
                         </div>
                         <span class="service-dropdown-arrow">▼</span>
                     </div>
-                    
                     <div class="project-description">
                         <p style="margin-top: 1rem; font-size: 1rem; line-height: 1.8;">A modern, professional portfolio website for a premium barber business, transforming their digital presence and client engagement.</p>
-                        
                         <h4 style="font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.8rem;">Project Overview</h4>
                         <p>Elicona Visuals needed a sophisticated online presence to match their high-end barbering services. We created a sleek, responsive website that showcases their expertise, builds client trust, and streamlines their booking process.</p>
-                        
                         <h4 style="font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.8rem;">Business Impact</h4>
                         <ul style="margin-left: 1.5rem; line-height: 1.8;">
                             <li><strong>Enhanced Client Trust:</strong> Professional website design established credibility and legitimacy in a competitive market</li>
@@ -342,7 +233,6 @@
                             <li><strong>Increased Visibility:</strong> SEO optimization and mobile responsiveness expanded their reach to new clients</li>
                             <li><strong>Client Engagement:</strong> Portfolio gallery showcasing work quality attracted higher-value clientele</li>
                         </ul>
-                        
                         <h4 style="font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.8rem;">Technical Implementation</h4>
                         <p><strong>Technologies Used:</strong> HTML5, CSS3, JavaScript, React, PHP</p>
                         <ul style="margin-left: 1.5rem; margin-top: 0.8rem; line-height: 1.8;">
@@ -352,44 +242,39 @@
                             <li><strong>Performance Optimization:</strong> Image compression and lazy loading for fast page speeds</li>
                             <li><strong>Cross-Browser Compatibility:</strong> Tested and optimized for all major browsers</li>
                         </ul>
-                        
                         <h4 style="font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.8rem;">Challenges &amp; Solutions</h4>
-                        
                         <div style="margin-top: 1rem;">
                             <p style="margin-bottom: 0.5rem;"><strong>Challenge 1: Form Submission Reliability - Updated September 13, 2025</strong></p>
-                            <p style="margin-left: 1rem; margin-bottom: 1rem;"><em>Issue:</em> Initial contact form submissions were intermittently failing, causing potential client inquiries to be lost.<br>
-                            <em>Solution:</em> Implemented robust error handling and fallback mechanisms. Added client-side validation to catch issues before submission, server-side validation for security, and email confirmation system to ensure messages were received. Also added a backup submission method using a third-party service.</p>
+                            <p style="margin-left: 1rem; margin-bottom: 1rem;"><em>Issue:</em> Initial contact form submissions were intermittently failing.<br>
+                            <em>Solution:</em> Implemented robust error handling, client-side and server-side validation, and a backup submission method using a third-party service.</p>
                         </div>
-                        
                         <div style="margin-top: 1rem;">
                             <p style="margin-bottom: 0.5rem;"><strong>Challenge 2: Mobile Performance Issues - Updated November 2, 2025</strong></p>
-                            <p style="margin-left: 1rem; margin-bottom: 1rem;"><em>Issue:</em> High-resolution portfolio images were causing slow load times on mobile devices, particularly on slower connections.<br>
-                            <em>Solution:</em> Implemented progressive image loading with WebP format for modern browsers, lazy loading for below-the-fold images, and created multiple image size variants served based on device screen size. This reduced initial page load time by 65%.</p>
+                            <p style="margin-left: 1rem; margin-bottom: 1rem;"><em>Issue:</em> High-resolution images causing slow load times on mobile.<br>
+                            <em>Solution:</em> Implemented WebP format, lazy loading, and multiple image size variants. Reduced initial page load time by 65%.</p>
                         </div>
-                        
                         <div style="margin-top: 1rem;">
                             <p style="margin-bottom: 0.5rem;"><strong>Challenge 3: Browser Compatibility with Animations - Updated December 21, 2025</strong></p>
-                            <p style="margin-left: 1rem; margin-bottom: 1rem;"><em>Issue:</em> Custom CSS animations weren't rendering consistently across Safari and older browser versions.<br>
-                            <em>Solution:</em> Added vendor prefixes for cross-browser support, implemented feature detection to provide graceful degradation for older browsers, and created fallback static presentations for unsupported animation features while maintaining the visual appeal.</p>
+                            <p style="margin-left: 1rem; margin-bottom: 1rem;"><em>Issue:</em> CSS animations not rendering consistently across Safari and older browsers.<br>
+                            <em>Solution:</em> Added vendor prefixes, feature detection, and graceful degradation fallbacks.</p>
                         </div>
                     </div>
                 </div>
             </section>
-            
-            <!-- ── CONTACT ── -->
+
+            <!-- CONTACT -->
             <section id="contact">
                 <h2>Let's Work Together</h2>
                 <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Take the first step to turn your visions into an online reality.</p>
-                   
                 <div style="text-align: center; margin-top: 2rem;">
                     <p style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">Ready to get started?</p>
-                    <a href="mailto:xmarcellr@gmail.com?subject=Let's%20Connect&body=Hi%20Rob%2C%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20really%20enjoyed%20learning%20about%20your%20work!%0D%0A%0D%0AI'm%20reaching%20out%20because%3A%20%5BTell%20me%20what%20caught%20your%20interest%20or%20what%20you're%20looking%20for%5D%0D%0A%0D%0AA%20bit%20about%20me%3A%20%5BOptional%20-%20share%20what%20you%20do%20or%20what%20brings%20you%20here%5D%0D%0A%0D%0AI'd%20love%20to%3A%20%5BChat%20about%20opportunities%20%2F%20Ask%20some%20questions%20%2F%20Discuss%20a%20potential%20project%20%2F%20Just%20connect%5D%0D%0A%0D%0ALooking%20forward%20to%20hearing%20from%20you!%0D%0A%0D%0ABest%2C%0D%0A%5BYour%20Name%5D" class="consultation-button">Contact Me</a>
+                    <a href="mailto:xmarcellr@gmail.com?subject=Let's%20Connect&body=Hi%20Rob%2C%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20really%20enjoyed%20learning%20about%20your%20work!%0D%0A%0D%0AI'm%20reaching%20out%20because%3A%20%5BTell%20me%20what%20caught%20your%20interest%20or%20what%20you're%20looking%20for%5D%0D%0A%0D%0ALooking%20forward%20to%20hearing%20from%20you!%0D%0A%0D%0ABest%2C%0D%0A%5BYour%20Name%5D" class="consultation-button">Contact Me</a>
                     <p style="margin-top: 1rem; font-size: 0.95rem; opacity: 0.9;">Response time: Within 24 hours</p>
-                    <a href="https://buy.stripe.com/cNibJ1c5u1Tg6wE0N4eZ207" target="_blank" class="cta-button" style="font-size: 1rem; padding: 1rem 2rem; margin-top: 1rem; display: none;">Contribute</a>
                 </div>
             </section>
+
         </div>
-            
+
         <footer>
             <p>&copy; 2026 Marcell Services LLC. All rights reserved.</p>
             <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #9ca3af;">
@@ -397,18 +282,16 @@
             </p>
         </footer>
     </div>
-    
+
     <script>
         // Loading Screen - only show once per session
         const loadingScreen = document.getElementById('loadingScreen');
         const mainContent = document.getElementById('mainContent');
 
         if (sessionStorage.getItem('hasVisited')) {
-            // Already seen the animation this session - skip it
             loadingScreen.style.display = 'none';
             mainContent.classList.add('visible');
         } else {
-            // First visit - show the animation
             sessionStorage.setItem('hasVisited', 'true');
             document.body.style.overflow = 'hidden';
             setTimeout(() => {
@@ -420,69 +303,20 @@
                 }, 800);
             }, 2500);
         }
-        
+
         // Scroll reveal
         const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                    if (entry.target.id === 'services') {
-                        const logo = entry.target.querySelector('.services-logo');
-                        if (logo) logo.classList.add('fade-in-logo');
-                    }
-                }
+                if (entry.isIntersecting) entry.target.classList.add('fade-in');
             });
         }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
-        
-        document.querySelectorAll('section').forEach(section => observer.observe(section));
-        
-        // Toggles
-        function toggleMainExperience(header) {
-            header.nextElementSibling.classList.toggle('open');
-            header.querySelector('.dropdown-arrow').classList.toggle('open');
-        }
-        
-        function toggleService(header) {
-            header.nextElementSibling.classList.toggle('open');
-            header.querySelector('.service-dropdown-arrow').classList.toggle('open');
-        }
-        
+        document.querySelectorAll('section').forEach(s => observer.observe(s));
+
+        // Project dropdown
         function toggleProjectDetails(header) {
             header.nextElementSibling.classList.toggle('open');
             header.querySelector('.service-dropdown-arrow').classList.toggle('open');
         }
-        
-        // Hamburger
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('nav ul');
-        
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-        
-        document.querySelectorAll('nav ul li a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-        
-        document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            }
-        });
-        
-        
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
