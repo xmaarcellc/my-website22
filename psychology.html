@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SBYX1GSJS8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-SBYX1GSJS8');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="The Psychology Behind Why People Notice the Small Things About a Business | Marcell Topics">
+    <title>Why People Notice the Small Things About a Business | Marcell Topics</title>
+    <link rel="icon" type="image/png" href="JustLogo.png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #ffffff; background: linear-gradient(to bottom, #1a1a1a 0%, #222222 20%, #2a2a2a 40%, #222222 60%, #1a1a1a 100%); background-attachment: fixed; min-height: 100vh; overflow-x: hidden; }
+        .bg-image { position: fixed; left: 0; right: 0; width: 100%; height: 40vh; background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0.15; z-index: 0; pointer-events: none; }
+        .bg-image-1 { top: 0; background-image: url('background1.jpg'); }
+        .bg-image-2 { top: 50%; transform: translateY(-50%); background-image: url('background2.jpg'); }
+        .bg-image-3 { bottom: 0; background-image: url('background3.jpg'); }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(20,20,20,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; gap: 2.5rem; padding: 0.9rem 2rem; }
+        nav a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.85rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; }
+        nav a:hover { color: #ffffff; }
+        @media (max-width: 500px) { nav { gap: 1rem; } nav a { font-size: 0.72rem; } }
+        header { position: relative; color: #ffffff; padding: 7rem 2rem 3rem; text-align: center; background: rgba(30,30,30,0.6); z-index: 2; }
+        header h1 { font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: 1px; color: #ffffff; line-height: 1.3; max-width: 800px; margin: 0 auto; }
+        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: #ffffff; text-decoration: none; font-weight: 600; font-size: 0.95rem; border: 2px solid #ffffff; border-radius: 25px; padding: 0.6rem 1.4rem; margin-top: 1.5rem; transition: all 0.3s; }
+        .back-link:hover { background: #ffffff; color: #000000; transform: translateY(-2px); }
+        .meta { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.2rem; }
+        .meta-badge { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.2); padding: 0.25rem 0.8rem; border-radius: 20px; }
+        .meta-date { font-size: 0.85rem; color: #aaaaaa; }
+        .container { max-width: 780px; margin: 0 auto; padding: 3rem 2rem 5rem; position: relative; z-index: 2; }
+        .article-body { background: rgba(30,30,30,0.25); backdrop-filter: blur(10px); border-radius: 16px; padding: 3rem; opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+        .article-body.fade-in { opacity: 1; transform: translateY(0); }
+        .article-body p { color: #dddddd; font-size: 1rem; line-height: 1.9; margin-bottom: 1.5rem; }
+        .article-body h2 { color: #ffffff; font-size: 1.3rem; font-weight: 700; margin: 2.5rem 0 1rem; padding-bottom: 0.4rem; border-bottom: 2px solid rgba(255,255,255,0.2); }
+        .article-body ul { color: #dddddd; font-size: 1rem; line-height: 1.9; margin: 0 0 1.5rem 1.5rem; }
+        .article-body li { margin-bottom: 0.5rem; }
+        .article-body strong { color: #ffffff; font-weight: 700; }
+        .article-body .callout { background: rgba(38,38,38,0.9); border-left: 3px solid #ffffff; border-radius: 0 8px 8px 0; padding: 1.2rem 1.5rem; margin: 2rem 0; color: #cccccc; font-size: 0.95rem; font-style: italic; }
+        .author-strip { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; gap: 1rem; }
+        .author-strip p { color: #aaaaaa; font-size: 0.9rem; margin: 0; }
+        .author-strip strong { color: #ffffff; }
+        footer { background: transparent; color: #ffffff; text-align: center; padding: 2rem; margin-top: 3rem; position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.9rem; }
+        footer a { color: #9ca3af; text-decoration: none; }
+
+        /* AUDIO PLAYER */
+        .audio-player { display: flex; align-items: center; gap: 1rem; background: rgba(38,38,38,0.9); border: 1px solid rgba(255,255,255,0.15); border-radius: 50px; padding: 0.75rem 1.5rem; margin: 0 auto 2rem; max-width: 780px; backdrop-filter: blur(10px); position: relative; z-index: 2; }
+        .audio-play-btn { width: 38px; height: 38px; min-width: 38px; border-radius: 50%; border: 2px solid #ffffff; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; }
+        .audio-play-btn:hover { background: #ffffff; }
+        .audio-play-btn:hover svg { stroke: #000000; fill: #000000; }
+        .audio-play-btn svg { width: 14px; height: 14px; stroke: #ffffff; fill: #ffffff; transition: all 0.2s; }
+        .audio-label { font-size: 0.82rem; color: rgba(255,255,255,0.6); letter-spacing: 0.5px; flex: 1; }
+        .audio-label span { color: #ffffff; font-weight: 600; }
+        .audio-progress { flex: 2; height: 3px; background: rgba(255,255,255,0.15); border-radius: 2px; overflow: hidden; }
+        .audio-progress-bar { height: 100%; width: 0%; background: #ffffff; border-radius: 2px; transition: width 0.5s linear; }
+        .audio-speed { font-size: 0.75rem; cursor: pointer; border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 0.2rem 0.6rem; background: transparent; color: rgba(255,255,255,0.5); transition: all 0.2s; white-space: nowrap; }
+        .audio-speed:hover { border-color: #ffffff; color: #ffffff; }
+        @media (max-width: 768px) { .article-body { padding: 2rem 1.2rem; } }
+
+        /* MOBILE SHARE SIDEBAR - fixed left */
+        .mobile-share { display: none; position: fixed; left: 0.6rem; top: 50%; transform: translateY(-50%); flex-direction: column; align-items: center; gap: 0.6rem; z-index: 10; }
+        .mobile-share p { font-size: 0.58rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); writing-mode: vertical-rl; transform: rotate(180deg); margin-bottom: 0.2rem; }
+        .mobile-share-btns { display: flex; flex-direction: column; gap: 0.6rem; }
+        .mobile-share-btn { width: 38px; height: 38px; border-radius: 50%; background: rgba(38,38,38,0.9); border: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.2s; backdrop-filter: blur(10px); }
+        .mobile-share-btn:hover { border-color: #ffffff; }
+        .mobile-share-btn svg { width: 16px; height: 16px; fill: #ffffff; }
+        @media (max-width: 768px) { .mobile-share { display: flex; } }
+
+        /* DESKTOP SHARE SIDEBAR */
+        .share-sidebar { position: fixed; right: 1.5rem; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 0.75rem; z-index: 10; }
+        .share-btn { width: 44px; height: 44px; border-radius: 50%; background: rgba(38,38,38,0.9); border: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease; backdrop-filter: blur(10px); }
+        .share-btn:hover { border-color: #ffffff; transform: scale(1.1); background: rgba(60,60,60,0.95); }
+        .share-btn svg { width: 18px; height: 18px; fill: #ffffff; }
+        @media (max-width: 768px) { .share-sidebar { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="bg-image bg-image-1"></div>
+    <div class="bg-image bg-image-2"></div>
+    <div class="bg-image bg-image-3"></div>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="website-services.html">Web Development</a>
+        <a href="business-facilities.html">Business Facilities</a>
+    </nav>
+
+    <header>
+        <div class="meta">
+            <span class="meta-badge">Psychology</span>
+            <span class="meta-date">February 28, 2026 &nbsp;·&nbsp; 5 min read</span>
+        </div>
+        <h1>Why Certain People Notice the Small Things About Your Business, And Why They're the Ones Who Matter</h1>
+        <a href="/" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+            Back to Home
+        </a>
+    </header>
+
+    <!-- AUDIO PLAYER -->
+    <div class="audio-player" id="audioPlayer">
+        <button class="audio-play-btn" id="playBtn" onclick="toggleAudio()">
+            <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+        </button>
+        <div class="audio-label"><span id="audioStatus">Listen to article</span></div>
+        <div class="audio-progress"><div class="audio-progress-bar" id="progressBar"></div></div>
+        <button class="audio-speed" id="speedBtn" onclick="cycleSpeed()">1x</button>
+    </div>
+
+    <script>
+        const speeds = [1, 1.25, 1.5, 2];
+        let speedIndex = 0, utterance = null, synth = window.speechSynthesis, playing = false, totalChars = 0, spokenChars = 0;
+        const playIcon = `<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>`;
+        const pauseIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="4" x2="6" y2="20"/><line x1="18" y1="4" x2="18" y2="20"/></svg>`;
+        function getArticleText() {
+            const clone = document.getElementById('articleBody').cloneNode(true);
+            clone.querySelectorAll('h2').forEach(h => { if (h.textContent.trim() === 'References') { let el = h.nextElementSibling; while (el) { let next = el.nextElementSibling; el.remove(); el = next; } h.remove(); }});
+            clone.querySelector && clone.querySelector('.author-strip') && clone.querySelector('.author-strip').remove();
+            return clone.innerText.replace(/\s+/g, ' ').trim();
+        }
+        function toggleAudio() { if (!playing) startAudio(); else pauseAudio(); }
+        function startAudio() {
+            if (synth.paused && utterance) { synth.resume(); playing = true; document.getElementById('playBtn').innerHTML = pauseIcon; document.getElementById('audioStatus').textContent = 'Playing...'; return; }
+            synth.cancel();
+            const text = getArticleText(); totalChars = text.length;
+            utterance = new SpeechSynthesisUtterance(text);
+            utterance.rate = speeds[speedIndex] * 1.08; utterance.pitch = 1.3; utterance.lang = 'en-US';
+            const voices = synth.getVoices();
+            const preferred = ['Google US English','Microsoft Aria Online (Natural)','Microsoft Jenny Online (Natural)','Samantha','Karen','en-US'];
+            let chosen = null;
+            for (const pref of preferred) { chosen = voices.find(v => v.name.includes(pref) || v.voiceURI.includes(pref)); if (chosen) break; }
+            if (!chosen) chosen = voices.find(v => v.lang === 'en-US');
+            if (!chosen) chosen = voices.find(v => v.lang.startsWith('en'));
+            if (chosen) utterance.voice = chosen;
+            utterance.onboundary = (e) => { if (e.name === 'word') { spokenChars = e.charIndex; document.getElementById('progressBar').style.width = ((spokenChars / totalChars) * 100) + '%'; }};
+            utterance.onend = () => { playing = false; document.getElementById('playBtn').innerHTML = playIcon; document.getElementById('audioStatus').textContent = 'Listen to article'; document.getElementById('progressBar').style.width = '100%'; setTimeout(() => document.getElementById('progressBar').style.width = '0%', 1500); };
+            synth.speak(utterance); playing = true; document.getElementById('playBtn').innerHTML = pauseIcon; document.getElementById('audioStatus').textContent = 'Playing...';
+        }
+        function pauseAudio() { synth.pause(); playing = false; document.getElementById('playBtn').innerHTML = playIcon; document.getElementById('audioStatus').textContent = 'Paused'; }
+        function cycleSpeed() { speedIndex = (speedIndex + 1) % speeds.length; document.getElementById('speedBtn').textContent = speeds[speedIndex] + 'x'; if (playing) { synth.cancel(); startAudio(); } }
+        window.addEventListener('beforeunload', () => synth.cancel());
+    </script>
+
+    <div class="container">
+        <div class="article-body" id="articleBody">
+
+            <p>Most people walk into a business and register an overall impression. They leave with a general feeling (it was fine, it was good, it was off somehow) but they can't always say why. That feeling, though, is built from dozens of small details they absorbed without realizing it.</p>
+
+            <p>Then there's a smaller group of people who notice those details consciously. They see the misaligned logo on the website. They register the staff member whose uniform doesn't quite match the others. They clock the floor mat that's fraying at the corner. They don't say anything. But they form an opinion, and that opinion tends to be very sticky.</p>
+
+            <p>Understanding who these people are and why they notice what they notice is more useful for a business owner than most marketing advice.</p>
+
+            <h2>The Psychology of High-Scrutiny Observers</h2>
+
+            <p>Psychologists describe a trait called <strong>need for cognition</strong>: a tendency to engage in and enjoy effortful thinking. People high in this trait naturally pay more attention to detail, look for inconsistencies, and form more nuanced impressions of environments and experiences. They're not being critical for the sake of it. Their brains are just tuned to notice signal in the noise.</p>
+
+            <p>Separately, research on <strong>thin-slicing</strong>, a concept made prominent by Malcolm Gladwell's work on rapid cognition, shows that humans can form remarkably accurate judgments about quality, competence, and trustworthiness from very brief exposures. A two-second glance at a website, a quick scan of a lobby, a single interaction with a staff member. These snapshots carry real weight.</p>
+
+            <p>The people who notice the small things aren't outliers. They're the leading edge of what everyone else eventually feels but can't articulate.</p>
+
+            <div class="callout">"Customers don't always know what they noticed. But they know how they felt. And how they felt was built from everything they saw."</div>
+
+            <h2>Why the Detail-Noticers Are Disproportionately Valuable</h2>
+
+            <p>Here's why this matters beyond psychology: the people most likely to notice small quality signals are also the most likely to be high-value customers, referral sources, and decision-makers.</p>
+
+            <ul>
+                <li><strong>They're often the ones holding the budget.</strong> Business owners, managers, and procurement decision-makers are trained to evaluate vendors and partners. They look for signs of operational discipline, because a business that can't manage its own presentation probably can't manage their project either.</li>
+                <li><strong>They refer with specificity.</strong> When a detail-noticer recommends a business, they don't just say it was good. They say why, and that specific, credible word-of-mouth carries more weight than generic praise.</li>
+                <li><strong>They're vocal online.</strong> Reviews that mention specific details like the clean lobby, the well-designed website, and the staff who all looked put-together consistently outperform generic positive reviews in their influence on other buyers.</li>
+            </ul>
+
+            <h2>What Small Details Actually Signal</h2>
+
+            <p>When someone notices that your website loads fast, has a clear layout, and actually answers the question they came with, they're not just noticing the website. They're inferring something about the people behind it. <strong>Attention to detail at the surface level reads as competence at the operational level.</strong></p>
+
+            <p>The same logic applies in person. A uniform that fits well and is consistently worn across a team isn't just about aesthetics. It signals that this business has standards, enforces them, and cares about how it presents itself to the world. A clean entrance mat, a restroom that's stocked, a lobby that doesn't smell off. Each one is a data point.</p>
+
+            <p>Individually, none of these things close a deal. Together, they build a pattern. And patterns are what high-scrutiny observers are wired to read.</p>
+
+            <div class="callout">"Nobody walks in and thinks 'great floor mat.' But they do walk in and think 'this place has its act together.' The mat is one reason why."</div>
+
+            <h2>The Cost of Getting the Small Things Wrong</h2>
+
+            <p>The inverse is just as true, and more damaging. Small failures compound quickly in the mind of someone who notices them. A broken link on a website. An inconsistent font. One staff member whose shirt is untucked while everyone else is sharp. These aren't catastrophic on their own. But they introduce doubt.</p>
+
+            <p>Doubt is expensive. It makes people hesitate, ask more questions, and ultimately choose the option that felt safer. The business that lost the deal may never know why. The prospect won't say "your website had two different button styles." They'll just go with someone else.</p>
+
+            <p>Research on <strong>the halo effect</strong>, first described by psychologist Edward Thorndike, shows that a positive first impression creates a bias toward interpreting everything else positively, and vice versa. Getting the small things right doesn't just fix individual details. It shapes the entire lens through which a potential customer evaluates you.</p>
+
+            <h2>Designing for the People Who Notice</h2>
+
+            <p>The practical implication isn't to obsess over perfection. It's to be intentional. The businesses that earn the trust of high-scrutiny observers aren't necessarily the most expensive or elaborate. They're the most consistent.</p>
+
+            <ul>
+                <li>A website that loads cleanly, uses consistent typography, and makes it easy to contact you signals more than one with flashy animations that break on mobile.</li>
+                <li>A uniform program where everyone is wearing the same thing, clean, fitted, and branded, signals more than expensive décor in a waiting room.</li>
+                <li>A restroom that's reliably stocked and clean on a Tuesday afternoon says more about your standards than a renovation.</li>
+            </ul>
+
+            <p>These aren't things most customers will consciously thank you for. But they're the foundation of trust, and trust is what turns a first visit into a long-term relationship.</p>
+
+            <h2>The Bottom Line</h2>
+
+            <p>The people who notice the small things about your business are paying you a kind of invisible attention that most businesses never earn and never lose on purpose. They're forming opinions based on everything you've decided to control, and everything you've decided to leave to chance. The businesses that take the details seriously don't do it because they expect applause. They do it because they understand who's watching.</p>
+
+            <h2>References</h2>
+            <ul style="list-style: none; margin-left: 0; display: flex; flex-direction: column; gap: 0.6rem;">
+                <li><a href="https://psycnet.apa.org/record/1982-28421-001" target="_blank" style="color: #aaaaaa; font-size: 0.85rem;">Cacioppo & Petty (1982): Need for Cognition Scale, Journal of Personality and Social Psychology</a></li>
+                <li><a href="https://www.hbs.edu/faculty/Pages/item.aspx?num=9073" target="_blank" style="color: #aaaaaa; font-size: 0.85rem;">Ambady & Rosenthal (1992): Thin Slices of Expressive Behavior, Psychological Bulletin</a></li>
+                <li><a href="https://psycnet.apa.org/record/1920-10050-001" target="_blank" style="color: #aaaaaa; font-size: 0.85rem;">Thorndike (1920): A Constant Error in Psychological Ratings (Halo Effect), Journal of Applied Psychology</a></li>
+                <li><a href="https://www.journals.uchicago.edu/doi/10.1086/209576" target="_blank" style="color: #aaaaaa; font-size: 0.85rem;">Sirgy et al.: Self-Congruity and Consumer Behavior, Journal of Consumer Research</a></li>
+                <li><a href="https://www.sciencedirect.com/science/article/pii/S0148296318303436" target="_blank" style="color: #aaaaaa; font-size: 0.85rem;">Bilro et al.: Customer Engagement and Experience, Journal of Business Research</a></li>
+            </ul>
+
+            <div class="author-strip">
+                <div>
+                    <p><strong>Rob Marcellin</strong></p>
+                    <p>Founder, Marcell Services &nbsp;·&nbsp; Montclair State University</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Marcell Services LLC. All rights reserved.</p>
+        <p style="margin-top: 0.4rem; color: #9ca3af;"><a href="/">Marcell Services</a></p>
+    </footer>
+
+    <script>
+        const el = document.getElementById('articleBody');
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) el.classList.add('fade-in'); });
+        }, { threshold: 0.05 });
+        obs.observe(el);
+    </script>
+
+    <!-- MOBILE SHARE SIDEBAR -->
+    <div class="mobile-share" id="mobileShare">
+        <p>Share</p>
+        <div class="mobile-share-btns">
+            <a class="mobile-share-btn" id="mShareLinkedIn" href="#" target="_blank" title="Share on LinkedIn">
+                <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <a class="mobile-share-btn" id="mShareX" href="#" target="_blank" title="Share on X">
+                <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a class="mobile-share-btn" id="mShareFacebook" href="#" target="_blank" title="Share on Facebook">
+                <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- DESKTOP SHARE SIDEBAR -->
+    <div class="share-sidebar" id="shareSidebar">
+        <span style="font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);text-align:center;">Share</span>
+        <a class="share-btn" id="shareLinkedIn" href="#" target="_blank" title="Share on LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+        <a class="share-btn" id="shareX" href="#" target="_blank" title="Share on X">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a class="share-btn" id="shareFacebook" href="#" target="_blank" title="Share on Facebook">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+    </div>
+
+    <script>
+        const pageUrl = encodeURIComponent(window.location.href);
+        const pageTitle = encodeURIComponent(document.title);
+        document.getElementById('shareLinkedIn').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + pageUrl;
+        document.getElementById('shareX').href = 'https://twitter.com/intent/tweet?url=' + pageUrl + '&text=' + pageTitle;
+        document.getElementById('shareFacebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + pageUrl;
+        const mu = encodeURIComponent(window.location.href);
+        const mt = encodeURIComponent(document.title);
+        document.getElementById('mShareLinkedIn').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + mu;
+        document.getElementById('mShareX').href = 'https://twitter.com/intent/tweet?url=' + mu + '&text=' + mt;
+        document.getElementById('mShareFacebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + mu;
+
+        const shareBtns = Array.from(document.querySelectorAll('.share-btn, .mobile-share-btn'));
+        let lastScrollY = window.scrollY, scrollTimeout, isScrolling = false, floatT = 0;
+        let positions = shareBtns.map(() => 0), velocity = 0;
+        function animate() {
+            floatT += 0.025;
+            if (isScrolling) {
+                positions[0] += (velocity - positions[0]) * 0.3;
+                for (let i = 1; i < shareBtns.length; i++) positions[i] += (positions[i-1] - positions[i]) * 0.25;
+                velocity *= 0.85;
+            } else {
+                for (let i = 0; i < shareBtns.length; i++) {
+                    const wave = Math.sin(floatT + i * 0.9) * 5;
+                    positions[i] += (wave - positions[i]) * 0.08;
+                }
+            }
+            shareBtns.forEach((btn, i) => btn.style.transform = `translateY(${positions[i].toFixed(2)}px)`);
+            requestAnimationFrame(animate);
+        }
+        animate();
+        window.addEventListener('scroll', () => {
+            const delta = window.scrollY - lastScrollY;
+            velocity = delta * 1.8; lastScrollY = window.scrollY; isScrolling = true;
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => { isScrolling = false; velocity = 0; }, 150);
+        });
+    </script>
+</body>
+</html>
