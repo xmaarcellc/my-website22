@@ -16,62 +16,51 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #ffffff; background: linear-gradient(to bottom, #1a1a1a 0%, #222222 20%, #2a2a2a 40%, #222222 60%, #1a1a1a 100%); background-attachment: fixed; min-height: 100vh; overflow-x: hidden; }
 
-        /* NAV */
-        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; overflow: visible; background: rgba(20,20,20,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; gap: 2.5rem; padding: 0.9rem 2rem; }
-        nav a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.85rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; position: relative; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(20,20,20,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; gap: 2.5rem; padding: 0.9rem 2rem; }
+        nav a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.85rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; }
         nav a:hover { color: #ffffff; }
         nav a.active { color: #ffffff; border-bottom: 2px solid #ffffff; padding-bottom: 2px; }
 
-        /* TOPICS DROPDOWN in NAV */
-        
-        .nav-topics > a { display: flex; align-items: center; gap: 0.35rem; }
-        .nav-topics > a svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2.5; transition: transform 0.2s; }
-        
-
-        /* Filter bar inside dropdown */
-        
-
-        /* HEADER */
         header { position: relative; color: #ffffff; padding: 8rem 2rem 4rem; text-align: center; background: rgba(30,30,30,0.6); z-index: 2; }
         header h1 { font-size: clamp(2.2rem, 6vw, 3.5rem); font-weight: 700; letter-spacing: 2px; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; color: #ffffff; opacity: 0; animation: fadeInHeader 1s ease-out forwards; animation-delay: 0.2s; }
         .logo { width: 60px; height: 60px; margin-top: 10px; opacity: 0; animation: fadeInHeader 1s ease-out forwards; animation-delay: 0.4s; }
         @keyframes fadeInHeader { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* BG IMAGES */
         .bg-image { position: fixed; left: 0; right: 0; width: 100%; height: 40vh; background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0.15; z-index: 0; pointer-events: none; }
         .bg-image-1 { top: 0; background-image: url('background1.jpg'); }
         .bg-image-2 { top: 50%; transform: translateY(-50%); background-image: url('background2.jpg'); }
         .bg-image-3 { bottom: 0; background-image: url('background3.jpg'); }
 
-        /* BENTO GRID */
-        .container { max-width: 1400px; margin: 0 auto; padding: 3rem 2rem 5rem; position: relative; z-index: 2; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 3rem 2rem 5rem; position: relative; z-index: 2; display: flex; flex-direction: column; gap: 1.2rem; }
+
         .bento { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: minmax(80px, auto); gap: 1.2rem; }
 
-        /* BASE CARD */
+        .bcard-intro      { grid-column: 1 / 8;  grid-row: 1; }
+        .bcard-founder    { grid-column: 8 / 13; grid-row: 1; min-height: 240px; }
+        .bcard-webdev     { grid-column: 1 / 6;  grid-row: 2 / 4; min-height: 320px; }
+        .bcard-facilities { grid-column: 6 / 10; grid-row: 2; min-height: 200px; }
+        .bcard-consult    { grid-column: 10 / 13; grid-row: 2; min-height: 200px; }
+        .bcard-topics-hdr { grid-column: 6 / 13; grid-row: 3; }
+        .bcard-collab     { grid-column: 1 / 9; }
+        .bcard-contact    { grid-column: 9 / 13; }
+
+        #articlesRow { display: none; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+        #articlesRow.open { display: grid; }
+        #articlesRow .bcard { opacity: 1; transform: none; }
+
         .bcard { background: rgba(30,30,30,0.25); border-radius: 18px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); padding: 2rem; opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s; overflow: hidden; position: relative; }
         .bcard.fade-in { opacity: 1; transform: translateY(0); }
         .bcard:hover { box-shadow: 0 8px 32px rgba(255,255,255,0.06); }
-
-        /* GRID PLACEMENTS */
-        .bcard-intro      { grid-column: 1 / 8;  grid-row: 1; }
-        .bcard-founder    { grid-column: 8 / 13; grid-row: 1; }
-        .bcard-webdev     { grid-column: 1 / 6;  grid-row: 2 / 4; min-height: 320px; }
-        .bcard-facilities { grid-column: 6 / 13; grid-row: 2; min-height: 200px; }
-        .bcard-topics-hdr { grid-column: 6 / 13; grid-row: 3; }
-        #articlesRow .bcard { opacity:1; transform:none; }
-        .bcard-collab     { grid-column: 1 / 9;  grid-row: 5; }
-        .bcard-contact    { grid-column: 9 / 13; grid-row: 5; }
-
-        /* CARD TYPES */
         .bcard h2 { font-size: 1.3rem; font-weight: 700; color: #ffffff; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid rgba(255,255,255,0.2); }
         .bcard h3 { font-size: 1rem; font-weight: 700; color: #ffffff; margin-bottom: 0.5rem; }
         .bcard p  { color: #aaaaaa; font-size: 0.9rem; line-height: 1.8; }
 
-        /* SHOWCASE CARDS */
+        /* SHOWCASE */
         .showcase-card { display: block; text-decoration: none; height: 100%; width: 100%; position: absolute; inset: 0; background-size: cover; background-position: center; border-radius: 18px; transition: background-size 0.4s ease; }
         .showcase-card:hover { background-size: 108%; }
         .bcard-webdev .showcase-card { background-image: url('eliconavisuals.com screenshot.png'); }
         .bcard-facilities .showcase-card { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('consulting-screenshot.jpg'); }
+        .bcard-consult .showcase-card { background-image: url('consultation-bg.jpg'); }
         .showcase-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.4) 50%, transparent 100%); border-radius: 18px; }
         .showcase-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; z-index: 2; }
         .showcase-badge { display: inline-block; background: rgba(20,20,20,0.9); color: #ffffff; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.3); margin-bottom: 0.8rem; }
@@ -79,13 +68,20 @@
         .showcase-tag { font-size: 0.7rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.6); color: #ffffff; }
 
         /* FOUNDER */
-        .founder-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.2rem; }
+        .founder-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.2rem; color: #ffffff; }
         .founder-role { color: #aaaaaa; font-size: 0.85rem; margin-bottom: 0.1rem; }
         .linkedin-link { display: inline-flex; align-items: center; gap: 0.4rem; text-decoration: none; color: #ffffff; font-weight: 600; font-size: 0.85rem; margin-top: 1rem; opacity: 0.7; transition: opacity 0.2s; }
         .linkedin-link:hover { opacity: 1; }
 
-        /* TOPICS HEADER CARD */
-        .bcard-topics-hdr { display: flex; flex-direction: column; justify-content: center; background: rgba(255,255,255,0.04); }
+        /* FOUNDER MODAL SLIDESHOW */
+        .founder-modal-photo { width: 100%; height: 320px; object-fit: cover; border-radius: 12px; opacity: 0; position: absolute; top: 0; left: 0; transition: opacity 0.7s ease; }
+        .founder-modal-photo.active { opacity: 1; }
+        .fdots { display: flex; gap: 0.5rem; justify-content: center; margin-top: 0.8rem; }
+        .fdot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.25); cursor: pointer; transition: background 0.2s; border: none; padding: 0; }
+        .fdot.active { background: #ffffff; }
+
+        /* TOPICS HEADER */
+        .bcard-topics-hdr { display: flex; flex-direction: column; justify-content: center; background: rgba(255,255,255,0.04); cursor: pointer; user-select: none; }
         .topics-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 0.4rem; }
         .bcard-topics-hdr h2 { border: none; padding: 0; margin: 0; font-size: 1.5rem; }
         .bcard-topics-hdr p { margin-top: 0.3rem; font-size: 0.85rem; }
@@ -99,7 +95,7 @@
         .topic-read { display: inline-flex; align-items: center; gap: 0.4rem; color: #ffffff; font-size: 0.82rem; font-weight: 600; margin-top: 1rem; opacity: 0.7; transition: opacity 0.2s; }
         .article-card:hover .topic-read { opacity: 1; }
 
-        /* COLLAB CARD */
+        /* COLLAB */
         .collab-inner { background: rgba(38,38,38,0.9); border: 2px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 1.5rem; cursor: pointer; }
         .collab-header { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .collab-arrow { font-size: 1rem; transition: transform 0.3s; color: rgba(255,255,255,0.5); }
@@ -111,7 +107,7 @@
         .collab-desc ul { margin-left: 1.2rem; }
         .collab-desc strong { color: #ffffff; }
 
-        /* CONTACT CARD */
+        /* CONTACT */
         .bcard-contact { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); }
         .contact-btn { display: inline-block; background: transparent; color: #ffffff; padding: 0.9rem 2rem; text-decoration: none; border-radius: 8px; margin-top: 1rem; transition: all 0.3s; font-weight: 600; border: 2px solid #ffffff; font-size: 0.95rem; }
         .contact-btn:hover { background: #ffffff; color: #000000; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,255,255,0.2); }
@@ -122,24 +118,22 @@
 
         @media (max-width: 900px) {
             .bento { grid-template-columns: 1fr 1fr; grid-auto-rows: auto; gap: 1rem; }
-            .bcard-intro, .bcard-founder, .bcard-webdev, .bcard-facilities,
-            .bcard-topics-hdr,
-            .bcard-collab, .bcard-contact { grid-column: 1 / -1; grid-row: auto; min-height: unset; }
+            .bcard-intro, .bcard-founder, .bcard-webdev, .bcard-facilities, .bcard-consult,
+            .bcard-topics-hdr, .bcard-collab, .bcard-contact { grid-column: 1 / -1; grid-row: auto; min-height: unset; }
+            .bcard-founder { min-height: 280px; }
             .bcard-webdev { min-height: 260px; }
             .bcard-facilities { min-height: 220px; }
-            
+            #articlesRow { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 600px) {
             .bento { grid-template-columns: 1fr; gap: 0.9rem; }
             .bcard-webdev { min-height: 240px; }
             .bcard-facilities { min-height: 200px; }
-            #articlesRow { grid-template-columns: 1fr !important; }
+            #articlesRow { grid-template-columns: 1fr; }
         }
         @media (max-width: 500px) {
             nav { gap: 1rem; } nav a { font-size: 0.72rem; letter-spacing: 1px; }
             header h1 { font-size: 1.8rem; }
-            
-            .nav-topics:hover 
         }
     </style>
 </head>
@@ -150,7 +144,6 @@
 
     <nav>
         <a href="/" class="active">Home</a>
-
         <a href="website-services.html">Web Development</a>
         <a href="business-facilities.html">Business Facilities</a>
     </nav>
@@ -160,27 +153,27 @@
     </header>
 
     <div class="container">
+
         <div class="bento">
 
-            <!-- INTRO -->
             <div class="bcard bcard-intro">
                 <h2>What We Offer</h2>
                 <p>We offer web development with photography and business facilities services. Most businesses need both a website that's easy to find and reflects what you do, and a space that's stocked and presentable. Handling both through one point of contact keeps things simpler and ensures your online presence and day-to-day operations stay consistent.</p>
             </div>
 
-            <!-- FOUNDER -->
-            <div class="bcard bcard-founder">
+            <!-- FOUNDER CARD -->
+            <div class="bcard bcard-founder" onclick="document.getElementById('founderModal').classList.add('open')" style="cursor:pointer;">
                 <p class="founder-name">Rob Marcellin</p>
                 <p class="founder-role">Solo Founder</p>
                 <p class="founder-role">Full-Stack Developer</p>
                 <p class="founder-role" style="margin-top:0.2rem; font-size:0.8rem; color:#666;">Montclair State University Est. 2024</p>
-                <a href="https://www.linkedin.com/in/rob-marcellin-0a8b75256/" target="_blank" class="linkedin-link">
+                <a href="https://www.linkedin.com/in/rob-marcellin-0a8b75256/" target="_blank" class="linkedin-link" onclick="event.stopPropagation()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     LinkedIn
                 </a>
+                <p style="position:absolute; bottom:1.2rem; right:1.4rem; font-size:0.72rem; color:rgba(255,255,255,0.25); font-weight:600; letter-spacing:1px; text-transform:uppercase;">View Profile →</p>
             </div>
 
-            <!-- WEB DEV SHOWCASE -->
             <div class="bcard bcard-webdev" style="padding:0;">
                 <a href="website-services.html" class="showcase-card">
                     <div class="showcase-overlay"></div>
@@ -196,7 +189,6 @@
                 </a>
             </div>
 
-            <!-- FACILITIES SHOWCASE -->
             <div class="bcard bcard-facilities" style="padding:0;">
                 <a href="business-facilities.html" class="showcase-card">
                     <div class="showcase-overlay"></div>
@@ -211,12 +203,25 @@
                 </a>
             </div>
 
-            <!-- TOPICS HEADER -->
-            <div class="bcard bcard-topics-hdr" onclick="toggleArticles()" style="cursor:pointer;">
+            <div class="bcard bcard-consult" style="padding:0;">
+                <a href="project-consultation.html" class="showcase-card">
+                    <div class="showcase-overlay"></div>
+                    <div class="showcase-content">
+                        <div class="showcase-badge">Consultation</div>
+                        <div class="showcase-tags">
+                            <span class="showcase-tag">Strategy</span>
+                            <span class="showcase-tag">Discovery</span>
+                            <span class="showcase-tag">Roadmap</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="bcard bcard-topics-hdr" onclick="toggleArticles()">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <div>
                         <p class="topics-label">Marcell Topics</p>
-                        <h2 style="border:none;padding:0;margin:0;">Articles & Insights</h2>
+                        <h2 style="border:none;padding:0;margin:0;">Articles &amp; Insights</h2>
                         <p style="margin-top:0.3rem;">Tech, web development, and running a small business.</p>
                     </div>
                     <div style="display:flex; flex-direction:column; align-items:flex-end; gap:0.5rem;">
@@ -229,48 +234,45 @@
                 </div>
             </div>
 
-            <!-- ARTICLES ROW (collapsible) -->
-            <div id="articlesRow" style="grid-column: 1 / -1; display:none; gap:1.2rem; grid-template-columns: repeat(3, 1fr);">
+        </div>
 
-                <div class="bcard article-card" data-date="2026-02-28">
-                    <a href="article-psychology.html" class="topic-card-link">
-                        <span class="topic-badge">Psychology</span>
-                        <p class="topic-date">Feb 28, 2026 · 5 min read</p>
-                        <p class="topic-title">Why Certain People Notice the Small Things About Your Business, And Why They're the Ones Who Matter</p>
-                        <p class="topic-preview">The psychology behind why detail-oriented observers are your most valuable customers.</p>
-                        <span class="topic-read">Read Article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </a>
-                </div>
-
-                <div class="bcard article-card" data-date="2026-02-21b">
-                    <a href="business-facilities-article.html" class="topic-card-link">
-                        <span class="topic-badge">Business</span>
-                        <p class="topic-date">Feb 21, 2026 · 5 min read</p>
-                        <p class="topic-title">Why Businesses Can No Longer Afford to Overlook Facility Services</p>
-                        <p class="topic-preview">From post-war uniform programs to post-pandemic hygiene standards, here's how facility services became a competitive baseline.</p>
-                        <span class="topic-read">Read Article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </a>
-                </div>
-
-                <div class="bcard article-card" data-date="2026-02-21a">
-                    <a href="article-ai-small-business.html" class="topic-card-link">
-                        <span class="topic-badge">Technology</span>
-                        <p class="topic-date">Feb 21, 2026 · 4 min read</p>
-                        <p class="topic-title">How AI Tools Are Changing the Way Small Businesses Operate</p>
-                        <p class="topic-preview">From automating repetitive tasks to drafting client emails, AI is no longer just for big tech.</p>
-                        <span class="topic-read">Read Article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </a>
-                </div>
-
+        <div id="articlesRow">
+            <div class="bcard article-card" data-date="2026-02-28">
+                <a href="article-psychology-of-noticing.html" class="topic-card-link">
+                    <span class="topic-badge">Psychology</span>
+                    <p class="topic-date">Feb 28, 2026 · 5 min read</p>
+                    <p class="topic-title">Why Certain People Notice the Small Things About Your Business, And Why They're the Ones Who Matter</p>
+                    <p class="topic-preview">The psychology behind why detail-oriented observers are your most valuable customers.</p>
+                    <span class="topic-read">Read Article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
             </div>
+            <div class="bcard article-card" data-date="2026-02-21b">
+                <a href="business-facilities-article.html" class="topic-card-link">
+                    <span class="topic-badge">Business</span>
+                    <p class="topic-date">Feb 21, 2026 · 5 min read</p>
+                    <p class="topic-title">Why Businesses Can No Longer Afford to Overlook Facility Services</p>
+                    <p class="topic-preview">From post-war uniform programs to post-pandemic hygiene standards, here's how facility services became a competitive baseline.</p>
+                    <span class="topic-read">Read Article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+            </div>
+            <div class="bcard article-card" data-date="2026-02-21a">
+                <a href="article-ai-small-business.html" class="topic-card-link">
+                    <span class="topic-badge">Technology</span>
+                    <p class="topic-date">Feb 21, 2026 · 4 min read</p>
+                    <p class="topic-title">How AI Tools Are Changing the Way Small Businesses Operate</p>
+                    <p class="topic-preview">From automating repetitive tasks to drafting client emails, AI is no longer just for big tech.</p>
+                    <span class="topic-read">Read Article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+            </div>
+        </div>
 
-            <!-- FEATURED COLLABORATIONS -->
+        <div class="bento">
             <div class="bcard bcard-collab">
                 <h2>Featured Collaborations</h2>
                 <div class="collab-inner" onclick="toggleCollab(this)">
                     <div class="collab-header">
                         <div>
-                            <h3 style="color:#ffffff; font-size:0.95rem; margin-bottom:0.3rem;">Elicona Visuals — Development & Ongoing Support (July 2025)</h3>
+                            <h3 style="color:#ffffff; font-size:0.95rem; margin-bottom:0.3rem;">Elicona Visuals — Development &amp; Ongoing Support (July 2025)</h3>
                             <p style="color:#aaaaaa; font-size:0.85rem;"><strong style="color:#ffffff;">Website:</strong> <a href="https://eliconavisuals.com" target="_blank" style="color:#aaaaaa;" onclick="event.stopPropagation();">eliconavisuals.com</a></p>
                         </div>
                         <span class="collab-arrow">▼</span>
@@ -292,32 +294,62 @@
                         </ul>
                     </div>
                 </div>
-                <button onclick="document.getElementById('bugModal').classList.add('open')" style="margin-top:1rem; background:transparent; border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.6); font-size:0.78rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; padding:0.5rem 1.2rem; border-radius:20px; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.borderColor='#ffffff';this.style.color='#ffffff'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.6)'">
-                    See What We Fixed →
-                </button>
+                <button onclick="document.getElementById('bugModal').classList.add('open')" style="margin-top:1rem; background:transparent; border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.6); font-size:0.78rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; padding:0.5rem 1.2rem; border-radius:20px; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.borderColor='#ffffff';this.style.color='#ffffff'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.6)'">See What We Fixed →</button>
             </div>
 
-            <!-- CONTACT -->
             <div class="bcard bcard-contact">
                 <h2 style="border:none; padding:0; margin-bottom:0.3rem;">Schedule a 15 Minute Consultation</h2>
                 <p style="color:#aaaaaa; font-size:0.85rem;">Let's talk about your project.</p>
                 <a href="mailto:xmarcellr@gmail.com?subject=Let's%20Connect&body=Hi%20Rob%2C%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20I'm%20reaching%20out%20because%3A%20" class="contact-btn">Reach Out Here</a>
                 <p class="contact-note">Response within 24 hours</p>
             </div>
-
         </div>
+
     </div>
 
     <footer>
         <p>&copy; 2026 Marcell Services LLC. All rights reserved. &nbsp;·&nbsp; <a href="https://www.xmarcellr.com/" target="_blank">Marcell Services</a></p>
     </footer>
 
+    <!-- FOUNDER MODAL -->
+    <div id="founderModal" style="display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.8); backdrop-filter:blur(8px); align-items:center; justify-content:center; padding:1.5rem;" onclick="if(event.target===this)this.classList.remove('open')">
+        <div style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.12); border-radius:18px; max-width:560px; width:100%; max-height:90vh; overflow-y:auto; padding:2rem; position:relative;">
+            <button onclick="document.getElementById('founderModal').classList.remove('open')" style="position:absolute; top:1rem; right:1rem; background:transparent; border:none; color:rgba(255,255,255,0.4); font-size:1.4rem; cursor:pointer; line-height:1; transition:color 0.2s; z-index:2;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">✕</button>
+
+            <!-- Photo slideshow -->
+            <div style="position:relative; height:320px; border-radius:12px; overflow:hidden; margin-bottom:0.8rem;">
+                <img src="Rob_1.jpg"      class="founder-modal-photo active" alt="Rob Marcellin">
+                <img src="Rob_4.jpg"      class="founder-modal-photo" alt="Rob Marcellin">
+                <img src="WhoAmI.jpg"     class="founder-modal-photo" alt="Rob Marcellin">
+                <img src="Volley.jpg.jpg" class="founder-modal-photo" alt="Rob Marcellin">
+            </div>
+            <div class="fdots">
+                <button class="fdot active" onclick="founderGoTo(0)"></button>
+                <button class="fdot" onclick="founderGoTo(1)"></button>
+                <button class="fdot" onclick="founderGoTo(2)"></button>
+                <button class="fdot" onclick="founderGoTo(3)"></button>
+            </div>
+
+            <!-- Bio -->
+            <div style="margin-top:1.5rem;">
+                <p style="font-size:0.7rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:0.4rem;">Founder</p>
+                <h2 style="font-size:1.5rem; font-weight:700; color:#ffffff; margin-bottom:0.2rem; border:none; padding:0;">Rob Marcellin</h2>
+                <p style="font-size:0.85rem; color:rgba(255,255,255,0.45); margin-bottom:1.2rem;">Full-Stack Developer &nbsp;·&nbsp; Montclair State University Est. 2024</p>
+                <p style="font-size:0.9rem; color:#aaaaaa; line-height:1.8; margin-bottom:1rem;">I build websites and handle business facilities services for small businesses that want both a strong online presence and a well-run physical space.</p>
+                <a href="https://www.linkedin.com/in/rob-marcellin-0a8b75256/" target="_blank" style="display:inline-flex; align-items:center; gap:0.5rem; text-decoration:none; color:#ffffff; font-weight:600; font-size:0.88rem; border:2px solid rgba(255,255,255,0.3); border-radius:8px; padding:0.6rem 1.2rem; transition:all 0.2s;" onmouseover="this.style.borderColor='#ffffff'" onmouseout="this.style.borderColor='rgba(255,255,255,0.3)'">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    Connect on LinkedIn
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- BUG FIXES MODAL -->
     <div id="bugModal" style="display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.75); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:1.5rem;" onclick="if(event.target===this)this.classList.remove('open')">
         <div style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.12); border-radius:18px; max-width:640px; width:100%; max-height:85vh; overflow-y:auto; padding:2.5rem; position:relative;">
             <button onclick="document.getElementById('bugModal').classList.remove('open')" style="position:absolute; top:1.2rem; right:1.2rem; background:transparent; border:none; color:rgba(255,255,255,0.4); font-size:1.4rem; cursor:pointer; line-height:1; transition:color 0.2s;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">✕</button>
             <p style="font-size:0.7rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:0.5rem;">Elicona Visuals</p>
-            <h2 style="font-size:1.4rem; font-weight:700; color:#ffffff; margin-bottom:0.3rem;">Bugs Fixed & Updates</h2>
+            <h2 style="font-size:1.4rem; font-weight:700; color:#ffffff; margin-bottom:0.3rem;">Bugs Fixed &amp; Updates</h2>
             <p style="font-size:0.85rem; color:#666; margin-bottom:2rem;">Ongoing support log from July 2025 onward.</p>
             <div style="border-left:2px solid rgba(255,255,255,0.15); padding-left:1.2rem; margin-bottom:1.8rem;">
                 <p style="font-size:0.72rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:0.3rem;">September 13, 2025</p>
@@ -341,95 +373,75 @@
     </div>
 
     <script>
-        // Articles data - add new articles here
-        const articles = [
-            {
-                url: 'article-psychology.html',
-                badge: 'Psychology',
-                date: '2026-02-28',
-                dateLabel: 'Feb 28, 2026',
-                title: 'Why Certain People Notice the Small Things About Your Business, And Why They\'re the Ones Who Matter',
-                preview: 'The psychology behind why detail-oriented observers are your most valuable customers.'
-            },
-            {
-                url: 'business-facilities-article.html',
-                badge: 'Business',
-                date: '2026-02-21',
-                dateLabel: 'Feb 21, 2026',
-                title: 'Why Businesses Can No Longer Afford to Overlook Facility Services',
-                preview: 'How facility services became a competitive baseline over the last 70 years.'
-            },
-            {
-                url: 'article-ai-small-business.html',
-                badge: 'Technology',
-                date: '2026-02-21',
-                dateLabel: 'Feb 21, 2026',
-                title: 'How AI Tools Are Changing the Way Small Businesses Operate',
-                preview: 'From automating tasks to drafting emails, AI is no longer just for big tech.'
-            },
-        ];
+        // Founder modal slideshow
+        var founderCurrent = 0;
+        var founderPhotos = document.querySelectorAll('.founder-modal-photo');
+        var founderDots = document.querySelectorAll('.fdot');
+        function founderGoTo(n) {
+            founderPhotos[founderCurrent].classList.remove('active');
+            founderDots[founderCurrent].classList.remove('active');
+            founderCurrent = (n + founderPhotos.length) % founderPhotos.length;
+            founderPhotos[founderCurrent].classList.add('active');
+            founderDots[founderCurrent].classList.add('active');
+        }
+        setInterval(function() { founderGoTo(founderCurrent + 1); }, 3500);
 
-        let articlesOpen = false;
+        // Founder modal open/close
+        var founderModal = document.getElementById('founderModal');
+        new MutationObserver(function() {
+            founderModal.style.display = founderModal.classList.contains('open') ? 'flex' : 'none';
+        }).observe(founderModal, { attributes: true, attributeFilter: ['class'] });
 
+        // Articles toggle
+        var articlesOpen = false;
         function toggleArticles() {
             articlesOpen = !articlesOpen;
-            const row = document.getElementById('articlesRow');
-            const chevron = document.getElementById('topicsChevron');
-            const sortEl = document.getElementById('sortSelect');
-
+            var row = document.getElementById('articlesRow');
+            var chevron = document.getElementById('topicsChevron');
+            var sortEl = document.getElementById('sortSelect');
+            row.classList.toggle('open', articlesOpen);
             chevron.style.transform = articlesOpen ? 'rotate(180deg)' : 'rotate(0deg)';
             sortEl.style.display = articlesOpen ? 'block' : 'none';
-
-            if (articlesOpen) {
-                row.style.display = 'grid';
-                sortArticles();
-            } else {
-                row.style.display = 'none';
-            }
+            if (articlesOpen) sortArticles();
         }
-
         function sortArticles() {
-            const order = document.getElementById('sortSelect').value;
-            const row = document.getElementById('articlesRow');
-            const cards = Array.from(row.querySelectorAll('.article-card'));
-            cards.sort((a, b) => {
-                // Use data-date but strip trailing a/b for same-day ordering
-                const da = new Date(a.dataset.date.replace(/[ab]$/, ''));
-                const db = new Date(b.dataset.date.replace(/[ab]$/, ''));
+            var order = document.getElementById('sortSelect').value;
+            var row = document.getElementById('articlesRow');
+            var cards = Array.from(row.querySelectorAll('.article-card'));
+            cards.sort(function(a, b) {
+                var da = new Date(a.dataset.date.replace(/[ab]$/, ''));
+                var db = new Date(b.dataset.date.replace(/[ab]$/, ''));
                 if (da - db !== 0) return order === 'newest' ? db - da : da - db;
-                // same day: use data-date string alpha sort for stable tiebreak
                 return order === 'newest'
                     ? b.dataset.date.localeCompare(a.dataset.date)
                     : a.dataset.date.localeCompare(b.dataset.date);
             });
-            cards.forEach(c => row.appendChild(c));
+            cards.forEach(function(c) { row.appendChild(c); });
         }
 
-        // Modal toggle
-        const modal = document.getElementById('bugModal');
-        const modalObserver = new MutationObserver(() => {
+        // Modal
+        var modal = document.getElementById('bugModal');
+        new MutationObserver(function() {
             modal.style.display = modal.classList.contains('open') ? 'flex' : 'none';
-        });
-        modalObserver.observe(modal, { attributes: true, attributeFilter: ['class'] });
+        }).observe(modal, { attributes: true, attributeFilter: ['class'] });
 
         function toggleCollab(card) {
             card.querySelector('.collab-desc').classList.toggle('open');
             card.querySelector('.collab-arrow').classList.toggle('open');
         }
 
-        // Fade in cards (skip article cards — they animate on reveal)
-        const cardObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+        // Fade in cards
+        var cardObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
-                    setTimeout(() => entry.target.classList.add('fade-in'), entry.target.dataset.delay || 0);
+                    setTimeout(function() { entry.target.classList.add('fade-in'); }, entry.target.dataset.delay || 0);
                 }
             });
         }, { threshold: 0.05 });
-        document.querySelectorAll('.bcard:not(.article-card)').forEach((card, i) => {
+        document.querySelectorAll('.bcard:not(.article-card)').forEach(function(card, i) {
             card.dataset.delay = i * 60;
             cardObserver.observe(card);
         });
     </script>
 </body>
 </html>
-
