@@ -167,11 +167,8 @@
 
             <!-- FOUNDER CARD -->
             <div class="bcard bcard-founder" onclick="document.getElementById('founderModal').classList.add('open')" style="cursor:pointer; padding:0; min-height:260px;">
-                <!-- Background photos -->
-                <img src="Rob_1.jpg"      class="founder-bg-photo active" alt="">
-                <img src="Rob_4.jpg"      class="founder-bg-photo" alt="">
-                <img src="WhoAmI.jpg"     class="founder-bg-photo" alt="">
-                <img src="Volley.jpg.jpg" class="founder-bg-photo" alt="">
+                <!-- Background photo -->
+                <img src="Volley.jpg.jpg" class="founder-bg-photo active" alt="">
                 <!-- Dark overlay so text is readable -->
                 <div style="position:absolute;inset:0;background:rgba(10,10,10,0.6);border-radius:18px;z-index:2;"></div>
                 <!-- Text content -->
@@ -349,8 +346,7 @@
                 <p style="font-size:0.7rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:0.4rem;">Founder</p>
                 <h2 style="font-size:1.5rem; font-weight:700; color:#ffffff; margin-bottom:0.2rem; border:none; padding:0;">Rob Marcellin</h2>
                 <p style="font-size:0.85rem; color:rgba(255,255,255,0.45); margin-bottom:1.2rem;">Full-Stack Developer &nbsp;·&nbsp; Montclair State University Est. 2024</p>
-                <p style="font-size:0.9rem; color:#aaaaaa; line-height:1.8; margin-bottom:1rem;">I build websites and handle business facilities services for small businesses that want both a strong online presence and a well-run physical space. My background in economics and computer science gives me a practical lens on what actually moves the needle for a business.</p>
-                <p style="font-size:0.9rem; color:#aaaaaa; line-height:1.8; margin-bottom:1.5rem;">When I'm not working on client projects, I'm in the gym, behind a camera, or out on the volleyball court.</p>
+                <p style="font-size:0.9rem; color:#aaaaaa; line-height:1.8; margin-bottom:1rem;">I build websites and handle business facilities services for small businesses that want both a strong online presence and a well-run physical space.</p>
                 <a href="https://www.linkedin.com/in/rob-marcellin-0a8b75256/" target="_blank" style="display:inline-flex; align-items:center; gap:0.5rem; text-decoration:none; color:#ffffff; font-weight:600; font-size:0.88rem; border:2px solid rgba(255,255,255,0.3); border-radius:8px; padding:0.6rem 1.2rem; transition:all 0.2s;" onmouseover="this.style.borderColor='#ffffff'" onmouseout="this.style.borderColor='rgba(255,255,255,0.3)'">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     Connect on LinkedIn
@@ -388,17 +384,14 @@
     </div>
 
     <script>
-        // Founder slideshow — syncs card bg + modal photos + dots
+        // Founder modal slideshow
         var founderCurrent = 0;
-        var founderBgPhotos = document.querySelectorAll('.founder-bg-photo');
         var founderModalPhotos = document.querySelectorAll('.founder-modal-photo');
         var founderDots = document.querySelectorAll('.fdot');
         function founderGoTo(n) {
-            founderBgPhotos[founderCurrent].classList.remove('active');
             founderModalPhotos[founderCurrent].classList.remove('active');
             founderDots[founderCurrent].classList.remove('active');
-            founderCurrent = (n + founderBgPhotos.length) % founderBgPhotos.length;
-            founderBgPhotos[founderCurrent].classList.add('active');
+            founderCurrent = (n + founderModalPhotos.length) % founderModalPhotos.length;
             founderModalPhotos[founderCurrent].classList.add('active');
             founderDots[founderCurrent].classList.add('active');
         }
