@@ -16,10 +16,11 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #ffffff; background: linear-gradient(to bottom, #1a1a1a 0%, #222222 20%, #2a2a2a 40%, #222222 60%, #1a1a1a 100%); background-attachment: fixed; min-height: 100vh; overflow-x: hidden; }
 
-        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(20,20,20,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; gap: 2.5rem; padding: 0.9rem 2rem; }
-        nav a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.85rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; }
-        nav a:hover { color: #ffffff; }
-        nav a.active { color: #ffffff; border-bottom: 2px solid #ffffff; padding-bottom: 2px; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(20,20,20,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; gap: 0; padding: 0; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -ms-overflow-style: none; }
+        nav::-webkit-scrollbar { display: none; }
+        nav a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.85rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; padding: 0.9rem 1.6rem; white-space: nowrap; flex-shrink: 0; border-right: 1px solid rgba(255,255,255,0.06); }
+        nav a:hover { color: #ffffff; background: rgba(255,255,255,0.04); }
+        nav a.active { color: #ffffff; background: rgba(255,255,255,0.06); border-bottom: 2px solid #ffffff; }
 
         header { position: relative; color: #ffffff; padding: 8rem 2rem 4rem; text-align: center; background: rgba(30,30,30,0.6); z-index: 2; }
         header h1 { font-size: clamp(2.2rem, 6vw, 3.5rem); font-weight: 700; letter-spacing: 2px; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; color: #ffffff; opacity: 0; animation: fadeInHeader 1s ease-out forwards; animation-delay: 0.2s; }
@@ -38,7 +39,7 @@
         .bcard-intro      { grid-column: 1 / 8;  grid-row: 1; }
         .bcard-founder    { grid-column: 8 / 13; grid-row: 1; min-height: 240px; }
         .bcard-webdev     { grid-column: 1 / 6;  grid-row: 2 / 4; min-height: 320px; }
-        .bcard-consult    { grid-column: 2 / 12; grid-row: 2; min-height: 200px; }
+        .bcard-consult    { grid-column: 6 / 13; grid-row: 2; min-height: 200px; }
         .bcard-topics-hdr { grid-column: 6 / 13; grid-row: 3; }
         .bcard-collab     { grid-column: 1 / 9; }
         .bcard-contact    { grid-column: 9 / 13; }
@@ -70,11 +71,7 @@
         .founder-role { color: #aaaaaa; font-size: 0.85rem; margin-bottom: 0.1rem; }
         .linkedin-link { display: inline-flex; align-items: center; gap: 0.4rem; text-decoration: none; color: #ffffff; font-weight: 600; font-size: 0.85rem; margin-top: 1rem; opacity: 0.7; transition: opacity 0.2s; }
         .linkedin-link:hover { opacity: 1; }
-
-        /* FOUNDER BG PHOTO */
         .founder-bg-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 18px; z-index: 1; opacity: 0.6; }
-
-        /* FOUNDER MODAL SLIDESHOW */
         .founder-modal-photo { width: 100%; height: 100%; object-fit: contain; object-position: center; border-radius: 12px; opacity: 0; position: absolute; inset: 0; transition: opacity 0.7s ease; background: #111; }
         .founder-modal-photo.active { opacity: 1; }
         .fdots { display: flex; gap: 0.5rem; justify-content: center; margin-top: 0.8rem; }
@@ -108,6 +105,10 @@
         .collab-desc ul { margin-left: 1.2rem; }
         .collab-desc strong { color: #ffffff; }
 
+        /* LEARN CARD */
+        .learn-btn { display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #ffffff; font-weight: 600; font-size: 0.85rem; border: 2px solid rgba(255,255,255,0.3); border-radius: 8px; padding: 0.65rem 1.4rem; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; }
+        .learn-btn:hover { border-color: #ffffff; background: rgba(255,255,255,0.06); }
+
         /* CONTACT */
         .bcard-contact { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); }
         .contact-btn { display: inline-block; background: transparent; color: #ffffff; padding: 0.9rem 2rem; text-decoration: none; border-radius: 8px; margin-top: 1rem; transition: all 0.3s; font-weight: 600; border: 2px solid #ffffff; font-size: 0.95rem; }
@@ -119,7 +120,7 @@
 
         @media (max-width: 900px) {
             .bento { grid-template-columns: 1fr 1fr; grid-auto-rows: auto; gap: 1rem; }
-            .bcard-intro, .bcard-founder, .bcard-webdev,.bcard-consult,
+            .bcard-intro, .bcard-founder, .bcard-webdev, .bcard-consult,
             .bcard-topics-hdr, .bcard-collab, .bcard-contact { grid-column: 1 / -1; grid-row: auto; min-height: unset; }
             .bcard-founder { min-height: 280px; }
             .bcard-webdev { min-height: 260px; }
@@ -132,7 +133,7 @@
             #articlesRow { grid-template-columns: 1fr; }
         }
         @media (max-width: 500px) {
-            nav { gap: 1rem; } nav a { font-size: 0.72rem; letter-spacing: 1px; }
+            nav a { font-size: 0.78rem; letter-spacing: 1px; padding: 0.9rem 1.2rem; }
             header h1 { font-size: 1.8rem; }
         }
     </style>
@@ -195,19 +196,7 @@
                 </a>
             </div>
 
-           
-                <a href="business-facilities.html" class="showcase-card">
-                    <div class="showcase-overlay"></div>
-                    <div class="showcase-content">
-                        <div class="showcase-badge">Facilities</div>
-                        <div class="showcase-tags">
-                            <span class="showcase-tag">Uniforms</span>
-                            <span class="showcase-tag">Cleaning Supplies</span>
-                            <span class="showcase-tag">Floor Mats</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
+
 
             <div class="bcard bcard-consult" style="padding:0;">
                 <a href="" class="showcase-card">
@@ -281,7 +270,7 @@
                     <h2 style="border:none;padding:0;margin:0;font-size:1.3rem;">Web Technologies &amp; Business Photography</h2>
                     <p style="margin-top:0.4rem;font-size:0.88rem;color:rgba(255,255,255,0.45);max-width:560px;">Guides on what actually goes into a website and a photo shoot &#8212; analytics, SEO, performance, security, cameras, lighting, and more. Preview any topic or download the full guide.</p>
                 </div>
-                <a href="learn.html" style="display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none;color:#ffffff;font-weight:600;font-size:0.85rem;border:2px solid rgba(255,255,255,0.3);border-radius:8px;padding:0.65rem 1.4rem;transition:all 0.2s;white-space:nowrap;flex-shrink:0;" onmouseover="this.style.borderColor='#ffffff';this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.3)';this.style.background='transparent'">
+                <a href="learn.html" class="learn-btn">
                     Browse Guides
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
@@ -337,17 +326,18 @@
         <div style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.12); border-radius:18px; max-width:560px; width:100%; max-height:90vh; overflow-y:auto; padding:2rem; position:relative;">
             <button onclick="document.getElementById('founderModal').classList.remove('open')" style="position:absolute; top:1rem; right:1rem; background:transparent; border:none; color:rgba(255,255,255,0.4); font-size:1.4rem; cursor:pointer; line-height:1; transition:color 0.2s; z-index:2;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">&#10005;</button>
             <div style="position:relative; height:420px; border-radius:12px; overflow:hidden; margin-bottom:0.8rem; background:#111;">
-                <img src="Rob_1.jpg"      class="founder-modal-photo active" alt="Rob Marcellin">
-                <img src="Rob_4.jpg"      class="founder-modal-photo" alt="Rob Marcellin">
-                <img src="WhoAmI.jpg"     class="founder-modal-photo" alt="Rob Marcellin">
-                <img src="Volley.jpg.jpg" class="founder-modal-photo" alt="Rob Marcellin">
-                <img src="Thisme.jpg.jpg" class="founder-modal-photo" alt="Rob Marcellin">
+                <img src="Rob_1.jpg"       class="founder-modal-photo active" alt="Rob Marcellin">
+                <img src="Rob_4.jpg"       class="founder-modal-photo" alt="Rob Marcellin">
+                <img src="WhoAmI.jpg"      class="founder-modal-photo" alt="Rob Marcellin">
+                <img src="Volley.jpg.jpg"  class="founder-modal-photo" alt="Rob Marcellin">
+                <img src="Thisme.jpg.jpg"  class="founder-modal-photo" alt="Rob Marcellin">
             </div>
             <div class="fdots">
                 <button class="fdot active" onclick="founderGoTo(0)"></button>
                 <button class="fdot" onclick="founderGoTo(1)"></button>
                 <button class="fdot" onclick="founderGoTo(2)"></button>
                 <button class="fdot" onclick="founderGoTo(3)"></button>
+                <button class="fdot" onclick="founderGoTo(4)"></button>
             </div>
             <div style="margin-top:1.5rem;">
                 <p style="font-size:0.7rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:0.4rem;">Founder</p>
@@ -391,7 +381,6 @@
     </div>
 
     <script>
-        // Founder modal slideshow
         var founderCurrent = 0;
         var founderModalPhotos = document.querySelectorAll('.founder-modal-photo');
         var founderDots = document.querySelectorAll('.fdot');
@@ -404,7 +393,6 @@
         }
         setInterval(function() { founderGoTo(founderCurrent + 1); }, 3500);
 
-        // Modal visibility
         function watchModal(id) {
             var el = document.getElementById(id);
             new MutationObserver(function() {
@@ -414,7 +402,6 @@
         watchModal('founderModal');
         watchModal('bugModal');
 
-        // Articles toggle
         var articlesOpen = false;
         function toggleArticles() {
             articlesOpen = !articlesOpen;
@@ -446,7 +433,6 @@
             card.querySelector('.collab-arrow').classList.toggle('open');
         }
 
-        // Fade in cards
         var cardObserver = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
@@ -461,6 +447,3 @@
     </script>
 </body>
 </html>
-
-
-
