@@ -38,7 +38,6 @@
         .bcard-intro      { grid-column: 1 / 8;  grid-row: 1; }
         .bcard-founder    { grid-column: 8 / 13; grid-row: 1; min-height: 240px; }
         .bcard-webdev     { grid-column: 1 / 6;  grid-row: 2 / 4; min-height: 320px; }
-        .bcard-facilities { grid-column: 6 / 10; grid-row: 2; min-height: 200px; }
         .bcard-consult    { grid-column: 10 / 13; grid-row: 2; min-height: 200px; }
         .bcard-topics-hdr { grid-column: 6 / 13; grid-row: 3; }
         .bcard-collab     { grid-column: 1 / 9; }
@@ -59,7 +58,6 @@
         .showcase-card { display: block; text-decoration: none; height: 100%; width: 100%; position: absolute; inset: 0; background-size: cover; background-position: center; border-radius: 18px; transition: background-size 0.4s ease; }
         .showcase-card:hover { background-size: 108%; }
         .bcard-webdev .showcase-card { background-image: url('eliconavisuals.com screenshot.png'); }
-        .bcard-facilities .showcase-card { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('consulting-screenshot.jpg'); }
         .bcard-consult .showcase-card { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('management-consulting.jpg'); }
         .showcase-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.4) 50%, transparent 100%); border-radius: 18px; }
         .showcase-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; z-index: 2; }
@@ -121,18 +119,16 @@
 
         @media (max-width: 900px) {
             .bento { grid-template-columns: 1fr 1fr; grid-auto-rows: auto; gap: 1rem; }
-            .bcard-intro, .bcard-founder, .bcard-webdev, .bcard-facilities, .bcard-consult,
+            .bcard-intro, .bcard-founder, .bcard-webdev,.bcard-consult,
             .bcard-topics-hdr, .bcard-collab, .bcard-contact { grid-column: 1 / -1; grid-row: auto; min-height: unset; }
             .bcard-founder { min-height: 280px; }
             .bcard-webdev { min-height: 260px; }
-            .bcard-facilities { min-height: 220px; }
             .bcard-consult  { min-height: 240px; }
             #articlesRow { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 600px) {
             .bento { grid-template-columns: 1fr; gap: 0.9rem; }
             .bcard-webdev { min-height: 240px; }
-            .bcard-facilities { min-height: 200px; }
             #articlesRow { grid-template-columns: 1fr; }
         }
         @media (max-width: 500px) {
@@ -199,7 +195,7 @@
                 </a>
             </div>
 
-            <div class="bcard bcard-facilities" style="padding:0;">
+           
                 <a href="business-facilities.html" class="showcase-card">
                     <div class="showcase-overlay"></div>
                     <div class="showcase-content">
@@ -465,4 +461,5 @@
     </script>
 </body>
 </html>
+
 
