@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SBYX1GSJS8"></script>
@@ -16,490 +17,495 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #ffffff; background: linear-gradient(to bottom, #1a1a1a 0%, #222222 20%, #2a2a2a 40%, #222222 60%, #1a1a1a 100%); background-attachment: fixed; min-height: 100vh; overflow-x: hidden; }
 
-        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(20,20,20,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; gap: 2.5rem; padding: 0.9rem 2rem; }
-        nav a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.85rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; }
-        nav a:hover { color: #ffffff; }
-        nav a.active { color: #ffffff; border-bottom: 2px solid #ffffff; padding-bottom: 2px; }
+```
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(20,20,20,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; gap: 2.5rem; padding: 0.9rem 2rem; }
+    nav a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.85rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; }
+    nav a:hover { color: #ffffff; }
+    nav a.active { color: #ffffff; border-bottom: 2px solid #ffffff; padding-bottom: 2px; }
 
-        .bg-image { position: fixed; left: 0; right: 0; width: 100%; height: 40vh; background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0.08; z-index: 0; pointer-events: none; }
-        .bg-image-1 { top: 0; background-image: url('background1.jpg'); }
-        .bg-image-2 { top: 50%; transform: translateY(-50%); background-image: url('background2.jpg'); }
-        .bg-image-3 { bottom: 0; background-image: url('background3.jpg'); }
+    .bg-image { position: fixed; left: 0; right: 0; width: 100%; height: 40vh; background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0.08; z-index: 0; pointer-events: none; }
+    .bg-image-1 { top: 0; background-image: url('background1.jpg'); }
+    .bg-image-2 { top: 50%; transform: translateY(-50%); background-image: url('background2.jpg'); }
+    .bg-image-3 { bottom: 0; background-image: url('background3.jpg'); }
 
-        .hero { padding: 9rem 2rem 3.5rem; text-align: center; position: relative; z-index: 2; }
-        .hero-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1rem; }
-        .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; color: #ffffff; opacity: 0; animation: fadeUp 0.8s ease-out forwards; animation-delay: 0.1s; }
-        .hero p { margin-top: 1rem; font-size: 1rem; color: rgba(255,255,255,0.45); max-width: 540px; margin-left: auto; margin-right: auto; opacity: 0; animation: fadeUp 0.8s ease-out forwards; animation-delay: 0.25s; }
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .hero { padding: 9rem 2rem 3.5rem; text-align: center; position: relative; z-index: 2; }
+    .hero-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1rem; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; color: #ffffff; opacity: 0; animation: fadeUp 0.8s ease-out forwards; animation-delay: 0.1s; }
+    .hero p { margin-top: 1rem; font-size: 1rem; color: rgba(255,255,255,0.45); max-width: 540px; margin-left: auto; margin-right: auto; opacity: 0; animation: fadeUp 0.8s ease-out forwards; animation-delay: 0.25s; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
-        .jump-nav { display: flex; justify-content: center; gap: 1rem; padding: 0 2rem 3rem; position: relative; z-index: 2; flex-wrap: wrap; }
-        .jump-btn { text-decoration: none; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.15); border-radius: 30px; padding: 0.45rem 1.2rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; transition: all 0.2s; }
-        .jump-btn:hover { color: #ffffff; border-color: rgba(255,255,255,0.5); }
+    .jump-nav { display: flex; justify-content: center; gap: 1rem; padding: 0 2rem 3rem; position: relative; z-index: 2; flex-wrap: wrap; }
+    .jump-btn { text-decoration: none; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.15); border-radius: 30px; padding: 0.45rem 1.2rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; transition: all 0.2s; }
+    .jump-btn:hover { color: #ffffff; border-color: rgba(255,255,255,0.5); }
 
-        .learn-container { max-width: 1100px; margin: 0 auto; padding: 0 2rem 6rem; position: relative; z-index: 2; display: flex; flex-direction: column; gap: 5rem; }
+    .learn-container { max-width: 1100px; margin: 0 auto; padding: 0 2rem 6rem; position: relative; z-index: 2; display: flex; flex-direction: column; gap: 5rem; }
 
-        .section-header { display: flex; align-items: flex-end; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.2rem; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 0.8rem; }
-        .section-eyebrow { font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 0.4rem; }
-        .section-title { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: #ffffff; }
-        .section-count { font-size: 0.75rem; color: rgba(255,255,255,0.25); font-weight: 600; letter-spacing: 1px; white-space: nowrap; }
+    .section-header { display: flex; align-items: flex-end; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.2rem; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 0.8rem; }
+    .section-eyebrow { font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 0.4rem; }
+    .section-title { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: #ffffff; }
+    .section-count { font-size: 0.75rem; color: rgba(255,255,255,0.25); font-weight: 600; letter-spacing: 1px; white-space: nowrap; }
 
-        .topics-list { display: flex; flex-direction: column; gap: 0.8rem; }
+    .topics-list { display: flex; flex-direction: column; gap: 0.8rem; }
 
-        /* TOPIC CARD */
-        .topic-item { background: rgba(30,30,30,0.3); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; overflow: hidden; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
-        .topic-item.visible { opacity: 1; transform: translateY(0); }
+    /* TOPIC CARD */
+    .topic-item { background: rgba(30,30,30,0.3); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; overflow: hidden; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .topic-item.visible { opacity: 1; transform: translateY(0); }
 
-        /* ALWAYS-VISIBLE TOP ROW */
-        .topic-top { display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 1.8rem; gap: 1rem; }
-        .topic-left { display: flex; align-items: center; gap: 1.2rem; }
-        .topic-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .topic-icon svg { width: 20px; height: 20px; stroke: rgba(255,255,255,0.3); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-        .topic-name { font-size: 1rem; font-weight: 700; color: #ffffff; }
-        .topic-tagline { font-size: 0.82rem; color: rgba(255,255,255,0.4); margin-top: 0.1rem; }
+    /* ALWAYS-VISIBLE TOP ROW */
+    .topic-top { display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 1.8rem; gap: 1rem; }
+    .topic-left { display: flex; align-items: center; gap: 1.2rem; }
+    .topic-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .topic-icon svg { width: 20px; height: 20px; stroke: rgba(255,255,255,0.3); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .topic-name { font-size: 1rem; font-weight: 700; color: #ffffff; }
+    .topic-tagline { font-size: 0.82rem; color: rgba(255,255,255,0.4); margin-top: 0.1rem; }
 
-        /* ACTION BUTTONS */
-        .topic-actions { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
-        .btn-preview {
-            background: transparent; border: 1px solid rgba(255,255,255,0.15);
-            color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 600;
-            letter-spacing: 1px; text-transform: uppercase; padding: 0.35rem 0.9rem;
-            border-radius: 20px; cursor: pointer; font-family: inherit;
-            transition: all 0.2s; white-space: nowrap;
-        }
-        .btn-preview:hover { border-color: rgba(255,255,255,0.4); color: #ffffff; }
-        .btn-preview.open { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.7); }
-        .btn-download {
-            display: inline-flex; align-items: center; gap: 0.4rem;
-            background: transparent; border: 1px solid rgba(255,255,255,0.2);
-            color: rgba(255,255,255,0.6); font-size: 0.72rem; font-weight: 600;
-            letter-spacing: 1px; text-transform: uppercase; padding: 0.35rem 0.9rem;
-            border-radius: 20px; cursor: pointer; text-decoration: none;
-            transition: all 0.2s; white-space: nowrap; font-family: inherit;
-        }
-        .btn-download:hover { border-color: #ffffff; color: #ffffff; }
-        .btn-download svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    /* ACTION BUTTONS */
+    .topic-actions { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
+    .btn-preview {
+        background: transparent; border: 1px solid rgba(255,255,255,0.15);
+        color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 600;
+        letter-spacing: 1px; text-transform: uppercase; padding: 0.35rem 0.9rem;
+        border-radius: 20px; cursor: pointer; font-family: inherit;
+        transition: all 0.2s; white-space: nowrap;
+    }
+    .btn-preview:hover { border-color: rgba(255,255,255,0.4); color: #ffffff; }
+    .btn-preview.open { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.7); }
+    .btn-download {
+        display: inline-flex; align-items: center; gap: 0.4rem;
+        background: transparent; border: 1px solid rgba(255,255,255,0.2);
+        color: rgba(255,255,255,0.6); font-size: 0.72rem; font-weight: 600;
+        letter-spacing: 1px; text-transform: uppercase; padding: 0.35rem 0.9rem;
+        border-radius: 20px; cursor: pointer; text-decoration: none;
+        transition: all 0.2s; white-space: nowrap; font-family: inherit;
+    }
+    .btn-download:hover { border-color: #ffffff; color: #ffffff; }
+    .btn-download svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
-        /* PREVIEW PANEL */
-        .topic-preview { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.35s ease; opacity: 0; }
-        .topic-item.preview-open .topic-preview { max-height: 600px; opacity: 1; }
-        .topic-preview-inner { padding: 0 1.8rem 1.6rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.3rem; }
+    /* PREVIEW PANEL */
+    .topic-preview { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.35s ease; opacity: 0; }
+    .topic-item.preview-open .topic-preview { max-height: 600px; opacity: 1; }
+    .topic-preview-inner { padding: 0 1.8rem 1.6rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.3rem; }
 
-        .preview-intro { font-size: 0.92rem; color: rgba(255,255,255,0.55); line-height: 1.8; margin-bottom: 1.1rem; }
+    .preview-intro { font-size: 0.92rem; color: rgba(255,255,255,0.55); line-height: 1.8; margin-bottom: 1.1rem; }
 
-        /* 2 teaser points */
-        .preview-points { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.1rem; }
-        .preview-point { display: flex; gap: 0.8rem; align-items: flex-start; }
-        .preview-point-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.2); flex-shrink: 0; margin-top: 0.55rem; }
-        .preview-point p { font-size: 0.83rem; color: rgba(255,255,255,0.4); line-height: 1.65; }
-        .preview-point strong { color: rgba(255,255,255,0.65); }
+    /* 2 teaser points */
+    .preview-points { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.1rem; }
+    .preview-point { display: flex; gap: 0.8rem; align-items: flex-start; }
+    .preview-point-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.2); flex-shrink: 0; margin-top: 0.55rem; }
+    .preview-point p { font-size: 0.83rem; color: rgba(255,255,255,0.4); line-height: 1.65; }
+    .preview-point strong { color: rgba(255,255,255,0.65); }
 
-        .preview-cta { font-size: 0.78rem; color: rgba(255,255,255,0.25); font-style: italic; }
+    .preview-cta { font-size: 0.78rem; color: rgba(255,255,255,0.25); font-style: italic; }
 
-        footer { background: transparent; color: #9ca3af; text-align: center; padding: 2rem; position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.85rem; }
-        footer a { color: #9ca3af; text-decoration: none; }
+    footer { background: transparent; color: #9ca3af; text-align: center; padding: 2rem; position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.85rem; }
+    footer a { color: #9ca3af; text-decoration: none; }
 
-        @media (max-width: 600px) {
-            nav { gap: 1rem; } nav a { font-size: 0.72rem; letter-spacing: 1px; }
-            .topic-top { flex-wrap: wrap; }
-            .topic-actions { width: 100%; padding-left: 52px; }
-            .topic-preview-inner { padding: 0 1.2rem 1.4rem; padding-top: 1.1rem; }
-        }
-    </style>
+    @media (max-width: 600px) {
+        nav { gap: 1rem; } nav a { font-size: 0.72rem; letter-spacing: 1px; }
+        .topic-top { flex-wrap: wrap; }
+        .topic-actions { width: 100%; padding-left: 52px; }
+        .topic-preview-inner { padding: 0 1.2rem 1.4rem; padding-top: 1.1rem; }
+    }
+</style>
+```
+
 </head>
 <body>
     <div class="bg-image bg-image-1"></div>
     <div class="bg-image bg-image-2"></div>
     <div class="bg-image bg-image-3"></div>
 
-    <nav>
-        <a href="/">Home</a>
-        <a href="website-services.html">Web Development</a>
-        <a href="business-facilities.html">Business Facilities</a>
-        <a href="learn.html" class="active">Learn</a>
-    </nav>
+```
+<nav>
+    <a href="/">Home</a>
+    <a href="website-services.html">Web Development</a>
+    <a href="business-facilities.html">Business Facilities</a>
+    <a href="learn.html" class="active">Learn</a>
+</nav>
 
-    <div class="hero">
-        <p class="hero-label">Marcell Services</p>
-        <h1>Learn</h1>
-        <p>I put this together so you actually know what goes into a website and a photo shoot — not just the deliverables, but why each piece matters.</p>
-    </div>
+<div class="hero">
+    <p class="hero-label">Marcell Services</p>
+    <h1>Learn</h1>
+    <p>I put this together so you actually know what goes into a website and a photo shoot — not just the deliverables, but why each piece matters.</p>
+</div>
 
-    <div class="jump-nav">
-        <a href="#web-tech" class="jump-btn">Web Technologies</a>
-        <a href="#photography" class="jump-btn">Business Photography</a>
-    </div>
+<div class="jump-nav">
+    <a href="#web-tech" class="jump-btn">Web Technologies</a>
+    <a href="#photography" class="jump-btn">Business Photography</a>
+</div>
 
-    <div class="learn-container">
+<div class="learn-container">
 
-        <!-- WEB TECHNOLOGIES -->
-        <section id="web-tech">
-            <div class="section-header">
-                <div>
-                    <p class="section-eyebrow">Section 01</p>
-                    <h2 class="section-title">Web Technologies</h2>
-                </div>
-                <span class="section-count">4 Topics</span>
+    <!-- WEB TECHNOLOGIES -->
+    <section id="web-tech">
+        <div class="section-header">
+            <div>
+                <p class="section-eyebrow">Section 01</p>
+                <h2 class="section-title">Web Technologies</h2>
             </div>
-            <div class="topics-list">
+            <span class="section-count">4 Topics</span>
+        </div>
+        <div class="topics-list">
 
-                <!-- ANALYTICS -->
-                <div class="topic-item">
-                    <div class="topic-top">
-                        <div class="topic-left">
-                            <div class="topic-icon">
-                                <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                            </div>
-                            <div>
-                                <p class="topic-name">Analytics</p>
-                                <p class="topic-tagline">Who's coming to your site and what they're doing</p>
-                            </div>
+            <!-- ANALYTICS -->
+            <div class="topic-item">
+                <div class="topic-top">
+                    <div class="topic-left">
+                        <div class="topic-icon">
+                            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
                         </div>
-                        <div class="topic-actions">
-                            <button class="btn-preview" onclick="togglePreview(this)">Preview</button>
-                            <a class="btn-download" href="learn-analytics.pdf" download>
-                                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                Save
-                            </a>
+                        <div>
+                            <p class="topic-name">Analytics</p>
+                            <p class="topic-tagline">Who's coming to your site and what they're doing</p>
                         </div>
                     </div>
-                    <div class="topic-preview">
-                        <div class="topic-preview-inner">
-                            <p class="preview-intro">Most small business owners I've worked with have no idea how their website is actually performing. Analytics is what turns that hope into actual data — who found you, how, and what they did next.</p>
-                            <div class="preview-points">
-                                <div class="preview-point">
-                                    <div class="preview-point-dot"></div>
-                                    <p><strong>Sessions vs. Users</strong> — the difference between how many people visited and how many times they came back, and why conflating them gives you a false picture of growth.</p>
-                                </div>
-                                <div class="preview-point">
-                                    <div class="preview-point-dot"></div>
-                                    <p><strong>Conversion Tracking</strong> — the one thing most people skip and then regret. Counting visitors without tracking what they do is just vanity metrics.</p>
-                                </div>
-                            </div>
-                            <p class="preview-cta">Save the full guide for Bounce Rate, Traffic Sources, and what I actually set up on every site.</p>
-                        </div>
+                    <div class="topic-actions">
+                        <button class="btn-preview" onclick="togglePreview(this)">Preview</button>
+                        <button class="btn-download" onclick="location.reload()">
+                            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
                     </div>
                 </div>
-
-                <!-- SEO -->
-                <div class="topic-item">
-                    <div class="topic-top">
-                        <div class="topic-left">
-                            <div class="topic-icon">
-                                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <div class="topic-preview">
+                    <div class="topic-preview-inner">
+                        <p class="preview-intro">Most small business owners I've worked with have no idea how their website is actually performing. Analytics is what turns that hope into actual data — who found you, how, and what they did next.</p>
+                        <div class="preview-points">
+                            <div class="preview-point">
+                                <div class="preview-point-dot"></div>
+                                <p><strong>Sessions vs. Users</strong> — the difference between how many people visited and how many times they came back, and why conflating them gives you a false picture of growth.</p>
                             </div>
-                            <div>
-                                <p class="topic-name">SEO</p>
-                                <p class="topic-tagline">Getting found on Google without running ads</p>
+                            <div class="preview-point">
+                                <div class="preview-point-dot"></div>
+                                <p><strong>Conversion Tracking</strong> — the one thing most people skip and then regret. Counting visitors without tracking what they do is just vanity metrics.</p>
                             </div>
                         </div>
-                        <div class="topic-actions">
-                            <button class="btn-preview" onclick="togglePreview(this)">Preview</button>
-                            <a class="btn-download" href="learn-seo.pdf" download>
-                                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                Save
-                            </a>
-                        </div>
-                    </div>
-                    <div class="topic-preview">
-                        <div class="topic-preview-inner">
-                            <p class="preview-intro">SEO has a reputation for being mysterious and expensive. It's neither. At the small business level, most of the wins come from getting the basics right — things a lot of developers skip because they're not thinking about search.</p>
-                            <div class="preview-points">
-                                <div class="preview-point">
-                                    <div class="preview-point-dot"></div>
-                                    <p><strong>On-Page Basics</strong> — title tags, meta descriptions, and heading structure. Not optional extras, they're how Google decides what your page is about.</p>
-                                </div>
-                                <div class="preview-point">
-                                    <div class="preview-point-dot"></div>
-                                    <p><strong>Local SEO</strong> — if you serve a specific area, this is where most of your wins will come from. Most small businesses barely scratch the surface here.</p>
-                                </div>
-                            </div>
-                            <p class="preview-cta">Save the full guide for Technical SEO, Backlinks, and what I build in from day one.</p>
-                        </div>
+                        <p class="preview-cta">Download the full guide for Bounce Rate, Traffic Sources, and what I actually set up on every site.</p>
                     </div>
                 </div>
-
-                <!-- PERFORMANCE -->
-                <div class="topic-item">
-                    <div class="topic-top">
-                        <div class="topic-left">
-                            <div class="topic-icon">
-                                <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                            </div>
-                            <div>
-                                <p class="topic-name">Performance</p>
-                                <p class="topic-tagline">How fast your site loads and why people leave when it doesn't</p>
-                            </div>
-                        </div>
-                        <div class="topic-actions">
-                            <button class="btn-preview" onclick="togglePreview(this)">Preview</button>
-                            <a class="btn-download" href="learn-performance.pdf" download>
-                                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                Save
-                            </a>
-                        </div>
-                    </div>
-                    <div class="topic-preview">
-                        <div class="topic-preview-inner">
-                            <p class="preview-intro">People don't wait for slow websites. Three seconds is about all you get before someone hits the back button — and on mobile, even that might be generous.</p>
-                            <div class="preview-points">
-                                <div class="preview-point">
-                                    <div class="preview-point-dot"></div>
-                                    <p><strong>Images Are Usually the Problem</strong> — a photo straight off a phone can be 5-10MB. The same image, properly handled, can be under 200KB with no visible difference.</p>
-                                </div>
-                                <div class="preview-point">
-                                    <div class="preview-point-dot"></div>
-                                    <p><strong>Your Host Matters</strong> — cheap shared hosting puts a ceiling on your speed that no amount of optimization can break through.</p>
-                                </div>
-                            </div>
-                            <p class="preview-cta">Save the full guide for Core Web Vitals, Caching, and what I handle on every build.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SECURITY -->
-                <div class="topic-item">
-                    <div class="topic-top">
-                        <div class="topic-left">
-                            <div class="topic-icon">
-                                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                            </div>
-                            <div>
-                                <p class="topic-name">Security</p>
-                                <p class="topic-tagline">The basics that keep your site from becoming someone else's problem</p>
-                            </div>
-                        </div>
-                        <div class="topic-actions">
-                            <button class="btn-preview" onclick="togglePreview(this)">Preview</button>
-                            <a class="btn-download" href="learn-security.pdf" download>
-                                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                Save
-                            </a>
-                        </div>
-                    </div>
-                    <div class="topic-preview">
-                        <div class="topic-preview-inner">
-                            <p class="preview-intro">Small business sites get attacked constantly — not by people targeting you specifically, but by automated bots scanning for easy vulnerabilities. Most of these are completely preventable.</p>
-                            <div class="preview-points">
-                                <div class="preview-point">
-                                    <div class="preview-point-dot"></div>
-                                    <p><strong>SSL / HTTPS</strong> — if your site still shows "Not Secure" in the browser, that's costing you visitors and rankings right now.</p>
-                                </div>
-                                <div class="preview-point">
-                                    <div class="preview-point-dot"></div>
-                                    <p><strong>Contact Form Spam</strong> — an unprotected form will fill your inbox with garbage and can be used to send spam from your own server.</p>
-                                </div>
-                            </div>
-                            <p class="preview-cta">Save the full guide for Plugin Updates, Backups, and what I flag before they become your problem.</p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-        </section>
 
-        <!-- BUSINESS PHOTOGRAPHY -->
-        <section id="photography">
-            <div class="section-header">
-                <div>
-                    <p class="section-eyebrow">Section 02</p>
-                    <h2 class="section-title">Business Photography</h2>
+            <!-- SEO -->
+            <div class="topic-item">
+                <div class="topic-top">
+                    <div class="topic-left">
+                        <div class="topic-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        </div>
+                        <div>
+                            <p class="topic-name">SEO</p>
+                            <p class="topic-tagline">Getting found on Google without running ads</p>
+                        </div>
+                    </div>
+                    <div class="topic-actions">
+                        <button class="btn-preview" onclick="togglePreview(this)">Preview</button>
+                        <button class="btn-download" onclick="location.reload()">
+                            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
-                <span class="section-count">4 Topics</span>
+                <div class="topic-preview">
+                    <div class="topic-preview-inner">
+                        <p class="preview-intro">SEO has a reputation for being mysterious and expensive. It's neither. At the small business level, most of the wins come from getting the basics right — things a lot of developers skip because they're not thinking about search.</p>
+                        <div class="preview-points">
+                            <div class="preview-point">
+                                <div class="preview-point-dot"></div>
+                                <p><strong>On-Page Basics</strong> — title tags, meta descriptions, and heading structure. Not optional extras, they're how Google decides what your page is about.</p>
+                            </div>
+                            <div class="preview-point">
+                                <div class="preview-point-dot"></div>
+                                <p><strong>Local SEO</strong> — if you serve a specific area, this is where most of your wins will come from. Most small businesses barely scratch the surface here.</p>
+                            </div>
+                        </div>
+                        <p class="preview-cta">Download the full guide for Technical SEO, Backlinks, and what I build in from day one.</p>
+                    </div>
+                </div>
             </div>
-            <div class="topics-list">
 
-                <!-- CAMERAS -->
-                <div class="topic-item">
-                    <div class="topic-top">
-                        <div class="topic-left">
-                            <div class="topic-icon">
-                                <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-                            </div>
-                            <div>
-                                <p class="topic-name">Cameras &amp; Gear</p>
-                                <p class="topic-tagline">What the equipment actually does and why it matters</p>
-                            </div>
+            <!-- PERFORMANCE -->
+            <div class="topic-item">
+                <div class="topic-top">
+                    <div class="topic-left">
+                        <div class="topic-icon">
+                            <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                         </div>
-                        <div class="topic-actions">
-                            <button class="btn-preview" onclick="togglePreview(this)">Preview</button>
-                            <a class="btn-download" href="learn-cameras.pdf" download>
-                                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                Save
-                            </a>
+                        <div>
+                            <p class="topic-name">Performance</p>
+                            <p class="topic-tagline">How fast your site loads and why people leave when it doesn't</p>
                         </div>
                     </div>
-                    <div class="topic-preview">
-                        <div class="topic-preview-inner">
-                            <p class="preview-intro">Gear isn't everything — but it's not nothing. The equipment determines what's possible. A phone camera has a fixed lens, a small sensor, and no real depth of field control. Those limitations show up the moment you try to use the photo at any real size.</p>
-                            <div class="preview-points">
-                                <div class="preview-point">
-                                    <div class="preview-point-dot"></div>
-                                    <p><strong>The Lens Is What Actually Matters</strong> — that sharp subject / soft background look isn't a filter. It's physics, and phone cameras are faking it with AI. It usually shows.</p>
-                                </div>
-                                <div class="preview-point">
-                                    <div class="preview-point-dot"></div>
-                                    <p><strong>Sensor Size</strong> — why professional photos look dimensional instead of flat, and it's not the editing doing that work.</p>
-                                </div>
-                            </div>
-                            <p class="preview-cta">Save the full guide for Mirrorless vs. DSLR, Lighting Gear, and what this means for your deliverables.</p>
-                        </div>
+                    <div class="topic-actions">
+                        <button class="btn-preview" onclick="togglePreview(this)">Preview</button>
+                        <button class="btn-download" onclick="location.reload()">
+                            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
                     </div>
                 </div>
-
-                <!-- ANGLES -->
-                <div class="topic-item">
-                    <div class="topic-top">
-                        <div class="topic-left">
-                            <div class="topic-icon">
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                <div class="topic-preview">
+                    <div class="topic-preview-inner">
+                        <p class="preview-intro">People don't wait for slow websites. Three seconds is about all you get before someone hits the back button — and on mobile, even that might be generous.</p>
+                        <div class="preview-points">
+                            <div class="preview-point">
+                                <div class="preview-point-dot"></div>
+                                <p><strong>Images Are Usually the Problem</strong> — a photo straight off a phone can be 5-10MB. The same image, properly handled, can be under 200KB with no visible difference.</p>
                             </div>
-                            <div>
-                                <p class="topic-name">Angles &amp; Composition</p>
-                                <p class="topic-tagline">How framing changes what people think without them realizing it</p>
+                            <div class="preview-point">
+                                <div class="preview-point-dot"></div>
+                                <p><strong>Your Host Matters</strong> — cheap shared hosting puts a ceiling on your speed that no amount of optimization can break through.</p>
                             </div>
                         </div>
-                        <div class="topic-actions">
-                            <button class="btn-preview" onclick="togglePreview(this)">Preview</button>
-                            <a class="btn-download" href="learn-angles.pdf" download>
-                                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                Save
-                            </a>
-                        </div>
-                    </div>
-                    <div class="topic-preview">
-                        <div class="topic-preview-inner">
-                            <p class="preview-intro">Where you put the camera communicates things the viewer never consciously registers. These aren't aesthetic opinions — they're consistent psychological responses to visual cues that good photographers use deliberately.</p>
-                            <div class="preview-points">
-                                <div class="preview-point">
-                                    <div class="preview-point-dot"></div>
-                                    <p><strong>Rule of Thirds</strong> — you probably already notice when photos feel "off." Centering everything is usually the culprit, and this is why.</p>
-                                </div>
-                                <div class="preview-point">
-                                    <div class="preview-point-dot"></div>
-                                    <p><strong>Negative Space</strong> — empty space isn't wasted. It's also where designers put text overlays on banners, which a packed photo makes impossible to read.</p>
-                                </div>
-                            </div>
-                            <p class="preview-cta">Save the full guide for Camera Height, Leading Lines, and how I plan shots around your actual web layout.</p>
-                        </div>
+                        <p class="preview-cta">Download the full guide for Core Web Vitals, Caching, and what I handle on every build.</p>
                     </div>
                 </div>
-
-                <!-- LIGHTING -->
-                <div class="topic-item">
-                    <div class="topic-top">
-                        <div class="topic-left">
-                            <div class="topic-icon">
-                                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                            </div>
-                            <div>
-                                <p class="topic-name">Lighting</p>
-                                <p class="topic-tagline">The one variable that determines whether a photo looks professional</p>
-                            </div>
-                        </div>
-                        <div class="topic-actions">
-                            <button class="btn-preview" onclick="togglePreview(this)">Preview</button>
-                            <a class="btn-download" href="learn-lighting.pdf" download>
-                                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                Save
-                            </a>
-                        </div>
-                    </div>
-                    <div class="topic-preview">
-                        <div class="topic-preview-inner">
-                            <p class="preview-intro">Good lighting covers a lot of mistakes. Bad lighting exposes everything. I've seen expensive cameras produce mediocre photos because the lighting was wrong — and the opposite. It's the variable with the highest leverage.</p>
-                            <div class="preview-points">
-                                <div class="preview-point">
-                                    <div class="preview-point-dot"></div>
-                                    <p><strong>Mixed Light Sources</strong> — this is where most DIY shoots go wrong. Fluorescent overhead and daylight from a window don't mix. Your camera has to pick one, and the other looks off.</p>
-                                </div>
-                                <div class="preview-point">
-                                    <div class="preview-point-dot"></div>
-                                    <p><strong>Golden Hour for Exteriors</strong> — for storefronts and outdoor spaces, timing the shoot around this is one of the simplest ways to dramatically change the result.</p>
-                                </div>
-                            </div>
-                            <p class="preview-cta">Save the full guide for Window Light, Three-Point Setup, and how I scout before every shoot.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- EDITING -->
-                <div class="topic-item">
-                    <div class="topic-top">
-                        <div class="topic-left">
-                            <div class="topic-icon">
-                                <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-                            </div>
-                            <div>
-                                <p class="topic-name">Editing &amp; Retouching</p>
-                                <p class="topic-tagline">What good post-processing actually looks like</p>
-                            </div>
-                        </div>
-                        <div class="topic-actions">
-                            <button class="btn-preview" onclick="togglePreview(this)">Preview</button>
-                            <a class="btn-download" href="learn-editing.pdf" download>
-                                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                Save
-                            </a>
-                        </div>
-                    </div>
-                    <div class="topic-preview">
-                        <div class="topic-preview-inner">
-                            <p class="preview-intro">Every professional photo gets edited. The goal isn't to make it look like something it's not — it's to make it look like the best, most accurate version of what was actually there.</p>
-                            <div class="preview-points">
-                                <div class="preview-point">
-                                    <div class="preview-point-dot"></div>
-                                    <p><strong>Color Correction First</strong> — if your team headshots each have a different color cast, the page looks inconsistent. This is the thing most people don't notice until they see it fixed.</p>
-                                </div>
-                                <div class="preview-point">
-                                    <div class="preview-point-dot"></div>
-                                    <p><strong>Cropped for Where It's Going</strong> — a website banner, a LinkedIn photo, and an Instagram post all need different crops. One file doesn't cover all three.</p>
-                                </div>
-                            </div>
-                            <p class="preview-cta">Save the full guide for Retouching, RAW vs. JPEG, and exactly what you receive as a deliverable.</p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-        </section>
 
-    </div>
+            <!-- SECURITY -->
+            <div class="topic-item">
+                <div class="topic-top">
+                    <div class="topic-left">
+                        <div class="topic-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <div>
+                            <p class="topic-name">Security</p>
+                            <p class="topic-tagline">The basics that keep your site from becoming someone else's problem</p>
+                        </div>
+                    </div>
+                    <div class="topic-actions">
+                        <button class="btn-preview" onclick="togglePreview(this)">Preview</button>
+                        <button class="btn-download" onclick="location.reload()">
+                            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
+                </div>
+                <div class="topic-preview">
+                    <div class="topic-preview-inner">
+                        <p class="preview-intro">Small business sites get attacked constantly — not by people targeting you specifically, but by automated bots scanning for easy vulnerabilities. Most of these are completely preventable.</p>
+                        <div class="preview-points">
+                            <div class="preview-point">
+                                <div class="preview-point-dot"></div>
+                                <p><strong>SSL / HTTPS</strong> — if your site still shows "Not Secure" in the browser, that's costing you visitors and rankings right now.</p>
+                            </div>
+                            <div class="preview-point">
+                                <div class="preview-point-dot"></div>
+                                <p><strong>Contact Form Spam</strong> — an unprotected form will fill your inbox with garbage and can be used to send spam from your own server.</p>
+                            </div>
+                        </div>
+                        <p class="preview-cta">Download the full guide for Plugin Updates, Backups, and what I flag before they become your problem.</p>
+                    </div>
+                </div>
+            </div>
 
-    <footer>
-        <p>&#169; 2026 Marcell Services LLC. All rights reserved. &nbsp;&#183;&nbsp; <a href="https://www.xmarcellr.com/" target="_blank">Marcell Services</a></p>
-    </footer>
+        </div>
+    </section>
 
-    <script>
-        function togglePreview(btn) {
-            var item = btn.closest('.topic-item');
-            var isOpen = item.classList.contains('preview-open');
-            // Close all others
-            document.querySelectorAll('.topic-item.preview-open').forEach(function(el) {
-                el.classList.remove('preview-open');
-                el.querySelector('.btn-preview').textContent = 'Preview';
-                el.querySelector('.btn-preview').classList.remove('open');
-            });
-            if (!isOpen) {
-                item.classList.add('preview-open');
-                btn.textContent = 'Close';
-                btn.classList.add('open');
-            }
-        }
+    <!-- BUSINESS PHOTOGRAPHY -->
+    <section id="photography">
+        <div class="section-header">
+            <div>
+                <p class="section-eyebrow">Section 02</p>
+                <h2 class="section-title">Business Photography</h2>
+            </div>
+            <span class="section-count">4 Topics</span>
+        </div>
+        <div class="topics-list">
 
-        // Scroll fade in
-        var observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.08 });
-        document.querySelectorAll('.topic-item').forEach(function(el, i) {
-            el.style.transitionDelay = (i % 4 * 0.07) + 's';
-            observer.observe(el);
+            <!-- CAMERAS -->
+            <div class="topic-item">
+                <div class="topic-top">
+                    <div class="topic-left">
+                        <div class="topic-icon">
+                            <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                        </div>
+                        <div>
+                            <p class="topic-name">Cameras &amp; Gear</p>
+                            <p class="topic-tagline">What the equipment actually does and why it matters</p>
+                        </div>
+                    </div>
+                    <div class="topic-actions">
+                        <button class="btn-preview" onclick="togglePreview(this)">Preview</button>
+                        <button class="btn-download" onclick="location.reload()">
+                            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
+                </div>
+                <div class="topic-preview">
+                    <div class="topic-preview-inner">
+                        <p class="preview-intro">Gear isn't everything — but it's not nothing. The equipment determines what's possible. A phone camera has a fixed lens, a small sensor, and no real depth of field control. Those limitations show up the moment you try to use the photo at any real size.</p>
+                        <div class="preview-points">
+                            <div class="preview-point">
+                                <div class="preview-point-dot"></div>
+                                <p><strong>The Lens Is What Actually Matters</strong> — that sharp subject / soft background look isn't a filter. It's physics, and phone cameras are faking it with AI. It usually shows.</p>
+                            </div>
+                            <div class="preview-point">
+                                <div class="preview-point-dot"></div>
+                                <p><strong>Sensor Size</strong> — why professional photos look dimensional instead of flat, and it's not the editing doing that work.</p>
+                            </div>
+                        </div>
+                        <p class="preview-cta">Download the full guide for Mirrorless vs. DSLR, Lighting Gear, and what this means for your deliverables.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ANGLES -->
+            <div class="topic-item">
+                <div class="topic-top">
+                    <div class="topic-left">
+                        <div class="topic-icon">
+                            <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                        </div>
+                        <div>
+                            <p class="topic-name">Angles &amp; Composition</p>
+                            <p class="topic-tagline">How framing changes what people think without them realizing it</p>
+                        </div>
+                    </div>
+                    <div class="topic-actions">
+                        <button class="btn-preview" onclick="togglePreview(this)">Preview</button>
+                        <button class="btn-download" onclick="location.reload()">
+                            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
+                </div>
+                <div class="topic-preview">
+                    <div class="topic-preview-inner">
+                        <p class="preview-intro">Where you put the camera communicates things the viewer never consciously registers. These aren't aesthetic opinions — they're consistent psychological responses to visual cues that good photographers use deliberately.</p>
+                        <div class="preview-points">
+                            <div class="preview-point">
+                                <div class="preview-point-dot"></div>
+                                <p><strong>Rule of Thirds</strong> — you probably already notice when photos feel "off." Centering everything is usually the culprit, and this is why.</p>
+                            </div>
+                            <div class="preview-point">
+                                <div class="preview-point-dot"></div>
+                                <p><strong>Negative Space</strong> — empty space isn't wasted. It's also where designers put text overlays on banners, which a packed photo makes impossible to read.</p>
+                            </div>
+                        </div>
+                        <p class="preview-cta">Download the full guide for Camera Height, Leading Lines, and how I plan shots around your actual web layout.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LIGHTING -->
+            <div class="topic-item">
+                <div class="topic-top">
+                    <div class="topic-left">
+                        <div class="topic-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                        </div>
+                        <div>
+                            <p class="topic-name">Lighting</p>
+                            <p class="topic-tagline">The one variable that determines whether a photo looks professional</p>
+                        </div>
+                    </div>
+                    <div class="topic-actions">
+                        <button class="btn-preview" onclick="togglePreview(this)">Preview</button>
+                        <button class="btn-download" onclick="location.reload()">
+                            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
+                </div>
+                <div class="topic-preview">
+                    <div class="topic-preview-inner">
+                        <p class="preview-intro">Good lighting covers a lot of mistakes. Bad lighting exposes everything. I've seen expensive cameras produce mediocre photos because the lighting was wrong — and the opposite. It's the variable with the highest leverage.</p>
+                        <div class="preview-points">
+                            <div class="preview-point">
+                                <div class="preview-point-dot"></div>
+                                <p><strong>Mixed Light Sources</strong> — this is where most DIY shoots go wrong. Fluorescent overhead and daylight from a window don't mix. Your camera has to pick one, and the other looks off.</p>
+                            </div>
+                            <div class="preview-point">
+                                <div class="preview-point-dot"></div>
+                                <p><strong>Golden Hour for Exteriors</strong> — for storefronts and outdoor spaces, timing the shoot around this is one of the simplest ways to dramatically change the result.</p>
+                            </div>
+                        </div>
+                        <p class="preview-cta">Download the full guide for Window Light, Three-Point Setup, and how I scout before every shoot.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EDITING -->
+            <div class="topic-item">
+                <div class="topic-top">
+                    <div class="topic-left">
+                        <div class="topic-icon">
+                            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                        </div>
+                        <div>
+                            <p class="topic-name">Editing &amp; Retouching</p>
+                            <p class="topic-tagline">What good post-processing actually looks like</p>
+                        </div>
+                    </div>
+                    <div class="topic-actions">
+                        <button class="btn-preview" onclick="togglePreview(this)">Preview</button>
+                        <button class="btn-download" onclick="location.reload()">
+                            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
+                </div>
+                <div class="topic-preview">
+                    <div class="topic-preview-inner">
+                        <p class="preview-intro">Every professional photo gets edited. The goal isn't to make it look like something it's not — it's to make it look like the best, most accurate version of what was actually there.</p>
+                        <div class="preview-points">
+                            <div class="preview-point">
+                                <div class="preview-point-dot"></div>
+                                <p><strong>Color Correction First</strong> — if your team headshots each have a different color cast, the page looks inconsistent. This is the thing most people don't notice until they see it fixed.</p>
+                            </div>
+                            <div class="preview-point">
+                                <div class="preview-point-dot"></div>
+                                <p><strong>Cropped for Where It's Going</strong> — a website banner, a LinkedIn photo, and an Instagram post all need different crops. One file doesn't cover all three.</p>
+                            </div>
+                        </div>
+                        <p class="preview-cta">Download the full guide for Retouching, RAW vs. JPEG, and exactly what you receive as a deliverable.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p>&#169; 2026 Marcell Services LLC. All rights reserved. &nbsp;&#183;&nbsp; <a href="https://www.xmarcellr.com/" target="_blank">Marcell Services</a></p>
+</footer>
+
+<script>
+    function togglePreview(btn) {
+        var item = btn.closest('.topic-item');
+        var isOpen = item.classList.contains('preview-open');
+        // Close all others
+        document.querySelectorAll('.topic-item.preview-open').forEach(function(el) {
+            el.classList.remove('preview-open');
+            el.querySelector('.btn-preview').textContent = 'Preview';
+            el.querySelector('.btn-preview').classList.remove('open');
         });
-    </script>
-</body>
+        if (!isOpen) {
+            item.classList.add('preview-open');
+            btn.textContent = 'Close';
+            btn.classList.add('open');
+        }
+    }
 
+    // Scroll fade in
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.topic-item').forEach(function(el, i) {
+        el.style.transitionDelay = (i % 4 * 0.07) + 's';
+        observer.observe(el);
+    });
+</script>
+```
+
+</body>
 </html>
