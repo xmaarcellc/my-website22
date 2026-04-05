@@ -93,7 +93,7 @@
             .bcard-topics-hdr, .bcard-collab, .bcard-contact { grid-column: 1 / -1; grid-row: auto; min-height: unset; }
             .bcard-founder { min-height: 280px; }
             .bcard-webdev { min-height: 260px; }
-            .bcard-consult  { min-height: 240px; }
+            .bcard-consult { min-height: 240px; }
             #articlesRow { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 600px) {
@@ -441,7 +441,7 @@
         <button class="pm-close" onclick="closePrivacy()">&#10005;</button>
         <p class="pm-label">Legal</p>
         <p class="pm-title">Privacy Policy</p>
-        <p class="pm-date">Last updated: Jan 5, 2026 &nbsp;·&nbsp; Marcell Services LLC</p>
+        <p class="pm-date">Last updated: Dec 5, 2025 &nbsp;·&nbsp; Marcell Services LLC</p>
         <div class="pm-section">
             <h3>Overview</h3>
             <p>This site collects minimal data and only what's needed to operate. We do not sell your data — ever.</p>
@@ -492,7 +492,7 @@
     </div>
 
     <script>
-        /* ── Analytics (loaded only on consent) ── */
+        /* ── Analytics: loaded only on explicit consent ── */
         function loadAnalytics() {
             var s = document.createElement('script');
             s.async = true;
@@ -505,26 +505,46 @@
             gtag('config', 'G-SBYX1GSJS8');
         }
 
-        /* ── Cookie banner logic ── */
-        (function() {
-            var stored = localStorage.getItem('cookiesAccepted');
-            if (stored === 'yes') {
-                loadAnalytics();
-                document.getElementById('cookieOverlay').classList.add('hidden');
-                document.getElementById('cookieBanner').classList.add('hidden');
-            } else if (stored === 'no') {
-                document.getElementById('cookieOverlay').classList.add('hidden');
-                document.getElementById('cookieBanner').classList.add('hidden');
-            }
-            // no stored value = banner stays visible, overlay blocks page
-        })();
-
-        function dismissCookies(consent) {
-            localStorage.setItem('cookiesAccepted', consent);
-            if (consent === 'yes') loadAnalytics();
+        /* ── Dismiss banner and overlay ── */
+        function dismissBanner() {
             document.getElementById('cookieOverlay').classList.add('hidden');
             document.getElementById('cookieBanner').classList.add('hidden');
             document.getElementById('privacyModal').classList.remove('open');
+        }
+
+        /* ── Cookie consent logic ── */
+        (function() {
+            var stored = localStorage.getItem('cookiesAccepted');
+
+            // Returning visitor — respect previous choice immediately
+            if (stored === 'yes') { loadAnalytics(); dismissBanner(); return; }
+            if (stored === 'no')  { dismissBanner(); return; }
+
+            // First visit — check if browser is already blocking tracking
+            var dnt = navigator.doNotTrack === '1' || window.doNotTrack === '1';
+
+            // Probe a known GA endpoint; if browser blocks it, onerror fires
+            var probeBlocked = false;
+            var probe = new Image();
+            probe.onerror = function() { probeBlocked = true; };
+            probe.src = 'https://www.google-analytics.com/collect?v=1&t=event&tid=UA-test&cid=test&ec=probe&ea=probe&z=' + Date.now();
+
+            // Give browser 800ms to attempt (and potentially block) the probe
+            setTimeout(function() {
+                if (dnt || probeBlocked) {
+                    // Tracking already blocked at browser level — skip banner
+                    localStorage.setItem('cookiesAccepted', 'no');
+                    dismissBanner();
+                }
+                // No blocking detected — banner stays visible, user must choose
+            }, 800);
+        })();
+
+        /* ── Button handlers ── */
+        function dismissCookies(consent) {
+            localStorage.setItem('cookiesAccepted', consent);
+            if (consent === 'yes') loadAnalytics();
+            dismissBanner();
         }
 
         function togglePrivacy() {
@@ -548,7 +568,7 @@
         }
         setInterval(function() { founderGoTo(founderCurrent + 1); }, 3500);
 
-        /* ── Modal open/close helpers ── */
+        /* ── Modal visibility helpers ── */
         function watchModal(id) {
             var el = document.getElementById(id);
             new MutationObserver(function() {
