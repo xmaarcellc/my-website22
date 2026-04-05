@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SBYX1GSJS8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-SBYX1GSJS8');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Marcell Services</title>
@@ -123,7 +116,6 @@
             transition: opacity 0.5s ease;
         }
         #cookieOverlay.hidden { opacity: 0; pointer-events: none; }
-
         #cookieBanner {
             position: fixed; bottom: 0; left: 0; right: 0; z-index: 501;
             background: rgba(18,18,18,0.97);
@@ -136,32 +128,15 @@
             transition: transform 0.5s ease, opacity 0.5s ease;
         }
         #cookieBanner.hidden { transform: translateY(100%); opacity: 0; pointer-events: none; }
-
-        .cookie-text .ct-title {
-            font-size: 0.85rem; font-weight: 600;
-            color: rgba(255,255,255,0.9); margin: 0 0 3px;
-        }
-        .cookie-text .ct-body {
-            font-size: 0.78rem; color: rgba(255,255,255,0.38); line-height: 1.6; margin: 0;
-        }
-        .cookie-text .ct-body button {
-            background: none; border: none; padding: 0;
-            color: rgba(255,255,255,0.55); font-size: inherit;
-            text-decoration: underline; cursor: pointer; font-family: inherit;
-        }
+        .cookie-text .ct-title { font-size: 0.85rem; font-weight: 600; color: rgba(255,255,255,0.9); margin: 0 0 3px; }
+        .cookie-text .ct-body { font-size: 0.78rem; color: rgba(255,255,255,0.38); line-height: 1.6; margin: 0; }
+        .cookie-text .ct-body button { background: none; border: none; padding: 0; color: rgba(255,255,255,0.55); font-size: inherit; text-decoration: underline; cursor: pointer; font-family: inherit; }
         .cookie-btns { display: flex; gap: 8px; flex-shrink: 0; }
-        .cookie-btns button {
-            font-family: inherit; font-size: 0.78rem; border-radius: 6px;
-            padding: 0.45rem 1.1rem; cursor: pointer; transition: all 0.2s;
-        }
-        .btn-decline {
-            background: transparent; border: 1px solid rgba(255,255,255,0.15);
-            color: rgba(255,255,255,0.45);
-        }
+        .cookie-btns button { font-family: inherit; font-size: 0.78rem; border-radius: 6px; padding: 0.45rem 1.1rem; cursor: pointer; transition: all 0.2s; }
+        .btn-decline { background: transparent; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.45); }
         .btn-decline:hover { border-color: rgba(255,255,255,0.35); color: rgba(255,255,255,0.7); }
         .btn-accept { background: #ffffff; border: none; color: #000000; font-weight: 600; }
         .btn-accept:hover { background: #e8e8e8; }
-
         #privacyModal {
             position: fixed; bottom: 70px; left: 50%; transform: translateX(-50%) translateY(12px);
             z-index: 502; width: min(520px, calc(100vw - 2rem));
@@ -173,40 +148,22 @@
             transition: opacity 0.3s ease, transform 0.3s ease;
             max-height: 70vh; overflow-y: auto;
         }
-        #privacyModal.open {
-            opacity: 1; pointer-events: all;
-            transform: translateX(-50%) translateY(0);
-        }
+        #privacyModal.open { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
         #privacyModal::-webkit-scrollbar { width: 4px; }
         #privacyModal::-webkit-scrollbar-track { background: transparent; }
         #privacyModal::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
-
-        .pm-close {
-            position: absolute; top: 1rem; right: 1rem;
-            background: none; border: none; color: rgba(255,255,255,0.3);
-            font-size: 1.1rem; cursor: pointer; line-height: 1;
-            transition: color 0.2s; padding: 0;
-        }
+        .pm-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: rgba(255,255,255,0.3); font-size: 1.1rem; cursor: pointer; line-height: 1; transition: color 0.2s; padding: 0; }
         .pm-close:hover { color: #ffffff; }
-        .pm-label {
-            font-size: 0.65rem; font-weight: 700; letter-spacing: 3px;
-            text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 0.3rem;
-        }
+        .pm-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 0.3rem; }
         .pm-title { font-size: 1rem; font-weight: 700; color: #ffffff; margin-bottom: 0.25rem; }
         .pm-date { font-size: 0.75rem; color: rgba(255,255,255,0.25); margin-bottom: 1.4rem; }
         .pm-section { margin-bottom: 1.2rem; }
-        .pm-section h3 {
-            font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.7);
-            margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px;
-        }
+        .pm-section h3 { font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.7); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; }
         .pm-section p, .pm-section li { font-size: 0.82rem; color: #888888; line-height: 1.8; }
         .pm-section ul { margin-left: 1rem; margin-top: 0.3rem; }
         .pm-section li { margin-bottom: 0.2rem; }
         .pm-section strong { color: rgba(255,255,255,0.6); }
-        .pm-notice {
-            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 8px; padding: 0.9rem 1rem; margin-top: 0.5rem;
-        }
+        .pm-notice { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 0.9rem 1rem; margin-top: 0.5rem; }
         .pm-notice p { font-size: 0.8rem; color: #777; line-height: 1.8; }
         .pm-divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 1rem 0; }
     </style>
@@ -484,8 +441,7 @@
         <button class="pm-close" onclick="closePrivacy()">&#10005;</button>
         <p class="pm-label">Legal</p>
         <p class="pm-title">Privacy Policy</p>
-        <p class="pm-date">Last updated: April 5, 2026 &nbsp;·&nbsp; Marcell Services LLC</p>
-
+        <p class="pm-date">Last updated: Jan 5, 2026 &nbsp;·&nbsp; Marcell Services LLC</p>
         <div class="pm-section">
             <h3>Overview</h3>
             <p>This site collects minimal data and only what's needed to operate. We do not sell your data — ever.</p>
@@ -530,12 +486,56 @@
             <p class="ct-body">We use cookies to improve your experience. By continuing, you agree to our <button onclick="togglePrivacy()">Privacy Policy</button>.</p>
         </div>
         <div class="cookie-btns">
-            <button class="btn-decline" onclick="dismissCookies()">Decline</button>
-            <button class="btn-accept" onclick="dismissCookies()">Accept all</button>
+            <button class="btn-decline" onclick="dismissCookies('no')">Decline</button>
+            <button class="btn-accept" onclick="dismissCookies('yes')">Accept all</button>
         </div>
     </div>
 
     <script>
+        /* ── Analytics (loaded only on consent) ── */
+        function loadAnalytics() {
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://www.googletagmanager.com/gtag/js?id=G-SBYX1GSJS8';
+            document.head.appendChild(s);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', 'G-SBYX1GSJS8');
+        }
+
+        /* ── Cookie banner logic ── */
+        (function() {
+            var stored = localStorage.getItem('cookiesAccepted');
+            if (stored === 'yes') {
+                loadAnalytics();
+                document.getElementById('cookieOverlay').classList.add('hidden');
+                document.getElementById('cookieBanner').classList.add('hidden');
+            } else if (stored === 'no') {
+                document.getElementById('cookieOverlay').classList.add('hidden');
+                document.getElementById('cookieBanner').classList.add('hidden');
+            }
+            // no stored value = banner stays visible, overlay blocks page
+        })();
+
+        function dismissCookies(consent) {
+            localStorage.setItem('cookiesAccepted', consent);
+            if (consent === 'yes') loadAnalytics();
+            document.getElementById('cookieOverlay').classList.add('hidden');
+            document.getElementById('cookieBanner').classList.add('hidden');
+            document.getElementById('privacyModal').classList.remove('open');
+        }
+
+        function togglePrivacy() {
+            document.getElementById('privacyModal').classList.toggle('open');
+        }
+
+        function closePrivacy() {
+            document.getElementById('privacyModal').classList.remove('open');
+        }
+
+        /* ── Founder photo carousel ── */
         var founderCurrent = 0;
         var founderModalPhotos = document.querySelectorAll('.founder-modal-photo');
         var founderDots = document.querySelectorAll('.fdot');
@@ -548,6 +548,7 @@
         }
         setInterval(function() { founderGoTo(founderCurrent + 1); }, 3500);
 
+        /* ── Modal open/close helpers ── */
         function watchModal(id) {
             var el = document.getElementById(id);
             new MutationObserver(function() {
@@ -557,6 +558,7 @@
         watchModal('founderModal');
         watchModal('bugModal');
 
+        /* ── Articles toggle & sort ── */
         var articlesOpen = false;
         function toggleArticles() {
             articlesOpen = !articlesOpen;
@@ -583,11 +585,13 @@
             cards.forEach(function(c) { row.appendChild(c); });
         }
 
+        /* ── Collab accordion ── */
         function toggleCollab(card) {
             card.querySelector('.collab-desc').classList.toggle('open');
             card.querySelector('.collab-arrow').classList.toggle('open');
         }
 
+        /* ── Scroll fade-in for bento cards ── */
         var cardObserver = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
@@ -599,29 +603,6 @@
             card.dataset.delay = i * 60;
             cardObserver.observe(card);
         });
-
-        // Cookie banner
-        (function() {
-            if (localStorage.getItem('cookiesAccepted')) {
-                document.getElementById('cookieOverlay').classList.add('hidden');
-                document.getElementById('cookieBanner').classList.add('hidden');
-            }
-        })();
-
-        function dismissCookies() {
-            localStorage.setItem('cookiesAccepted', '1');
-            document.getElementById('cookieOverlay').classList.add('hidden');
-            document.getElementById('cookieBanner').classList.add('hidden');
-            document.getElementById('privacyModal').classList.remove('open');
-        }
-
-        function togglePrivacy() {
-            document.getElementById('privacyModal').classList.toggle('open');
-        }
-
-        function closePrivacy() {
-            document.getElementById('privacyModal').classList.remove('open');
-        }
     </script>
 </body>
 </html>
