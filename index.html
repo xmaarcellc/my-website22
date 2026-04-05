@@ -112,6 +112,103 @@
             nav a { font-size: 0.78rem; letter-spacing: 1px; padding: 0.9rem 1.2rem; }
             header h1 { font-size: 1.8rem; }
         }
+
+        /* ── Cookie Banner & Privacy Modal ── */
+        #cookieOverlay {
+            position: fixed; inset: 0; z-index: 500;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            background: rgba(10,10,10,0.45);
+            pointer-events: all;
+            transition: opacity 0.5s ease;
+        }
+        #cookieOverlay.hidden { opacity: 0; pointer-events: none; }
+
+        #cookieBanner {
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 501;
+            background: rgba(18,18,18,0.97);
+            border-top: 1px solid rgba(255,255,255,0.09);
+            backdrop-filter: blur(12px);
+            padding: 1.1rem 2rem;
+            display: flex; align-items: center;
+            justify-content: space-between;
+            gap: 1.2rem; flex-wrap: wrap;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        #cookieBanner.hidden { transform: translateY(100%); opacity: 0; pointer-events: none; }
+
+        .cookie-text .ct-title {
+            font-size: 0.85rem; font-weight: 600;
+            color: rgba(255,255,255,0.9); margin: 0 0 3px;
+        }
+        .cookie-text .ct-body {
+            font-size: 0.78rem; color: rgba(255,255,255,0.38); line-height: 1.6; margin: 0;
+        }
+        .cookie-text .ct-body button {
+            background: none; border: none; padding: 0;
+            color: rgba(255,255,255,0.55); font-size: inherit;
+            text-decoration: underline; cursor: pointer; font-family: inherit;
+        }
+        .cookie-btns { display: flex; gap: 8px; flex-shrink: 0; }
+        .cookie-btns button {
+            font-family: inherit; font-size: 0.78rem; border-radius: 6px;
+            padding: 0.45rem 1.1rem; cursor: pointer; transition: all 0.2s;
+        }
+        .btn-decline {
+            background: transparent; border: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.45);
+        }
+        .btn-decline:hover { border-color: rgba(255,255,255,0.35); color: rgba(255,255,255,0.7); }
+        .btn-accept { background: #ffffff; border: none; color: #000000; font-weight: 600; }
+        .btn-accept:hover { background: #e8e8e8; }
+
+        #privacyModal {
+            position: fixed; bottom: 70px; left: 50%; transform: translateX(-50%) translateY(12px);
+            z-index: 502; width: min(520px, calc(100vw - 2rem));
+            background: rgba(22,22,22,0.98);
+            border: 1px solid rgba(255,255,255,0.11);
+            border-radius: 14px;
+            padding: 1.6rem 1.8rem;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            max-height: 70vh; overflow-y: auto;
+        }
+        #privacyModal.open {
+            opacity: 1; pointer-events: all;
+            transform: translateX(-50%) translateY(0);
+        }
+        #privacyModal::-webkit-scrollbar { width: 4px; }
+        #privacyModal::-webkit-scrollbar-track { background: transparent; }
+        #privacyModal::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
+
+        .pm-close {
+            position: absolute; top: 1rem; right: 1rem;
+            background: none; border: none; color: rgba(255,255,255,0.3);
+            font-size: 1.1rem; cursor: pointer; line-height: 1;
+            transition: color 0.2s; padding: 0;
+        }
+        .pm-close:hover { color: #ffffff; }
+        .pm-label {
+            font-size: 0.65rem; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 0.3rem;
+        }
+        .pm-title { font-size: 1rem; font-weight: 700; color: #ffffff; margin-bottom: 0.25rem; }
+        .pm-date { font-size: 0.75rem; color: rgba(255,255,255,0.25); margin-bottom: 1.4rem; }
+        .pm-section { margin-bottom: 1.2rem; }
+        .pm-section h3 {
+            font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.7);
+            margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .pm-section p, .pm-section li { font-size: 0.82rem; color: #888888; line-height: 1.8; }
+        .pm-section ul { margin-left: 1rem; margin-top: 0.3rem; }
+        .pm-section li { margin-bottom: 0.2rem; }
+        .pm-section strong { color: rgba(255,255,255,0.6); }
+        .pm-notice {
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px; padding: 0.9rem 1rem; margin-top: 0.5rem;
+        }
+        .pm-notice p { font-size: 0.8rem; color: #777; line-height: 1.8; }
+        .pm-divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 1rem 0; }
     </style>
 </head>
 <body>
@@ -320,6 +417,7 @@
         <p>&#169; 2026 Marcell Services LLC. All rights reserved. &nbsp;&#183;&nbsp; <a href="https://www.xmarcellr.com/" target="_blank">Marcell Services</a></p>
     </footer>
 
+    <!-- Founder Modal -->
     <div id="founderModal" style="display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.8); backdrop-filter:blur(8px); align-items:center; justify-content:center; padding:1.5rem;" onclick="if(event.target===this)this.classList.remove('open')">
         <div style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.12); border-radius:18px; max-width:560px; width:100%; max-height:90vh; overflow-y:auto; padding:2rem; position:relative;">
             <button onclick="document.getElementById('founderModal').classList.remove('open')" style="position:absolute; top:1rem; right:1rem; background:transparent; border:none; color:rgba(255,255,255,0.4); font-size:1.4rem; cursor:pointer; line-height:1; transition:color 0.2s; z-index:2;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">&#10005;</button>
@@ -350,6 +448,7 @@
         </div>
     </div>
 
+    <!-- Bug Modal -->
     <div id="bugModal" style="display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.75); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:1.5rem;" onclick="if(event.target===this)this.classList.remove('open')">
         <div style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.12); border-radius:18px; max-width:640px; width:100%; max-height:85vh; overflow-y:auto; padding:2.5rem; position:relative;">
             <button onclick="document.getElementById('bugModal').classList.remove('open')" style="position:absolute; top:1.2rem; right:1.2rem; background:transparent; border:none; color:rgba(255,255,255,0.4); font-size:1.4rem; cursor:pointer; line-height:1; transition:color 0.2s;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">&#10005;</button>
@@ -374,6 +473,65 @@
                 <p style="font-size:0.88rem; color:#888; line-height:1.8; margin-bottom:0.4rem;"><span style="color:rgba(255,255,255,0.4); font-weight:600;">Issue:</span> CSS animations not rendering consistently across Safari and older browsers.</p>
                 <p style="font-size:0.88rem; color:#888; line-height:1.8;"><span style="color:rgba(255,255,255,0.4); font-weight:600;">Fix:</span> Added vendor prefixes, feature detection, and graceful degradation fallbacks.</p>
             </div>
+        </div>
+    </div>
+
+    <!-- Cookie Overlay -->
+    <div id="cookieOverlay"></div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal">
+        <button class="pm-close" onclick="closePrivacy()">&#10005;</button>
+        <p class="pm-label">Legal</p>
+        <p class="pm-title">Privacy Policy</p>
+        <p class="pm-date">Last updated: April 5, 2026 &nbsp;·&nbsp; Marcell Services LLC</p>
+
+        <div class="pm-section">
+            <h3>Overview</h3>
+            <p>This site collects minimal data and only what's needed to operate. We do not sell your data — ever.</p>
+        </div>
+        <hr class="pm-divider">
+        <div class="pm-section">
+            <h3>What We Collect</h3>
+            <ul>
+                <li>Contact form submissions (name, email, message)</li>
+                <li>Anonymized analytics via Google Analytics (page views, session data)</li>
+                <li>Cookie preference stored locally in your browser</li>
+            </ul>
+        </div>
+        <hr class="pm-divider">
+        <div class="pm-section">
+            <h3>We Will Never Sell Your Data</h3>
+            <p>Your name, email, or any detail you share will <strong>never be sold, rented, or traded</strong> to any third party, advertiser, or data broker. No exceptions.</p>
+        </div>
+        <hr class="pm-divider">
+        <div class="pm-section">
+            <h3>Third-Party Services</h3>
+            <p>Google Analytics and Google Tag Manager are used for anonymized traffic data. These operate under their own privacy policies.</p>
+        </div>
+        <hr class="pm-divider">
+        <div class="pm-section">
+            <h3>Security &amp; Liability</h3>
+            <div class="pm-notice">
+                <p>We use HTTPS and take reasonable precautions to protect submitted data. However, no internet transmission is fully secure. <strong>Marcell Services LLC assumes no liability</strong> for unauthorized access, breaches, or data loss resulting from third-party actions or circumstances outside our control. Use this site knowing that limitation.</p>
+            </div>
+        </div>
+        <hr class="pm-divider">
+        <div class="pm-section">
+            <h3>Contact</h3>
+            <p>Questions? Email <strong>xmarcellr@gmail.com</strong></p>
+        </div>
+    </div>
+
+    <!-- Cookie Banner -->
+    <div id="cookieBanner">
+        <div class="cookie-text">
+            <p class="ct-title">This site uses cookies</p>
+            <p class="ct-body">We use cookies to improve your experience. By continuing, you agree to our <button onclick="togglePrivacy()">Privacy Policy</button>.</p>
+        </div>
+        <div class="cookie-btns">
+            <button class="btn-decline" onclick="dismissCookies()">Decline</button>
+            <button class="btn-accept" onclick="dismissCookies()">Accept all</button>
         </div>
     </div>
 
@@ -441,6 +599,29 @@
             card.dataset.delay = i * 60;
             cardObserver.observe(card);
         });
+
+        // Cookie banner
+        (function() {
+            if (localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookieOverlay').classList.add('hidden');
+                document.getElementById('cookieBanner').classList.add('hidden');
+            }
+        })();
+
+        function dismissCookies() {
+            localStorage.setItem('cookiesAccepted', '1');
+            document.getElementById('cookieOverlay').classList.add('hidden');
+            document.getElementById('cookieBanner').classList.add('hidden');
+            document.getElementById('privacyModal').classList.remove('open');
+        }
+
+        function togglePrivacy() {
+            document.getElementById('privacyModal').classList.toggle('open');
+        }
+
+        function closePrivacy() {
+            document.getElementById('privacyModal').classList.remove('open');
+        }
     </script>
 </body>
 </html>
